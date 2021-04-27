@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
-import {ReactComponent as Curve1} from "../../components/shapes/curves/curve-1.svg";
+import {ReactComponent as IMG_Curve1} from "../../components/shapes/curves/curve-1.svg";
 
 import IMG_Staking1 from './img/staking-1.png';
 import IMG_Staking2 from './img/staking-2.png';
@@ -78,7 +78,7 @@ function Home() {
               <div className="position-relative">
                 <div className="shape shape-bottom shape-fluid-x svg-shim text-white">
                   {/* {{> curves/curve-1}} */}
-                  <Curve1/>
+                  <IMG_Curve1/>
                 </div>
               </div>
 
@@ -124,7 +124,7 @@ function Home() {
               <div className="position-relative">
                 <div className="shape shape-bottom shape-fluid-x svg-shim text-white">
                   {/* {{> curves/curve-1}} */}
-                  <Curve1/>
+                  <IMG_Curve1/>
                 </div>
               </div>
 
