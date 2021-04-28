@@ -27,7 +27,7 @@ function Home() {
 
               {/*  Text */}
               <p className="lead text-muted mb-0">
-               Darwinia Crab 网络是达尔文网络先行网，是Kusama生态第一条同时原生支持跨链、智能合约和NFT的区块链。Crab网络即将参与波卡Kusama平行链插槽拍卖。
+               Darwinia Crab Network is the canary network of Darwinia, and is the first blockchain in the Kusama ecosystem to natively support cross-chain as well as smart contract and NFT. Crab Network intends to participate in the Kusama Parachain Slot Auctions.
             </p>
 
             </div>
@@ -45,12 +45,12 @@ function Home() {
 
               {/*  Heading */}
               <h2 className="fw-bold">
-                Crab 网络 <span className="text-primary">的特点</span>.
+                Crab Network <span className="text-primary">Features</span>
             </h2>
 
               {/*  Text */}
               <p className="fs-lg text-muted mb-9">
-                Crab 网络对于达尔文的定位类似于 Kusama 网络之于 Polkadot，Expect Chaos 是一个合理预期
+                The positioning of Crab is similar to Polkadot's Kusama Network. Expect Chaos is a reasonable expectation.
             </p>
 
             </div>
@@ -70,12 +70,12 @@ function Home() {
 
                   {/*  Heading */}
                   <h3 className="fw-bold mb-2">
-                    跨链互操作性
+                    Cross-chain interoperability
                 </h3>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                    依托达尔文网络的跨链桥接技术创新，为已经在以太坊，BSC 等公链部署的项目提供进入波卡生态的入口。
+                    Crab provides an entrance to the Polkadot ecology for projects that have been deployed on public blockchains such as Ethereum and BSC.
                 </p>
 
                 </div>
@@ -93,12 +93,12 @@ function Home() {
 
                   {/*  Heading */}
                   <h3 className="fw-bold mb-2">
-                    提供智能合约解决方案
+                    Smart contract solution
                 </h3>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                  Crab 网络 DVM 兼容以太坊虚拟机，支持 Defi，NFT 等 DApps 轻松迁移至波卡
+                  Crab's DVM is compatible with the Ethereum virtual machine, and supports DApps such as Defi and NFT, which can be easily migrated to Polkadot.
                 </p>
 
                 </div>
@@ -119,12 +119,12 @@ function Home() {
 
                   {/*  Heading */}
                   <h3 className="fw-bold mb-2">
-                    进化星球 Crab 大陆 GameFi 玩法
+                    Evolution Land
                 </h3>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                  达尔文生态进化星球游戏新大陆已经开放部署于 Crab 网络，集成 NFT 盲盒 GameFi 挖矿等全新玩法
+                  Evolution Crab Land has been open, integrating NFT blind box GameFi mining and other new gameplay methods
                 </p>
 
                 </div>
@@ -142,12 +142,12 @@ function Home() {
 
                   {/*  Heading */}
                   <h3 className="fw-bold mb-2">
-                    升级用户交易体验
+                    faster and easier user experience
                 </h3>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                  低 Gas 费 + 支持 NFT 跨链转账，低 Gas 费 + 支持 NFT 跨链转账低 Gas 费 + 支持 NFT 跨链转账
+                  Crab network can bring users a very high-quality experience, including very low transaction fees and ultra-fast transaction confirmation speed.
                 </p>
 
                 </div>
@@ -173,13 +173,13 @@ function Home() {
 
 
                 <h1 className="display-3 text-center text-md-start">
-                经济模型<span className="text-primary"></span><br />
+                Economic Model<span className="text-primary"></span><br />
             </h1>
 
 
                 <p className="lead text-center text-md-start text-muted mb-6 mb-lg-8">
-                Crab 网络是具有长期价值的网络。 它具有 RING 令牌的支持，这使它能够为测试和完善跨链理论等提供真正的经济激励，同时保留成为测试网的好处。
-Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同的 Staking 和通胀模型。Crab 网络的代币为 CRING 和 CKTON，CRING 的初始供应量为2000M，CKTON 的初始供应量为 0。
+                The Crab network is a network with long-term value. Some RINGs are allocated to Crab Network as backing assets to make it serve as a canary network having real economic incentives and massive gaming theory testing, not just working a testnet. <br/>
+                The economic model parameters of the Crab network are the same as those of the Darwinia Mainnet, and use the same staking and inflation models. 
             </p>
 
 
@@ -210,7 +210,7 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
               {/* Text */}
               <p className="fs-lg text-muted mb-9">
-                Crab 网络有两种代币，他们代表着Crab 网络不同的经济策略，是为了让 Crab 更合理和稳定
+                There are two types of tokens in Crab Network. They represent different economic strategies of the Crab Network. They are designed to make Crab more reasonable and stable.
               </p>
 
             </div>
@@ -230,12 +230,12 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
                 {/* Text */}
                 <p className="lead text-gray-700 mb-5 mb-md-7">
-                  达尔文 Crab 网络的原生令牌为 CRING，CRING 可用作交易的 gas 费用。gas 费包括交易费、合约执行费、网络带宽费、存储费等。持有 CRING 可使用户参与 Crab 网络的 Staking 和 链上治理。
+                  The native tokens for Crab Network is CRING, CRING can be used as gas for transactions. Gas include transaction fees, contract execution fees, network bandwidth charges, storage fees, and more.
               </p>
 
                 {/* Footer */}
                 <p className="fs-sm fw-bold mb-0">
-                  了解更多
+                  Learn more
               </p>
                 <p className="fs-sm text-muted mb-0">
 
@@ -259,12 +259,12 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
                 {/* Text*/}
                 <p className="lead text-gray-700 mb-5 mb-md-7">
-                KTON是RING（Darwinia Network本地令牌）的衍生承诺令牌，它鼓励长期参与。的衍生承诺令牌，它鼓励长期参与。的衍生承诺令牌，它鼓励长期参与。的衍生承诺令牌，它鼓励长期参与。
+                To encourage users to make long term commitments, users can choose to lock CRING for 3 - 36 months in the process of Staking, and the system will offer a CKTON token as reward for users participating in Staking.
               </p>
 
                 {/* Footer*/}
                 <p className="fs-sm fw-bold mb-0">
-                  了解更多
+                  Learn more
               </p>
                 <p className="fs-sm text-muted mb-0">
 
@@ -288,12 +288,12 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
               {/* Heading */}
               <h2 className="fw-bold">
-                Kusama 平行链拍卖
+                Kusama Parachain Slot Auction
               </h2>
 
               {/* Text */}
               <p className="fs-lg text-muted mb-9">
-                Crab 将会参与 Kusama平行链插槽拍卖，获取插槽有助于 Crab 网络更好的发展，我们需要更多的支持以保证竞拍的成功率，而你将获得奖励
+                Crab will participate in the Kusama Parachain Slot Auction. Obtaining slots will help the Crab Network to be better. We need more support to ensure the success of the auction, and you will get rewards.
               </p>
 
             </div>
@@ -313,18 +313,18 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
                   {/*  Heading */}
                   <h4 className="fw-bold">
-                  什么是平行链拍卖
+                  What is a Parachain Slot Auctions
                 </h4>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-5">
-                  Kusama 是一个多链网络，所有平行链通过插槽接入Kusama，因为初期插槽数量较少，所以需要通过拍卖来获得。
+                  Kusama is a multi-chain network. All parachains are connected to Kusama through slots. Since the initial number of slots is small, it needs to be obtained through auctions.
                 </p>
 
                   {/*  Badge */}
                   <span className="badge rounded-pill bg-dark-soft">
                     <span className="h6 text-uppercase">
-                      了解更多
+                      Learn more
                   </span>
                   </span>
 
@@ -345,18 +345,18 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
                   {/*  Heading */}
                   <h4 className="fw-bold">
-                  什么是众贷
+                  What is Crowdloan
                 </h4>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-5">
-                  为了获得插槽，Crab网络将发起众贷，让社区参与一起来提高成功的可能性（参与用户的KSM不会离开自己的钱包）
+                  In order to obtain a slot, Crab Network will launch Crowdloan to allow the community to participate together to increase the probability of success while users' KSMs will not leave away from their wallets.
                 </p>
 
                   {/*  Badge */}
                   <span className="badge rounded-pill bg-dark-soft">
                     <span className="h6 text-uppercase">
-                    了解更多
+                    Learn more
                   </span>
                   </span>
 
@@ -377,18 +377,18 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
                   {/*  Heading */}
                   <h4 className="fw-bold">
-                  你将获得丰厚回报
+                  You will get generous rewards
                 </h4>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-5">
-                  为了回报做出贡献的社区用户，Darwinia 将提供丰厚的奖励，哪怕竞拍失败。了解详细信息
+                  Participating users will get generous rewards even if the auction fails. 
                 </p>
 
                   {/*  Badge */}
                   <span className="badge rounded-pill bg-dark-soft">
                     <span className="h6 text-uppercase">
-                    了解更多
+                    Learn more
                   </span>
                   </span>
 
