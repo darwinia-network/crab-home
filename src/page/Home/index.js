@@ -8,7 +8,7 @@ function Home() {
       <Navbar classList="navbar-light bg-white" container="container" button="primary" />
 
       {/*  WELCOME */}
-      <section className="pt-4 pt-md-11">
+      <section className="pt-4 pt-md-10">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-12 col-md-5 order-md-2">
@@ -37,7 +37,7 @@ function Home() {
 
 
       {/*  ABOUT */}
-      <section className="pt-8 pt-md-10" id="about">
+      <section className="pt-8 pt-md-12" id="about">
         <div className="container">
 
           <div className="row justify-content-center">
@@ -160,7 +160,7 @@ function Home() {
 
 
       <section>
-        <div className="pt-4 pt-md-11">
+        <div className="pt-4 pt-md-12">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-12 col-md-5 col-lg-6 order-md-1">
@@ -197,7 +197,7 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
 
       {/* TESTIMONIALS */}
-      <section className="pt-8 pt-md-10">
+      <section className="pt-8 pt-md-12">
         <div className="container">
 
           <div className="row justify-content-center">
@@ -279,7 +279,7 @@ Crab 网络的经济模型参数与 Darwinia Mainnet 相同，并且使用相同
 
 
       {/*  CATEGORIES */}
-      <section className="pt-8 pt-md-10">
+      <section className="pt-8 pt-md-12">
 
         <div className="container">
 
