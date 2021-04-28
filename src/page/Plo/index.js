@@ -39,7 +39,7 @@ function Home() {
               {/*  Heading */}
               <h1 className="display-3">
               What is a <br />
-                <span className="text-primary">Kusama Parachain Slot Auctions ？</span>.
+                <span className="text-primary">Kusama Parachain Slot Auctions？</span>
               </h1>
 
               {/*  Text */}
@@ -120,12 +120,10 @@ function Home() {
                 </div>
 
                 <div className="ms-5">
-                  {/* Heading */}
-                  <h4 className="mb-1">Magic Resume</h4>
 
                   {/* Text */}
                   <p className="text-muted mb-5">
-                    Kusama 是一个可扩展的、多平行链的网络。平行链如果想连接到 Kusama，并希望共享 Kusama 的跨链能力和网络安全，那它必须获取一个平行链插槽。
+                    Parachain slot is a scarce resource on Kusama.
                   </p>
                 </div>
               </div>
@@ -137,12 +135,10 @@ function Home() {
                 </div>
 
                 <div className="ms-5">
-                  {/* Heading */}
-                  <h4 className="mb-1">Employer Insights</h4>
 
                   {/* Text */}
                   <p className="text-muted mb-0">
-                    平行链插槽是Polkadot上的稀缺资源，将通过无准入的蜡烛拍卖进行出售。
+                    The parachain slots will be sold according to an unpermissioned candle auction. Learn more
                   </p>
                 </div>
               </div>
@@ -158,21 +154,15 @@ function Home() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
-              {/* Badge */}
-              <span className="badge rounded-pill bg-primary-soft mb-3">
-                <span className="h6 text-uppercase">Pay it down</span>
-              </span>
 
               {/* Heading */}
               <h1>
-                Earn revenue while{" "}
-                <span className="text-primary">enjoying a vacation.</span>
+                <span className="text-primary">What is a Crowdloan?</span>
               </h1>
 
               {/* Text */}
               <p className="lead text-gray-700 mb-7 mb-md-9">
-                Anytime you leave your home vacant, you're wasting potential
-                earnings! Rent it out for an hour or a day at a time.
+                 Kusama allows parachains to raise KSMs for their parachains by means of decentralized Crowdloan.
               </p>
             </div>
           </div>{" "}
@@ -200,12 +190,11 @@ function Home() {
                 {/* Body */}
                 <div className="ms-5">
                   {/* Heading */}
-                  <h3>Sign up</h3>
+                  <h3>Preparation</h3>
 
                   {/* Text */}
                   <p className="text-gray-700 mb-6">
-                    It takes a few minutes to add your information and home's
-                    photos.
+                   The KSMs used for participation must be unbonded, that is, not locked for any reason (including staking, vesting, and governance). You need to unbond your KSMs before the Crowdloan.
                   </p>
                 </div>
               </div>
@@ -218,12 +207,11 @@ function Home() {
                 {/* Body */}
                 <div className="ms-5">
                   {/* Heading */}
-                  <h3>List your homes</h3>
+                  <h3>Safety</h3>
 
                   {/* Text */}
                   <p className="text-gray-700 mb-6">
-                    Let us know where your homes are located and when they're
-                    available.
+                    All crowdloan contributions are handled by the Crowdloan module’s logic where a campaign is identified by index, not by address. Never transfer KSMs to an address in support of a campaign.
                   </p>
                 </div>
               </div>
@@ -236,11 +224,11 @@ function Home() {
                 {/* Body */}
                 <div className="ms-5">
                   {/* Heading */}
-                  <h3>Start welcoming guests</h3>
+                  <h3>Rewards</h3>
 
                   {/* Text */}
                   <p className="text-gray-700 mb-0">
-                    Get ready for an influx of guests and easy passive income.
+                    The reward for supporting Darwinia Crab will be higher than Staking, and there will be a chance to get 1 BTC.  You will get enough rewards even if we fail. Learn more
                   </p>
                 </div>
               </div>

@@ -29,12 +29,12 @@ function Home() {
 
               {/* Heading  */}
               <h1 className="display-2 fw-bold text-white">
-                What Do You Need?
+                Crab economic model
               </h1>
 
               {/* Text  */}
               <p className="lead text-white-75 mb-0">
-                We're here to help you better use Landkit. First, let's figure out if we have a solution in our documentation.
+                INTERNET OF TOKENS, CONNECTED!
               </p>
 
             </div>
@@ -60,7 +60,7 @@ function Home() {
 
             {/* Text  */}
             <p className="fs-lg text-gray-700 mb-7 mb-md-9">
-              The Darwinia Network will distribute RING as an incentive to the participants of Staking. The process of Staking can also be understood as the POS mining process, where the miner obtains Staking energy by pledging tokens for POS mining. According to complexity, Staking can be divided into basic and advanced versions.
+              The Darwinia Network will distribute CRINGs as an incentive to the participants of Staking. The process of Staking can also be understood as the POS mining process, where the miner obtains Staking energy by staking tokens. According to complexity, Staking can be divided into basic and advanced versions.
             </p>
 
           </div>
@@ -94,12 +94,12 @@ function Home() {
 
                 {/* Heading  */}
                 <h3>
-                  Shared Coworking
+                  Basic Model
                 </h3>
 
                 {/* Text  */}
                 <p className="text-muted">
-                  Open seating is available weekdays from 7am - 7pm and weekends from 9am - 5pm.
+                  If users start to retrieve the CRINGs from Staking, the mining will stop, and the CRINGs will take 14 days to fully unbond.
                 </p>
 
                 {/* Link  */}
@@ -140,12 +140,12 @@ function Home() {
 
                 {/* Heading  */}
                 <h3>
-                  Designated Desk
+                  Advanced Model
                 </h3>
 
                 {/* Text  */}
                 <p className="text-muted">
-                  A personal space to leave your computer, monitor, and supplies with unlimited access.
+                   During the locked period, users cannot unlock their CRINGs. Unless they utilise triple the amount of CKTONs as penalty. 
                 </p>
 
                 {/* Link  */}
@@ -176,12 +176,12 @@ function Home() {
 
               {/* Heading  */}
               <h1>
-                Cross-chain tokens
+                Supply
               </h1>
 
               {/* Text  */}
               <p className="fs-lg text-gray-700 mb-7 mb-md-9">
-                The Darwinia Network will distribute RING as an incentive to the participants of Staking. tive to the participants of Staking.
+                The data here may lag behind the actual situation. If you need accurate data, please click here.
               </p>
 
             </div>
@@ -194,12 +194,12 @@ function Home() {
                 <div className="row">
                   <div className="col-3 d-flex flex-column align-items-center justify-content-center">
                     <img src={IMG_Ring} width="56" className="rounded mx-auto d-block" alt="..." />
-                    <h3 className="mt-4">RING</h3>
+                    <h3 className="mt-4">CRING</h3>
                   </div>
                   <div className="col-9 d-flex ">
                     <div className="row flex-column justify-content-between">
                       <div>
-                        RING is the native token of Darwinia Network
+                        CRING is the native token of Crab Network
                       </div>
                       <div>
                         <div className="d-flex flex-row justify-content-between">
@@ -228,12 +228,12 @@ function Home() {
                 <div className="row">
                   <div className="col-3 d-flex flex-column align-items-center justify-content-center">
                     <img src={IMG_Kton} width="56" className="rounded mx-auto d-block" alt="..." />
-                    <h3 className="mt-4">KTON</h3>
+                    <h3 className="mt-4">CKTON</h3>
                   </div>
                   <div className="col-9 d-flex ">
                     <div className="row flex-column justify-content-between">
                       <div>
-                        KTON is a derivative commitment token of RING, which encourages long-term involvement.
+                        CKTON is a derivative commitment token of CRING, which encourages long-term involvement.
                       </div>
                       <div>
                         <div className="d-flex flex-row justify-content-between">
@@ -272,12 +272,12 @@ function Home() {
 
             {/* Heading  */}
             <h2 className="fw-bold">
-              RING Inflation Model
+              CRING Inflation Model
             </h2>
 
             {/* Text  */}
             <p className="fs-lg text-muted mb-7 mb-md-9">
-              After the Darwinia Network mainnet goes live, the total cap of the block reward is adjusted once a year. The total number of hard-cap for RING is 10 billion. The following figure shows the RING’s inflation model.
+              CRING has the same inflation model as RING, the total cap of the block reward is adjusted once a year. The total number of hard-cap for RING is 10 billion. The following figure shows the CRING’s inflation model.
             </p>
 
           </div>
@@ -325,11 +325,6 @@ function Home() {
               Revenue Model
             </h2>
 
-            {/* Text  */}
-            <p className="fs-lg text-muted mb-7 mb-md-9">
-              After the Darwinia Network mainnet goes live, the total cap of the block reward is adjusted once a year. The total number of hard-cap for RING is 10 billion. The following figure shows the RING’s inflation model.
-            </p>
-
           </div>
         </div> {/* / .row  */}
         <div className="row gx-4">
@@ -347,7 +342,7 @@ function Home() {
                 <div className="col-md-8">
 
                   {/* Body  */}
-                  <div className="card-body py-7 py-md-9 text-center">
+                  <div className="card-body py-7 py-md-9 text-left">
 
                     {/* Heading  */}
                     <h4 className="fw-bold">
@@ -373,12 +368,12 @@ function Home() {
           <div className="col-12 col-lg-6 d-lg-flex mb-4">
 
             {/* Card  */}
-            <div className="card shadow-light-lg overflow-hidden text-center justify-content-center" data-aos="fade-up">
+            <div className="card shadow-light-lg overflow-hidden justify-content-center" data-aos="fade-up">
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-8 position-relative">
 
                   {/* Body  */}
-                  <div className="card-body py-7 py-md-9">
+                  <div className="card-body py-7 py-md-9 text-left">
 
                     {/* Heading  */}
                     <h4 className="fw-bold">
@@ -387,11 +382,18 @@ function Home() {
 
                     {/* Text  */}
                     <p className="text-muted mb-0 text-start">
-                      Cross-chain Asset Transfer Service Fee (per TX) as Revenue.<br/>
-                      Verification Game Slash Tax as Revenue. <br/>
-                      Revenue Pool is used to buy back RING and burn. <br/>
+                      Cross-chain Asset Transfer Service Fee (per TX) as Revenue.
                     </p>
 
+                    {/* Text  */}
+                    <p className="text-muted mb-0 text-start">
+                      Verification Game Slash Tax as Revenue. 
+                    </p>
+
+                    {/* Text  */}
+                    <p className="text-muted mb-0 text-start">
+                      Revenue Pool is used to buy back RING and burn.
+                    </p>
                   </div>
 
                 </div>
