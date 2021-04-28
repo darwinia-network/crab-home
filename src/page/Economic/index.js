@@ -193,7 +193,7 @@ function Home() {
                 <div className="card-body d-flex align-items-stretch">
                 <div className="row">
                   <div className="col-3 d-flex flex-column align-items-center justify-content-center">
-                    <img src={IMG_Ring} width="56" class="rounded mx-auto d-block" alt="..." />
+                    <img src={IMG_Ring} width="56" className="rounded mx-auto d-block" alt="..." />
                     <h3 className="mt-4">RING</h3>
                   </div>
                   <div className="col-9 d-flex ">
@@ -227,7 +227,7 @@ function Home() {
                 <div className="card-body d-flex align-items-stretch">
                 <div className="row">
                   <div className="col-3 d-flex flex-column align-items-center justify-content-center">
-                    <img src={IMG_Kton} width="56" class="rounded mx-auto d-block" alt="..." />
+                    <img src={IMG_Kton} width="56" className="rounded mx-auto d-block" alt="..." />
                     <h3 className="mt-4">KTON</h3>
                   </div>
                   <div className="col-9 d-flex ">
@@ -288,7 +288,7 @@ function Home() {
             {/* Card  */}
             <div className="card shadow-light-lg overflow-hidden" data-aos="fade-up">
 
-              <img src={IMG_Inflation1} class="img-fluid" alt="..." />
+              <img src={IMG_Inflation1} className="img-fluid" alt="..." />
 
 
             </div>
@@ -299,7 +299,7 @@ function Home() {
             {/* Card  */}
             <div className="card shadow-light-lg overflow-hidden text-center" data-aos="fade-up">
 
-                <img src={IMG_Inflation2} class="img-fluid" alt="..." />
+                <img src={IMG_Inflation2} className="img-fluid" alt="..." />
 
             </div>
 
@@ -307,7 +307,7 @@ function Home() {
         </div> {/* / .row  */}
         <div className="row">
           <div className="col-12">
-            <p class="text-center mt-4">Note: The block reward of year N is 1 - (99/100)^sqrt(N) of total remaining issuable</p>
+            <p className="text-center mt-4">Note: The block reward of year N is 1 - (99/100)^sqrt(N) of total remaining issuable</p>
           </div>
         </div> {/* / .row  */}
       </div> {/* / .container  */}

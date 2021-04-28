@@ -39,16 +39,7 @@ function Home() {
       {/*  ABOUT */}
       <section className="pt-8 pt-md-10" id="about">
         <div className="container">
-          <div className="row">
-            <div className="col-12 text-center">
 
-              {/*  Button */}
-              <a href="#about" className="btn btn-white btn-rounded-circle shadow mt-n12 mt-md-n14" data-scroll>
-                <i className="fe fe-arrow-down"></i>
-              </a>
-
-            </div>
-          </div> {/*  / .row */}
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
 
