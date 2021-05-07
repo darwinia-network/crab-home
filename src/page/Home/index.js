@@ -1,6 +1,8 @@
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
+import styles from "./style.module.scss";
+
 function Home() {
 
   return (
@@ -11,13 +13,13 @@ function Home() {
       <section className="pt-4 pt-md-10">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-12 col-md-5 order-md-2">
+            <div className="col-12 col-md-7 order-md-2">
 
               {/*  Image */}
               <img src="../../img/illustrations/illustration-1.png" className="img-fluid mb-6 mb-md-0" alt="..." data-aos="fade-up" data-aos-delay="100" />
 
             </div>
-            <div className="col-12 col-md-7 order-md-1" data-aos="fade-up">
+            <div className="col-12 col-md-5 order-md-1" data-aos="fade-up">
 
               {/*  Heading */}
               <h1 className="display-4">
@@ -179,7 +181,7 @@ function Home() {
 
                 <p className="lead text-center text-md-start text-muted mb-6 mb-lg-8">
                 The Crab network is a network with long-term value. Some RINGs are allocated to Crab Network as backing assets to make it serve as a canary network having real economic incentives and massive gaming theory testing, not just working a testnet. <br/>
-                The economic model parameters of the Crab network are the same as those of the Darwinia Mainnet, and use the same staking and inflation models. 
+                The economic model parameters of the Crab network are the same as those of the Darwinia Mainnet, and use the same staking and inflation models.
             </p>
 
 
@@ -225,7 +227,7 @@ function Home() {
                 {/* Logo */}
                 <div className="img-fluid mb-5 mb-md-6 svg-shim">
                   {/* {{> logotype/airbnb}} */}
-                  CRING
+                  <img src="../../img/crab/cring.png" alt="CRING TOKEN" width="50px" />
                 </div>
 
                 {/* Text */}
@@ -254,7 +256,7 @@ function Home() {
                 {/* Logo*/}
                 <div className="img-fluid mb-5 mb-md-6 svg-shim">
                   {/* {{> logotype/coinbase}} */}
-                  CKTON
+                  <img src="../../img/crab/ckton.png" alt="CKTON TOKEN" width="50px" />
                 </div>
 
                 {/* Text*/}
@@ -307,8 +309,9 @@ function Home() {
                 <div className="card-body text-center">
 
                   {/*  Icon */}
-                  <div className="icon-circle bg-primary text-white mb-5">
-                    <i className="fe fe-users"></i>
+                  <div className="icon-circle text-white mb-5">
+                    {/* <i className="fe fe-users"></i> */}
+                    <img src="../../img/crab/home-action-1.png" alt="..." width="67px"/>
                   </div>
 
                   {/*  Heading */}
@@ -339,8 +342,8 @@ function Home() {
                 <div className="card-body text-center">
 
                   {/*  Icon */}
-                  <div className="icon-circle bg-success text-white mb-5">
-                    <i className="fe fe-clock"></i>
+                  <div className="icon-circle text-white mb-5">
+                    <img src="../../img/crab/home-action-2.png" alt="..." width="67px"/>
                   </div>
 
                   {/*  Heading */}
@@ -368,11 +371,11 @@ function Home() {
 
               {/*  Card */}
               <div className="card card-border border-warning shadow-lg mb-6 mb-md-8 lift lift-lg">
-                <div className="card-body text-center">
+                <div className={`card-body text-center ${styles.minH450}`}>
 
                   {/*  Icon */}
-                  <div className="icon-circle bg-warning text-white mb-5">
-                    <i className="fe fe-users"></i>
+                  <div className="icon-circle text-white mb-5">
+                    <img src="../../img/crab/home-action-3.png" alt="..." width="67px"/>
                   </div>
 
                   {/*  Heading */}
@@ -382,7 +385,7 @@ function Home() {
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-5">
-                  Participating users will get generous rewards even if the auction fails. 
+                  Participating users will get generous rewards even if the auction fails.
                 </p>
 
                   {/*  Badge */}

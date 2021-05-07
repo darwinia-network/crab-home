@@ -22,7 +22,7 @@ function Home() {
       <Navbar classList="navbar-light bg-white" container="container" button="primary" />
 
       {/* WELCOME  */}
-      <section data-jarallax data-speed=".8" className="pt-10 pb-11 py-md-14 overlay overlay-black overlay-60 jarallax" style={{backgroundImage: 'url(../img/covers/cover-4.jpg)'}}>
+      <section data-jarallax data-speed=".8" className="pt-10 pb-11 py-md-14 overlay overlay-black overlay-60 jarallax" style={{backgroundImage: 'url(../img/covers/cover-4.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
@@ -145,7 +145,7 @@ function Home() {
 
                 {/* Text  */}
                 <p className="text-muted">
-                   During the locked period, users cannot unlock their CRINGs. Unless they utilise triple the amount of CKTONs as penalty. 
+                   During the locked period, users cannot unlock their CRINGs. Unless they utilise triple the amount of CKTONs as penalty.
                 </p>
 
                 {/* Link  */}
@@ -336,7 +336,7 @@ function Home() {
                 <div className="col-md-4 position-relative">
 
                   {/* Image  */}
-                  <img src="../img/illustrations/illustration-8.png" className="h-75 position-absolute right-0 mt-7 me-n4" alt="..." />
+                  <img src="../img/illustrations/illustration-10.png" className="h-75 position-absolute right-0 mt-7 me-n4" alt="..." />
 
                 </div>
                 <div className="col-md-8">
@@ -387,7 +387,7 @@ function Home() {
 
                     {/* Text  */}
                     <p className="text-muted mb-0 text-start">
-                      Verification Game Slash Tax as Revenue. 
+                      Verification Game Slash Tax as Revenue.
                     </p>
 
                     {/* Text  */}
@@ -400,7 +400,7 @@ function Home() {
                 <div className="col-md-4">
 
                   {/* Image  */}
-                  <img src="../img/illustrations/illustration-6.png" className="h-75 position-absolute left-0 mt-7" alt="..." />
+                  <img src="../img/illustrations/illustration-11.png" className="h-75 position-absolute left-0 mt-7" alt="..." />
 
                 </div>
               </div> {/* / .row  */}

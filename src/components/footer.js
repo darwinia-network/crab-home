@@ -9,6 +9,7 @@ function Footer({ classList, container, button }) {
               src="../img/brand.svg"
               alt="..."
               className="footer-brand img-fluid mb-2"
+              width="90px"
             />
 
             {/* Text*/}
