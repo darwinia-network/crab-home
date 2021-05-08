@@ -157,7 +157,7 @@ function Home() {
 
               {/* Heading */}
               <h1>
-                <span className="text-primary">What is a Crowdloan?</span>
+                What is a <span className="text-primary">Crowdloan?</span>
               </h1>
 
               {/* Text */}
@@ -247,19 +247,19 @@ function Home() {
 
             {/* Heading */}
             <h1>
-              <span className="text-primary">如何参与</span>
+              How to <span className="text-primary">participate?</span>
             </h1>
 
             {/* Text */}
             <p className="lead text-gray-700 mb-7 mb-md-9">
-                Kusama allows parachains to raise KSMs for their parachains by means of decentralized Crowdloan.
+                How to operate your wallet to support us.
             </p>
           </div>
         </div>
 
           <div className="row">
             <div
-              className="col-12 col-md-4"
+              className="col-12 col-md-3"
               data-aos="fade-up"
               data-aos-delay="50"
             >
@@ -268,28 +268,27 @@ function Home() {
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
-                    $29/mo
+                    1
                   </span>
 
                   {/* Heading */}
-                  <h4 className="fw-bold">Shared instance</h4>
+                  <h4 className="fw-bold">Learn</h4>
 
                   {/* Text */}
                   <p className="text-muted">
-                    Affordable, scalable and performant. The perfect solution
-                    for small apps.
+                    Learn how the Crowdloan works.
                   </p>
 
                   {/* Link */}
                   <a href="#!" className="fs-sm fw-bold text-decoration-none">
-                    Start a 30-day trial
+                    Learn more
                     <i className="fe fe-arrow-right ms-3"></i>
                   </a>
                 </div>
               </div>
             </div>
             <div
-              className="col-12 col-md-4"
+              className="col-12 col-md-3"
               data-aos="fade-up"
               data-aos-delay="100"
             >
@@ -298,28 +297,22 @@ function Home() {
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
-                    $49/mo
+                    2
                   </span>
 
                   {/* Heading */}
-                  <h4 className="fw-bold">Shared cluster</h4>
+                  <h4 className="fw-bold">Follow us</h4>
 
                   {/* Text */}
                   <p className="text-muted">
-                    A mid-sized solution for businesses undergoing rapid user
-                    growth.
+                    Join our Medium, Twitter, and Telegram for updates.
                   </p>
 
-                  {/* Link */}
-                  <a href="#!" className="fs-sm fw-bold text-decoration-none">
-                    Start a 15-day trial
-                    <i className="fe fe-arrow-right ms-3"></i>
-                  </a>
                 </div>
               </div>
             </div>
             <div
-              className="col-12 col-md-4"
+              className="col-12 col-md-3"
               data-aos="fade-up"
               data-aos-delay="150"
             >
@@ -328,25 +321,50 @@ function Home() {
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
-                    $79/mo
+                    3
                   </span>
 
                   {/* Heading */}
-                  <h4 className="fw-bold">Dedicated cluster</h4>
+                  <h4 className="fw-bold">Unbond your KSMs</h4>
 
                   {/* Text */}
                   <p className="text-muted">
-                    A farm of machines entirely dedicated to your company's
-                    storage needs.
+                    If your KSMs are bonded, you will need to unbond your KSMs at least 7 days before the Crowdloan start date.
                   </p>
 
                   {/* Link */}
                   <a href="#!" className="fs-sm fw-bold text-decoration-none">
-                    Sign up now <i className="fe fe-arrow-right ms-3"></i>
+                    Unbond <i className="fe fe-arrow-right ms-3"></i>
                   </a>
                 </div>
               </div>
             </div>
+
+            <div
+              className="col-12 col-md-3"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              {/* Card */}
+              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg">
+                <div className="card-body">
+                  {/* Badge */}
+                  <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
+                    4
+                  </span>
+
+                  {/* Heading */}
+                  <h4 className="fw-bold">Participate</h4>
+
+                  {/* Text */}
+                  <p className="text-muted">
+                    When the Crowdloan starts, join the action on this crab.network website.
+                  </p>
+
+                </div>
+              </div>
+            </div>
+    
           </div>
           {/* / .row */}
         </div>
@@ -367,7 +385,7 @@ function Home() {
 
             {/* Text */}
             <p className="lead text-gray-700 mb-7 mb-md-9">
-                Kusama allows parachains to raise KSMs for their parachains by means of decentralized Crowdloan.
+                We will continue to update the questions here. If you don’t find the question or answer you want, you can send an email to <a href="ksm-crowdloan@itering.com">ksm-crowdloan@itering.com</a>.
             </p>
           </div>
         </div>
@@ -387,12 +405,12 @@ function Home() {
 
                 {/* Heading */}
                 <h4 className="text-white">
-                  Can I use Landkit for my clients?
+                  When will the Parachain Slot auction open?
                 </h4>
 
                 {/* Text */}
                 <p className="text-muted mb-6 mb-md-8">
-                  Absolutely. The Bootstrap Themes license allows you to build a website for personal use or for a client.
+                  Waiting for kusama official confirmation.
                 </p>
 
               </div>
@@ -411,12 +429,12 @@ function Home() {
 
                 {/* Heading */}
                 <h4 className="text-white">
-                  Do I get free updates?
+                  Is my KSMs safe?
                 </h4>
 
                 {/* Text */}
                 <p className="text-muted mb-6 mb-md-0">
-                  Yes. We update all of our themes with each Bootstrap update, plus are constantly adding new components, pages, and features to our themes.
+                  Yes. Your KSMs will not leave your wallet.
                 </p>
 
               </div>
@@ -438,12 +456,12 @@ function Home() {
 
                 {/* Heading */}
                 <h4 className="text-white">
-                  Is there a money back guarantee?
+                  When will the KSMs that I participated in the Crowdloan be unlocked?
                 </h4>
 
                 {/* Text */}
                 <p className="text-muted mb-6 mb-md-8">
-                  Yup! Bootstrap Themes come with a satisfaction guarantee. Submit a return and get your money back.
+                  When will the ksm that I participated in the event be unlocked
                 </p>
 
               </div>
@@ -462,7 +480,7 @@ function Home() {
 
                 {/* Heading */}
                 <h4 className="text-white">
-                  Does it work with Rails? React? Laravel?
+                  Can my KSMs participate in Crowdloan on the exchange?
                 </h4>
 
                 {/* Text */}

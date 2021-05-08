@@ -377,7 +377,7 @@ function Home() {
 
                     {/* Heading  */}
                     <h4 className="fw-bold">
-                      Emoji Responses
+                      Network Revenue
                     </h4>
 
                     {/* Text  */}
