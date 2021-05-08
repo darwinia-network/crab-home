@@ -48,16 +48,16 @@ function Home() {
               </p>
 
               {/*  Buttons */}
-              <a href="#!" className="btn btn-primary me-1 lift">
+              <a href="#!" className="btn btn-primary me-3 lift">
                 参加问卷调查 <i className="fe fe-arrow-right ms-3"></i>
               </a>
               <a href="#!" className="btn btn-primary-soft lift">
                 Learn more
               </a>
             </div>
-          </div>{" "}
+          </div>
           {/*  / .row */}
-        </div>{" "}
+        </div>
         {/*  / .container */}
       </section>
 
@@ -143,9 +143,9 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>{" "}
+          </div>
           {/* / .row */}
-        </div>{" "}
+        </div>
         {/* / .container */}
       </section>
 
@@ -165,7 +165,7 @@ function Home() {
                  Kusama allows parachains to raise KSMs for their parachains by means of decentralized Crowdloan.
               </p>
             </div>
-          </div>{" "}
+          </div>
           {/* / .row */}
           <div className="row align-items-center">
             <div className="col-12 col-md-6 col-lg-7">
@@ -233,15 +233,30 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>{" "}
+          </div>
           {/* / .row */}
-        </div>{" "}
+        </div>
         {/* / .container */}
       </section>
 
       {/* PRICING */}
       <section className="mt-12 mb-12">
         <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-10 col-lg-8 text-center">
+
+            {/* Heading */}
+            <h1>
+              <span className="text-primary">如何参与</span>
+            </h1>
+
+            {/* Text */}
+            <p className="lead text-gray-700 mb-7 mb-md-9">
+                Kusama allows parachains to raise KSMs for their parachains by means of decentralized Crowdloan.
+            </p>
+          </div>
+        </div>
+
           <div className="row">
             <div
               className="col-12 col-md-4"
@@ -267,7 +282,7 @@ function Home() {
 
                   {/* Link */}
                   <a href="#!" className="fs-sm fw-bold text-decoration-none">
-                    Start a 30-day trial{" "}
+                    Start a 30-day trial
                     <i className="fe fe-arrow-right ms-3"></i>
                   </a>
                 </div>
@@ -297,7 +312,7 @@ function Home() {
 
                   {/* Link */}
                   <a href="#!" className="fs-sm fw-bold text-decoration-none">
-                    Start a 15-day trial{" "}
+                    Start a 15-day trial
                     <i className="fe fe-arrow-right ms-3"></i>
                   </a>
                 </div>
@@ -332,11 +347,138 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>{" "}
+          </div>
           {/* / .row */}
-        </div>{" "}
+        </div>
         {/* / .container */}
       </section>
+
+
+    {/* FAQ */}
+    <section className="bg-dark mt-12 pb-12">
+      <div className="container pt-8 pt-md-11">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-10 col-lg-8 text-center">
+
+            {/* Heading */}
+            <h1>
+              <span className="text-primary">FAQ</span>
+            </h1>
+
+            {/* Text */}
+            <p className="lead text-gray-700 mb-7 mb-md-9">
+                Kusama allows parachains to raise KSMs for their parachains by means of decentralized Crowdloan.
+            </p>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-12 col-md-6">
+
+            {/* Item */}
+            <div className="d-flex">
+
+              {/* Badge */}
+              <div className="badge badge-lg badge-rounded-circle bg-success">
+                <span>?</span>
+              </div>
+
+              <div className="ms-5">
+
+                {/* Heading */}
+                <h4 className="text-white">
+                  Can I use Landkit for my clients?
+                </h4>
+
+                {/* Text */}
+                <p className="text-muted mb-6 mb-md-8">
+                  Absolutely. The Bootstrap Themes license allows you to build a website for personal use or for a client.
+                </p>
+
+              </div>
+
+            </div>
+
+            {/* Item */}
+            <div className="d-flex">
+
+              {/* Badge */}
+              <div className="badge badge-lg badge-rounded-circle bg-success">
+                <span>?</span>
+              </div>
+
+              <div className="ms-5">
+
+                {/* Heading */}
+                <h4 className="text-white">
+                  Do I get free updates?
+                </h4>
+
+                {/* Text */}
+                <p className="text-muted mb-6 mb-md-0">
+                  Yes. We update all of our themes with each Bootstrap update, plus are constantly adding new components, pages, and features to our themes.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+          <div className="col-12 col-md-6">
+
+            {/* Item */}
+            <div className="d-flex">
+
+              {/* Badge */}
+              <div className="badge badge-lg badge-rounded-circle bg-success">
+                <span>?</span>
+              </div>
+
+              <div className="ms-5">
+
+                {/* Heading */}
+                <h4 className="text-white">
+                  Is there a money back guarantee?
+                </h4>
+
+                {/* Text */}
+                <p className="text-muted mb-6 mb-md-8">
+                  Yup! Bootstrap Themes come with a satisfaction guarantee. Submit a return and get your money back.
+                </p>
+
+              </div>
+
+            </div>
+
+            {/* Item */}
+            <div className="d-flex">
+
+              {/* Badge */}
+              <div className="badge badge-lg badge-rounded-circle bg-success">
+                <span>?</span>
+              </div>
+
+              <div className="ms-5">
+
+                {/* Heading */}
+                <h4 className="text-white">
+                  Does it work with Rails? React? Laravel?
+                </h4>
+
+                {/* Text */}
+                <p className="text-muted mb-6 mb-md-0">
+                  Yes. Landkit has basic CSS/JS files you can include. If you want to enable deeper customization, you can integrate it into your assets pipeline or build processes.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div> {/* / .row */}
+      </div> {/* / .container */}
+    </section>
+
 
       <Footer classList="bg-dark" />
     </>

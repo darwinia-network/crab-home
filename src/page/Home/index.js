@@ -227,7 +227,7 @@ function Home() {
                 {/* Logo */}
                 <div className="img-fluid mb-5 mb-md-6 svg-shim">
                   {/* {{> logotype/airbnb}} */}
-                  <img src="../../img/crab/cring.png" alt="CRING TOKEN" width="50px" />
+                  <img src="../../img/crab/cring.png" alt="CRING TOKEN" width="120px" />
                 </div>
 
                 {/* Text */}
@@ -237,7 +237,7 @@ function Home() {
 
                 {/* Footer */}
                 <p className="fs-sm fw-bold mb-0">
-                  Learn more
+                  <a href="#!" className="fw-bold text-decoration-none">Learn more <i className="fe fe-arrow-right ms-3"></i></a>
               </p>
                 <p className="fs-sm text-muted mb-0">
 
@@ -256,7 +256,7 @@ function Home() {
                 {/* Logo*/}
                 <div className="img-fluid mb-5 mb-md-6 svg-shim">
                   {/* {{> logotype/coinbase}} */}
-                  <img src="../../img/crab/ckton.png" alt="CKTON TOKEN" width="50px" />
+                  <img src="../../img/crab/ckton.png" alt="CKTON TOKEN" width="120px" />
                 </div>
 
                 {/* Text*/}
@@ -266,7 +266,7 @@ function Home() {
 
                 {/* Footer*/}
                 <p className="fs-sm fw-bold mb-0">
-                  Learn more
+                  <a href="#!" className="fw-bold text-decoration-none">Learn more <i className="fe fe-arrow-right ms-3"></i></a>
               </p>
                 <p className="fs-sm text-muted mb-0">
 
@@ -306,12 +306,12 @@ function Home() {
 
               {/*  Card */}
               <div className="card card-border border-primary shadow-lg mb-6 mb-md-8 lift lift-lg">
-                <div className="card-body text-center">
+                <div className={`card-body text-center ${styles.minH450}`}>
 
                   {/*  Icon */}
-                  <div className="icon-circle text-white mb-5">
+                  <div className="text-white mb-5">
                     {/* <i className="fe fe-users"></i> */}
-                    <img src="../../img/crab/home-action-1.png" alt="..." width="67px"/>
+                    <img src="../../img/crab/home-action-1.png" alt="..." width="130px"/>
                   </div>
 
                   {/*  Heading */}
@@ -338,12 +338,12 @@ function Home() {
             <div className="col-12 col-md-6 col-lg-4">
 
               {/*  Card */}
-              <div className="card card-border border-success shadow-lg mb-6 mb-md-8 lift lift-lg">
-                <div className="card-body text-center">
+              <div className="card card-border border-primary shadow-lg mb-6 mb-md-8 lift lift-lg">
+                <div className={`card-body text-center ${styles.minH450}`}>
 
                   {/*  Icon */}
-                  <div className="icon-circle text-white mb-5">
-                    <img src="../../img/crab/home-action-2.png" alt="..." width="67px"/>
+                  <div className="text-white mb-5">
+                    <img src="../../img/crab/home-action-2.png" alt="..." width="130px"/>
                   </div>
 
                   {/*  Heading */}
@@ -370,12 +370,12 @@ function Home() {
             <div className="col-12 col-md-6 col-lg-4">
 
               {/*  Card */}
-              <div className="card card-border border-warning shadow-lg mb-6 mb-md-8 lift lift-lg">
+              <div className="card card-border border-primary shadow-lg mb-6 mb-md-8 lift lift-lg">
                 <div className={`card-body text-center ${styles.minH450}`}>
 
                   {/*  Icon */}
-                  <div className="icon-circle text-white mb-5">
-                    <img src="../../img/crab/home-action-3.png" alt="..." width="67px"/>
+                  <div className="text-white mb-5">
+                    <img src="../../img/crab/home-action-3.png" alt="..." width="130px"/>
                   </div>
 
                   {/*  Heading */}

@@ -11,8 +11,8 @@ import IMG_Staking2 from './img/staking-2.png';
 import IMG_Inflation1 from './img/inflation-1.png';
 import IMG_Inflation2 from './img/inflation-2.png';
 
-import IMG_Ring from './img/ring.png';
-import IMG_Kton from './img/kton.png';
+import IMG_CRING from './img/cring.png';
+import IMG_CKTON from './img/ckton.png';
 
 
 function Home() {
@@ -133,7 +133,7 @@ function Home() {
 
                 {/* Badge  */}
                 <div className="position-relative text-end mt-n8 me-n4 mb-3">
-                  <span className="badge rounded-pill bg-warning">
+                  <span className="badge rounded-pill bg-primary">
                     <span className="h6 text-uppercase">Advanced Model</span>
                   </span>
                 </div>
@@ -193,7 +193,7 @@ function Home() {
                 <div className="card-body d-flex align-items-stretch">
                 <div className="row">
                   <div className="col-3 d-flex flex-column align-items-center justify-content-center">
-                    <img src={IMG_Ring} width="56" className="rounded mx-auto d-block" alt="..." />
+                    <img src={IMG_CRING} width="56" className="rounded mx-auto d-block" alt="..." />
                     <h3 className="mt-4">CRING</h3>
                   </div>
                   <div className="col-9 d-flex ">
@@ -227,7 +227,7 @@ function Home() {
                 <div className="card-body d-flex align-items-stretch">
                 <div className="row">
                   <div className="col-3 d-flex flex-column align-items-center justify-content-center">
-                    <img src={IMG_Kton} width="56" className="rounded mx-auto d-block" alt="..." />
+                    <img src={IMG_CKTON} width="56" className="rounded mx-auto d-block" alt="..." />
                     <h3 className="mt-4">CKTON</h3>
                   </div>
                   <div className="col-9 d-flex ">
