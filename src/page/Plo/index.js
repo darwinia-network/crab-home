@@ -264,7 +264,7 @@ function Home() {
               data-aos-delay="50"
             >
               {/* Card */}
-              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg">
+              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg h-100">
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
@@ -293,7 +293,7 @@ function Home() {
               data-aos-delay="100"
             >
               {/* Card */}
-              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg">
+              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg h-100">
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
@@ -317,7 +317,7 @@ function Home() {
               data-aos-delay="150"
             >
               {/* Card */}
-              <div className="card shadow-light-lg lift lift-lg">
+              <div className="card shadow-light-lg lift lift-lg h-100">
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
@@ -343,10 +343,10 @@ function Home() {
             <div
               className="col-12 col-md-3"
               data-aos="fade-up"
-              data-aos-delay="100"
+              data-aos-delay="200"
             >
               {/* Card */}
-              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg">
+              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg h-100">
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
@@ -364,7 +364,7 @@ function Home() {
                 </div>
               </div>
             </div>
-    
+
           </div>
           {/* / .row */}
         </div>
