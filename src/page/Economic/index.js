@@ -5,11 +5,11 @@ import Footer from "../../components/footer";
 
 import {ReactComponent as IMG_Curve1} from "../../components/shapes/curves/curve-1.svg";
 
-import IMG_Staking1 from './img/staking-1.png';
-import IMG_Staking2 from './img/staking-2.png';
+import IMG_Staking1 from './img/staking-1.jpg';
+import IMG_Staking2 from './img/staking-2.jpg';
 
-import IMG_Inflation1 from './img/inflation-1.png';
-import IMG_Inflation2 from './img/inflation-2.png';
+import IMG_Inflation1 from './img/inflation-1.jpg';
+import IMG_Inflation2 from './img/inflation-2.jpg';
 
 import IMG_CRING from './img/cring.png';
 import IMG_CKTON from './img/ckton.png';
@@ -22,7 +22,7 @@ function Home() {
       <Navbar classList="navbar-light bg-white" container="container" button="primary" />
 
       {/* WELCOME  */}
-      <section data-jarallax data-speed=".8" className="pt-10 pb-11 py-md-14 overlay overlay-black overlay-60 jarallax" style={{backgroundImage: 'url(../img/covers/cover-4.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+      <section data-jarallax data-speed=".8" className="pt-10 pb-11 py-md-12 overlay overlay-black overlay-60 jarallax" style={{backgroundImage: 'url(../img/covers/cover-4.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
@@ -332,11 +332,11 @@ function Home() {
 
             {/* Card  */}
             <div className="card shadow-light-lg overflow-hidden justify-content-center" data-aos="fade-up">
-              <div className="row">
+              <div className="row flex-grow-1">
                 <div className="col-md-4 position-relative">
 
                   {/* Image  */}
-                  <img src="../img/illustrations/illustration-10.png" className="h-75 position-absolute right-0 mt-7 me-n4" alt="..." />
+                  <img src="../img/crab/revenue-1.png" className="h-75 position-absolute right-0 mt-7 me-n4" alt="..." />
 
                 </div>
                 <div className="col-md-8">
@@ -400,7 +400,7 @@ function Home() {
                 <div className="col-md-4">
 
                   {/* Image  */}
-                  <img src="../img/illustrations/illustration-11.png" className="h-75 position-absolute left-0 mt-7" alt="..." />
+                  <img src="../img/crab/revenue-2.png" className="h-75 position-absolute left-0 mt-7 ms-n4" alt="..." />
 
                 </div>
               </div> {/* / .row  */}
