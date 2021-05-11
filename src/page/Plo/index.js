@@ -397,7 +397,7 @@ function Home() {
               <p className="lead text-gray-700 mb-7 mb-md-9">
                 We will continue to update the questions here. If you don’t find
                 the question or answer you want, you can send an email to
-                <a className="ms-1" href="mailto:ksm-crowdloan@itering.com">
+                <a className="ms-1" href="mailto:ksm-crowdloan@crab.network">
                   ksm-crowdloan@itering.com
                 </a>
                 .
