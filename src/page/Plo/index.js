@@ -52,7 +52,7 @@ function Home() {
 
               {/*  Buttons */}
               <a href="#!" className="btn btn-primary me-3 lift">
-                参加问卷调查 <i className="fe fe-arrow-right ms-3"></i>
+                Questionnaire <i className="fe fe-arrow-right ms-3"></i>
               </a>
               <a href="#!" className="btn btn-primary-soft lift">
                 Learn more
