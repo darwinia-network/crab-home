@@ -2,8 +2,8 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
 import { ReactComponent as Blur1 } from "../../components/shapes/blurs/blur-1.svg";
-import { ReactComponent as IMG_Clipboard } from "../../components/icons/duotone-icons/general/clipboard.svg";
-import { ReactComponent as IMG_FolderStar } from "../../components/icons/duotone-icons/files/folder-star.svg";
+import { ReactComponent as ImgClipboard } from "../../components/icons/duotone-icons/general/clipboard.svg";
+import { ReactComponent as ImgFolderStar } from "../../components/icons/duotone-icons/files/folder-star.svg";
 
 function Home() {
   return (
@@ -125,7 +125,7 @@ function Home() {
                 {/* Icon */}
                 <div className="icon text-primary">
                   {/* {{> general/clipboard}} */}
-                  <IMG_Clipboard />
+                  <ImgClipboard />
                 </div>
 
                 <div className="ms-5">
@@ -139,7 +139,7 @@ function Home() {
                 {/* Icon */}
                 <div className="icon text-primary">
                   {/* {{> files/folder-star}} */}
-                  <IMG_FolderStar />
+                  <ImgFolderStar />
                 </div>
 
                 <div className="ms-5">

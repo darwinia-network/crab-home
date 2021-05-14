@@ -23,7 +23,7 @@ toggles.forEach(toggle => {
       this.on('addedfile', function(file) {
         const maxFiles = elementOptions.maxFiles;
 
-        if (maxFiles == 1 && currentFile) {
+        if (maxFiles === 1 && currentFile) {
           this.removeFile(currentFile);
         }
 
