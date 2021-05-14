@@ -29,7 +29,7 @@ function Home() {
 
               {/*  Text */}
               <p className="lead text-muted mb-0">
-               Darwinia Crab Network is the canary network of Darwinia, and is the first blockchain in the Kusama ecosystem to natively support cross-chain as well as smart contract and NFT. Crab Network intends to participate in the Kusama Parachain Slot Auctions.
+               Crab is the canary network of Darwinia, and is the first blockchain in the Kusama ecosystem to natively support cross-chain as well as smart contract and NFT. Crab Network intends to participate in the Kusama Parachain Slot Auctions.
             </p>
 
             </div>
@@ -144,7 +144,7 @@ function Home() {
 
                   {/*  Heading */}
                   <h3 className="fw-bold mb-2">
-                    faster and easier user experience
+                    Faster and easier user experience
                 </h3>
 
                   {/*  Text */}
@@ -316,7 +316,7 @@ function Home() {
 
                   {/*  Heading */}
                   <h4 className="fw-bold">
-                  What is a Parachain Slot Auctions
+                  What is Parachain Slot Auctions
                 </h4>
 
                   {/*  Text */}

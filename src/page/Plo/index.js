@@ -38,7 +38,7 @@ function Home() {
             <div className="col-12 col-md-6 order-md-1" data-aos="fade-up">
               {/*  Heading */}
               <h1 className="display-3">
-                What is a <br />
+                What is <br />
                 <span className="text-primary">
                   Kusama Parachain Slot Auctions？
                 </span>
@@ -51,10 +51,10 @@ function Home() {
               </p>
 
               {/*  Buttons */}
-              <a href="#!" className="btn btn-primary me-3 lift">
-                Questionnaire <i className="fe fe-arrow-right ms-3"></i>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKQTdm-eNPpUwoZY5x57VvXBdHk24IBfVBiem1HSs-h7A3pw/viewform?usp=sf_link" className="btn btn-primary me-3 lift">
+                Join whitelist <i className="fe fe-arrow-right ms-3"></i>
               </a>
-              <a href="#!" className="btn btn-primary-soft lift">
+              <a href="https://kusama.network/auctions" className="btn btn-primary-soft lift">
                 Learn more
               </a>
             </div>
@@ -105,9 +105,9 @@ function Home() {
             <div className="col-12 col-md-7 col-lg-6 order-md-1">
               {/* Heading */}
               <h2>
-                What is a <br />
+                What is a<br />
                 <span className="text-primary">
-                  Kusama Parachain Slot Auctions
+                  Kusama Parachain Slot
                 </span>
                 .
               </h2>
@@ -273,13 +273,13 @@ function Home() {
           </div>
 
           <div className="row">
-            <div
-              className="col-12 col-md-3"
+           <div
+              className="col-12 col-md-6"
               data-aos="fade-up"
-              data-aos-delay="50"
+              data-aos-delay="150"
             >
               {/* Card */}
-              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg h-100">
+              <div className="card shadow-light-lg lift lift-lg h-100">
                 <div className="card-body">
                   {/* Badge */}
                   <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
@@ -287,23 +287,25 @@ function Home() {
                   </span>
 
                   {/* Heading */}
-                  <h4 className="fw-bold">Learn</h4>
+                  <h4 className="fw-bold">Unbond your KSMs</h4>
 
                   {/* Text */}
-                  <p className="text-muted">Learn how the Crowdloan works.</p>
+                  <p className="text-muted">
+                    Unbond your KSMs at least 7 days before the Crowdloan.
+                  </p>
 
                   {/* Link */}
-                  <a href="#!" className="fs-sm fw-bold text-decoration-none">
-                    Learn more
-                    <i className="fe fe-arrow-right ms-3"></i>
+                  <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/accounts" className="fs-sm fw-bold text-decoration-none">
+                    Unbond <i className="fe fe-arrow-right ms-3"></i>
                   </a>
                 </div>
               </div>
             </div>
+
             <div
-              className="col-12 col-md-3"
+              className="col-12 col-md-6"
               data-aos="fade-up"
-              data-aos-delay="100"
+              data-aos-delay="200"
             >
               {/* Card */}
               <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg h-100">
@@ -314,66 +316,18 @@ function Home() {
                   </span>
 
                   {/* Heading */}
-                  <h4 className="fw-bold">Follow us</h4>
-
-                  {/* Text */}
-                  <p className="text-muted">
-                    Join our Medium, Twitter, and Telegram for updates.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-12 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="150"
-            >
-              {/* Card */}
-              <div className="card shadow-light-lg lift lift-lg h-100">
-                <div className="card-body">
-                  {/* Badge */}
-                  <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
-                    3
-                  </span>
-
-                  {/* Heading */}
-                  <h4 className="fw-bold">Unbond your KSMs</h4>
-
-                  {/* Text */}
-                  <p className="text-muted">
-                    If your KSMs are bonded, you will need to unbond your KSMs
-                    at least 7 days before the Crowdloan start date.
-                  </p>
-
-                  {/* Link */}
-                  <a href="#!" className="fs-sm fw-bold text-decoration-none">
-                    Unbond <i className="fe fe-arrow-right ms-3"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="col-12 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              {/* Card */}
-              <div className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg h-100">
-                <div className="card-body">
-                  {/* Badge */}
-                  <span className="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
-                    4
-                  </span>
-
-                  {/* Heading */}
                   <h4 className="fw-bold">Participate</h4>
 
                   {/* Text */}
                   <p className="text-muted">
-                    When the Crowdloan starts, join the action on this
-                    crab.network website.
+                    When the Crowdloan starts, join the crowdloan.
                   </p>
+
+                  {/* Link */}
+                  <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/parachains/crowdloan" className="fs-sm fw-bold text-decoration-none">
+                    Join <i className="fe fe-arrow-right ms-3"></i>
+                  </a>
+
                 </div>
               </div>
             </div>

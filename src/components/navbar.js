@@ -54,7 +54,7 @@ function Navbar({ classList, container, button }) {
                 className="nav-link"
                 to="/economic"
               >
-                Economic
+                Economic Model
               </Link>
             </li>
 
