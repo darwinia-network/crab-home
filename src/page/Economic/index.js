@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import BigNumber from 'bignumber.js';
 
 import styles from "./style.module.scss";
 
