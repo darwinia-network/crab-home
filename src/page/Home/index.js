@@ -31,7 +31,7 @@ function Home() {
               <h1 className="display-4">
                 Crab Network. <br />
                 <span className="text-primary">
-                  Cross-chain bridge hub of Kusama.
+                  Cross-chain Bridge Hub Of Kusama.
                 </span>
               </h1>
 
@@ -81,7 +81,7 @@ function Home() {
                 </div>
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
-                  <h3 className="fw-bold mb-2">Cross-chain interoperability</h3>
+                  <h3 className="fw-bold mb-2">Cross-chain Interoperability</h3>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
@@ -104,7 +104,7 @@ function Home() {
                 </div>
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
-                  <h3 className="fw-bold mb-2">Smart contract solution</h3>
+                  <h3 className="fw-bold mb-2">Smart Contract Solution</h3>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
@@ -151,7 +151,7 @@ function Home() {
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
                   <h3 className="fw-bold mb-2">
-                    Faster and Easier user experience
+                    Faster and Easier User Experience
                   </h3>
 
                   {/*  Text */}

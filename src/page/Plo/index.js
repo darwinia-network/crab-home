@@ -47,13 +47,13 @@ function Home() {
               <h1 className="display-3">
                 What is <br />
                 <span className="text-primary">
-                  Kusama Parachain Slot Auctions？
+                  Kusama Parachain Slot Auction ?
                 </span>
               </h1>
 
               {/*  Text */}
               <p className="lead text-muted mb-6 mb-md-8">
-                Join the Crowdloan to help Darwinia win Kusama Parachain Slot
+                Join the Crab Crowdloan to help Darwinia win Kusama Parachain Slot
                 Auction and get rich returns.
               </p>
 
@@ -62,13 +62,13 @@ function Home() {
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdKQTdm-eNPpUwoZY5x57VvXBdHk24IBfVBiem1HSs-h7A3pw/viewform?usp=sf_link"
                 className="btn btn-primary me-3 lift"
               >
-                Join whitelist <i className="fe fe-arrow-right ms-3"></i>
+                Join the Crab Crowdloan <i className="fe fe-arrow-right ms-3"></i>
               </a>
               <a
                 href="https://kusama.network/auctions"
                 className="btn btn-primary-soft lift"
               >
-                Learn more
+                PLO Strategy
               </a>
             </div>
           </div>
@@ -155,7 +155,7 @@ function Home() {
                 <div className="ms-5">
                   {/* Text */}
                   <p className="text-muted mb-0">
-                    The parachain slots will be sold according to an
+                    The parachain slots will be leased according to an
                     unpermissioned candle auction. Learn more
                   </p>
                 </div>
@@ -254,8 +254,12 @@ function Home() {
                   <p className="text-gray-700 mb-0">
                     The reward for supporting Darwinia Crab will be higher than
                     Staking, and there will be a chance to get 1 BTC. You will
-                    get enough rewards even if we fail. Learn more
+                    get enough rewards even if we fail.&nbsp;&nbsp;
+                    <a href="https://guide.kusama.network/docs/en/mirror-learn-auction" className="fw-bold text-decoration-none">
+                      Learn more <i className="fe fe-arrow-right ms-3"></i>
+                    </a>
                   </p>
+
                 </div>
               </div>
             </div>
@@ -313,7 +317,7 @@ function Home() {
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
                 At least 300 CRING for 1 KSM contributed 6000 CRING if Crab wins
-                the slot
+                the slot.
               </p>
             </div>
             <div
@@ -331,7 +335,7 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-0">
-                NFT land, Mining Treasure box, NFT Apostles in Evolution Land
+                NFT land, Mining Treasure box, NFT Apostles in Evolution Land.
               </p>
             </div>
           </div>
@@ -348,8 +352,7 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-                48 weeks. Landkit is built to make your life easier. Variables,
-                build tooling, documentation, and reusable components.
+                48 weeks.
               </p>
             </div>
             <div
@@ -368,7 +371,7 @@ function Home() {
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
                 30% of CRING & RING rewards will be unlocked 70% will vest for
-                48 weeks
+                48 weeks.
               </p>
             </div>
             <div
@@ -387,7 +390,7 @@ function Home() {
               {/* Text */}
               <p className="text-muted mb-0">
                 NFT rewards will be unlocked and used for Gamefi Mining in
-                Evolution Land
+                Evolution Land.
               </p>
             </div>
           </div>
