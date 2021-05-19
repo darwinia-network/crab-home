@@ -151,7 +151,7 @@ function Home() {
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
                   <h3 className="fw-bold mb-2">
-                    Faster and easier user experience
+                    Faster and Easier user experience
                   </h3>
 
                   {/*  Text */}
