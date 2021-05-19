@@ -3,7 +3,10 @@ import Footer from "../../components/footer";
 
 import { ReactComponent as Blur1 } from "../../components/shapes/blurs/blur-1.svg";
 import { ReactComponent as ImgClipboard } from "../../components/icons/duotone-icons/general/clipboard.svg";
+import { ReactComponent as ImgSettings1 } from "../../components/icons/duotone-icons/general/settings-1.svg";
 import { ReactComponent as ImgFolderStar } from "../../components/icons/duotone-icons/files/folder-star.svg";
+import { ReactComponent as ImgLayoutArrange } from "../../components/icons/duotone-icons/layout/layout-arrange.svg";
+import { ReactComponent as ImgCode } from "../../components/icons/duotone-icons/code/code.svg";
 
 function Home() {
   return (
@@ -51,10 +54,16 @@ function Home() {
               </p>
 
               {/*  Buttons */}
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKQTdm-eNPpUwoZY5x57VvXBdHk24IBfVBiem1HSs-h7A3pw/viewform?usp=sf_link" className="btn btn-primary me-3 lift">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdKQTdm-eNPpUwoZY5x57VvXBdHk24IBfVBiem1HSs-h7A3pw/viewform?usp=sf_link"
+                className="btn btn-primary me-3 lift"
+              >
                 Join whitelist <i className="fe fe-arrow-right ms-3"></i>
               </a>
-              <a href="https://kusama.network/auctions" className="btn btn-primary-soft lift">
+              <a
+                href="https://kusama.network/auctions"
+                className="btn btn-primary-soft lift"
+              >
                 Learn more
               </a>
             </div>
@@ -106,10 +115,7 @@ function Home() {
               {/* Heading */}
               <h2>
                 What is a<br />
-                <span className="text-primary">
-                  Kusama Parachain Slot
-                </span>
-                .
+                <span className="text-primary">Kusama Parachain Slot</span>.
               </h2>
 
               {/* Text */}
@@ -158,7 +164,7 @@ function Home() {
       </section>
 
       {/* PAY IT DOWN */}
-      <section className="pt-8 pt-md-11" id="payItDown">
+      <section className="pt-8 pt-md-11">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
@@ -255,6 +261,133 @@ function Home() {
         {/* / .container */}
       </section>
 
+      {/* FEATURES */}
+      <section className="py-8 py-md-11 border-bottom">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-10 col-lg-8 text-center">
+              {/* Heading */}
+              <h1>Crab Network <span className="text-primary">PLO Rewards</span></h1>
+
+              {/* Text */}
+              <p className="fs-lg text-gray-700 mb-7 mb-md-9">
+                No matter what size your team, we have a solution. From single
+                shared spaces to entire floors, it's available.
+              </p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12 col-md-4" data-aos="fade-up">
+              {/* Icon */}
+              <div className="icon text-primary mb-3">
+                <ImgSettings1 />
+              </div>
+
+              {/* Heading */}
+              <h3>Super Mystry BTC Prize</h3>
+
+              {/* Text */}
+              <p className="text-muted mb-6 mb-md-0">
+                1 BTC prize embedded in the NFT land.
+              </p>
+            </div>
+            <div
+              className="col-12 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="50"
+            >
+              {/* Icon */}
+              <div className="icon text-primary mb-3">
+                <ImgLayoutArrange />
+              </div>
+
+              {/* Heading */}
+              <h3>CRING + RING Rewards</h3>
+
+              {/* Text */}
+              <p className="text-muted mb-6 mb-md-0">
+                At least 300 CRING for 1 KSM contributed 6000 CRING if Crab wins the slot
+              </p>
+            </div>
+            <div
+              className="col-12 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              {/* Icon */}
+              <div className="icon text-primary mb-3">
+                <ImgCode />
+              </div>
+
+              {/* Heading */}
+              <h3>NFT Rewards</h3>
+
+              {/* Text */}
+              <p className="text-muted mb-0">
+              NFT land, Mining Treasure box, NFT Apostles in Evolution Land
+              </p>
+            </div>
+          </div>
+
+          <div className="row mt-10">
+            <div className="col-12 col-md-4" data-aos="fade-up">
+              {/* Icon */}
+              <div className="icon text-primary mb-3">
+                <ImgSettings1 />
+              </div>
+
+              {/* Heading */}
+              <h3>Vesting</h3>
+
+              {/* Text */}
+              <p className="text-muted mb-6 mb-md-0">
+                48 weeks. Landkit is built to make your life easier. Variables, build
+                tooling, documentation, and reusable components.
+              </p>
+            </div>
+            <div
+              className="col-12 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="50"
+            >
+              {/* Icon */}
+              <div className="icon text-primary mb-3">
+                <ImgLayoutArrange />
+              </div>
+
+              {/* Heading */}
+              <h3>30% 70%</h3>
+
+              {/* Text */}
+              <p className="text-muted mb-6 mb-md-0">
+              30% of CRING & RING rewards will be unlocked 70% will vest for 48 weeks
+              </p>
+            </div>
+            <div
+              className="col-12 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              {/* Icon */}
+              <div className="icon text-primary mb-3">
+                <ImgCode />
+              </div>
+
+              {/* Heading */}
+              <h3>Unlocked NFTs</h3>
+
+              {/* Text */}
+              <p className="text-muted mb-0">
+              NFT rewards will be unlocked  and used for Gamefi Mining in Evolution Land
+              </p>
+            </div>
+          </div>
+
+          {/* / .row */}
+        </div>
+        {/* / .container */}
+      </section>
+
       {/* PRICING */}
       <section className="mt-12 mb-12">
         <div className="container">
@@ -273,7 +406,7 @@ function Home() {
           </div>
 
           <div className="row">
-           <div
+            <div
               className="col-12 col-md-6"
               data-aos="fade-up"
               data-aos-delay="150"
@@ -295,7 +428,10 @@ function Home() {
                   </p>
 
                   {/* Link */}
-                  <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/accounts" className="fs-sm fw-bold text-decoration-none">
+                  <a
+                    href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/accounts"
+                    className="fs-sm fw-bold text-decoration-none"
+                  >
                     Unbond <i className="fe fe-arrow-right ms-3"></i>
                   </a>
                 </div>
@@ -324,10 +460,12 @@ function Home() {
                   </p>
 
                   {/* Link */}
-                  <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/parachains/crowdloan" className="fs-sm fw-bold text-decoration-none">
+                  <a
+                    href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/parachains/crowdloan"
+                    className="fs-sm fw-bold text-decoration-none"
+                  >
                     Join <i className="fe fe-arrow-right ms-3"></i>
                   </a>
-
                 </div>
               </div>
             </div>
@@ -351,7 +489,10 @@ function Home() {
               <p className="lead text-gray-700 mb-7 mb-md-9">
                 We will continue to update the questions here. If you don’t find
                 the question or answer you want, you can send an email to
-                <a className="ms-1 text-white" href="mailto:ksm-crowdloan@crab.network">
+                <a
+                  className="ms-1 text-white"
+                  href="mailto:ksm-crowdloan@crab.network"
+                >
                   ksm-crowdloan@itering.com
                 </a>
                 .
