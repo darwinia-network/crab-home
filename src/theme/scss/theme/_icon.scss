@@ -8,6 +8,10 @@
   height: $icon-size-base;
 }
 
+.icon > img {
+  height: $icon-size-lg;
+}
+
 // Use "text-" utilities to fill svg icons
 .icon[class*="text-"] > svg [fill]:not([fill="none"]) {
   fill: currentColor !important;

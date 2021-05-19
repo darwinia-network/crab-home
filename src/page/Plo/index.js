@@ -3,10 +3,14 @@ import Footer from "../../components/footer";
 
 import { ReactComponent as Blur1 } from "../../components/shapes/blurs/blur-1.svg";
 import { ReactComponent as ImgClipboard } from "../../components/icons/duotone-icons/general/clipboard.svg";
-import { ReactComponent as ImgSettings1 } from "../../components/icons/duotone-icons/general/settings-1.svg";
 import { ReactComponent as ImgFolderStar } from "../../components/icons/duotone-icons/files/folder-star.svg";
-import { ReactComponent as ImgLayoutArrange } from "../../components/icons/duotone-icons/layout/layout-arrange.svg";
-import { ReactComponent as ImgCode } from "../../components/icons/duotone-icons/code/code.svg";
+
+import ImgReward1 from "./img/1.png";
+import ImgReward2 from "./img/2.png";
+import ImgReward3 from "./img/3.png";
+import ImgReward4 from "./img/4.png";
+import ImgReward5 from "./img/5.png";
+import ImgReward6 from "./img/6.png";
 
 function Home() {
   return (
@@ -267,7 +271,9 @@ function Home() {
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
               {/* Heading */}
-              <h1>Crab Network <span className="text-primary">PLO Rewards</span></h1>
+              <h1>
+                Crab Network <span className="text-primary">PLO Rewards</span>
+              </h1>
 
               {/* Text */}
               <p className="fs-lg text-gray-700 mb-7 mb-md-9">
@@ -280,7 +286,7 @@ function Home() {
             <div className="col-12 col-md-4" data-aos="fade-up">
               {/* Icon */}
               <div className="icon text-primary mb-3">
-                <ImgSettings1 />
+                <img src={ImgReward1} alt="..." />
               </div>
 
               {/* Heading */}
@@ -298,7 +304,7 @@ function Home() {
             >
               {/* Icon */}
               <div className="icon text-primary mb-3">
-                <ImgLayoutArrange />
+                <img src={ImgReward2} alt="..." />
               </div>
 
               {/* Heading */}
@@ -306,7 +312,8 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-                At least 300 CRING for 1 KSM contributed 6000 CRING if Crab wins the slot
+                At least 300 CRING for 1 KSM contributed 6000 CRING if Crab wins
+                the slot
               </p>
             </div>
             <div
@@ -316,7 +323,7 @@ function Home() {
             >
               {/* Icon */}
               <div className="icon text-primary mb-3">
-                <ImgCode />
+                <img src={ImgReward3} alt="..." />
               </div>
 
               {/* Heading */}
@@ -324,7 +331,7 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-0">
-              NFT land, Mining Treasure box, NFT Apostles in Evolution Land
+                NFT land, Mining Treasure box, NFT Apostles in Evolution Land
               </p>
             </div>
           </div>
@@ -333,7 +340,7 @@ function Home() {
             <div className="col-12 col-md-4" data-aos="fade-up">
               {/* Icon */}
               <div className="icon text-primary mb-3">
-                <ImgSettings1 />
+                <img src={ImgReward4} alt="..." />
               </div>
 
               {/* Heading */}
@@ -341,8 +348,8 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-                48 weeks. Landkit is built to make your life easier. Variables, build
-                tooling, documentation, and reusable components.
+                48 weeks. Landkit is built to make your life easier. Variables,
+                build tooling, documentation, and reusable components.
               </p>
             </div>
             <div
@@ -352,7 +359,7 @@ function Home() {
             >
               {/* Icon */}
               <div className="icon text-primary mb-3">
-                <ImgLayoutArrange />
+               <img src={ImgReward5} alt="..." />
               </div>
 
               {/* Heading */}
@@ -360,7 +367,8 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-              30% of CRING & RING rewards will be unlocked 70% will vest for 48 weeks
+                30% of CRING & RING rewards will be unlocked 70% will vest for
+                48 weeks
               </p>
             </div>
             <div
@@ -370,7 +378,7 @@ function Home() {
             >
               {/* Icon */}
               <div className="icon text-primary mb-3">
-                <ImgCode />
+                <img src={ImgReward6} alt="..." />
               </div>
 
               {/* Heading */}
@@ -378,7 +386,8 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-0">
-              NFT rewards will be unlocked  and used for Gamefi Mining in Evolution Land
+                NFT rewards will be unlocked and used for Gamefi Mining in
+                Evolution Land
               </p>
             </div>
           </div>
