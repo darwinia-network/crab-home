@@ -71,7 +71,7 @@ function Navbar({ classList, container, button }) {
               <a
                 className="nav-link"
                 rel="noreferrer"
-                href="https://crab.network/docs/"
+                href="https://docs.crab.network/"
                 target="_blank"
               >
                 Documentation

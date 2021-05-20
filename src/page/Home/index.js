@@ -200,7 +200,9 @@ function Home() {
 
                 <div className="text-center text-md-start">
                   <a
-                    href="overview.html"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://docs.crab.network/docs/crab-tut-nominator"
                     className="btn btn-primary shadow lift me-1"
                   >
                     Staking
@@ -253,11 +255,11 @@ function Home() {
                 </p>
 
                 {/* Footer */}
-                <p className="fs-sm fw-bold mb-0">
+                {/* <p className="fs-sm fw-bold mb-0">
                   <a href="https://guide.kusama.network/docs/en/mirror-learn-auction" className="fw-bold text-decoration-none">
                     Learn more <i className="fe fe-arrow-right ms-3"></i>
                   </a>
-                </p>
+                </p> */}
                 <p className="fs-sm text-muted mb-0"></p>
               </blockquote>
             </div>
@@ -285,11 +287,11 @@ function Home() {
                 </p>
 
                 {/* Footer*/}
-                <p className="fs-sm fw-bold mb-0">
+                {/* <p className="fs-sm fw-bold mb-0">
                   <a href="#!" className="fw-bold text-decoration-none">
                     Learn more <i className="fe fe-arrow-right ms-3"></i>
                   </a>
-                </p>
+                </p> */}
                 <p className="fs-sm text-muted mb-0"></p>
               </blockquote>
             </div>
@@ -407,11 +409,11 @@ function Home() {
                   </p>
 
                   {/*  Badge */}
-                  <span className="badge rounded-pill bg-dark-soft">
+                  {/* <span className="badge rounded-pill bg-dark-soft">
                     <a href="#!">
                       <span className="h6 text-uppercase">Learn more</span>
                     </a>
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>

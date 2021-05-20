@@ -5,12 +5,9 @@ import { ReactComponent as Blur1 } from "../../components/shapes/blurs/blur-1.sv
 import { ReactComponent as ImgClipboard } from "../../components/icons/duotone-icons/general/clipboard.svg";
 import { ReactComponent as ImgFolderStar } from "../../components/icons/duotone-icons/files/folder-star.svg";
 
-import ImgReward1 from "./img/1.png";
-import ImgReward2 from "./img/2.png";
-import ImgReward3 from "./img/3.png";
-import ImgReward4 from "./img/4.png";
-import ImgReward5 from "./img/5.png";
-import ImgReward6 from "./img/6.png";
+import ImgReward1 from "./img/2.png";
+import ImgReward2 from "./img/3.png";
+import ImgReward3 from "./img/1.png";
 
 function Home() {
   return (
@@ -65,7 +62,7 @@ function Home() {
                 Join the Crab Crowdloan <i className="fe fe-arrow-right ms-3"></i>
               </a>
               <a
-                href="https://kusama.network/auctions"
+                href="#!"
                 className="btn btn-primary-soft lift"
               >
                 PLO Strategy
@@ -156,7 +153,7 @@ function Home() {
                   {/* Text */}
                   <p className="text-muted mb-0">
                     The parachain slots will be leased according to an
-                    unpermissioned candle auction. Learn more
+                    unpermissioned candle auction.
                   </p>
                 </div>
               </div>
@@ -255,7 +252,7 @@ function Home() {
                     The reward for supporting Darwinia Crab will be higher than
                     Staking, and there will be a chance to get 1 BTC. You will
                     get enough rewards even if we fail.&nbsp;&nbsp;
-                    <a href="https://guide.kusama.network/docs/en/mirror-learn-auction" className="fw-bold text-decoration-none">
+                    <a href="#!" className="fw-bold text-decoration-none">
                       Learn more <i className="fe fe-arrow-right ms-3"></i>
                     </a>
                   </p>
@@ -281,8 +278,7 @@ function Home() {
 
               {/* Text */}
               <p className="fs-lg text-gray-700 mb-7 mb-md-9">
-                No matter what size your team, we have a solution. From single
-                shared spaces to entire floors, it's available.
+                Crab Network provides tokens and NFT rewards for users who support our PLO.
               </p>
             </div>
           </div>
@@ -294,11 +290,11 @@ function Home() {
               </div>
 
               {/* Heading */}
-              <h3>Super Mystry BTC Prize</h3>
+              <h3>CRING + RING Rewards</h3>
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-                1 BTC prize embedded in the NFT land.
+                Totally 240,000,000 CRING and 6,000,000 RING rewards will be distributed to users according to the number of KSM they supported. 30% of them will be unlocked, 70% will vest for 48 weeks.
               </p>
             </div>
             <div
@@ -312,12 +308,11 @@ function Home() {
               </div>
 
               {/* Heading */}
-              <h3>CRING + RING Rewards</h3>
+              <h3>NFT Rewards</h3>
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-                At least 300 CRING for 1 KSM contributed 6000 CRING if Crab wins
-                the slot.
+                Land, Apostles, and Chests NFT will be unlocked and used for Gamefi Mining in Evolution Land with two new continents open!
               </p>
             </div>
             <div
@@ -331,66 +326,11 @@ function Home() {
               </div>
 
               {/* Heading */}
-              <h3>NFT Rewards</h3>
+              <h3>Super Mystery BTC Prize</h3>
 
               {/* Text */}
               <p className="text-muted mb-0">
-                NFT land, Mining Treasure box, NFT Apostles in Evolution Land.
-              </p>
-            </div>
-          </div>
-
-          <div className="row mt-10">
-            <div className="col-12 col-md-4" data-aos="fade-up">
-              {/* Icon */}
-              <div className="icon text-primary mb-3">
-                <img src={ImgReward4} alt="..." />
-              </div>
-
-              {/* Heading */}
-              <h3>Vesting</h3>
-
-              {/* Text */}
-              <p className="text-muted mb-6 mb-md-0">
-                48 weeks.
-              </p>
-            </div>
-            <div
-              className="col-12 col-md-4"
-              data-aos="fade-up"
-              data-aos-delay="50"
-            >
-              {/* Icon */}
-              <div className="icon text-primary mb-3">
-               <img src={ImgReward5} alt="..." />
-              </div>
-
-              {/* Heading */}
-              <h3>30% 70%</h3>
-
-              {/* Text */}
-              <p className="text-muted mb-6 mb-md-0">
-                30% of CRING & RING rewards will be unlocked 70% will vest for
-                48 weeks.
-              </p>
-            </div>
-            <div
-              className="col-12 col-md-4"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              {/* Icon */}
-              <div className="icon text-primary mb-3">
-                <img src={ImgReward6} alt="..." />
-              </div>
-
-              {/* Heading */}
-              <h3>Unlocked NFTs</h3>
-
-              {/* Text */}
-              <p className="text-muted mb-0">
-                NFT rewards will be unlocked and used for Gamefi Mining in
-                Evolution Land.
+                The luckiest person will win one bitcoin embedded in the land NFT. Once you take part in the Lucky Draw and win the Legendary rewards in time, you will have the chance to win the jackpot!
               </p>
             </div>
           </div>
@@ -473,8 +413,9 @@ function Home() {
 
                   {/* Link */}
                   <a
-                    href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/parachains/crowdloan"
-                    className="fs-sm fw-bold text-decoration-none"
+                    // href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/parachains/crowdloan"
+                    href="#!"
+                    className="fs-sm fw-bold text-decoration-none text-muted"
                   >
                     Join <i className="fe fe-arrow-right ms-3"></i>
                   </a>

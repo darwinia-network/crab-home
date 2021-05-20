@@ -168,9 +168,9 @@ function Home() {
                   </p>
 
                   {/* Link  */}
-                  <a href="#!" className="fw-bold text-decoration-none">
+                  {/* <a href="#!" className="fw-bold text-decoration-none">
                     Read more <i className="fe fe-arrow-right ms-3"></i>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -211,9 +211,9 @@ function Home() {
                   </p>
 
                   {/* Link  */}
-                  <a href="#!" className="fw-bold text-decoration-none">
+                  {/* <a href="#!" className="fw-bold text-decoration-none">
                     Read more <i className="fe fe-arrow-right ms-3"></i>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

@@ -72,7 +72,7 @@ function Footer({ classList, container, button }) {
                 </a>
               </li>
               <li className="mb-3">
-                <a href="https://crab.network/docs/" className="text-reset">
+                <a href="https://docs.crab.network/" className="text-reset">
                   Documentation
                 </a>
               </li>
