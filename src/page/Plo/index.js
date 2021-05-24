@@ -62,7 +62,9 @@ function Home() {
                 Join the Crab Crowdloan <i className="fe fe-arrow-right ms-3"></i>
               </a>
               <a
-                href="#!"
+                target="_blank"
+                rel="noreferrer"
+                href="https://darwinianetwork.medium.com/darwinia-crabs-kusama-parachain-auction-strategy-3f37cbfdfe4"
                 className="btn btn-primary-soft lift"
               >
                 PLO Strategy
@@ -252,7 +254,7 @@ function Home() {
                     The reward for supporting Darwinia Crab will be higher than
                     Staking, and there will be a chance to get 1 BTC. You will
                     get enough rewards even if we fail.&nbsp;&nbsp;
-                    <a href="#!" className="fw-bold text-decoration-none">
+                    <a target="_blank" rel="noreferrer" href="https://darwinianetwork.medium.com/darwinia-crabs-kusama-parachain-auction-strategy-3f37cbfdfe4" className="fw-bold text-decoration-none">
                       Learn more <i className="fe fe-arrow-right ms-3"></i>
                     </a>
                   </p>
@@ -278,7 +280,7 @@ function Home() {
 
               {/* Text */}
               <p className="fs-lg text-gray-700 mb-7 mb-md-9">
-                Crab Network provides tokens and NFT rewards for users who support our PLO.
+                Crab Network provides tokens and NFT rewards.
               </p>
             </div>
           </div>
