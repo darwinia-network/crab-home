@@ -31,7 +31,7 @@ function Home() {
               <h1 className="display-4">
                 Crab Network. <br />
                 <span className="text-primary">
-                  Cross-chain Bridge Hub Of Kusama.
+                  Cross-chain Bridge Hub of Kusama.
                 </span>
               </h1>
 

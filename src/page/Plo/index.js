@@ -312,7 +312,7 @@ function Home() {
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-                Land, Apostles, and Chests NFT will be unlocked and used for Gamefi Mining in Evolution Land with two new continents open!
+                Lands, Apostles, and Chests NFT will be unlocked and used for Gamefi Mining in Evolution Land with two new continents open!
               </p>
             </div>
             <div
