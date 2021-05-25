@@ -124,7 +124,7 @@ function Home() {
 
               {/* Text  */}
               <p className="fs-lg text-gray-700 mb-7 mb-md-9">
-                The Darwinia Network will distribute CRINGs as an incentive to
+                Crab Network will distribute CRINGs as an incentive to
                 the participants of Staking. The process of Staking can also be
                 understood as the POS mining process, where the miner obtains
                 Staking energy by staking tokens. According to complexity,
