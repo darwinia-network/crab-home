@@ -442,15 +442,16 @@ function Home() {
 
               {/* Text */}
               <p className="lead text-gray-700 mb-7 mb-md-9">
-                We will continue to update the questions here. If you don’t find
+                We will continue to update the questions here.
+                {/* If you don’t find
                 the question or answer you want, you can send an email to
                 <a
                   className="ms-1 text-white"
                   href="mailto:ksm-crowdloan@crab.network"
                 >
                   ksm-crowdloan@itering.com
-                </a>
-                .
+                </a> */}
+                {/* . */}
               </p>
             </div>
           </div>

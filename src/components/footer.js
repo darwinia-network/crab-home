@@ -17,7 +17,7 @@ function Footer({ classList, container, button }) {
 
             {/* Social*/}
             <ul className="list-unstyled list-inline list-social mb-6 mb-md-0">
-              <li className="list-inline-item list-social-item me-3">
+              {/* <li className="list-inline-item list-social-item me-3">
                 <a rel="noreferrer" target="_blank" href="mailto:hello@crab.network" className="text-decoratiResourceson-none">
                   <img
                     src="../img/icons/social/mail.svg"
@@ -25,7 +25,7 @@ function Footer({ classList, container, button }) {
                     alt="..."
                   />
                 </a>
-              </li>
+              </li> */}
               <li className="list-inline-item list-social-item me-3">
                 <a rel="noreferrer" target="_blank" href="https://t.me/DarwiniaNetwork" className="text-decoration-none">
                   <img
@@ -133,11 +133,11 @@ function Footer({ classList, container, button }) {
                   Twitter
                 </a>
               </li>
-              <li className="mb-3">
+              {/* <li className="mb-3">
                 <a rel="noreferrer" target="_blank" href="mailto:hello@crab.network" className="text-reset">
                   Email
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
