@@ -18,6 +18,61 @@ function Home() {
         button="primary"
       />
 
+      {/* KSM PLO Registration */}
+      <section className="d-flex justify-content-center align-items-center mb-5">
+        <div className="d-flex flex-column border border-primary py-6 px-12">
+          {/* Connect wallet */}
+          <div className="mb-6">
+            <button className="btn btn-primary-soft d-block w-100" id="connectPolkadot">Connect Polkadot Wallet</button>
+            <label for="connectPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
+          </div>
+
+          {/* Connnected wallet */}
+          <div className="mb-6">
+            <div className="dropdown" id="connectedPolkadot">
+              <button className="btn btn-secondary dropdown-toggle w-100" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown button
+              </button>
+              <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
+                <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Action</a></li>
+                <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Another action</a></li>
+                <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Something else here</a></li>
+              </ul>
+            </div>
+            <label for="connectedPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
+          </div>
+
+          {/* Input contribute amount */}
+          <div className="mb-6">
+            <form>
+              <label for="contributeAmount" className="form-label">Input your contribute amount</label>
+              <div className="input-group">
+                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control"></input>
+                <span className="input-group-text">KSM</span>
+              </div>
+              <div id="amountHelp" className="form-text">Minimum allowed: 1 KSM</div>
+              <input type="range" className="form-range" min="0" max="5" step="0.5"></input>
+            </form>
+          </div>
+
+          {/* Contribute */}
+          <div className="mb-6">
+            <button className="btn btn-primary d-block w-100" id="contributeButton">Contribute</button>
+            <label for="contributeButton" className="form-text">After 12345 blocks, you can contribute.</label>
+            <label for="contributeButton" className="form-text"> <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">Learn more abount Crowdloan</a></label>
+          </div>
+
+          <hr className="bg-gray-300 mb-6" />
+
+          {/* Input email */}
+          <form>
+            <label for="inputEmail" className="form-label">Input your email to get notification</label>
+            <input type="email" className="form-control d-block w-100 mb-5" placeholder="name@gmail.com" id="inputEmail"></input>
+            <button type="submit" className="btn btn-primary d-block w-100">Notify me</button>
+          </form>
+        </div>
+      </section>
+
       {/*  WELCOME */}
       <section className="position-relative py-8 py-md-11 mb-9">
         {/*  Shape */}
