@@ -10,6 +10,7 @@ import ImgReward1 from "./img/2.png";
 import ImgReward2 from "./img/3.png";
 import ImgReward3 from "./img/1.png";
 
+import axios from "axios";
 import {
   web3Accounts,
   web3Enable,
@@ -34,6 +35,7 @@ function Home() {
   const [accountsInfo, setAccountsInfo] = useState([]);
   const [amountOfKsm, setAmountOfKsm] = useState(1);
   const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
+  const [emailForNotify, setEmailForNotify] = useState("");
 
   // 初始化 api
   useEffect(() => {
@@ -93,6 +95,30 @@ function Home() {
       return;
     }
     setAmountOfKsm(value);
+  }
+
+  const handleChangeEmailForNotify = (e) => {
+    const email = String(e.target.value);
+    setEmailForNotify(email);
+  }
+
+  const handleClickNotifyMe = () => {
+    if (emailForNotify.length > 0 && accountsInfo.length) {
+      axios.post("https://api.darwinia.network/api/plo/subscribe", {
+        email: emailForNotify,
+        address: accountsInfo[indexSelectAccountInfo].address,
+      })
+        .then(res => {
+          const { status, data } = res;
+          if (status === 200) {
+            alert("subscribe successfully");
+          }
+          console.log("subscribe plo with email:", emailForNotify, res);
+        })
+        .catch(err => {
+          console.error("subscribe plo with email:", emailForNotify, err);
+        });
+    }
   }
 
   return (
@@ -184,8 +210,8 @@ function Home() {
           {/* Input email */}
           <form>
             <label htmlFor="inputEmail" className="form-label">Input your email to get notification</label>
-            <input type="email" className="form-control d-block w-100 mb-5" placeholder="name@gmail.com" id="inputEmail"></input>
-            <button type="submit" className="btn btn-primary d-block w-100">Notify me</button>
+            <input type="email" className="form-control d-block w-100 mb-5" placeholder="name@gmail.com" id="inputEmail" value={emailForNotify} onChange={handleChangeEmailForNotify}></input>
+            <button type="button" className="btn btn-primary d-block w-100" onClick={handleClickNotifyMe}>Notify me</button>
           </form>
         </div>
       </section>
