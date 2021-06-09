@@ -19,6 +19,7 @@ import {
 import Identicon from '@polkadot/react-identicon';
 import { Keyring } from '@polkadot/api';
 import { ApiPromise, WsProvider } from '@polkadot/api';
+import { formatBalance } from "@polkadot/util";
 
 const toShortAddress = (_address) => {
   const address = (_address || '').toString();
@@ -76,8 +77,8 @@ function Home() {
         _accountsInfo.push({
             name: account.meta.name,
             address: pair.address,
-            freeBalance: balanceAll.freeBalance.toHuman(),
-            lockedBalance: balanceAll.lockedBalance.toHuman(),
+            freeBalance: formatBalance(balanceAll.freeBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+            lockedBalance: formatBalance(balanceAll.lockedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
         });
       }
       setAccountsInfo(_accountsInfo);

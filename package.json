@@ -6,6 +6,7 @@
     "@polkadot/api": "^4.13.1",
     "@polkadot/extension-dapp": "^0.38.3",
     "@polkadot/react-identicon": "^0.79.1",
+    "@polkadot/util": "^6.7.1",
     "@popperjs/core": "^2.6.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
