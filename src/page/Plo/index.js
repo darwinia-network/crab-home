@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
@@ -9,7 +10,81 @@ import ImgReward1 from "./img/2.png";
 import ImgReward2 from "./img/3.png";
 import ImgReward3 from "./img/1.png";
 
+import {
+  web3Accounts,
+  web3Enable,
+  web3FromAddress,
+  web3ListRpcProviders,
+  web3UseRpcProvider
+} from '@polkadot/extension-dapp';
+import Identicon from '@polkadot/react-identicon';
+import { Keyring } from '@polkadot/api';
+import { ApiPromise, WsProvider } from '@polkadot/api';
+
+const toShortAddress = (_address) => {
+  const address = (_address || '').toString();
+
+  return (address.length > 13)
+    ? `${address.slice(0, 6)}…${address.slice(-6)}`
+    : address;
+}
+
 function Home() {
+  const api = useRef(null);
+  const [accountsInfo, setAccountsInfo] = useState([]);
+
+  // 初始化 api
+  useEffect(() => {
+    if (!api.current) {
+      const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
+      ApiPromise
+        .create({ provider: wsProvider })
+        .then((apii) => {
+          api.current = apii;
+        })
+        .catch((err) => {
+          console.error("create api:", err);
+          alert("Oops, something went wrong when create api");
+        });
+    }
+  }, []);
+
+  const handleClickConnect = async () => {
+    const allInjected = await web3Enable("crab.network");
+    if (allInjected.length === 0) {
+      alert("Cannot get the account address from Polkadot Extension. Ensure you have Polkadot Extension installed and allow crab.network access.");
+      return;
+    }
+
+    const allAccounts = await web3Accounts();
+    if (allAccounts.length === 0) {
+      alert("No accounts were found.");
+      return;
+    }
+
+    if (api.current) {
+      const keyring = new Keyring();
+      keyring.setSS58Format(2);  // Kusama address
+
+      setAccountsInfo([]);
+      for (let i = 0; i < allAccounts.length; i++) {
+        const account = allAccounts[i];
+        const pair = keyring.addFromAddress(account.address);
+        const balanceAll = await api.current.derive.balances.all(pair.address);
+        setAccountsInfo(prevState => {
+          return prevState.concat([{
+            name: account.meta.name,
+            address: pair.address,
+            freeBalance: balanceAll.freeBalance.toHuman(),
+            lockedBalance: balanceAll.lockedBalance.toHuman(),
+          }]);
+        });
+      }
+    } else {
+      alert("Api is null");
+    }
+  }
+
   return (
     <>
       <Navbar
@@ -23,24 +98,38 @@ function Home() {
         <div className="d-flex flex-column border border-primary py-6 px-12">
           {/* Connect wallet */}
           <div className="mb-6">
-            <button className="btn btn-primary-soft d-block w-100" id="connectPolkadot">Connect Polkadot Wallet</button>
+            <button className="btn btn-primary-soft d-block w-100" id="connectPolkadot" onClick={handleClickConnect}>Connect Polkadot.js Extension</button>
             <label htmlFor="connectPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
           </div>
 
           {/* Connnected wallet */}
-          <div className="mb-6">
-            <div className="dropdown" id="connectedPolkadot">
-              <button className="btn btn-secondary dropdown-toggle w-100" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-              </button>
-              <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
-                <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Action</a></li>
-                <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Another action</a></li>
-                <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Something else here</a></li>
-              </ul>
+          {accountsInfo.length > 0 && (
+            <div className="mb-6">
+              <div className="dropdown" id="connectedPolkadot">
+                <button className="btn btn-secondary dropdown-toggle w-100" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div className="d-inline-flex align-items-center me-13">
+                    <Identicon
+                      value={accountsInfo[0].address}
+                      size={42}
+                      theme="polkadot"
+                    />
+                    <p className="m-0">
+                      <span className="ms-4 me-3">{accountsInfo[0].name}</span>
+                      <span>{toShortAddress(accountsInfo[0].address)}</span>
+                      <br />
+                      <span className="me-3">Free: {accountsInfo[0].freeBalance}, Locked: {accountsInfo[0].lockedBalance}</span>
+                    </p>
+                  </div>
+                </button>
+                <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
+                  <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Action</a></li>
+                  <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Another action</a></li>
+                  <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Something else here</a></li>
+                </ul>
+              </div>
+              <label htmlFor="connectedPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
             </div>
-            <label htmlFor="connectedPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
-          </div>
+          )}
 
           {/* Input contribute amount */}
           <div className="mb-6">
