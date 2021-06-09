@@ -15,8 +15,6 @@ import {
   web3Accounts,
   web3Enable,
   web3FromAddress,
-  web3ListRpcProviders,
-  web3UseRpcProvider
 } from '@polkadot/extension-dapp';
 import Identicon from '@polkadot/react-identicon';
 import { Keyring } from '@polkadot/api';
@@ -109,7 +107,7 @@ function Home() {
         address: accountsInfo[indexSelectAccountInfo].address,
       })
         .then(res => {
-          const { status, data } = res;
+          const { status } = res;
           if (status === 200) {
             alert("subscribe successfully");
           }
@@ -118,6 +116,28 @@ function Home() {
         .catch(err => {
           console.error("subscribe plo with email:", emailForNotify, err);
         });
+    }
+  }
+
+  const handleClickContribute = async () => {
+    if (api.current && amountOfKsm >= 1 && accountsInfo.length > 0) {
+      const account = accountsInfo[indexSelectAccountInfo];
+      const paraId = 2006;
+      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm, null);
+      const injector = await web3FromAddress(account.address);
+      extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ status }) => {
+        if (status.isInBlock) {
+            console.log(`Completed at block hash #${status.asInBlock.toString()}`);
+        } else {
+            console.log(`Current status: ${status.type}`);
+        }
+      })
+      .then(res => {
+        console.log("sign and send cotribute:", res);
+      })
+      .catch(err => {
+        console.error("sign and send contribute:", err)
+      });
     }
   }
 
@@ -200,7 +220,7 @@ function Home() {
 
           {/* Contribute */}
           <div className="mb-6">
-            <button className="btn btn-primary d-block w-100" id="contributeButton">Contribute</button>
+            <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute}>Contribute</button>
             <label htmlFor="contributeButton" className="form-text">After 12345 blocks, you can contribute.</label>
             <label htmlFor="contributeButton" className="form-text"> <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">Learn more abount Crowdloan</a></label>
           </div>
