@@ -32,6 +32,7 @@ const toShortAddress = (_address) => {
 function Home() {
   const api = useRef(null);
   const [accountsInfo, setAccountsInfo] = useState([]);
+  const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
 
   // 初始化 api
   useEffect(() => {
@@ -66,20 +67,19 @@ function Home() {
       const keyring = new Keyring();
       keyring.setSS58Format(2);  // Kusama address
 
-      setAccountsInfo([]);
+      const _accountsInfo = [];
       for (let i = 0; i < allAccounts.length; i++) {
         const account = allAccounts[i];
         const pair = keyring.addFromAddress(account.address);
         const balanceAll = await api.current.derive.balances.all(pair.address);
-        setAccountsInfo(prevState => {
-          return prevState.concat([{
+        _accountsInfo.push({
             name: account.meta.name,
             address: pair.address,
             freeBalance: balanceAll.freeBalance.toHuman(),
             lockedBalance: balanceAll.lockedBalance.toHuman(),
-          }]);
         });
       }
+      setAccountsInfo(_accountsInfo);
     } else {
       alert("Api is null");
     }
@@ -109,22 +109,38 @@ function Home() {
                 <button className="btn btn-secondary dropdown-toggle w-100" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   <div className="d-inline-flex align-items-center me-13">
                     <Identicon
-                      value={accountsInfo[0].address}
+                      value={accountsInfo[indexSelectAccountInfo].address}
                       size={42}
                       theme="polkadot"
                     />
                     <p className="m-0">
-                      <span className="ms-4 me-3">{accountsInfo[0].name}</span>
-                      <span>{toShortAddress(accountsInfo[0].address)}</span>
+                      <span className="ms-4 me-3">{accountsInfo[indexSelectAccountInfo].name}</span>
+                      <span>{toShortAddress(accountsInfo[indexSelectAccountInfo].address)}</span>
                       <br />
-                      <span className="me-3">Free: {accountsInfo[0].freeBalance}, Locked: {accountsInfo[0].lockedBalance}</span>
+                      <span className="me-3">Free: {accountsInfo[indexSelectAccountInfo].freeBalance}, Locked: {accountsInfo[indexSelectAccountInfo].lockedBalance}</span>
                     </p>
                   </div>
                 </button>
                 <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
-                  <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Action</a></li>
-                  <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Another action</a></li>
-                  <li><a className="dropdown-item" href="https://crab.network/" target="_blank" rel="noreferrer noopener">Something else here</a></li>
+                  {accountsInfo.map((accountInfo, index) => (
+                    <li key={index}>
+                      <button className="dropdown-item mb-2" onClick={() => setIndexSelectAccountInfo(index)}>
+                        <div className="d-inline-flex align-items-center me-13">
+                          <Identicon
+                            value={accountInfo.address}
+                            size={42}
+                            theme="polkadot"
+                          />
+                          <p className="m-0">
+                            <span className="ms-4 me-3">{accountInfo.name}</span>
+                            <span>{toShortAddress(accountInfo.address)}</span>
+                            <br />
+                            <span className="ms-4 me-3">Free: {accountInfo.freeBalance}, Locked: {accountInfo.lockedBalance}</span>
+                          </p>
+                        </div>
+                      </button>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <label htmlFor="connectedPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
