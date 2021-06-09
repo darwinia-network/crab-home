@@ -32,6 +32,7 @@ const toShortAddress = (_address) => {
 function Home() {
   const api = useRef(null);
   const [accountsInfo, setAccountsInfo] = useState([]);
+  const [amountOfKsm, setAmountOfKsm] = useState(1);
   const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
 
   // 初始化 api
@@ -83,6 +84,15 @@ function Home() {
     } else {
       alert("Api is null");
     }
+  }
+
+  const handleChangeOfKsmAmount = (e) => {
+    const value = Number(e.target.value);
+    if (value < 1) {
+      alert("Minimum 1 KSM");
+      return;
+    }
+    setAmountOfKsm(value);
   }
 
   return (
@@ -154,11 +164,11 @@ function Home() {
             <form>
               <label htmlFor="contributeAmount" className="form-label">Input your contribute amount</label>
               <div className="input-group">
-                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control"></input>
+                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={amountOfKsm} onChange={handleChangeOfKsmAmount}></input>
                 <span className="input-group-text">KSM</span>
               </div>
               <div id="amountHelp" className="form-text">Minimum allowed: 1 KSM</div>
-              <input type="range" className="form-range" min="0" max="5" step="0.5"></input>
+              <input type="range" className="form-range" min="1" max="5" step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount}></input>
             </form>
           </div>
 
