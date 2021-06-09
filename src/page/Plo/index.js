@@ -97,10 +97,12 @@ function Home() {
       <section className="d-flex justify-content-center align-items-center mb-5">
         <div className="d-flex flex-column border border-primary py-6 px-12">
           {/* Connect wallet */}
-          <div className="mb-6">
-            <button className="btn btn-primary-soft d-block w-100" id="connectPolkadot" onClick={handleClickConnect}>Connect Polkadot.js Extension</button>
-            <label htmlFor="connectPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
-          </div>
+          {accountsInfo.length === 0 && (
+            <div className="mb-6">
+              <button className="btn btn-primary-soft d-block w-100" id="connectPolkadot" onClick={handleClickConnect}>Connect Polkadot.js Extension</button>
+              <label htmlFor="connectPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
+            </div>
+          )}
 
           {/* Connnected wallet */}
           {accountsInfo.length > 0 && (
