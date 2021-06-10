@@ -132,8 +132,8 @@ function Home() {
       />
 
       {/* KSM PLO Registration */}
-      <section className="d-flex justify-content-center align-items-center mb-5">
-        <div className="d-flex flex-column border border-primary py-6 px-12">
+      <section className="d-flex justify-content-center align-items-center mb-9">
+        <div className="d-flex flex-column py-6 px-12 rounded bg-gray-200">
           {/* Connect wallet */}
           {accountsInfo.length === 0 && (
             <div className="mb-1">
