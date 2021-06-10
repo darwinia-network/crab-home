@@ -14,6 +14,7 @@ import {
   web3Accounts,
   web3Enable,
   web3FromAddress,
+  isWeb3Injected,
 } from '@polkadot/extension-dapp';
 import Identicon from '@polkadot/react-identicon';
 import { Keyring } from '@polkadot/api';
@@ -32,23 +33,58 @@ function Home() {
   const api = useRef(null);
   const [accountsInfo, setAccountsInfo] = useState([]);
   const [amountOfKsm, setAmountOfKsm] = useState(1);
-  const [connectLoading, setConnectLoading] = useState(false);
+  const [connectLoading, setConnectLoading] = useState(true);
   const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
 
-  // 初始化 api
   useEffect(() => {
-    if (!api.current) {
-      const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
-      ApiPromise
-        .create({ provider: wsProvider })
-        .then((apii) => {
-          api.current = apii;
-        })
-        .catch((err) => {
-          console.error("create api:", err);
-          alert("Oops, something went wrong when create api.");
-        });
-    }
+    // Init api && try connect
+    const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
+    ApiPromise
+      .create({ provider: wsProvider })
+      .then(async (apii) => {
+        api.current = apii;
+
+        if (!isWeb3Injected) {
+          return;
+        }
+
+        const allInjected = await web3Enable("crab.network");
+        if (allInjected.length > 0) {
+          const allAccounts = await web3Accounts();
+
+          // Fake
+          allAccounts.push({
+            address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+            meta: {
+              name: "Jay",
+            },
+          });
+
+          const keyring = new Keyring();
+          keyring.setSS58Format(2);  // Kusama address
+    
+          const _accountsInfo = [];
+          for (let i = 0; i < allAccounts.length; i++) {
+            const account = allAccounts[i];
+            const pair = keyring.addFromAddress(account.address);
+            const balanceAll = await api.current.derive.balances.all(pair.address);
+            _accountsInfo.push({
+                name: account.meta.name,
+                address: pair.address,
+                freeBalance: formatBalance(balanceAll.freeBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+                lockedBalance: formatBalance(balanceAll.lockedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+            });
+          }
+          setAccountsInfo(_accountsInfo);
+        }
+      })
+      .catch((err) => {
+        console.error("create api:", err);
+        alert("Oops, something went wrong when create api.");
+      })
+      .finally(() => {
+        setConnectLoading(false);
+      });
   }, []);
 
   const handleClickConnect = async () => {
@@ -68,6 +104,7 @@ function Home() {
       return;
     }
 
+    // Fake
     allAccounts.push({
       address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
       meta: {
