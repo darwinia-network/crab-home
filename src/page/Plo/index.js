@@ -204,17 +204,17 @@ function Home() {
           <div className="mb-6">
             <form>
               <div className="input-group">
-                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={amountOfKsm} onChange={handleChangeOfKsmAmount}></input>
+                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={amountOfKsm} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
                 <span className="input-group-text">KSM</span>
               </div>
               <div id="amountHelp" className="form-text">Minimum allowed: 1 KSM</div>
-              <input type="range" className="form-range" min="1" max={currentAccount && Number(currentAccount.freeBalance.split(" ")[0]) > 1 ? Number(currentAccount.freeBalance.split(" ")[0]) : 1} step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount}></input>
+              <input type="range" className="form-range" min="1" max={currentAccount && Number(currentAccount.freeBalance.split(" ")[0]) > 1 ? Number(currentAccount.freeBalance.split(" ")[0]) : 1} step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
             </form>
           </div>
 
           {/* Contribute */}
           <div className="mb-0">
-            <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute}>Contribute</button>
+            <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute} disabled={currentAccount === null}>Contribute</button>
 
             {/* Just for width space */}
             <label htmlFor="contributeButton" className="invisible form-text">After 12345 blocks, you can contribute.</label>
