@@ -123,6 +123,8 @@ function Home() {
     }
   }
 
+  const currentAccount = accountsInfo.length > 0 ? accountsInfo[indexSelectAccountInfo] : null;
+
   return (
     <>
       <Navbar
@@ -135,28 +137,28 @@ function Home() {
       <section className="d-flex justify-content-center align-items-center mb-9">
         <div className="d-flex flex-column py-6 px-12 rounded bg-gray-200">
           {/* Connect wallet */}
-          {accountsInfo.length === 0 && (
+          {currentAccount === null && (
             <div className="mb-1">
               <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect}>Connect Polkadot.js Extension</button>
             </div>
           )}
 
           {/* Connnected wallet */}
-          {accountsInfo.length > 0 && (
+          {currentAccount !== null && (
             <div className="mb-1">
               <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle w-100 d-inline-flex justify-content-between align-items-center" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   <div className="d-inline-flex align-items-center">
                     <Identicon
-                      value={accountsInfo[indexSelectAccountInfo].address}
+                      value={currentAccount.address}
                       size={42}
                       theme="polkadot"
                     />
                     <p className="m-0 ms-4 text-start">
-                      <span className="me-3">{accountsInfo[indexSelectAccountInfo].name}</span>
-                      <span>{toShortAddress(accountsInfo[indexSelectAccountInfo].address)}</span>
+                      <span className="me-3">{currentAccount.name}</span>
+                      <span>{toShortAddress(currentAccount.address)}</span>
                       <br />
-                      <span>Balance: {accountsInfo[indexSelectAccountInfo].freeBalance}</span>
+                      <span>Balance: {currentAccount.freeBalance}</span>
                     </p>
                   </div>
                 </button>
@@ -189,7 +191,7 @@ function Home() {
 
           {/* Unlocked KSM */}
           <div className="d-inline-flex justify-content-between mb-6">
-            <span>Unlocked KSM: {accountsInfo.length > 0 ? accountsInfo[indexSelectAccountInfo].lockedBalance.split(" ")[0] : null}</span>
+            <span>Unlocked KSM: {accountsInfo.length > 0 ? currentAccount.lockedBalance.split(" ")[0] : null}</span>
             <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
           </div>
 
@@ -201,7 +203,7 @@ function Home() {
                 <span className="input-group-text">KSM</span>
               </div>
               <div id="amountHelp" className="form-text">Minimum allowed: 1 KSM</div>
-              <input type="range" className="form-range" min="1" max="5" step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount}></input>
+              <input type="range" className="form-range" min="1" max={currentAccount && Number(currentAccount.freeBalance.split(" ")[0]) > 1 ? Number(currentAccount.freeBalance.split(" ")[0]) : 1} step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount}></input>
             </form>
           </div>
 
