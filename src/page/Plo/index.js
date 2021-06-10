@@ -45,7 +45,7 @@ function Home() {
         })
         .catch((err) => {
           console.error("create api:", err);
-          alert("Oops, something went wrong when create api");
+          alert("Oops, something went wrong when create api.");
         });
     }
   }, []);
@@ -88,22 +88,27 @@ function Home() {
       }
       setAccountsInfo(_accountsInfo);
     } else {
-      alert("Api is null");
+      alert("WebSocket is not connected yet.");
     }
   }
 
   const handleChangeOfKsmAmount = (e) => {
     const value = Number(e.target.value);
     if (value < 1) {
-      alert("Minimum 1 KSM");
+      alert("Minimum 1 KSM.");
       return;
     }
     setAmountOfKsm(value);
   }
 
   const handleClickContribute = async () => {
-    if (api.current && amountOfKsm >= 1 && accountsInfo.length > 0) {
+    if (api.current && accountsInfo.length > 0) {
       const account = accountsInfo[indexSelectAccountInfo];
+      if (Number(amountOfKsm) > Number(account.freeBalance.split(" ")[0])) {
+        alert("Insufficient balance.");
+        return;
+      }
+
       const paraId = 2006;
       const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm, null);
       const injector = await web3FromAddress(account.address);
