@@ -32,6 +32,7 @@ function Home() {
   const api = useRef(null);
   const [accountsInfo, setAccountsInfo] = useState([]);
   const [amountOfKsm, setAmountOfKsm] = useState(1);
+  const [connectLoading, setConnectLoading] = useState(false);
   const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
 
   // 初始化 api
@@ -51,15 +52,19 @@ function Home() {
   }, []);
 
   const handleClickConnect = async () => {
+    setConnectLoading(true);
+  
     const allInjected = await web3Enable("crab.network");
     if (allInjected.length === 0) {
       alert("Cannot get the account address from Polkadot Extension. Ensure you have Polkadot Extension installed and allow crab.network access.");
+      setConnectLoading(false);
       return;
     }
 
     const allAccounts = await web3Accounts();
     if (allAccounts.length === 0) {
       alert("No accounts were found.");
+      setConnectLoading(false);
       return;
     }
 
@@ -90,6 +95,7 @@ function Home() {
     } else {
       alert("WebSocket is not connected yet.");
     }
+    setConnectLoading(false);
   }
 
   const handleChangeOfKsmAmount = (e) => {
@@ -144,7 +150,10 @@ function Home() {
           {/* Connect wallet */}
           {currentAccount === null && (
             <div className="mb-1">
-              <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect}>Connect Polkadot.js Extension</button>
+              <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect} disabled={connectLoading}>
+                <span className={`spinner-border spinner-border-sm me-2 ${connectLoading ? "" : "invisible"}`} role="status" aria-hidden="true"></span>
+                <span>Connect Polkadot.js Extension</span>
+              </button>
             </div>
           )}
 
