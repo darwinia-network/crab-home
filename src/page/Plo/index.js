@@ -53,12 +53,12 @@ function Home() {
           const allAccounts = await web3Accounts();
 
           // Fake
-          allAccounts.push({
-            address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-            meta: {
-              name: "Jay",
-            },
-          });
+          // allAccounts.push({
+          //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+          //   meta: {
+          //     name: "Jay",
+          //   },
+          // });
 
           const keyring = new Keyring();
           keyring.setSS58Format(2);  // Kusama address
@@ -105,12 +105,12 @@ function Home() {
     }
 
     // Fake
-    allAccounts.push({
-      address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-      meta: {
-        name: "Jay",
-      },
-    });
+    // allAccounts.push({
+    //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+    //   meta: {
+    //     name: "Jay",
+    //   },
+    // });
 
     if (api.current) {
       const keyring = new Keyring();
