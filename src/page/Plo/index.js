@@ -63,6 +63,13 @@ function Home() {
       return;
     }
 
+    allAccounts.push({
+      address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+      meta: {
+        name: "Jay",
+      },
+    });
+
     if (api.current) {
       const keyring = new Keyring();
       keyring.setSS58Format(2);  // Kusama address
@@ -129,28 +136,27 @@ function Home() {
         <div className="d-flex flex-column border border-primary py-6 px-12">
           {/* Connect wallet */}
           {accountsInfo.length === 0 && (
-            <div className="mb-6">
-              <button className="btn btn-primary-soft d-block w-100" id="connectPolkadot" onClick={handleClickConnect}>Connect Polkadot.js Extension</button>
-              <label htmlFor="connectPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
+            <div className="mb-1">
+              <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect}>Connect Polkadot.js Extension</button>
             </div>
           )}
 
           {/* Connnected wallet */}
           {accountsInfo.length > 0 && (
-            <div className="mb-6">
-              <div className="dropdown" id="connectedPolkadot">
-                <button className="btn btn-secondary dropdown-toggle w-100" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  <div className="d-inline-flex align-items-center me-13">
+            <div className="mb-1">
+              <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle w-100 d-inline-flex justify-content-between align-items-center" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div className="d-inline-flex align-items-center">
                     <Identicon
                       value={accountsInfo[indexSelectAccountInfo].address}
                       size={42}
                       theme="polkadot"
                     />
-                    <p className="m-0">
-                      <span className="ms-4 me-3">{accountsInfo[indexSelectAccountInfo].name}</span>
+                    <p className="m-0 ms-4 text-start">
+                      <span className="me-3">{accountsInfo[indexSelectAccountInfo].name}</span>
                       <span>{toShortAddress(accountsInfo[indexSelectAccountInfo].address)}</span>
                       <br />
-                      <span className="me-3">Free: {accountsInfo[indexSelectAccountInfo].freeBalance}, Locked: {accountsInfo[indexSelectAccountInfo].lockedBalance}</span>
+                      <span>Balance: {accountsInfo[indexSelectAccountInfo].freeBalance}</span>
                     </p>
                   </div>
                 </button>
@@ -168,7 +174,7 @@ function Home() {
                             <span className="ms-4 me-3">{accountInfo.name}</span>
                             <span>{toShortAddress(accountInfo.address)}</span>
                             <br />
-                            <span className="ms-4 me-3">Free: {accountInfo.freeBalance}, Locked: {accountInfo.lockedBalance}</span>
+                            <span className="ms-4 me-3">Balance: {accountInfo.freeBalance}</span>
                           </p>
                         </div>
                       </button>
@@ -176,16 +182,20 @@ function Home() {
                   ))}
                 </ul>
               </div>
-              <label htmlFor="connectedPolkadot"><a href="https://crab.network/" target="_blank" rel="noreferrer noopener">How did your Kusama address come from?</a></label>
             </div>
           )}
 
           <hr className="bg-gray-300 mb-6" />
 
+          {/* Unlocked KSM */}
+          <div className="d-inline-flex justify-content-between mb-6">
+            <span>Unlocked KSM: {accountsInfo.length > 0 ? accountsInfo[indexSelectAccountInfo].lockedBalance.split(" ")[0] : null}</span>
+            <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
+          </div>
+
           {/* Input contribute amount */}
           <div className="mb-6">
             <form>
-              <label htmlFor="contributeAmount" className="form-label">Input your contribute amount</label>
               <div className="input-group">
                 <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={amountOfKsm} onChange={handleChangeOfKsmAmount}></input>
                 <span className="input-group-text">KSM</span>
