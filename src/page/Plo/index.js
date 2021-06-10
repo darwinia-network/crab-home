@@ -206,10 +206,12 @@ function Home() {
           </div>
 
           {/* Contribute */}
-          <div className="mb-6">
+          <div className="mb-0">
             <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute}>Contribute</button>
-            <label htmlFor="contributeButton" className="form-text">After 12345 blocks, you can contribute.</label>
-            <label htmlFor="contributeButton" className="form-text"> <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">Learn more abount Crowdloan</a></label>
+
+            {/* Just for width space */}
+            <label htmlFor="contributeButton" className="invisible form-text">After 12345 blocks, you can contribute.</label>
+            <label htmlFor="contributeButton" className="invisible form-text">Learn more abount Crowdloan</label>
           </div>
         </div>
       </section>
