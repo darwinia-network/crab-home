@@ -68,6 +68,15 @@ function Navbar({ classList, container, button }) {
             </li>
 
             <li className="nav-item dropdown">
+              <Link
+                className="nav-link"
+                to="/reward"
+              >
+                Reward
+              </Link>
+            </li>
+
+            <li className="nav-item dropdown">
               <a
                 className="nav-link"
                 rel="noreferrer"

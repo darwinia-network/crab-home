@@ -17,6 +17,7 @@
     "bigpicture": "^2.5.3",
     "bootstrap": "^5.0.0-beta1",
     "choices.js": "^9.0.1",
+    "classnames": "^2.3.1",
     "countup.js": "^2.0.7",
     "dropzone": "^5.7.2",
     "flickity": "^2.2.1",
