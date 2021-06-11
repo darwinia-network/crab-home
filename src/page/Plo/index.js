@@ -96,30 +96,6 @@ function Home() {
       return;
     }
 
-    // Fake
-    // allAccounts.push({
-    //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
-    //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
-    //   meta: {
-    //     name: "Aki",
-    //   },
-    // });
-    // allAccounts.push({
-    //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-    //   meta: {
-    //     name: "Jay",
-    //   },
-    // });
-
-    // for (let i = 0; i < 20; i++) {
-    //   allAccounts.push({
-    //     address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-    //     meta: {
-    //       name: "Jay",
-    //     },
-    //   });
-    // }
-
     if (api.current) {
       const keyring = new Keyring();
       keyring.setSS58Format(2);  // Kusama address
@@ -185,7 +161,6 @@ function Home() {
 
       const paraId = 2006;
       const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm, null);
-      // const extrinsic = api.current.tx.balances.transfer('5EkZJvL2w9MUqFJEx6aGyFuTPxARYJSmbMANC9ZGU4Pe5N2N', amountOfKsm);
       const injector = await web3FromAddress(account.address);
       const unsub = await extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ events = [], status }) => {
         events.forEach(({ phase, event: { data, method, section } }) => {
