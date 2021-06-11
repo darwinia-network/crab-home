@@ -148,11 +148,11 @@ function Home() {
         const balanceAll = await api.current.derive.balances.all(pair.address);
 
         _accountsInfo.push({
-            name: account.meta.name,
-            address: pair.address,
-            freeBalance: balanceAll.freeBalance,
-            lockedBalance: balanceAll.lockedBalance,
-            availableBalance: balanceAll.availableBalance,
+          name: account.meta.name,
+          address: pair.address,
+          freeBalance: balanceAll.freeBalance,
+          lockedBalance: balanceAll.lockedBalance,
+          availableBalance: balanceAll.availableBalance,
         });
       }
       setAccountsInfo(_accountsInfo);
@@ -179,10 +179,10 @@ function Home() {
     const availableBalanceBN = accountsInfo[indexSelectAccountInfo].availableBalance.toBn();
 
     // < min
-    if ( valueBN.lt(MIN_CONTRIBUTE)) {
+    if (valueBN.lt(MIN_CONTRIBUTE)) {
       // alert("Minimum 0.1 KSM.");
       // return;
-    // value + fee > avaliable
+      // value + fee > avaliable
     } else if (valueBN.add(feeBN).gt(availableBalanceBN)) {
       nextValue = availableBalanceBN.sub(feeBN);
     }
@@ -205,17 +205,17 @@ function Home() {
       const injector = await web3FromAddress(account.address);
       extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ status }) => {
         if (status.isInBlock) {
-            console.log(`Completed at block hash #${status.asInBlock.toString()}`);
+          console.log(`Completed at block hash #${status.asInBlock.toString()}`);
         } else {
-            console.log(`Current status: ${status.type}`);
+          console.log(`Current status: ${status.type}`);
         }
       })
-      .then(res => {
-        console.log("sign and send cotribute:", res);
-      })
-      .catch(err => {
-        console.error("sign and send contribute:", err)
-      });
+        .then(res => {
+          console.log("sign and send cotribute:", res);
+        })
+        .catch(err => {
+          console.error("sign and send contribute:", err)
+        });
     }
   }
 
@@ -231,107 +231,109 @@ function Home() {
 
       {/* KSM PLO Registration */}
       <section className="d-flex justify-content-center align-items-center mb-9">
-        <div className="d-flex flex-column py-6 px-12 rounded-4 bg-gray-200">
-          {/* Connect wallet */}
-          {currentAccount === null && (
-            <div className="mb-1">
-              <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect} disabled={connectLoading}>
-                <span className={`spinner-border spinner-border-sm me-2 ${connectLoading ? "" : "invisible"}`} role="status" aria-hidden="true"></span>
-                <span>Connect Polkadot.js Extension</span>
-              </button>
-            </div>
-          )}
-
-          {/* Connnected wallet */}
-          {currentAccount !== null && (
-            <div className="mb-1">
-              <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle w-100 d-inline-flex justify-content-between align-items-center" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  <div className="d-inline-flex align-items-center">
-                    <Identicon
-                      value={currentAccount.address}
-                      size={42}
-                      theme="polkadot"
-                    />
-                    <p className="m-0 ms-4 text-start">
-                      <span className="me-3">{currentAccount.name}</span>
-                      <span>{toShortAddress(currentAccount.address)}</span>
-                      <br />
-                      <span>Balance: {formatKSMBalance(currentAccount.freeBalance)}</span>
-                    </p>
-                  </div>
+        <div className="container">
+          <div className="d-flex flex-column py-6 px-4 px-lg-15 rounded-4 bg-gray-200">
+            {/* Connect wallet */}
+            {currentAccount === null && (
+              <div className="mb-1">
+                <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect} disabled={connectLoading}>
+                  <span className={`spinner-border spinner-border-sm me-2 ${connectLoading ? "" : "invisible"}`} role="status" aria-hidden="true"></span>
+                  <span>Connect Polkadot.js Extension</span>
                 </button>
-                <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
-                  {accountsInfo.map((accountInfo, index) => (
-                    <li key={index}>
-                      <button className="dropdown-item mb-2" onClick={() => handleSelectAccount(index)}>
-                        <div className="d-inline-flex align-items-center me-13">
-                          <Identicon
-                            value={accountInfo.address}
-                            size={42}
-                            theme="polkadot"
-                          />
-                          <p className="m-0">
-                            <span className="ms-4 me-3">{accountInfo.name}</span>
-                            <span>{toShortAddress(accountInfo.address)}</span>
-                            <br />
-                            <span className="ms-4 me-3">Balance: {formatKSMBalance(accountInfo.freeBalance)}</span>
-                          </p>
-                        </div>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
               </div>
+            )}
+
+            {/* Connnected wallet */}
+            {currentAccount !== null && (
+              <div className="mb-1">
+                <div className="dropdown">
+                  <button className="btn btn-secondary dropdown-toggle w-100 d-inline-flex justify-content-between align-items-center" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div className="d-inline-flex align-items-center">
+                      <Identicon
+                        value={currentAccount.address}
+                        size={42}
+                        theme="polkadot"
+                      />
+                      <p className="m-0 ms-4 text-start">
+                        <span className="me-3">{currentAccount.name}</span>
+                        <span>{toShortAddress(currentAccount.address)}</span>
+                        <br />
+                        <span>Balance: {formatKSMBalance(currentAccount.freeBalance)}</span>
+                      </p>
+                    </div>
+                  </button>
+                  <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
+                    {accountsInfo.map((accountInfo, index) => (
+                      <li key={index}>
+                        <button className="dropdown-item mb-2" onClick={() => handleSelectAccount(index)}>
+                          <div className="d-inline-flex align-items-center me-13">
+                            <Identicon
+                              value={accountInfo.address}
+                              size={42}
+                              theme="polkadot"
+                            />
+                            <p className="m-0">
+                              <span className="ms-4 me-3">{accountInfo.name}</span>
+                              <span>{toShortAddress(accountInfo.address)}</span>
+                              <br />
+                              <span className="ms-4 me-3">Balance: {formatKSMBalance(accountInfo.freeBalance)}</span>
+                            </p>
+                          </div>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            <hr className="bg-gray-300 mb-6" />
+
+            {/* Unlocked KSM */}
+            <div className="d-inline-flex justify-content-between mb-6">
+              <span>Unlocked KSM: {accountsInfo.length > 0 ? formatKSMBalance(currentAccount.availableBalance) : null}</span>
+              <a href="https://docs.crab.network/crab-crowdloan-howto-unstaking" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
             </div>
-          )}
 
-          <hr className="bg-gray-300 mb-6" />
+            {/* Input contribute amount */}
+            <div className="mb-6">
+              <form>
+                <div className="input-group">
+                  <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={inputFormatBalance(amountOfKsm)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
+                  <span className="input-group-text">KSM</span>
+                </div>
+                <div id="amountHelp" className="form-text">Minimum allowed: {formatKSMBalance(MIN_CONTRIBUTE.toString())}</div>
+                <input type="range" className="form-range" min={formatKSMBalance(MIN_CONTRIBUTE.toString(), false)} max={currentAccount && currentAccount.availableBalance.toBn().gte(MIN_CONTRIBUTE) ? formatKSMBalance(currentAccount.availableBalance.toBn(), false) : formatKSMBalance(MIN_CONTRIBUTE, false)} step="0.01" defaultValue={formatKSMBalance(amountOfKsm, false)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
+              </form>
+            </div>
 
-          {/* Unlocked KSM */}
-          <div className="d-inline-flex justify-content-between mb-6">
-            <span>Unlocked KSM: {accountsInfo.length > 0 ? formatKSMBalance(currentAccount.availableBalance) : null}</span>
-            <a href="https://docs.crab.network/crab-crowdloan-howto-unstaking" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
+            {/* Contribute */}
+            <div className="mb-0">
+              <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute} disabled={currentAccount === null}>Contribute</button>
+
+              {/* Just for width space */}
+              <label htmlFor="contributeButton" className="invisible form-text">After 12345 blocks, you can contribute.</label>
+              <label htmlFor="contributeButton" className="invisible form-text">Learn more abount Crowdloan</label>
+            </div>
           </div>
 
-          {/* Input contribute amount */}
-          <div className="mb-6">
-            <form>
-              <div className="input-group">
-                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={inputFormatBalance(amountOfKsm)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
-                <span className="input-group-text">KSM</span>
-              </div>
-              <div id="amountHelp" className="form-text">Minimum allowed: {formatKSMBalance(MIN_CONTRIBUTE.toString())}</div>
-              <input type="range" className="form-range" min={formatKSMBalance(MIN_CONTRIBUTE.toString(), false)} max={currentAccount && currentAccount.availableBalance.toBn().gte(MIN_CONTRIBUTE) ? formatKSMBalance(currentAccount.availableBalance.toBn(), false): formatKSMBalance(MIN_CONTRIBUTE, false)} step="0.01" defaultValue={formatKSMBalance(amountOfKsm, false)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
-            </form>
-          </div>
-
-          {/* Contribute */}
-          <div className="mb-0">
-            <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute} disabled={currentAccount === null}>Contribute</button>
-
-            {/* Just for width space */}
-            <label htmlFor="contributeButton" className="invisible form-text">After 12345 blocks, you can contribute.</label>
-            <label htmlFor="contributeButton" className="invisible form-text">Learn more abount Crowdloan</label>
-          </div>
-        </div>
-
-        {/* Thank for support modal */}
-        {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          {/* Thank for support modal */}
+          {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Launch demo modal
         </button> */}
 
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-body d-flex flex-column justify-content-start align-items-center mb-0 pb-0">
-                <h2 className="mb-1">Thank you for</h2>
-                <h2>supporting Crab Network</h2>
-                <h3 className="mt-4 mb-6">51 KSM Contributed</h3>
-                <p>Check your contribution transaction <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">here</a></p>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-primary w-100" data-bs-dismiss="modal">Done</button>
+          <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-body d-flex flex-column justify-content-start align-items-center mb-0 pb-0">
+                  <h2 className="mb-1">Thank you for</h2>
+                  <h2>supporting Crab Network</h2>
+                  <h3 className="mt-4 mb-6">51 KSM Contributed</h3>
+                  <p>Check your contribution transaction <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">here</a></p>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-primary w-100" data-bs-dismiss="modal">Done</button>
+                </div>
               </div>
             </div>
           </div>
