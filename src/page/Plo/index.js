@@ -144,10 +144,19 @@ function Home() {
       nextValue = availableBalanceBN.sub(feeBN);
     }
 
+    if (nextValue.lt(ZERO)) {
+      nextValue = ZERO;
+    }
+
     setAmountOfKsm(nextValue);
   }
 
   const handleClickContribute = async () => {
+    if (amountOfKsm.lt(MIN_CONTRIBUTE)) {
+      alert("Minimum 0.1 KSM.");
+      return;
+    }
+
     setDisableContributeBtn(true);
 
     if (api.current && accountsInfo.length > 0) {
