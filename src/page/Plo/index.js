@@ -321,7 +321,7 @@ function Home() {
           Launch demo modal
         </button> */}
 
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-body d-flex flex-column justify-content-start align-items-center mb-0 pb-0">
@@ -330,7 +330,7 @@ function Home() {
                 <h3 className="mt-4 mb-6">51 KSM Contributed</h3>
                 <p>Check your contribution transaction <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">here</a></p>
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button type="button" className="btn btn-primary w-100" data-bs-dismiss="modal">Done</button>
               </div>
             </div>
