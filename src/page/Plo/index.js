@@ -21,6 +21,7 @@ import Identicon from '@polkadot/react-identicon';
 import { Keyring } from '@polkadot/api';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { formatBalance, BN_BILLION } from "@polkadot/util";
+import { typesBundleForPolkadot } from '@darwinia/types/mix';
 
 import { formatKSMBalance, inputToKSMBN, inputFormatBalance } from './utils';
 
@@ -45,11 +46,15 @@ function Home() {
 
   useEffect(() => {
     // Init api && try connect
-    const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
+    const wsProvider = new WsProvider("wss://crab-rpc.darwinia.network");
     // const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
 
     ApiPromise
-      .create({ provider: wsProvider })
+      .create({ provider: wsProvider, typesBundle:  {
+        spec: {
+          Crab: typesBundleForPolkadot.spec.darwinia,
+        },
+      } })
       .then(async (apii) => {
         api.current = apii;
       })
@@ -167,10 +172,47 @@ function Home() {
       }
 
       const paraId = 2006;
-      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm.toString(), null);
+      // const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm.toString(), null);
+      const extrinsic = api.current.tx.balances.transfer('5EkZJvL2w9MUqFJEx6aGyFuTPxARYJSmbMANC9ZGU4Pe5N2N', 1);
       const injector = await web3FromAddress(account.address);
-      extrinsic.signAndSend(account.address, { signer: injector.signer }, (status) => {
+      const unsub = await extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ events = [], status }) => {
         console.log("tx status:", status);
+
+        events.forEach(({ phase, event: { data, method, section } }) => {
+
+          console.log(`\t' ${phase}: ${section}.${method}:: ${data}`);
+
+          // ' {"applyExtrinsic":1}: balances.Transfer:: ["5HE1gjo5cRP5Xzf42zrc3gExws6zqrtnMsHTi3jZ5KbLpKnd","5EkZJvL2w9MUqFJEx6aGyFuTPxARYJSmbMANC9ZGU4Pe5N2N",1]
+          // index.js:183 	' {"applyExtrinsic":1}: balances.Deposit:: ["5E4d5nc3onWTpH8jcd4QoJoBvhUawvQiXmMvzDYU2rd7wX1w",810000000]
+          // index.js:183 	' {"applyExtrinsic":1}: system.ExtrinsicSuccess:: [{"weight":325000000,"class":"Normal","paysFee":"Yes"}]
+          // index.js:188 Transaction included at blockHash 0xe07db1f01f4983bd0bc6a9f0e3fed427b26a6b8ec2cbe1098b85b09a3e19536e
+          // if(method === "Contributed" && section === "crowdloan") {
+          //   console.log('Contributed value:', data[2])
+          // }
+
+          if(method === "Transfer" && section === "balances") {
+            console.log('Transfer value:', formatKSMBalance(data[2]))
+          }
+
+          if(method === "Contributed" && section === "crowdloan") {
+            console.log('Contributed value:', data[2])
+          }
+
+          if (method === "ExtrinsicSuccess" && section === "system") {
+           // success
+           if (status.isInBlock) {
+              console.log(`Transaction included at blockHash ${status.asInBlock}`);
+
+            } else if (status.isFinalized) {
+              console.log(`Transaction finalized at blockHash ${status.asFinalized}`);
+              // unsub();
+            }
+          }
+
+          if (method === "ExtrinsicFailed" && section === "system") {
+            // fail
+          }
+        });
         // if (status.isInBlock) {
         //   console.log(`Completed at block hash #${status.asInBlock.toString()}`);
         // } else {

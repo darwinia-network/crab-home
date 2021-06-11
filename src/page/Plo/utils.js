@@ -3,10 +3,14 @@ import BN from "bn.js";
 import Bignumber from "bignumber.js";
 
 const TEN = new Bignumber(10);
+// const DECIMAL = 12;
+// const UNIT = "KSM"
+const DECIMAL = 9;
+const UNIT = "CRING"
 
-export function formatKSMBalance(balance, withUnit = "KSM") {
+export function formatKSMBalance(balance, withUnit = UNIT) {
   return formatBalance(balance, {
-    decimals: 12,
+    decimals: DECIMAL,
     withUnit: withUnit,
     forceUnit: "-",
   }).replaceAll(",", "");
@@ -17,7 +21,7 @@ export function inputToKSMBN(value) {
 
   try {
     return new BN(
-      TEN.pow(new Bignumber(12)).times(value).toFixed(0, 1)
+      TEN.pow(new Bignumber(DECIMAL)).times(value).toFixed(0, 1)
     );
   } catch (error) {
     console.log("utils error:", error);
@@ -26,5 +30,5 @@ export function inputToKSMBN(value) {
 }
 
 export function inputFormatBalance(balance) {
-  return new Bignumber(balance.toString()).div(TEN.pow(12)).toString();
+  return new Bignumber(balance.toString()).div(TEN.pow(DECIMAL)).toString();
 }
