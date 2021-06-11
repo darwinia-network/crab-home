@@ -184,7 +184,7 @@ function Home() {
       }
 
       const paraId = 2006;
-      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm.toString(), null);
+      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm, null);
       // const extrinsic = api.current.tx.balances.transfer('5EkZJvL2w9MUqFJEx6aGyFuTPxARYJSmbMANC9ZGU4Pe5N2N', amountOfKsm);
       const injector = await web3FromAddress(account.address);
       const unsub = await extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ events = [], status }) => {
@@ -203,14 +203,16 @@ function Home() {
             // success
             if (status.isInBlock) {
               setContributedBlockHash(status.asInBlock);
-            } else if (status.isFinalized) {
               thanksModal.current && thanksModal.current.show();
               setDisableContributeBtn(false);
+            } else if (status.isFinalized) {
               unsub && unsub();
             }
           }
           if (method === "ExtrinsicFailed" && section === "system") {
             // fail
+            alert("Extrinsic Failed");
+            setDisableContributeBtn(false);
           }
         });
       })
