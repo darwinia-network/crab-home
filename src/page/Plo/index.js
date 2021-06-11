@@ -45,8 +45,8 @@ function Home() {
 
   useEffect(() => {
     // Init api && try connect
-    // const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
-    const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
+    const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
+    // const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
 
     ApiPromise
       .create({ provider: wsProvider })
@@ -80,19 +80,28 @@ function Home() {
     }
 
     // Fake
-    allAccounts.push({
-      // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
-      address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
-      meta: {
-        name: "Aki",
-      },
-    });
-    allAccounts.push({
-      address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-      meta: {
-        name: "Jay",
-      },
-    });
+    // allAccounts.push({
+    //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
+    //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
+    //   meta: {
+    //     name: "Aki",
+    //   },
+    // });
+    // allAccounts.push({
+    //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+    //   meta: {
+    //     name: "Jay",
+    //   },
+    // });
+
+    // for (let i = 0; i < 20; i++) {
+    //   allAccounts.push({
+    //     address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+    //     meta: {
+    //       name: "Jay",
+    //     },
+    //   });
+    // }
 
     if (api.current) {
       const keyring = new Keyring();
@@ -219,7 +228,7 @@ function Home() {
                       </p>
                     </div>
                   </button>
-                  <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
+                  <ul className="dropdown-menu w-100 overflow-auto" style={{ maxHeight: "220px" }} aria-labelledby="accountsDropdown">
                     {accountsInfo.map((accountInfo, index) => (
                       <li key={index}>
                         <button className="dropdown-item mb-2" onClick={() => handleSelectAccount(index)}>
