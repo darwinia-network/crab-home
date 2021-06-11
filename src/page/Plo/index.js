@@ -169,12 +169,13 @@ function Home() {
       const paraId = 2006;
       const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm.toString(), null);
       const injector = await web3FromAddress(account.address);
-      extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ status }) => {
-        if (status.isInBlock) {
-          console.log(`Completed at block hash #${status.asInBlock.toString()}`);
-        } else {
-          console.log(`Current status: ${status.type}`);
-        }
+      extrinsic.signAndSend(account.address, { signer: injector.signer }, (status) => {
+        console.log("tx status:", status);
+        // if (status.isInBlock) {
+        //   console.log(`Completed at block hash #${status.asInBlock.toString()}`);
+        // } else {
+        //   console.log(`Current status: ${status.type}`);
+        // }
       })
         .then(res => {
           console.log("sign and send cotribute:", res);
