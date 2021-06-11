@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import BN from 'bn.js';
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
@@ -19,7 +20,13 @@ import {
 import Identicon from '@polkadot/react-identicon';
 import { Keyring } from '@polkadot/api';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { formatBalance } from "@polkadot/util";
+import { formatBalance, BN_BILLION } from "@polkadot/util";
+
+import { formatKSMBalance, inputToKSMBN, inputFormatBalance } from './utils';
+
+const MIN_CONTRIBUTE = inputToKSMBN(0.1);
+const TX_FEE = inputToKSMBN(0.001);
+const ZERO = new BN(0);
 
 const toShortAddress = (_address) => {
   const address = (_address || '').toString();
@@ -32,60 +39,62 @@ const toShortAddress = (_address) => {
 function Home() {
   const api = useRef(null);
   const [accountsInfo, setAccountsInfo] = useState([]);
-  const [amountOfKsm, setAmountOfKsm] = useState(1);
-  const [connectLoading, setConnectLoading] = useState(true);
+  const [amountOfKsm, setAmountOfKsm] = useState(ZERO);
+  const [connectLoading, setConnectLoading] = useState(false);
   const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
 
   useEffect(() => {
     // Init api && try connect
-    const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
+    // const wsProvider = new WsProvider("wss://kusama-rpc.polkadot.io");
+    const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
+
     ApiPromise
       .create({ provider: wsProvider })
       .then(async (apii) => {
         api.current = apii;
 
-        if (!isWeb3Injected) {
-          return;
-        }
+        // if (!isWeb3Injected) {
+        //   return;
+        // }
 
-        const allInjected = await web3Enable("crab.network");
-        if (allInjected.length > 0) {
-          const allAccounts = await web3Accounts();
+        // const allInjected = await web3Enable("crab.network");
+        // if (allInjected.length > 0) {
+        //   const allAccounts = await web3Accounts();
 
-          // Fake
-          // allAccounts.push({
-          //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
-          //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
-          //   meta: {
-          //     name: "Aki",
-          //   },
-          // });
-          // allAccounts.push({
-          //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-          //   meta: {
-          //     name: "Jay",
-          //   },
-          // });
+        //   // Fake
+        //   // allAccounts.push({
+        //   //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
+        //   //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
+        //   //   meta: {
+        //   //     name: "Aki",
+        //   //   },
+        //   // });
+        //   // allAccounts.push({
+        //   //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+        //   //   meta: {
+        //   //     name: "Jay",
+        //   //   },
+        //   // });
 
-          const keyring = new Keyring();
-          keyring.setSS58Format(2);  // Kusama address
-    
-          const _accountsInfo = [];
-          for (let i = 0; i < allAccounts.length; i++) {
-            const account = allAccounts[i];
-            const pair = keyring.addFromAddress(account.address);
-            const balanceAll = await api.current.derive.balances.all(pair.address);
-            _accountsInfo.push({
-                name: account.meta.name,
-                address: pair.address,
-                freeBalance: formatBalance(balanceAll.freeBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-                lockedBalance: formatBalance(balanceAll.lockedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-                availableBalance: formatBalance(balanceAll.availableBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-                reservedBalance: formatBalance(balanceAll.reservedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-            });
-          }
-          setAccountsInfo(_accountsInfo);
-        }
+        //   const keyring = new Keyring();
+        //   keyring.setSS58Format(2);  // Kusama address
+
+        //   const _accountsInfo = [];
+        //   for (let i = 0; i < allAccounts.length; i++) {
+        //     const account = allAccounts[i];
+        //     const pair = keyring.addFromAddress(account.address);
+        //     const balanceAll = await api.current.derive.balances.all(pair.address);
+        //     _accountsInfo.push({
+        //         name: account.meta.name,
+        //         address: pair.address,
+        //         freeBalance: formatBalance(balanceAll.freeBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+        //         lockedBalance: formatBalance(balanceAll.lockedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+        //         availableBalance: formatBalance(balanceAll.availableBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+        //         reservedBalance: formatBalance(balanceAll.reservedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+        //     });
+        //   }
+        //   setAccountsInfo(_accountsInfo);
+        // }
       })
       .catch((err) => {
         console.error("create api:", err);
@@ -98,7 +107,7 @@ function Home() {
 
   const handleClickConnect = async () => {
     setConnectLoading(true);
-  
+
     const allInjected = await web3Enable("crab.network");
     if (allInjected.length === 0) {
       alert("Cannot get the account address from Polkadot Extension. Ensure you have Polkadot Extension installed and allow crab.network access.");
@@ -114,19 +123,19 @@ function Home() {
     }
 
     // Fake
-    // allAccounts.push({
-    //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
-    //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
-    //   meta: {
-    //     name: "Aki",
-    //   },
-    // });
-    // allAccounts.push({
-    //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-    //   meta: {
-    //     name: "Jay",
-    //   },
-    // });
+    allAccounts.push({
+      // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
+      address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
+      meta: {
+        name: "Aki",
+      },
+    });
+    allAccounts.push({
+      address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
+      meta: {
+        name: "Jay",
+      },
+    });
 
     if (api.current) {
       const keyring = new Keyring();
@@ -137,11 +146,13 @@ function Home() {
         const account = allAccounts[i];
         const pair = keyring.addFromAddress(account.address);
         const balanceAll = await api.current.derive.balances.all(pair.address);
+
         _accountsInfo.push({
             name: account.meta.name,
             address: pair.address,
-            freeBalance: formatBalance(balanceAll.freeBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-            lockedBalance: formatBalance(balanceAll.lockedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+            freeBalance: balanceAll.freeBalance,
+            lockedBalance: balanceAll.lockedBalance,
+            availableBalance: balanceAll.availableBalance,
         });
       }
       setAccountsInfo(_accountsInfo);
@@ -152,33 +163,45 @@ function Home() {
   }
 
   const handleSelectAccount = (index) => {
-    setAmountOfKsm(1);
+    setAmountOfKsm(MIN_CONTRIBUTE);
     setIndexSelectAccountInfo(index);
   }
 
   const handleChangeOfKsmAmount = (e) => {
-    let value = Number(e.target.value);
-    const fee = 0.02;
-    const availableBalance = Number(accountsInfo[indexSelectAccountInfo].availableBalance.split(" ")[0]);
-    if (value < 1) {
-      alert("Minimum 1 KSM.");
-      return;
-    } else if (value + fee > availableBalance) {
-      value = availableBalance - fee;
+
+    console.log('input range value:', e.target.value);
+
+    let nextValue = inputToKSMBN(e.target.value);
+    const valueBN = inputToKSMBN(e.target.value);
+
+    const feeBN = TX_FEE;
+
+    const availableBalanceBN = accountsInfo[indexSelectAccountInfo].availableBalance.toBn();
+
+    // < min
+    if ( valueBN.lt(MIN_CONTRIBUTE)) {
+      // alert("Minimum 0.1 KSM.");
+      // return;
+    // value + fee > avaliable
+    } else if (valueBN.add(feeBN).gt(availableBalanceBN)) {
+      nextValue = availableBalanceBN.sub(feeBN);
     }
-    setAmountOfKsm(value);
+
+    console.log('next:', nextValue.toString())
+    setAmountOfKsm(nextValue);
   }
 
   const handleClickContribute = async () => {
     if (api.current && accountsInfo.length > 0) {
       const account = accountsInfo[indexSelectAccountInfo];
-      if (Number(amountOfKsm) > Number(account.availableBalance.split(" ")[0])) {
+
+      if (amountOfKsm.gt(account.availableBalance.toBn())) {
         alert("Insufficient balance.");
         return;
       }
 
       const paraId = 2006;
-      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm, null);
+      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm.toString(), null);
       const injector = await web3FromAddress(account.address);
       extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ status }) => {
         if (status.isInBlock) {
@@ -234,7 +257,7 @@ function Home() {
                       <span className="me-3">{currentAccount.name}</span>
                       <span>{toShortAddress(currentAccount.address)}</span>
                       <br />
-                      <span>Balance: {currentAccount.freeBalance}</span>
+                      <span>Balance: {formatKSMBalance(currentAccount.freeBalance)}</span>
                     </p>
                   </div>
                 </button>
@@ -252,7 +275,7 @@ function Home() {
                             <span className="ms-4 me-3">{accountInfo.name}</span>
                             <span>{toShortAddress(accountInfo.address)}</span>
                             <br />
-                            <span className="ms-4 me-3">Balance: {accountInfo.freeBalance}</span>
+                            <span className="ms-4 me-3">Balance: {formatKSMBalance(accountInfo.freeBalance)}</span>
                           </p>
                         </div>
                       </button>
@@ -267,19 +290,19 @@ function Home() {
 
           {/* Unlocked KSM */}
           <div className="d-inline-flex justify-content-between mb-6">
-            <span>Unlocked KSM: {accountsInfo.length > 0 ? currentAccount.availableBalance.split(" ")[0] : null}</span>
-            <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
+            <span>Unlocked KSM: {accountsInfo.length > 0 ? formatKSMBalance(currentAccount.availableBalance) : null}</span>
+            <a href="https://docs.crab.network/crab-crowdloan-howto-unstaking" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
           </div>
 
           {/* Input contribute amount */}
           <div className="mb-6">
             <form>
               <div className="input-group">
-                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={amountOfKsm} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
+                <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={inputFormatBalance(amountOfKsm)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
                 <span className="input-group-text">KSM</span>
               </div>
-              <div id="amountHelp" className="form-text">Minimum allowed: 1 KSM</div>
-              <input type="range" className="form-range" min="1" max={currentAccount && Number(currentAccount.availableBalance.split(" ")[0]) > 1 ? Math.ceil(Number(currentAccount.availableBalance.split(" ")[0])) : 1} step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
+              <div id="amountHelp" className="form-text">Minimum allowed: {formatKSMBalance(MIN_CONTRIBUTE.toString())}</div>
+              <input type="range" className="form-range" min={formatKSMBalance(MIN_CONTRIBUTE.toString(), false)} max={currentAccount && currentAccount.availableBalance.toBn().gte(MIN_CONTRIBUTE) ? formatKSMBalance(currentAccount.availableBalance.toBn(), false): formatKSMBalance(MIN_CONTRIBUTE, false)} step="0.01" defaultValue={formatKSMBalance(amountOfKsm, false)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
             </form>
           </div>
 
