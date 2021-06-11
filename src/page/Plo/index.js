@@ -292,6 +292,27 @@ function Home() {
             <label htmlFor="contributeButton" className="invisible form-text">Learn more abount Crowdloan</label>
           </div>
         </div>
+
+        {/* Thank for support modal */}
+        {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Launch demo modal
+        </button> */}
+
+        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-body d-flex flex-column justify-content-start align-items-center mb-0 pb-0">
+                <h2 className="mb-1">Thank you for</h2>
+                <h2>supporting Crab Network</h2>
+                <h3 className="mt-4 mb-6">51 KSM Contributed</h3>
+                <p>Check your contribution transaction <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">here</a></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" className="btn btn-primary w-100" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/*  WELCOME */}
