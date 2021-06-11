@@ -52,49 +52,6 @@ function Home() {
       .create({ provider: wsProvider })
       .then(async (apii) => {
         api.current = apii;
-
-        // if (!isWeb3Injected) {
-        //   return;
-        // }
-
-        // const allInjected = await web3Enable("crab.network");
-        // if (allInjected.length > 0) {
-        //   const allAccounts = await web3Accounts();
-
-        //   // Fake
-        //   // allAccounts.push({
-        //   //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
-        //   //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
-        //   //   meta: {
-        //   //     name: "Aki",
-        //   //   },
-        //   // });
-        //   // allAccounts.push({
-        //   //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
-        //   //   meta: {
-        //   //     name: "Jay",
-        //   //   },
-        //   // });
-
-        //   const keyring = new Keyring();
-        //   keyring.setSS58Format(2);  // Kusama address
-
-        //   const _accountsInfo = [];
-        //   for (let i = 0; i < allAccounts.length; i++) {
-        //     const account = allAccounts[i];
-        //     const pair = keyring.addFromAddress(account.address);
-        //     const balanceAll = await api.current.derive.balances.all(pair.address);
-        //     _accountsInfo.push({
-        //         name: account.meta.name,
-        //         address: pair.address,
-        //         freeBalance: formatBalance(balanceAll.freeBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-        //         lockedBalance: formatBalance(balanceAll.lockedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-        //         availableBalance: formatBalance(balanceAll.availableBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-        //         reservedBalance: formatBalance(balanceAll.reservedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
-        //     });
-        //   }
-        //   setAccountsInfo(_accountsInfo);
-        // }
       })
       .catch((err) => {
         console.error("create api:", err);
