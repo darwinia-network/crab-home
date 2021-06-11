@@ -172,7 +172,7 @@ function Home() {
   const handleClickContribute = async () => {
     if (api.current && accountsInfo.length > 0) {
       const account = accountsInfo[indexSelectAccountInfo];
-      if (Number(amountOfKsm) > Number(account.freeBalance.split(" ")[0])) {
+      if (Number(amountOfKsm) > Number(account.availableBalance.split(" ")[0])) {
         alert("Insufficient balance.");
         return;
       }
