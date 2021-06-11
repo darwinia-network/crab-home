@@ -54,6 +54,13 @@ function Home() {
 
           // Fake
           // allAccounts.push({
+          //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
+          //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
+          //   meta: {
+          //     name: "Aki",
+          //   },
+          // });
+          // allAccounts.push({
           //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
           //   meta: {
           //     name: "Jay",
@@ -73,6 +80,8 @@ function Home() {
                 address: pair.address,
                 freeBalance: formatBalance(balanceAll.freeBalance.toString(), { decimals: 12, withUnit: "KSM" }),
                 lockedBalance: formatBalance(balanceAll.lockedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+                availableBalance: formatBalance(balanceAll.availableBalance.toString(), { decimals: 12, withUnit: "KSM" }),
+                reservedBalance: formatBalance(balanceAll.reservedBalance.toString(), { decimals: 12, withUnit: "KSM" }),
             });
           }
           setAccountsInfo(_accountsInfo);
@@ -106,6 +115,13 @@ function Home() {
 
     // Fake
     // allAccounts.push({
+    //   // D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2
+    //   address: "HqoUb8wQvytoWEnsVY4bKUovrUGN6KA9VLmq1cYwzWZVgXV",
+    //   meta: {
+    //     name: "Aki",
+    //   },
+    // });
+    // allAccounts.push({
     //   address: "D8N2gr82J7kuvnqr25Sx1gV3xijAuBPMyNmprQ2VpCZBsC2",
     //   meta: {
     //     name: "Jay",
@@ -135,11 +151,20 @@ function Home() {
     setConnectLoading(false);
   }
 
+  const handleSelectAccount = (index) => {
+    setAmountOfKsm(1);
+    setIndexSelectAccountInfo(index);
+  }
+
   const handleChangeOfKsmAmount = (e) => {
-    const value = Number(e.target.value);
+    let value = Number(e.target.value);
+    const fee = 0.02;
+    const availableBalance = Number(accountsInfo[indexSelectAccountInfo].availableBalance.split(" ")[0]);
     if (value < 1) {
       alert("Minimum 1 KSM.");
       return;
+    } else if (value + fee > availableBalance) {
+      value = availableBalance - fee;
     }
     setAmountOfKsm(value);
   }
@@ -216,7 +241,7 @@ function Home() {
                 <ul className="dropdown-menu w-100" aria-labelledby="accountsDropdown">
                   {accountsInfo.map((accountInfo, index) => (
                     <li key={index}>
-                      <button className="dropdown-item mb-2" onClick={() => setIndexSelectAccountInfo(index)}>
+                      <button className="dropdown-item mb-2" onClick={() => handleSelectAccount(index)}>
                         <div className="d-inline-flex align-items-center me-13">
                           <Identicon
                             value={accountInfo.address}
@@ -242,7 +267,7 @@ function Home() {
 
           {/* Unlocked KSM */}
           <div className="d-inline-flex justify-content-between mb-6">
-            <span>Unlocked KSM: {accountsInfo.length > 0 ? currentAccount.lockedBalance.split(" ")[0] : null}</span>
+            <span>Unlocked KSM: {accountsInfo.length > 0 ? currentAccount.availableBalance.split(" ")[0] : null}</span>
             <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
           </div>
 
@@ -254,7 +279,7 @@ function Home() {
                 <span className="input-group-text">KSM</span>
               </div>
               <div id="amountHelp" className="form-text">Minimum allowed: 1 KSM</div>
-              <input type="range" className="form-range" min="1" max={currentAccount && Number(currentAccount.freeBalance.split(" ")[0]) > 1 ? Number(currentAccount.freeBalance.split(" ")[0]) : 1} step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
+              <input type="range" className="form-range" min="1" max={currentAccount && Number(currentAccount.availableBalance.split(" ")[0]) > 1 ? Math.ceil(Number(currentAccount.availableBalance.split(" ")[0])) : 1} step="1" defaultValue={amountOfKsm} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
             </form>
           </div>
 
