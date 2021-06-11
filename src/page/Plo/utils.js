@@ -1,12 +1,12 @@
-import { formatBalance, formatNumber } from "@polkadot/util";
+import { formatBalance } from "@polkadot/util";
 import BN from "bn.js";
 import Bignumber from "bignumber.js";
 
 const TEN = new Bignumber(10);
-// const DECIMAL = 12;
-// const UNIT = "KSM"
-const DECIMAL = 9;
-const UNIT = "CRING"
+const DECIMAL = 12;
+const UNIT = "KSM";
+// const DECIMAL = 9;
+// const UNIT = "CRING";
 
 export function formatKSMBalance(balance, withUnit = UNIT) {
   return formatBalance(balance, {

@@ -11,18 +11,17 @@ import ImgReward1 from "./img/2.png";
 import ImgReward2 from "./img/3.png";
 import ImgReward3 from "./img/1.png";
 
+
+import { Modal } from "bootstrap";
 import {
   web3Accounts,
   web3Enable,
   web3FromAddress,
-  isWeb3Injected,
 } from '@polkadot/extension-dapp';
 import Identicon from '@polkadot/react-identicon';
 import { Keyring } from '@polkadot/api';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { formatBalance, BN_BILLION } from "@polkadot/util";
 import { typesBundleForPolkadot } from '@darwinia/types/mix';
-
 import { formatKSMBalance, inputToKSMBN, inputFormatBalance } from './utils';
 
 const MIN_CONTRIBUTE = inputToKSMBN(0.1);
@@ -39,22 +38,35 @@ const toShortAddress = (_address) => {
 
 function Home() {
   const api = useRef(null);
+  const thanksModal = useRef(null);
+
+  const [contributedValue, setContributedValue] = useState("");
+  const [contributedBlockHash, setContributedBlockHash] = useState("");
+
   const [accountsInfo, setAccountsInfo] = useState([]);
   const [amountOfKsm, setAmountOfKsm] = useState(ZERO);
   const [connectLoading, setConnectLoading] = useState(false);
+  const [disableContributeBtn, setDisableContributeBtn] = useState(false);
   const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
 
   useEffect(() => {
+    thanksModal.current = new Modal("#thanksModal");
+  }, []);
+
+  useEffect(() => {
     // Init api && try connect
-    const wsProvider = new WsProvider("wss://crab-rpc.darwinia.network");
-    // const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
+    // const wsProvider = new WsProvider("wss://crab-rpc.darwinia.network");
+    const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
 
     ApiPromise
-      .create({ provider: wsProvider, typesBundle:  {
-        spec: {
-          Crab: typesBundleForPolkadot.spec.darwinia,
-        },
-      } })
+      .create({
+        provider: wsProvider,
+        typesBundle: {
+          spec: {
+            Crab: typesBundleForPolkadot.spec.darwinia,
+          },
+        }
+      })
       .then(async (apii) => {
         api.current = apii;
       })
@@ -140,8 +152,6 @@ function Home() {
 
   const handleChangeOfKsmAmount = (e) => {
 
-    console.log('input range value:', e.target.value);
-
     let nextValue = inputToKSMBN(e.target.value);
     const valueBN = inputToKSMBN(e.target.value);
 
@@ -158,72 +168,58 @@ function Home() {
       nextValue = availableBalanceBN.sub(feeBN);
     }
 
-    console.log('next:', nextValue.toString())
     setAmountOfKsm(nextValue);
   }
 
   const handleClickContribute = async () => {
+    setDisableContributeBtn(true);
+
     if (api.current && accountsInfo.length > 0) {
       const account = accountsInfo[indexSelectAccountInfo];
 
       if (amountOfKsm.gt(account.availableBalance.toBn())) {
         alert("Insufficient balance.");
+        setDisableContributeBtn(false);
         return;
       }
 
       const paraId = 2006;
-      // const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm.toString(), null);
-      const extrinsic = api.current.tx.balances.transfer('5EkZJvL2w9MUqFJEx6aGyFuTPxARYJSmbMANC9ZGU4Pe5N2N', 1);
+      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm.toString(), null);
+      // const extrinsic = api.current.tx.balances.transfer('5EkZJvL2w9MUqFJEx6aGyFuTPxARYJSmbMANC9ZGU4Pe5N2N', amountOfKsm);
       const injector = await web3FromAddress(account.address);
       const unsub = await extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ events = [], status }) => {
-        console.log("tx status:", status);
-
         events.forEach(({ phase, event: { data, method, section } }) => {
-
           console.log(`\t' ${phase}: ${section}.${method}:: ${data}`);
 
-          // ' {"applyExtrinsic":1}: balances.Transfer:: ["5HE1gjo5cRP5Xzf42zrc3gExws6zqrtnMsHTi3jZ5KbLpKnd","5EkZJvL2w9MUqFJEx6aGyFuTPxARYJSmbMANC9ZGU4Pe5N2N",1]
-          // index.js:183 	' {"applyExtrinsic":1}: balances.Deposit:: ["5E4d5nc3onWTpH8jcd4QoJoBvhUawvQiXmMvzDYU2rd7wX1w",810000000]
-          // index.js:183 	' {"applyExtrinsic":1}: system.ExtrinsicSuccess:: [{"weight":325000000,"class":"Normal","paysFee":"Yes"}]
-          // index.js:188 Transaction included at blockHash 0xe07db1f01f4983bd0bc6a9f0e3fed427b26a6b8ec2cbe1098b85b09a3e19536e
-          // if(method === "Contributed" && section === "crowdloan") {
-          //   console.log('Contributed value:', data[2])
-          // }
-
-          if(method === "Transfer" && section === "balances") {
-            console.log('Transfer value:', formatKSMBalance(data[2]))
+          if (method === "Transfer" && section === "balances") {
+            setContributedValue(formatKSMBalance(data[2]));
           }
 
-          if(method === "Contributed" && section === "crowdloan") {
-            console.log('Contributed value:', data[2])
+          if (method === "Contributed" && section === "crowdloan") {
+            setContributedValue(formatKSMBalance(data[2]));
           }
 
           if (method === "ExtrinsicSuccess" && section === "system") {
-           // success
-           if (status.isInBlock) {
-              console.log(`Transaction included at blockHash ${status.asInBlock}`);
-
+            // success
+            if (status.isInBlock) {
+              setContributedBlockHash(status.asInBlock);
             } else if (status.isFinalized) {
-              console.log(`Transaction finalized at blockHash ${status.asFinalized}`);
-              // unsub();
+              thanksModal.current && thanksModal.current.show();
+              setDisableContributeBtn(false);
+              unsub && unsub();
             }
           }
-
           if (method === "ExtrinsicFailed" && section === "system") {
             // fail
           }
         });
-        // if (status.isInBlock) {
-        //   console.log(`Completed at block hash #${status.asInBlock.toString()}`);
-        // } else {
-        //   console.log(`Current status: ${status.type}`);
-        // }
       })
         .then(res => {
           console.log("sign and send cotribute:", res);
         })
         .catch(err => {
-          console.error("sign and send contribute:", err)
+          console.error("sign and send contribute:", err);
+          setDisableContributeBtn(false);
         });
     }
   }
@@ -238,10 +234,85 @@ function Home() {
         button="primary"
       />
 
+      {/*  WELCOME */}
+      <section className="position-relative py-8 py-md-11 mb-9">
+        {/*  Shape */}
+        <div className="shape shape-fluid-x shape-blur-1 svg-shim text-gray-200">
+          <Blur1 />
+        </div>
+        {/*  Contetn */}
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-12 col-md-6 order-md-2">
+              {/*  Image */}
+              <div className="img-skewed img-skewed-start mb-8 mb-md-0">
+                <img
+                  src="/img/screenshots/desktop/dashkit.jpg"
+                  alt="..."
+                  className="screenshot img-fluid mw-md-130"
+                  data-aos="img-skewed-item-start"
+                  data-aos-delay="100"
+                />
+              </div>
+            </div>
+            <div className="col-12 col-md-6 order-md-1" data-aos="fade-up">
+              {/*  Heading */}
+              <h1 className="display-3">
+                What is <br />
+                <span className="text-primary">
+                  Kusama Parachain Slot Auction ?
+                </span>
+              </h1>
+
+              {/*  Text */}
+              <p className="lead text-muted mb-6 mb-md-8">
+                Join the Crab Crowdloan to help Darwinia win Kusama Parachain Slot
+                Auction and get rich returns.
+              </p>
+
+              {/*  Buttons */}
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdKQTdm-eNPpUwoZY5x57VvXBdHk24IBfVBiem1HSs-h7A3pw/viewform?usp=sf_link"
+                className="btn btn-primary me-3 lift"
+              >
+                Join the Crab Crowdloan <i className="fe fe-arrow-right ms-3"></i>
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://darwinianetwork.medium.com/darwinia-crabs-kusama-parachain-auction-strategy-3f37cbfdfe4"
+                className="btn btn-primary-soft lift"
+              >
+                PLO Strategy
+              </a>
+            </div>
+          </div>
+          {/*  / .row */}
+        </div>
+        {/*  / .container */}
+      </section>
+
       {/* KSM PLO Registration */}
       <section className="d-flex justify-content-center align-items-center mb-9">
         <div className="container">
-          <div className="d-flex flex-column py-6 px-4 px-lg-15 rounded-4 bg-gray-200">
+
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-10 col-lg-8 text-center">
+              {/* Heading */}
+              <h1>
+                Support <span className="text-primary">Parachain Auction.</span>
+                {/* What is a <span className="text-primary">Crowdloan?</span> */}
+              </h1>
+
+              {/* Text */}
+              <p className="lead text-gray-700 mb-7 mb-md-9">
+                Kusama allows parachains to raise KSMs for their parachains by
+                means of decentralized Crowdloan.
+              </p>
+            </div>
+          </div>
+
+          <div className="d-flex flex-column py-10 px-4 px-lg-15 rounded-4 bg-gray-200">
             {/* Connect wallet */}
             {currentAccount === null && (
               <div className="mb-1">
@@ -318,93 +389,30 @@ function Home() {
 
             {/* Contribute */}
             <div className="mb-0">
-              <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute} disabled={currentAccount === null}>Contribute</button>
-
-              {/* Just for width space */}
-              <label htmlFor="contributeButton" className="invisible form-text">After 12345 blocks, you can contribute.</label>
-              <label htmlFor="contributeButton" className="invisible form-text">Learn more abount Crowdloan</label>
+              <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute} disabled={currentAccount === null || disableContributeBtn}>
+                <span className={`spinner-border spinner-border-sm me-2 ${disableContributeBtn ? "" : "d-none"}`} role="status" aria-hidden="true"></span>
+                <span>Contribute</span>
+              </button>
             </div>
           </div>
+        </div>
 
-          {/* Thank for support modal */}
-          {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Launch demo modal
-        </button> */}
-
-          <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-body d-flex flex-column justify-content-start align-items-center mb-0 pb-0">
-                  <h2 className="mb-1">Thank you for</h2>
-                  <h2>supporting Crab Network</h2>
-                  <h3 className="mt-4 mb-6">51 KSM Contributed</h3>
-                  <p>Check your contribution transaction <a href="https://crab.network/" target="_blank" rel="noreferrer noopener">here</a></p>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-primary w-100" data-bs-dismiss="modal">Done</button>
-                </div>
+        {/* Thank for support modal */}
+        <div className="modal fade" id="thanksModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-body d-flex flex-column justify-content-start align-items-center mb-0 pb-0">
+                <h2 className="mb-1">Thank you for</h2>
+                <h2>supporting Crab Network</h2>
+                <h3 className="mt-4 mb-6">{contributedValue} Contributed</h3>
+                <p>Check your contribution transaction <a href={`https://kusama.subscan.io/block/${contributedBlockHash}`} target="_blank" rel="noreferrer noopener">here</a></p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary w-100" data-bs-dismiss="modal">Done</button>
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/*  WELCOME */}
-      <section className="position-relative py-8 py-md-11 mb-9">
-        {/*  Shape */}
-        <div className="shape shape-fluid-x shape-blur-1 svg-shim text-gray-200">
-          <Blur1 />
-        </div>
-        {/*  Contetn */}
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-12 col-md-6 order-md-2">
-              {/*  Image */}
-              <div className="img-skewed img-skewed-start mb-8 mb-md-0">
-                <img
-                  src="/img/screenshots/desktop/dashkit.jpg"
-                  alt="..."
-                  className="screenshot img-fluid mw-md-130"
-                  data-aos="img-skewed-item-start"
-                  data-aos-delay="100"
-                />
-              </div>
-            </div>
-            <div className="col-12 col-md-6 order-md-1" data-aos="fade-up">
-              {/*  Heading */}
-              <h1 className="display-3">
-                What is <br />
-                <span className="text-primary">
-                  Kusama Parachain Slot Auction ?
-                </span>
-              </h1>
-
-              {/*  Text */}
-              <p className="lead text-muted mb-6 mb-md-8">
-                Join the Crab Crowdloan to help Darwinia win Kusama Parachain Slot
-                Auction and get rich returns.
-              </p>
-
-              {/*  Buttons */}
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdKQTdm-eNPpUwoZY5x57VvXBdHk24IBfVBiem1HSs-h7A3pw/viewform?usp=sf_link"
-                className="btn btn-primary me-3 lift"
-              >
-                Join the Crab Crowdloan <i className="fe fe-arrow-right ms-3"></i>
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://darwinianetwork.medium.com/darwinia-crabs-kusama-parachain-auction-strategy-3f37cbfdfe4"
-                className="btn btn-primary-soft lift"
-              >
-                PLO Strategy
-              </a>
-            </div>
-          </div>
-          {/*  / .row */}
-        </div>
-        {/*  / .container */}
       </section>
 
       {/* ABOUT */}
