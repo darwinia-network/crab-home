@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import BN from 'bn.js';
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
@@ -11,22 +10,21 @@ import ImgReward1 from "./img/2.png";
 import ImgReward2 from "./img/3.png";
 import ImgReward3 from "./img/1.png";
 
-
-import { Modal } from "bootstrap";
 import {
-  web3Accounts,
   web3Enable,
   web3FromAddress,
+  web3AccountsSubscribe,
 } from '@polkadot/extension-dapp';
 import Identicon from '@polkadot/react-identicon';
 import { Keyring } from '@polkadot/api';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { typesBundleForPolkadot } from '@darwinia/types/mix';
-import { formatKSMBalance, inputToKSMBN, inputFormatBalance } from './utils';
 
-const MIN_CONTRIBUTE = inputToKSMBN(0.1);
+import { Modal, Toast } from "bootstrap";
+import { typesBundleForPolkadot } from '@darwinia/types/mix';
+import { formatKSMBalance, inputToKSMBN } from './utils';
+
 const TX_FEE = inputToKSMBN(0.001);
-const ZERO = new BN(0);
+const MIN_CONTRIBUTE = inputToKSMBN(0.1);
 
 const toShortAddress = (_address) => {
   const address = (_address || '').toString();
@@ -36,25 +34,111 @@ const toShortAddress = (_address) => {
     : address;
 }
 
+const AccountItem = (props) => {
+  const { account, api, index, indexSelected, onSelect } = props;
+
+  const unsub = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [accountInfo, setAccountInfo] = useState(null);
+
+  // handle select
+  useEffect(() => {
+    if (index === indexSelected) {
+      onSelect && onSelect(accountInfo);
+    }
+  }, [index, indexSelected, onSelect, accountInfo])
+
+  // update accountInfo
+  useEffect(() => {
+    if (!api || !account) {
+      return;
+    }
+    setLoading(true);
+
+    const keyring = new Keyring();
+    keyring.setSS58Format(2);  // Kusama format address
+    const pair = keyring.addFromAddress(account.address);
+
+    api.derive.balances.all(pair.address, (balancesAll) => {
+      setAccountInfo({
+        name: account.meta.name,
+        address: pair.address,
+        freeBalance: balancesAll.freeBalance,
+        lockedBalance: balancesAll.lockedBalance,
+        availableBalance: balancesAll.availableBalance,
+      });
+      setLoading(false);
+    })
+      .then(_unsub => {
+        unsub.current && unsub.current();
+        unsub.current = _unsub;
+      })
+      .catch(err => {
+        setLoading(false);
+        console.error("balances.all:", err);
+      });
+
+    return () => {
+      unsub.current && unsub.current();
+      unsub.current = null;
+    };
+  }, [account, api]);
+
+  return (
+    accountInfo ? (
+      <div className={`d-inline-flex align-items-center`}>
+        <Identicon
+          value={accountInfo.address}
+          size={42}
+          theme="polkadot"
+        />
+        <p className="m-0 ms-4 text-start">
+          <span className="me-3">{accountInfo.name}</span>
+          <span>{toShortAddress(accountInfo.address)}</span>
+          <br />
+          <span>Balance: {formatKSMBalance(accountInfo.freeBalance)}</span>
+        </p>
+        {loading && <div className="spinner-border" role="status" />}
+      </div>
+    ) : (
+      <div className="d-flex justify-content-center align-items-center w-100">
+        <div className="spinner-border" role="status" />
+      </div>
+    )
+  );
+};
+
 function Home() {
   const api = useRef(null);
   const thanksModal = useRef(null);
+  const alertToast = useRef(null);
+  const unsubAccounts = useRef(null);
 
+  // 给 Thank you supporting modal
   const [contributedValue, setContributedValue] = useState("");
   const [contributedBlockHash, setContributedBlockHash] = useState("");
 
-  const [accountsInfo, setAccountsInfo] = useState([]);
-  const [amountOfKsm, setAmountOfKsm] = useState(ZERO);
-  const [connectLoading, setConnectLoading] = useState(false);
-  const [disableContributeBtn, setDisableContributeBtn] = useState(false);
-  const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);
+  const [alertMsg, setAlertMsg] = useState("");  // Toast 显示 alert 消息
+  const [accounts, setAccounts] = useState([]);  // 从 extension 获得的 accounts
+  const [ksmInputValue, setKsmInputValue] = useState(formatKSMBalance(MIN_CONTRIBUTE, false));  // 滑动条和输入框的值
+  const [connectLoading, setConnectLoading] = useState(false);  // 连接 extension 中
+  const [disableContributeBtn, setDisableContributeBtn] = useState(false);  // 处理中的时候禁止点击
 
+  const [accountInfoSelected, setAccountInfoSelected] = useState(null);  // 当前选择的 account 的信息
+  const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0);  // 当前选择的 account index
+
+  // thx modal && unsub accounts
   useEffect(() => {
+    alertToast.current = new Toast("#alertToast");
     thanksModal.current = new Modal("#thanksModal");
+    return () => {
+      unsubAccounts.current && unsubAccounts.current();
+      unsubAccounts.current = null;
+    }
   }, []);
 
+  // init api
   useEffect(() => {
-    // Init api && try connect
     // const wsProvider = new WsProvider("wss://crab-rpc.darwinia.network");
     const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
 
@@ -67,150 +151,113 @@ function Home() {
           },
         }
       })
-      .then(async (apii) => {
-        api.current = apii;
+      .then(_api => {
+        api.current = _api;
       })
       .catch((err) => {
         console.error("create api:", err);
-        alert("Oops, something went wrong when create api.");
-      })
-      .finally(() => {
-        setConnectLoading(false);
+        showToastMsg("Oops, something went wrong when create api.");
+        alertToast.current && alertToast.current.show();
       });
   }, []);
 
+  const showToastMsg = (msg) => {
+    setAlertMsg(msg);
+    alertToast.current && alertToast.current.show();
+  }
+
   const handleClickConnect = async () => {
+    if (!api.current) {
+      showToastMsg("WebSocket is not connected yet.");
+      alertToast.current && alertToast.current.show();
+      return;
+    }
     setConnectLoading(true);
 
     const allInjected = await web3Enable("crab.network");
     if (allInjected.length === 0) {
-      alert("Cannot get the account address from Polkadot Extension. Ensure you have Polkadot Extension installed and allow crab.network access.");
+      showToastMsg("Cannot get the account address from Polkadot Extension. Ensure you have Polkadot Extension installed and allow crab.network access.");
+      alertToast.current && alertToast.current.show();
       setConnectLoading(false);
       return;
     }
 
-    const allAccounts = await web3Accounts();
-    if (allAccounts.length === 0) {
-      alert("No accounts were found.");
+    unsubAccounts.current = await web3AccountsSubscribe(accounts => {
+      setAccounts(accounts);
       setConnectLoading(false);
-      return;
-    }
-
-    if (api.current) {
-      const keyring = new Keyring();
-      keyring.setSS58Format(2);  // Kusama address
-
-      const _accountsInfo = [];
-      for (let i = 0; i < allAccounts.length; i++) {
-        const account = allAccounts[i];
-        const pair = keyring.addFromAddress(account.address);
-        const balanceAll = await api.current.derive.balances.all(pair.address);
-
-        _accountsInfo.push({
-          name: account.meta.name,
-          address: pair.address,
-          freeBalance: balanceAll.freeBalance,
-          lockedBalance: balanceAll.lockedBalance,
-          availableBalance: balanceAll.availableBalance,
-        });
-      }
-      setAccountsInfo(_accountsInfo);
-    } else {
-      alert("WebSocket is not connected yet.");
-    }
-    setConnectLoading(false);
+    });
   }
 
-  const handleSelectAccount = (index) => {
-    setAmountOfKsm(MIN_CONTRIBUTE);
+  const handleClickSelectIndex = (index) => {
+    setKsmInputValue(formatKSMBalance(MIN_CONTRIBUTE, false));
     setIndexSelectAccountInfo(index);
   }
 
-  const handleChangeOfKsmAmount = (e) => {
+  // AccountItem callback
+  const handleSelectedAccountInfo = (acci) => {
+    setAccountInfoSelected(acci);
+  }
 
-    let nextValue = inputToKSMBN(e.target.value);
-    const valueBN = inputToKSMBN(e.target.value);
-
-    const feeBN = TX_FEE;
-
-    const availableBalanceBN = accountsInfo[indexSelectAccountInfo].availableBalance.toBn();
-
-    // < min
-    if (valueBN.lt(MIN_CONTRIBUTE)) {
-      // alert("Minimum 0.1 KSM.");
-      // return;
-      // value + fee > avaliable
-    } else if (valueBN.add(feeBN).gt(availableBalanceBN)) {
-      nextValue = availableBalanceBN.sub(feeBN);
-    }
-
-    if (nextValue.lt(ZERO)) {
-      nextValue = ZERO;
-    }
-
-    setAmountOfKsm(nextValue);
+  const handleChangeOfKsmAmountInput = (e) => {
+    setKsmInputValue(e.target.value);
   }
 
   const handleClickContribute = async () => {
-    if (amountOfKsm.lt(MIN_CONTRIBUTE)) {
-      alert("Minimum 0.1 KSM.");
+    const inputKsmBN = inputToKSMBN(ksmInputValue);
+
+    if (inputKsmBN.lt(MIN_CONTRIBUTE)) {
+      showToastMsg(`Minimum ${formatKSMBalance(MIN_CONTRIBUTE.toString())}`);
+      alertToast.current && alertToast.current.show();
       return;
     }
 
     setDisableContributeBtn(true);
 
-    if (api.current && accountsInfo.length > 0) {
-      const account = accountsInfo[indexSelectAccountInfo];
-
-      if (amountOfKsm.gt(account.availableBalance.toBn())) {
-        alert("Insufficient balance.");
+    if (api.current && accountInfoSelected) {
+      if ((inputKsmBN.add(TX_FEE)).gt(accountInfoSelected.availableBalance.toBn())) {
+        showToastMsg("Insufficient balance.");
+        alertToast.current && alertToast.current.show();
         setDisableContributeBtn(false);
         return;
       }
 
       const paraId = 2006;
-      const extrinsic = api.current.tx.crowdloan.contribute(paraId, amountOfKsm, null);
-      const injector = await web3FromAddress(account.address);
-      const unsub = await extrinsic.signAndSend(account.address, { signer: injector.signer }, ({ events = [], status }) => {
-        events.forEach(({ phase, event: { data, method, section } }) => {
-          console.log(`\t' ${phase}: ${section}.${method}:: ${data}`);
+      const extrinsic = api.current.tx.crowdloan.contribute(paraId, inputKsmBN, null);
+      const injector = await web3FromAddress(accountInfoSelected.address);
 
-          if (method === "Transfer" && section === "balances") {
-            setContributedValue(formatKSMBalance(data[2]));
-          }
+      // sign and send
+      try {
+        const unsub = await extrinsic.signAndSend(accountInfoSelected.address, { signer: injector.signer }, ({ events = [], status }) => {
+          events.forEach(({ phase, event: { data, method, section } }) => {
+            console.log(`${phase}: ${section}.${method}:: ${data}`);
 
-          if (method === "Contributed" && section === "crowdloan") {
-            setContributedValue(formatKSMBalance(data[2]));
-          }
-
-          if (method === "ExtrinsicSuccess" && section === "system") {
-            // success
-            if (status.isInBlock) {
-              setContributedBlockHash(status.asInBlock);
-              thanksModal.current && thanksModal.current.show();
-              setDisableContributeBtn(false);
-            } else if (status.isFinalized) {
-              unsub && unsub();
+            if (method === "Contributed" && section === "crowdloan") {
+              setContributedValue(formatKSMBalance(data[2]));
             }
-          }
-          if (method === "ExtrinsicFailed" && section === "system") {
-            // fail
-            alert("Extrinsic Failed");
-            setDisableContributeBtn(false);
-          }
+
+            if (method === "ExtrinsicSuccess" && section === "system") {
+              if (status.isInBlock) {
+                setContributedBlockHash(status.asInBlock);
+                thanksModal.current && thanksModal.current.show();
+                setDisableContributeBtn(false);
+              } else if (status.isFinalized) {
+                unsub && unsub();
+              }
+            }
+
+            if (method === "ExtrinsicFailed" && section === "system") {
+              showToastMsg("Extrinsic Failed");
+              alertToast.current && alertToast.current.show();
+              setDisableContributeBtn(false);
+            }
+          });
         });
-      })
-        .then(res => {
-          console.log("sign and send cotribute:", res);
-        })
-        .catch(err => {
-          console.error("sign and send contribute:", err);
-          setDisableContributeBtn(false);
-        });
+      } catch (err) {
+        console.error("sign and send contribute:", err);
+        setDisableContributeBtn(false);
+      }
     }
   }
-
-  const currentAccount = accountsInfo.length > 0 ? accountsInfo[indexSelectAccountInfo] : null;
 
   return (
     <>
@@ -300,7 +347,7 @@ function Home() {
 
           <div className="d-flex flex-column py-10 px-4 px-lg-15 rounded-4 bg-gray-200">
             {/* Connect wallet */}
-            {currentAccount === null && (
+            {accounts.length === 0 && (
               <div className="mb-1">
                 <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect} disabled={connectLoading}>
                   <span className={`spinner-border spinner-border-sm me-2 ${connectLoading ? "" : "invisible"}`} role="status" aria-hidden="true"></span>
@@ -310,41 +357,17 @@ function Home() {
             )}
 
             {/* Connnected wallet */}
-            {currentAccount !== null && (
+            {accounts.length > 0 && (
               <div className="mb-1">
                 <div className="dropdown">
                   <button className="btn btn-secondary dropdown-toggle w-100 d-inline-flex justify-content-between align-items-center" type="button" id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div className="d-inline-flex align-items-center">
-                      <Identicon
-                        value={currentAccount.address}
-                        size={42}
-                        theme="polkadot"
-                      />
-                      <p className="m-0 ms-4 text-start">
-                        <span className="me-3">{currentAccount.name}</span>
-                        <span>{toShortAddress(currentAccount.address)}</span>
-                        <br />
-                        <span>Balance: {formatKSMBalance(currentAccount.freeBalance)}</span>
-                      </p>
-                    </div>
+                    <AccountItem account={accounts[indexSelectAccountInfo]} api={api.current} />
                   </button>
                   <ul className="dropdown-menu w-100 overflow-auto" style={{ maxHeight: "220px" }} aria-labelledby="accountsDropdown">
-                    {accountsInfo.map((accountInfo, index) => (
+                    {accounts.map((account, index) => (
                       <li key={index}>
-                        <button className="dropdown-item mb-2" onClick={() => handleSelectAccount(index)}>
-                          <div className="d-inline-flex align-items-center me-13">
-                            <Identicon
-                              value={accountInfo.address}
-                              size={42}
-                              theme="polkadot"
-                            />
-                            <p className="m-0">
-                              <span className="ms-4 me-3">{accountInfo.name}</span>
-                              <span>{toShortAddress(accountInfo.address)}</span>
-                              <br />
-                              <span className="ms-4 me-3">Balance: {formatKSMBalance(accountInfo.freeBalance)}</span>
-                            </p>
-                          </div>
+                        <button className="dropdown-item mb-2" onClick={() => handleClickSelectIndex(index)}>
+                          <AccountItem account={account} api={api.current} index={index} indexSelected={indexSelectAccountInfo} onSelect={handleSelectedAccountInfo}  />
                         </button>
                       </li>
                     ))}
@@ -357,7 +380,7 @@ function Home() {
 
             {/* Unlocked KSM */}
             <div className="d-inline-flex justify-content-between mb-6">
-              <span>Unlocked KSM: {accountsInfo.length > 0 ? formatKSMBalance(currentAccount.availableBalance) : null}</span>
+              <span>Unlocked KSM: {accountInfoSelected ? formatKSMBalance(accountInfoSelected.availableBalance) : null}</span>
               <a href="https://docs.crab.network/crab-crowdloan-howto-unstaking" target="_blank" rel="noreferrer noopener">Unstake more KSM</a>
             </div>
 
@@ -365,17 +388,17 @@ function Home() {
             <div className="mb-6">
               <form>
                 <div className="input-group">
-                  <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="d-block form-control" value={inputFormatBalance(amountOfKsm)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
+                  <input type="number" id="contributeAmount" aria-describedby="amountHelp" className="form-control" value={ksmInputValue} onChange={handleChangeOfKsmAmountInput} disabled={accountInfoSelected === null}></input>
                   <span className="input-group-text">KSM</span>
                 </div>
-                <div id="amountHelp" className="form-text">Minimum allowed: {formatKSMBalance(MIN_CONTRIBUTE.toString())}</div>
-                <input type="range" className="form-range" min={formatKSMBalance(MIN_CONTRIBUTE.toString(), false)} max={currentAccount && currentAccount.availableBalance.toBn().gte(MIN_CONTRIBUTE) ? formatKSMBalance(currentAccount.availableBalance.toBn(), false) : formatKSMBalance(MIN_CONTRIBUTE, false)} step="0.01" defaultValue={formatKSMBalance(amountOfKsm, false)} onChange={handleChangeOfKsmAmount} disabled={currentAccount === null}></input>
+                <div id="amountHelp" className={`form-text ${inputToKSMBN(ksmInputValue).lt(MIN_CONTRIBUTE) ? "text-danger" : ""}`}>Minimum allowed: {formatKSMBalance(MIN_CONTRIBUTE.toString())}</div>
+                <input type="range" className="form-range" min={formatKSMBalance(MIN_CONTRIBUTE.toString(), false)} max={accountInfoSelected && accountInfoSelected.availableBalance.toBn().sub(TX_FEE).gte(MIN_CONTRIBUTE) ? formatKSMBalance(accountInfoSelected.availableBalance.toBn().sub(TX_FEE), false) : formatKSMBalance(MIN_CONTRIBUTE, false)} step="0.01" defaultValue={formatKSMBalance(MIN_CONTRIBUTE, false)} onChange={handleChangeOfKsmAmountInput} disabled={accountInfoSelected === null}></input>
               </form>
             </div>
 
             {/* Contribute */}
             <div className="mb-0">
-              <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute} disabled={currentAccount === null || disableContributeBtn}>
+              <button className="btn btn-primary d-block w-100" id="contributeButton" onClick={handleClickContribute} disabled={accountInfoSelected === null || disableContributeBtn}>
                 <span className={`spinner-border spinner-border-sm me-2 ${disableContributeBtn ? "" : "d-none"}`} role="status" aria-hidden="true"></span>
                 <span>Contribute</span>
               </button>
@@ -396,6 +419,18 @@ function Home() {
               <div className="modal-footer">
                 <button type="button" className="btn btn-primary w-100" data-bs-dismiss="modal">Done</button>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Alert */}
+        <div className="position-fixed top-0 end-0 p-3" style={{ zIndex: "5" }}>
+          <div id="alertToast" className="toast hide align-items-center text-white bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+            <div className="d-flex">
+              <div className="toast-body">
+                {alertMsg}
+              </div>
+              <button type="button" className="btn-close me-2 m-auto bg-white" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
           </div>
         </div>
