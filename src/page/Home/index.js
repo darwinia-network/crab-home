@@ -37,7 +37,7 @@ function Home() {
 
               {/*  Text */}
               <p className="lead text-muted mb-0">
-                Crab is the canary network of Darwinia, and is the first
+                Crab is the canary network of <a target="_blank" rel="noreferrer" className="text-primary" href="https://darwinia.network">Darwinia</a>, and is the first
                 blockchain in the Kusama ecosystem to natively support
                 cross-chain as well as smart contract and NFT. Crab Network
                 intends to participate in the Kusama Parachain Slot Auctions.
