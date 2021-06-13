@@ -299,13 +299,14 @@ function Home() {
 
               {/*  Text */}
               <p className="lead text-muted mb-6 mb-md-8">
-                Join the Crab Crowdloan to help Darwinia win Kusama Parachain Slot
+                Join the Crab Crowdloan to help <a target="_blank" rel="noreferrer" className="text-primary" href="https://darwinia.network">Darwinia</a> win Kusama Parachain Slot
                 Auction and get rich returns.
               </p>
 
               {/*  Buttons */}
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdKQTdm-eNPpUwoZY5x57VvXBdHk24IBfVBiem1HSs-h7A3pw/viewform?usp=sf_link"
+                href="#crowdloan"
+                data-scroll='{"offset": 0}'
                 className="btn btn-primary me-3 lift"
               >
                 Join the Crab Crowdloan <i className="fe fe-arrow-right ms-3"></i>
@@ -326,7 +327,7 @@ function Home() {
       </section>
 
       {/* KSM PLO Registration */}
-      <section className="d-flex justify-content-center align-items-center mb-9">
+      <section id="crowdloan" className="d-flex justify-content-center align-items-center mb-9">
         <div className="container">
 
           <div className="row justify-content-center">
@@ -340,7 +341,10 @@ function Home() {
               {/* Text */}
               <p className="lead text-gray-700 mb-7 mb-md-9">
                 Kusama allows parachains to raise KSMs for their parachains by
-                means of decentralized Crowdloan.
+                means of decentralized Crowdloan. &nbsp;&nbsp;
+                <a target="_blank" rel="noreferrer" href="https://docs.crab.network/crab-crowdloan" className="fw-bold text-decoration-none">
+                  Learn more <i className="fe fe-arrow-right ms-3"></i>
+                </a>
               </p>
             </div>
           </div>
@@ -775,9 +779,10 @@ function Home() {
 
                   {/* Link */}
                   <a
-                    // href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/parachains/crowdloan"
-                    href="#!"
-                    className="fs-sm fw-bold text-decoration-none text-muted"
+                    href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/parachains/crowdloan"
+                    className="fs-sm fw-bold text-decoration-none"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     Join <i className="fe fe-arrow-right ms-3"></i>
                   </a>
