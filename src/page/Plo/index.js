@@ -35,22 +35,31 @@ const toShortAddress = (_address) => {
 };
 
 const AccountItem = (props) => {
-  const { account, api, index, indexSelected, onSelect } = props;
+  const {
+    account,
+    api,
+    index,
+    indexSelected,
+    onSelect,
+    accountInfoAlready, // 如果传入的是这个，则不用在 useEffect 里通过 api 更新 accountInfo 这个 state 了
+  } = props;
 
   const unsub = useRef(null);
   const [loading, setLoading] = useState(false);
   const [accountInfo, setAccountInfo] = useState(null);
 
-  // handle select
+  // handle select ，告诉父组件当前的 accountInfo
   useEffect(() => {
     if (index === indexSelected) {
-      onSelect && onSelect(accountInfo);
+      // 发现被选中的是自己
+      onSelect && onSelect(accountInfo); // 告诉父组件
     }
   }, [index, indexSelected, onSelect, accountInfo]);
 
   // update accountInfo
   useEffect(() => {
-    if (!api || !account) {
+    if (!api || !account || accountInfoAlready) {
+      accountInfoAlready && setAccountInfo(accountInfoAlready);
       return;
     }
     setLoading(true);
@@ -83,7 +92,7 @@ const AccountItem = (props) => {
       unsub.current && unsub.current();
       unsub.current = null;
     };
-  }, [account, api]);
+  }, [account, api, accountInfoAlready]);
 
   return accountInfo ? (
     <div className={`d-inline-flex align-items-center`}>
@@ -405,10 +414,7 @@ function Home() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <AccountItem
-                      account={accounts[indexSelectAccountInfo]}
-                      api={api.current}
-                    />
+                    <AccountItem accountInfoAlready={accountInfoSelected} />
                   </button>
                   <ul
                     className="dropdown-menu w-100 overflow-auto"
