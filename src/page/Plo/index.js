@@ -191,6 +191,7 @@ function Home() {
 
     unsubAccounts.current = await web3AccountsSubscribe((accounts) => {
       setAccounts(accounts);
+      setIndexSelectAccountInfo(0);
       setConnectLoading(false);
     });
   };
