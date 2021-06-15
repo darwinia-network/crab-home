@@ -13,7 +13,7 @@ export function formatKSMBalance(balance, withUnit = UNIT) {
     decimals: DECIMAL,
     withUnit: withUnit,
     forceUnit: "-",
-  }).replaceAll(",", "");
+  }).replace(/,/g, "");
 }
 
 export function inputToKSMBN(value) {
