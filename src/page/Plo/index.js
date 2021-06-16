@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
@@ -9,161 +9,36 @@ import { ReactComponent as ImgFolderStar } from "../../components/icons/duotone-
 import ImgReward1 from "./img/2.png";
 import ImgReward2 from "./img/3.png";
 import ImgReward3 from "./img/1.png";
+import PolkadotConnect from "../../components/PolkadotConnect";
 
-import {
-  web3Enable,
-  web3FromAddress,
-  web3AccountsSubscribe,
-} from "@polkadot/extension-dapp";
-import Identicon from "@polkadot/react-identicon";
-import { Keyring } from "@polkadot/api";
-import { ApiPromise, WsProvider } from "@polkadot/api";
+import { web3FromAddress } from "@polkadot/extension-dapp";
 
 import { Modal, Toast } from "bootstrap";
-import { typesBundleForPolkadot } from "@darwinia/types/mix";
 import { formatKSMBalance, inputToKSMBN } from "./utils";
 
 const TX_FEE = inputToKSMBN(0.001);
 const MIN_CONTRIBUTE = inputToKSMBN(0.1);
 
-const toShortAddress = (_address) => {
-  const address = (_address || "").toString();
-
-  return address.length > 13
-    ? `${address.slice(0, 6)}…${address.slice(-6)}`
-    : address;
-};
-
-const AccountItem = (props) => {
-  const {
-    account,
-    api,
-    index,
-    indexSelected,
-    onSelect,
-    accountInfoAlready, // 如果传入的是这个，则不用在 useEffect 里通过 api 更新 accountInfo 这个 state 了
-  } = props;
-
-  const unsub = useRef(null);
-  const [loading, setLoading] = useState(false);
-  const [accountInfo, setAccountInfo] = useState(null);
-
-  // handle select ，告诉父组件当前的 accountInfo
-  useEffect(() => {
-    if (index === indexSelected) {
-      // 发现被选中的是自己
-      onSelect && onSelect(accountInfo); // 告诉父组件
-    }
-  }, [index, indexSelected, onSelect, accountInfo]);
-
-  // update accountInfo
-  useEffect(() => {
-    if (!api || !account || accountInfoAlready) {
-      accountInfoAlready && setAccountInfo(accountInfoAlready);
-      return;
-    }
-    setLoading(true);
-
-    const keyring = new Keyring();
-    keyring.setSS58Format(2); // Kusama format address
-    const pair = keyring.addFromAddress(account.address);
-
-    api.derive.balances
-      .all(pair.address, (balancesAll) => {
-        setAccountInfo({
-          name: account.meta.name,
-          address: pair.address,
-          freeBalance: balancesAll.freeBalance,
-          lockedBalance: balancesAll.lockedBalance,
-          availableBalance: balancesAll.availableBalance,
-        });
-        setLoading(false);
-      })
-      .then((_unsub) => {
-        unsub.current && unsub.current();
-        unsub.current = _unsub;
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.error("balances.all:", err);
-      });
-
-    return () => {
-      unsub.current && unsub.current();
-      unsub.current = null;
-    };
-  }, [account, api, accountInfoAlready]);
-
-  return accountInfo ? (
-    <div className={`d-inline-flex align-items-center`}>
-      <Identicon value={accountInfo.address} size={42} theme="polkadot" />
-      <p className="m-0 ms-4 text-start">
-        <span className="me-3">{accountInfo.name}</span>
-        <span>{toShortAddress(accountInfo.address)}</span>
-        <br />
-        <span>Balance: {formatKSMBalance(accountInfo.freeBalance)}</span>
-      </p>
-      {loading && <div className="spinner-border" role="status" />}
-    </div>
-  ) : (
-    <div className="d-flex justify-content-center align-items-center w-100">
-      <div className="spinner-border" role="status" />
-    </div>
-  );
-};
-
 function Home() {
   const api = useRef(null);
   const thanksModal = useRef(null);
   const alertToast = useRef(null);
-  const unsubAccounts = useRef(null);
 
-  // 给 Thank you supporting modal
+  // for thank you supporting modal
   const [contributedValue, setContributedValue] = useState("");
   const [contributedBlockHash, setContributedBlockHash] = useState("");
 
-  const [alertMsg, setAlertMsg] = useState(""); // Toast 显示 alert 消息
-  const [accounts, setAccounts] = useState([]); // 从 extension 获得的 accounts
+  const [alertMsg, setAlertMsg] = useState(""); // the message of toast alert
   const [ksmInputValue, setKsmInputValue] = useState(
     formatKSMBalance(MIN_CONTRIBUTE, false)
-  ); // 滑动条和输入框的值
-  const [connectLoading, setConnectLoading] = useState(false); // 连接 extension 中
-  const [disableContributeBtn, setDisableContributeBtn] = useState(false); // 处理中的时候禁止点击
-
-  const [accountInfoSelected, setAccountInfoSelected] = useState(null); // 当前选择的 account 的信息
-  const [indexSelectAccountInfo, setIndexSelectAccountInfo] = useState(0); // 当前选择的 account index
+  ); // ksm account input and range
+  const [disableContributeBtn, setDisableContributeBtn] = useState(false); // disbale click while in process
+  const [accountInfoSelected, setAccountInfoSelected] = useState(null);
 
   // thx modal && unsub accounts
   useEffect(() => {
     alertToast.current = new Toast("#alertToast");
     thanksModal.current = new Modal("#thanksModal");
-    return () => {
-      unsubAccounts.current && unsubAccounts.current();
-      unsubAccounts.current = null;
-    };
-  }, []);
-
-  // init api
-  useEffect(() => {
-    // const wsProvider = new WsProvider("wss://crab-rpc.darwinia.network");
-    const wsProvider = new WsProvider("wss://kusama.elara.patract.io");
-
-    ApiPromise.create({
-      provider: wsProvider,
-      typesBundle: {
-        spec: {
-          Crab: typesBundleForPolkadot.spec.darwinia,
-        },
-      },
-    })
-      .then((_api) => {
-        api.current = _api;
-      })
-      .catch((err) => {
-        console.error("create api:", err);
-        showToastMsg("Oops, something went wrong when create api.");
-        alertToast.current && alertToast.current.show();
-      });
   }, []);
 
   const showToastMsg = (msg) => {
@@ -171,40 +46,22 @@ function Home() {
     alertToast.current && alertToast.current.show();
   };
 
-  const handleClickConnect = async () => {
-    if (!api.current) {
-      showToastMsg("WebSocket is not connected yet.");
-      alertToast.current && alertToast.current.show();
-      return;
+  const handleChangeOfPolkadotApi = useCallback((papi) => {
+    if (!api.current && papi) {
+      api.current = papi;
     }
-    setConnectLoading(true);
+  }, []);
 
-    const allInjected = await web3Enable("crab.network");
-    if (allInjected.length === 0) {
-      showToastMsg(
-        "Cannot get the account address from Polkadot Extension. Ensure you have Polkadot Extension installed and allow crab.network access."
-      );
-      alertToast.current && alertToast.current.show();
-      setConnectLoading(false);
-      return;
+  const handleSelectedOfAccountInfo = useCallback((accountInfo) => {
+    if (accountInfo) {
+      setAccountInfoSelected(accountInfo);
+      setKsmInputValue(formatKSMBalance(MIN_CONTRIBUTE, false));
     }
+  }, []);
 
-    unsubAccounts.current = await web3AccountsSubscribe((accounts) => {
-      setAccounts(accounts);
-      setIndexSelectAccountInfo(0);
-      setConnectLoading(false);
-    });
-  };
-
-  const handleClickSelectIndex = (index) => {
-    setKsmInputValue(formatKSMBalance(MIN_CONTRIBUTE, false));
-    setIndexSelectAccountInfo(index);
-  };
-
-  // AccountItem callback
-  const handleSelectedAccountInfo = (acci) => {
-    setAccountInfoSelected(acci);
-  };
+  const handleErrorOfPolkadotConnect = useCallback((errMsg) => {
+    showToastMsg(errMsg);
+  }, []);
 
   const handleChangeOfKsmAmountInput = (e) => {
     setKsmInputValue(e.target.value);
@@ -215,7 +72,6 @@ function Home() {
 
     if (inputKsmBN.lt(MIN_CONTRIBUTE)) {
       showToastMsg(`Minimum ${formatKSMBalance(MIN_CONTRIBUTE.toString())}`);
-      alertToast.current && alertToast.current.show();
       return;
     }
 
@@ -226,7 +82,6 @@ function Home() {
         inputKsmBN.add(TX_FEE).gt(accountInfoSelected.availableBalance.toBn())
       ) {
         showToastMsg("Insufficient balance.");
-        alertToast.current && alertToast.current.show();
         setDisableContributeBtn(false);
         return;
       }
@@ -263,8 +118,6 @@ function Home() {
               }
 
               if (method === "ExtrinsicFailed" && section === "system") {
-                showToastMsg("Extrinsic Failed");
-                alertToast.current && alertToast.current.show();
                 setDisableContributeBtn(false);
               }
             });
@@ -384,64 +237,12 @@ function Home() {
           </div>
 
           <div className="d-flex flex-column py-10 px-4 px-lg-15 rounded-4 bg-gray-200">
-            {/* Connect wallet */}
-            {accounts.length === 0 && (
-              <div className="mb-1">
-                <button
-                  className="btn btn-primary-soft d-block w-100"
-                  onClick={handleClickConnect}
-                  disabled={connectLoading}
-                >
-                  <span
-                    className={`spinner-border spinner-border-sm me-2 ${
-                      connectLoading ? "" : "invisible"
-                    }`}
-                    role="status"
-                    aria-hidden="true"
-                  ></span>
-                  <span>Connect Polkadot.js Extension</span>
-                </button>
-              </div>
-            )}
-
-            {/* Connnected wallet */}
-            {accounts.length > 0 && (
-              <div className="mb-1">
-                <div className="dropdown">
-                  <button
-                    className="btn btn-secondary dropdown-toggle w-100 d-inline-flex justify-content-between align-items-center"
-                    type="button"
-                    id="accountsDropdown"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <AccountItem accountInfoAlready={accountInfoSelected} />
-                  </button>
-                  <ul
-                    className="dropdown-menu w-100 overflow-auto"
-                    style={{ maxHeight: "220px" }}
-                    aria-labelledby="accountsDropdown"
-                  >
-                    {accounts.map((account, index) => (
-                      <li key={index}>
-                        <button
-                          className="dropdown-item mb-2"
-                          onClick={() => handleClickSelectIndex(index)}
-                        >
-                          <AccountItem
-                            account={account}
-                            api={api.current}
-                            index={index}
-                            indexSelected={indexSelectAccountInfo}
-                            onSelect={handleSelectedAccountInfo}
-                          />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
+            <PolkadotConnect
+              className="mb-1"
+              onApiChange={handleChangeOfPolkadotApi}
+              onAccountInfoSelected={handleSelectedOfAccountInfo}
+              onError={handleErrorOfPolkadotConnect}
+            />
 
             <hr className="bg-gray-300 mb-6" />
 
@@ -470,7 +271,9 @@ function Home() {
                     type="number"
                     id="contributeAmount"
                     aria-describedby="amountHelp"
-                    className={`form-control ${accountInfoSelected ? "" : "bg-gray-300"}`}
+                    className={`form-control ${
+                      accountInfoSelected ? "" : "bg-gray-300"
+                    }`}
                     value={ksmInputValue}
                     onChange={handleChangeOfKsmAmountInput}
                     disabled={accountInfoSelected === null}
@@ -506,7 +309,8 @@ function Home() {
                       : formatKSMBalance(MIN_CONTRIBUTE, false)
                   }
                   step="0.01"
-                  defaultValue={formatKSMBalance(MIN_CONTRIBUTE, false)}
+                  value={ksmInputValue}
+                  // defaultValue={formatKSMBalance(MIN_CONTRIBUTE, false)}
                   onChange={handleChangeOfKsmAmountInput}
                   disabled={accountInfoSelected === null}
                 ></input>
