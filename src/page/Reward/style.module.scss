@@ -1,3 +1,14 @@
+@import "../../theme/scss/theme/variables.scss";
+
 .welcomeBg {
   background-image: url(./img/illustration-6-cropped.png), url(./img/illustration-4-cropped.png),
+}
+
+.rewardListItem {
+  width: 112px;
+  height: 80px;
+  background-color: $primary;
+  img {
+    width: 60%;
+  }
 }
