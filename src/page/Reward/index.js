@@ -7,7 +7,6 @@ import styles from "./style.module.scss";
 import { ReactComponent as Curve3 } from "../../components/shapes/curves/curve-3.svg";
 
 import ImgAvatarDefault from "./img/avatar-default.png";
-import ImgPhoto1 from "./img/photo-15.jpg";
 import ImgTips from "./img/illustration-2.png";
 
 import ImgRewardGoldBox from "./img/reward-goldbox.png";
@@ -17,6 +16,10 @@ import ImgRewardLand from "./img/reward-land.png";
 import ImgReward1 from "./img/reward-1.png";
 import ImgReward2 from "./img/reward-2.png";
 import ImgReward3 from "./img/reward-3.png";
+
+import ImgTopLeft from "./img/top-left.png";
+import ImgTopRight from "./img/top-right.png";
+
 
 function Reward() {
   return (
@@ -42,7 +45,7 @@ function Reward() {
             >
               {/* Image (mobile) */}
               <img
-                src="assets/img/illustrations/illustration-8.png"
+                src={ImgTopRight}
                 alt="..."
                 className="img-fluid mb-6 d-lg-none"
               />
