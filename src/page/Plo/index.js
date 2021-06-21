@@ -470,7 +470,7 @@ function Home() {
                     type="number"
                     id="contributeAmount"
                     aria-describedby="amountHelp"
-                    className="form-control"
+                    className={`form-control ${accountInfoSelected ? "" : "bg-gray-300"}`}
                     value={ksmInputValue}
                     onChange={handleChangeOfKsmAmountInput}
                     disabled={accountInfoSelected === null}
