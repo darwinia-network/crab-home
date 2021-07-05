@@ -305,7 +305,7 @@ function Home() {
                             .toBn()
                             .sub(TX_FEE),
                           false
-                        )
+                        ).match(/^\d+(?:\.\d{0,2})?/) // Precision related to the "step"
                       : formatKSMBalance(MIN_CONTRIBUTE, false)
                   }
                   step="0.01"
