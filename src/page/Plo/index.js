@@ -16,8 +16,25 @@ import { web3FromAddress } from "@polkadot/extension-dapp";
 import { Modal, Toast } from "bootstrap";
 import { formatKSMBalance, inputToKSMBN } from "./utils";
 
+import { useCall, useEventTrigger } from "../../utils/hooks";
+import { u8aConcat, u8aToHex, formatBalance } from "@polkadot/util";
+import { blake2AsU8a, decodeAddress } from "@polkadot/util-crypto";
+
+const createChildKey = (trieIndex) => {
+  if (!trieIndex) {
+    return null;
+  }
+  return u8aToHex(
+    u8aConcat(
+      ":child_storage:default:",
+      blake2AsU8a(u8aConcat("crowdloan", trieIndex.toU8a()))
+    )
+  );
+};
+
 const TX_FEE = inputToKSMBN(0.001);
 const MIN_CONTRIBUTE = inputToKSMBN(0.1);
+const PARA_ID = 2006;
 
 function Home() {
   const api = useRef(null);
@@ -86,9 +103,8 @@ function Home() {
         return;
       }
 
-      const paraId = 2006;
       const extrinsic = api.current.tx.crowdloan.contribute(
-        paraId,
+        PARA_ID,
         inputKsmBN,
         null
       );
@@ -129,6 +145,53 @@ function Home() {
       }
     }
   };
+
+  // ******************************** My Contribution ****************************************
+  const [myContributeBalance, setMyContributeBalance] = useState(null);
+
+  const campaign = useCall(api.current?.query.crowdloan?.funds, [PARA_ID]);
+  const childKey = createChildKey(campaign?.value?.trieIndex);
+  const myAccountHex = accountInfoSelected?.address
+    ? u8aToHex(decodeAddress(accountInfoSelected.address))
+    : null;
+
+  const trigger = useEventTrigger(
+    api.current,
+    [
+      api.current?.events.crowdloan.Contributed,
+      api.current?.events.crowdloan.Withdrew,
+    ],
+    useCallback(
+      (r) => {
+        return r.event.data[0].eq(myAccountHex) && r.event.data[1].eq(PARA_ID);
+      },
+      [myAccountHex]
+    )
+  );
+
+  useEffect(() => {
+    if (api.current && childKey && myAccountHex && trigger) {
+      api.current.rpc.childstate
+        .getStorage(childKey, myAccountHex)
+        .then((v) => {
+          const o = api.current.createType("Option<StorageData>", v);
+          const b = o.isSome
+            ? api.current.createType("Balance", o.unwrap())
+            : api.current.createType("Balance");
+          const fb = formatBalance(b, {
+            decimals: 12,
+            withSi: true,
+            withUnit: "KSM",
+            forceUnit: "-",
+          });
+          setMyContributeBalance(fb);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [trigger, childKey, myAccountHex, api]);
+  // *****************************************************************************************
 
   return (
     <>
@@ -244,7 +307,12 @@ function Home() {
               onError={handleErrorOfPolkadotConnect}
             />
 
-            <hr className="bg-gray-300 mb-6" />
+            <hr className="bg-gray-300 mb-4" />
+
+            {/* Your Contribution */}
+            <div className="d-flex justify-content-center">
+              <p>Your contribution: {myContributeBalance}</p>
+            </div>
 
             {/* Unlocked KSM */}
             <div className="d-inline-flex justify-content-between mb-6">
