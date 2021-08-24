@@ -17,7 +17,7 @@
         },
         {
           "key": "Strict-Transport-Security",
-          "value": "max-age=3456000"
+          "value": "max-age=2592000"
         }
       ]
     }
