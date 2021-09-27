@@ -16,14 +16,14 @@ import ImgStaking2 from "./img/staking-2.jpg";
 import ImgInflation1 from "./img/inflation-1.jpg";
 import ImgInflation2 from "./img/inflation-2.jpg";
 
-import IMG_CRING from "./img/cring.png";
+import IMG_CRAB from "./img/crab.png";
 import IMG_CKTON from "./img/ckton.png";
 
 
 
 function Home() {
   const emptyTokenInfo = {
-    CRING: {
+    CRAB: {
       maxSupply: "10000000000000000000", // Total Supply
       availableBalance: "", // Circulating Supply
       totalIssuance: "", // Total Supply
@@ -45,7 +45,7 @@ function Home() {
       setIsLoaded(true);
 
       setTokenInfo({
-        CRING: {
+        CRAB: {
           availableBalance: detail.CRING.available_balance,
           totalIssuance: detail.CRING.total_issuance,
           maxSupply: "10000000000000000000",
@@ -124,7 +124,7 @@ function Home() {
 
               {/* Text  */}
               <p className="fs-lg text-gray-700 mb-7 mb-md-9">
-                Crab Network will distribute CRINGs as an incentive to
+                Crab Network will distribute CRABs as an incentive to
                 the participants of Staking. The process of Staking can also be
                 understood as the POS mining process, where the miner obtains
                 Staking energy by staking tokens. According to complexity,
@@ -162,8 +162,8 @@ function Home() {
 
                   {/* Text  */}
                   <p className="text-muted">
-                    If users start to retrieve the CRINGs from Staking, the
-                    mining will stop, and the CRINGs will take 14 days to fully
+                    If users start to retrieve the CRABs from Staking, the
+                    mining will stop, and the CRABs will take 14 days to fully
                     unbond.
                   </p>
 
@@ -206,7 +206,7 @@ function Home() {
 
                   {/* Text  */}
                   <p className="text-muted">
-                    During the locked period, users cannot unlock their CRINGs.
+                    During the locked period, users cannot unlock their CRABs.
                     Unless they utilise triple the amount of CKTONs as penalty.
                   </p>
 
@@ -253,33 +253,33 @@ function Home() {
                   <div className="row">
                     <div className="col-3 d-flex flex-column align-items-center justify-content-center">
                       <img
-                        src={IMG_CRING}
+                        src={IMG_CRAB}
                         width="56"
                         className="rounded mx-auto d-block"
                         alt="..."
                       />
-                      <h3 className="mt-4">CRING</h3>
+                      <h3 className="mt-4">CRAB</h3>
                     </div>
                     <div className="col-9 d-flex ">
                       <div className="row flex-column justify-content-between">
-                        <div>CRING is the native token of Crab Network</div>
+                        <div>CRAB is the native token of Crab Network</div>
                         <div>
                           <div className="d-flex flex-row justify-content-between ">
                             <p className="mb-0">Max Supply</p>
                             {isLoaded ? <p className="mb-0">
-                              {formatBalance(tokenInfo.CRING.maxSupply)}
+                              {formatBalance(tokenInfo.CRAB.maxSupply)}
                             </p> : <Loading/>}
                           </div>
                           <div className="d-flex flex-row justify-content-between">
                             <p className="mb-0">Circulating Supply</p>
                             {isLoaded ? <p className="mb-0">
-                              {formatBalance(tokenInfo.CRING.availableBalance)}
+                              {formatBalance(tokenInfo.CRAB.availableBalance)}
                             </p> : <Loading/>}
                           </div>
                           <div className="d-flex flex-row justify-content-between">
                             <p className="mb-0">Total Supply</p>
                             {isLoaded ? <p className="mb-0">
-                              {formatBalance(tokenInfo.CRING.totalIssuance)}
+                              {formatBalance(tokenInfo.CRAB.totalIssuance)}
                             </p> : <Loading/>}
                           </div>
                         </div>
@@ -308,7 +308,7 @@ function Home() {
                     <div className="col-9 d-flex ">
                       <div className="row flex-column justify-content-between">
                         <div>
-                          CKTON is a derivative commitment token of CRING, which
+                          CKTON is a derivative commitment token of CRAB, which
                           encourages long-term involvement.
                         </div>
                         <div>
@@ -348,14 +348,14 @@ function Home() {
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-7 text-center">
               {/* Heading  */}
-              <h2 className="fw-bold">CRING Inflation Model</h2>
+              <h2 className="fw-bold">CRAB Inflation Model</h2>
 
               {/* Text  */}
               <p className="fs-lg text-muted mb-7 mb-md-9">
-                CRING has the same inflation model as RING, the total cap of the
+                CRAB has the same inflation model as RING, the total cap of the
                 block reward is adjusted once a year. The total number of
                 hard-cap for RING is 10 billion. The following figure shows the
-                CRING’s inflation model.
+                CRAB’s inflation model.
               </p>
             </div>
           </div>

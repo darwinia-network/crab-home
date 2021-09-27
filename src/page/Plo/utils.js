@@ -5,8 +5,6 @@ import Bignumber from "bignumber.js";
 const TEN = new Bignumber(10);
 const DECIMAL = 12;
 const UNIT = "KSM";
-// const DECIMAL = 9;
-// const UNIT = "CRING";
 
 export function formatKSMBalance(balance, withUnit = UNIT) {
   return formatBalance(balance, {
