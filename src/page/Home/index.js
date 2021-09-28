@@ -240,15 +240,15 @@ function Home() {
                 <div className="img-fluid mb-5 mb-md-6 svg-shim">
                   {/* {{> logotype/airbnb}} */}
                   <img
-                    src="../../img/crab/cring.png"
-                    alt="CRING TOKEN"
+                    src="../../img/crab/crab.png"
+                    alt="CRAB TOKEN"
                     width="120px"
                   />
                 </div>
 
                 {/* Text */}
                 <p className="lead text-gray-700 mb-5 mb-md-7">
-                  The native tokens for Crab Network is CRING, CRING can be used
+                  The native tokens for Crab Network is CRAB, CRAB can be used
                   as gas for transactions. Gas include transaction fees,
                   contract execution fees, network bandwidth charges, storage
                   fees, and more.
@@ -281,7 +281,7 @@ function Home() {
                 {/* Text*/}
                 <p className="lead text-gray-700 mb-5 mb-md-7">
                   To encourage users to make long term commitments, users can
-                  choose to lock CRING for 3 - 36 months in the process of
+                  choose to lock CRAB for 3 - 36 months in the process of
                   Staking, and the system will offer a CKTON token as reward for
                   users participating in Staking.
                 </p>

@@ -686,11 +686,11 @@ function Home() {
               </div>
 
               {/* Heading */}
-              <h3>CRING + RING Rewards</h3>
+              <h3>CRAB + RING Rewards</h3>
 
               {/* Text */}
               <p className="text-muted mb-6 mb-md-0">
-                Totally 240,000,000 CRING and 6,000,000 RING rewards will be
+                Totally 240,000,000 CRAB and 6,000,000 RING rewards will be
                 distributed to users according to the number of KSM they
                 supported. 30% of them will be unlocked, 70% will vest for 48
                 weeks.
