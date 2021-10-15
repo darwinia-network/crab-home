@@ -39,15 +39,14 @@ function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    axios.get("https://crab.subscan.io/api/scan/token").then((response) => {
-      console.log(response);
+    axios.get("https://crab.api.subscan.io/api/scan/token").then((response) => {
       const detail = response.data.data.detail;
       setIsLoaded(true);
 
       setTokenInfo({
         CRAB: {
-          availableBalance: detail.CRING.available_balance,
-          totalIssuance: detail.CRING.total_issuance,
+          availableBalance: detail.CRAB.available_balance,
+          totalIssuance: detail.CRAB.total_issuance,
           maxSupply: "10000000000000000000",
         },
         CKTON: {
@@ -56,8 +55,8 @@ function Home() {
           maxSupply: "",
         }
       });
-    }).catch((error) => {
-      console.log('fetch https://crab.subscan.io/api/scan/token error:', error);
+    }).catch((err) => {
+      console.error(err);
       setIsLoaded(true);
     });
   }, []);
