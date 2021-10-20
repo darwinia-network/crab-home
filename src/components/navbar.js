@@ -58,14 +58,14 @@ function Navbar({ classList, container, button }) {
               </Link>
             </li>
 
-            {/* <li className="nav-item dropdown">
+            <li className="nav-item dropdown">
               <Link
                 className="nav-link"
                 to="/plo"
               >
                 PLO
               </Link>
-            </li> */}
+            </li>
 
             <li className="nav-item dropdown">
               <a

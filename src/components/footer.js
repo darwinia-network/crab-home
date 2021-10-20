@@ -109,11 +109,11 @@ function Footer({ classList, container, button }) {
                   Economic
                 </a>
               </li>
-              {/* <li className="mb-3">
+              <li className="mb-3">
                 <a href="/plo" className="text-reset">
                   PLO
                 </a>
-              </li> */}
+              </li>
 
             </ul>
           </div>
