@@ -65,7 +65,7 @@ import ThanksModal from "./components/thanks-modal";
 
 const cx = classNames.bind(styles);
 
-const PARA_ID = 2003;
+const PARA_ID = 2015;
 const T1_BLOCK_NUMBER = 8263710;
 const LOCAL_STORAGE_CURRENT_ADDRESS_KEY = stringToHex("plo current address");
 
@@ -338,7 +338,9 @@ const PloContribute = () => {
       if (currentAccount && currentAccount.address === node.id) {
         myContribute = nodeContributedTotalBN;
       }
-      top5contribute = top5contribute.add(nodeContributedTotalBN);
+      if (nodeContributedTotalBN.gte(DOT_TO_ORIG.muln(BTC_THRESHOLD))) {
+        top5contribute = top5contribute.add(nodeContributedTotalBN);
+      }
     }
 
     if (
@@ -679,13 +681,13 @@ const PloContribute = () => {
                       warning:
                         (inputDot.length &&
                           0 <= Number(inputDot) &&
-                          Number(inputDot) < 5) ||
+                          Number(inputDot) < 0.1) ||
                         insufficientBalance,
                     })}
                   >
                     {insufficientBalance
                       ? "Insufficient balance"
-                      : "Min contribution: 5 KSM"}
+                      : "Min contribution: 0.1 KSM"}
                   </span>
                   <span className={cx("my-available-dot")}>
                     Available:{" "}
@@ -1356,7 +1358,7 @@ const PloContribute = () => {
         />
 
         <Fade bottom fraction={0.1} duration={1000} distance={"50px"}>
-          <p className={cx("all-right")}>Copyright@2021 Darwinia Network</p>
+          <p className={cx("all-right")}>Copyright@2021 Crab Network</p>
         </Fade>
       </Container>
 
