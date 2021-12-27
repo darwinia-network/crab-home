@@ -1,0 +1,139 @@
+.main {
+  position: relative;
+  padding-top: 20px;
+  background: #eaeaf3;
+}
+
+.magic-01 {
+  background: linear-gradient(344.64deg, #ff0050 7.81%, #7000ff 68.09%, #0027ff 92.19%);
+  opacity: 0.1;
+  filter: blur(100px);
+  position: absolute;
+  width: 522px;
+  height: 522px;
+  left: 1188px;
+  top: -141px;
+  z-index: -1;
+
+  @media screen and (max-width: 1700px) {
+    width: 400px;
+    height: 400px;
+    left: 1100px;
+  }
+
+  @media screen and (max-width: 1536px) {
+    width: 380px;
+    height: 380px;
+    left: 900px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    width: 300px;
+    height: 300px;
+    left: 720px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.magic-02 {
+  position: absolute;
+  width: 522px;
+  height: 522px;
+  left: -205px;
+  top: 3993px;
+  background: linear-gradient(344.64deg, #ff0050 7.81%, #7000ff 68.09%, #0027ff 92.19%);
+  opacity: 0.1;
+  filter: blur(100px);
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.magic-03 {
+  height: 515px;
+  position: absolute;
+  top: 27.85%;
+  bottom: 62.35%;
+  filter: drop-shadow(11px 10px 11px rgba(158, 64, 159, 0.322334));
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.magic-04 {
+  height: 515px;
+  position: absolute;
+  left: auto;
+  right: 0;
+  top: 34.23%;
+  bottom: 55.97%;
+  filter: drop-shadow(11px 10px 11px rgba(158, 64, 159, 0.322334));
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.magic-05 {
+  height: 176px;
+  position: absolute;
+  width: 186px;
+  height: 176px;
+  left: 67px;
+  top: 3485px;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.contribute-now {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.join-our-crowdloan-link {
+  background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+  border-radius: 10px;
+  height: 40px;
+  width: 174px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  > span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #ffffff;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 48%;
+  }
+}
+
+.footer-allright {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #555555;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: {
+    top: 20px;
+    bottom: 40px;
+  }
+}

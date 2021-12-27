@@ -1,0 +1,69 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: IBM Plex Sans;
+
+  @media screen and (max-width: 1024px) {
+    justify-content: flex-start;
+  }
+}
+
+.left,
+.right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right {
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.logo {
+  height: 26px;
+  margin-right: 10px;
+
+  @media screen and (max-width: 1024px) {
+    height: 14px;
+  }
+}
+
+.plo-btn {
+  background: linear-gradient(315.52deg, #ff0050 0.88%, #7000ff 71.7%, #0027ff 100%);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 14px;
+
+  > span {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 23px;
+    color: #ffffff;
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding: 3px 8px;
+
+    > span {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}
+
+.link {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+  margin-left: 40px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
