@@ -1,3 +1,5 @@
+@import "../../../theme//scss/project-var";
+
 .main {
   margin-top: 130px;
   margin-bottom: 240px;
@@ -77,9 +79,9 @@
   height: 45px;
   background: linear-gradient(
     315.52deg,
-    rgba(255, 0, 80, 0.05) 0.88%,
-    rgba(111, 0, 255, 0.05) 71.7%,
-    rgba(0, 38, 255, 0.05) 100%
+    rgba(236, 55, 131, 0.05) 0.88%,
+    rgba(236, 55, 131, 0.05) 71.7%,
+    rgba(236, 55, 131, 0.05) 100%
   );
   border-radius: 22px;
 
@@ -94,9 +96,9 @@
   height: 33px;
   background: linear-gradient(
     315.52deg,
-    rgba(255, 0, 80, 0.05) 0.88%,
-    rgba(111, 0, 255, 0.05) 71.7%,
-    rgba(0, 38, 255, 0.05) 100%
+    rgba(236, 55, 131, 0.05) 0.88%,
+    rgba(236, 55, 131, 0.05) 71.7%,
+    rgba(236, 55, 131, 0.05) 100%
   );
   border-radius: 40px;
   top: 100px;
@@ -110,7 +112,7 @@
   position: absolute;
   left: 5%;
   top: 20px;
-  background: linear-gradient(315deg, rgba(255, 0, 80, 0.2), rgba(112, 0, 255, 0.2), rgba(0, 39, 255, 0.2));
+  background: $main;
   border-radius: 68px;
   height: 4px;
   width: 90%;
@@ -120,7 +122,7 @@
   position: absolute;
   left: 5%;
   top: 117px;
-  background: linear-gradient(315deg, rgba(255, 0, 80, 0.2), rgba(112, 0, 255, 0.2), rgba(0, 39, 255, 0.2));
+  background: $main;
   border-radius: 68px;
   height: 2px;
 
@@ -135,7 +137,12 @@
   height: 26px;
   background-clip: content-box, border-box;
   background-image: linear-gradient(white, white),
-    linear-gradient(315deg, rgba(255, 0, 80, 1), rgba(112, 0, 255, 1), rgba(0, 39, 255, 1));
+    linear-gradient(
+      315deg,
+      rgba(236, 55, 131, 1),
+      rgba(236, 55, 131, 1),
+      rgba(236, 55, 131, 1)
+    );
   background-origin: border-box;
   border: solid 2px transparent;
   border-radius: 30px;
@@ -149,7 +156,12 @@
   height: 14px;
   background-clip: content-box, border-box;
   background-image: linear-gradient(white, white),
-    linear-gradient(315deg, rgba(255, 0, 80, 1), rgba(112, 0, 255, 1), rgba(0, 39, 255, 1));
+    linear-gradient(
+      315deg,
+      rgba(236, 55, 131, 1),
+      rgba(236, 55, 131, 1),
+      rgba(236, 55, 131, 1)
+    );
   background-origin: border-box;
   border: solid 1px transparent;
   border-radius: 30px;
@@ -167,7 +179,12 @@
   height: 16px;
   width: 16px;
   border-radius: 30px;
-  background: linear-gradient(315.52deg, #ff0050 0.88%, #7000ff 71.7%, #0027ff 100%);
+  background: linear-gradient(
+    315deg,
+    rgba(236, 55, 131, 1),
+    rgba(236, 55, 131, 1),
+    rgba(236, 55, 131, 1)
+  );
 }
 
 .the-time {

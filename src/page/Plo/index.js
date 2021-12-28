@@ -41,6 +41,10 @@ const PloPage = () => {
         <FourCards />
       </Fade>
 
+      <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+        <Timeline />
+      </Fade>
+
       <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
         <Channels />
       </Fade>
@@ -59,10 +63,6 @@ const PloPage = () => {
             <span>Contribute now</span>
           </Link>
         </div>
-      </Fade>
-
-      <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
-        <Timeline />
       </Fade>
 
       <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
