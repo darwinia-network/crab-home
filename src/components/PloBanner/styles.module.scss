@@ -17,7 +17,6 @@ $main: #5c33d5;
   justify-content: space-around;
   align-items: center;
   background: $main;
-  color: #fff;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -54,6 +53,7 @@ $main: #5c33d5;
     font-weight: 600;
     font-size: 20px;
     line-height: 26px;
+    color: #fff;
 
     @media screen and (max-width: 768px) {
       text-align: center;
@@ -65,6 +65,7 @@ $main: #5c33d5;
     font-weight: normal;
     font-size: 16px;
     line-height: 21px;
+    color: #fff;
   }
 }
 

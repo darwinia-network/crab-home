@@ -2,19 +2,18 @@ import React from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames/bind";
 import Fade from "react-reveal/Fade";
-import { Link } from "react-router-dom";
+import Footer from "../../components/footer";
 
 import Header from "./Header";
 import Welcome from "./Welcome";
-import Channels from "./Channels";
-import Crowloan from "./Crowloan";
-import Auction from "./Auction";
 import Work from "./Work";
 import Contribute from "./Contribute";
 import FourCards from "./FourCards";
 import Timeline from "./Timeline";
 import FAQs from "./FAQs";
 import Waitlist from "./Waitlist";
+import { Container } from "react-bootstrap";
+import crabBg from "./img/Desktop0015 2.png";
 
 const cx = classNames.bind(styles);
 
@@ -45,36 +44,23 @@ const PloPage = () => {
         <Timeline />
       </Fade>
 
-      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
-        <Channels />
-      </Fade>
+      <Container fluid className={cx("wrapper")}>
+        <img alt="..." src={crabBg} />
+        <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+          <FAQs />
+        </Fade>
 
-      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
-        <Crowloan />
-      </Fade>
+        <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+          <Waitlist />
+        </Fade>
 
-      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
-        <Auction />
-      </Fade>
-
-      <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
-        <div className={cx("contribute-now")}>
-          <Link className={cx("join-our-crowdloan-link")} to="plo_contribute">
-            <span>Contribute now</span>
-          </Link>
-        </div>
-      </Fade>
+        <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+          <p className={cx("footer-allright")}>Copyright@2021 Crab Network</p>
+        </Fade>
+      </Container>
 
       <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
-        <FAQs />
-      </Fade>
-
-      <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
-        <Waitlist />
-      </Fade>
-
-      <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
-        <p className={cx("footer-allright")}>Copyright@2021 Darwinia Network</p>
+        <Footer classList="bg-dark" />
       </Fade>
     </div>
   );

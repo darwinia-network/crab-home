@@ -66,7 +66,7 @@ const Welcome = () => {
         ))}
       </div>
 
-      <div className={cx("main-border")}>
+      <div className={cx("main-border")}  id="crowdloan-section">
         <div className={cx("intro-kusama")}>
           <img alt="..." src={kusamaBg} />
           <div>

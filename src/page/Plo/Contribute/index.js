@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 const Contribute = () => {
   return (
     <Container>
-      <div className={cx("main")}>
+      <div className={cx("main")} id="contribute-section">
         <h3 className={cx("title")}>Contribute to Crab Crowdloan</h3>
         <h5 className={cx("sub-title")}>
           Contribute your KSM, unlock 200,000,000 CRAB and 8,000 CKTON bonus,

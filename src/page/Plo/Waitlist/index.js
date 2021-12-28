@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import classNames from "classnames/bind";
 import { Container, Form, FormControl } from "react-bootstrap";
 
-import darwiniaIcon from "./img/darwinia.png";
+import crabIcon from "./img/crab.png";
 import twitterIcon from "./img/twitter.png";
 import mediumIcon from "./img/medium.png";
 import telegramIcon from "./img/telegram.png";
@@ -22,13 +22,16 @@ const Waitlist = () => {
 
   return (
     <Container>
-      <div className={cx("main")} id="waitlist-section">
-        <img alt="..." src={darwiniaIcon} className={cx("darwinia-icon")} />
+      <div className={cx("main")}>
+        <img alt="..." src={crabIcon} className={cx("darwinia-icon")} />
+
         <div className={cx("right-part")}>
           <h3 className={cx("join-the-waitlist")}>Join the waitlist</h3>
           <p className={cx("desc-join")}>
-            Get alerted when our auction is about to start & receive emails for important updates and events.
+            Get alerted when our auction is about to start & receive emails for
+            important updates and events.
           </p>
+
           <Form
             action="https://network.us6.list-manage.com/subscribe/post?u=eb1c779b75a344e2d52755879&amp;id=70a65557b6"
             method="post"
@@ -70,7 +73,8 @@ const Waitlist = () => {
             ></Form.Text>
           </Form>
           <p className={cx("desc-input")}>
-            By submitting your email, you are consenting to receive future emails from Darwinia Network.
+            By submitting your email, you are consenting to receive future
+            emails from Crab Network.
           </p>
           <div className={cx("contact-list")}>
             <a
