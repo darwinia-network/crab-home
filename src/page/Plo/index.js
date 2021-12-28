@@ -16,39 +16,17 @@ import Timeline from "./Timeline";
 import FAQs from "./FAQs";
 import Waitlist from "./Waitlist";
 
-import magic03 from "./img/magic-03.png";
-import magic04 from "./img/magic-04.png";
-import magic05 from "./img/magic-05.png";
-
 const cx = classNames.bind(styles);
 
 const PloPage = () => {
   return (
     <div className={cx("main")}>
-      <div className={cx("magic-01")} />
-      <div className={cx("magic-02")} />
-      <img className={cx("magic-03")} alt="..." src={magic03} />
-      <img className={cx("magic-04")} alt="..." src={magic04} />
-      <img className={cx("magic-05")} alt="..." src={magic05} />
-
       <Fade bottom fraction={0.1} duration={1000} distance={"50px"}>
         <Header />
       </Fade>
 
       <Fade bottom fraction={0.2} duration={1500} distance={"50px"}>
         <Welcome />
-      </Fade>
-
-      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
-        <Channels />
-      </Fade>
-
-      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
-        <Crowloan />
-      </Fade>
-
-      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
-        <Auction />
       </Fade>
 
       <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
@@ -61,6 +39,18 @@ const PloPage = () => {
 
       <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
         <FourCards />
+      </Fade>
+
+      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
+        <Channels />
+      </Fade>
+
+      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
+        <Crowloan />
+      </Fade>
+
+      <Fade bottom fraction={0.2} duration={1600} distance={"50px"}>
+        <Auction />
       </Fade>
 
       <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>

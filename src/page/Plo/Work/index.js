@@ -25,32 +25,39 @@ const Work = () => {
       icon: icon01,
       title: "Preparation",
       describe:
-        "The DOT used for participation must be unbonded, that is, not locked for any reason (including staking, vesting, and governance). You need to unbond your DOT before the crowdloan.",
+        "The KSM used for participation must be unbonded, that is, not locked for any reason (including staking, vesting, and governance). You need to unbond your KSM before the crowdloan.",
     },
     {
       icon: icon02,
       title: "Contribution",
       describe:
-        "Stake your DOT token through this webpage or partner exchange. Your needed DOT token should be stored either in a non-custodial (non-exchange) address, or through a partner exchange.",
+        "Stake your KSM token through this webpage or partner exchange. Your needed KSM token should be stored either in a non-custodial (non-exchange) address or through a partner exchange.",
     },
     {
       icon: icon03,
       title: "Rewards",
       describe:
-        "Stake your DOT token through this webpage or partner exchange. Your needed DOT token should be stored either in a non-custodial (non-exchange) address, or through a partner exchange.",
+        "Enjoy the high return of CRAB and CKTON tokens, paid as a percentage of your contribution to the pool, and regularly distributed to your wallet, also BTC and Metaverse NFT Package waiting for you.",
     },
   ];
 
   return (
-    <Container>
-      <div className={cx("main")}>
-        <h3 className={cx("title")}>How does a Parachain Crowdloan work?</h3>
-        <div className={cx("item-container")}>
-          {itemData.map((data, index) => (
-            <Item key={index} icon={data.icon} title={data.title} describe={data.describe} />
-          ))}
+    <Container fluid className={cx("wrapper")}>
+      <Container>
+        <div className={cx("main")}>
+          <h3 className={cx("title")}>How does a Parachain Crowdloan work?</h3>
+          <div className={cx("item-container")}>
+            {itemData.map((data, index) => (
+              <Item
+                key={index}
+                icon={data.icon}
+                title={data.title}
+                describe={data.describe}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </Container>
     </Container>
   );
 };

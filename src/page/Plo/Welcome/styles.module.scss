@@ -1,11 +1,4 @@
-$main: #ec3783;
-
-@mixin main-border {
-  border: 2px solid transparent;
-  border-radius: 40px;
-  background: linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(to right, #ec3783, #5745de) border-box;
-}
+@import '../../../theme/scss/project-var';
 
 .main {
   display: flex;
@@ -128,11 +121,11 @@ $main: #ec3783;
 
 .intro {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
   img {
-    margin-right: 0.5em;
+    margin-right: 10px;
     width: 80px;
     height: 80px;
   }
@@ -140,7 +133,7 @@ $main: #ec3783;
   > div {
     display: flex;
     align-items: flex-start;
-    height: 110px;
+    max-width: 33%;
 
     &:nth-child(1) {
       padding-right: 0.5em;
@@ -162,6 +155,7 @@ $main: #ec3783;
 
     > div {
       flex-direction: column;
+      max-width: 100%;
       flex: 1;
     }
   }
@@ -174,8 +168,8 @@ h5 {
 }
 
 p {
-  font-size: 14px;
   color: #555;
+  line-height: 21px;
 }
 
 .intro-kusama {
@@ -231,6 +225,8 @@ p {
 
 
 .main-border {
+  margin-bottom: 70px;
+
   @include main-border();
   @media screen and (max-width: 1024px) {
     border: none; 

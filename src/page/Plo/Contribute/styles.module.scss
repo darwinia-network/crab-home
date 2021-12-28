@@ -1,5 +1,5 @@
 .main {
-  margin-top: 150px;
+  margin-top: 70px;
   margin-bottom: 20px;
 
   @media screen and (max-width: 1024px) {
@@ -20,11 +20,11 @@
   font-size: 16px;
   line-height: 21px;
   text-align: center;
-  color: #555555;
   max-width: 740px;
   margin: auto;
   margin-top: 26px;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
+  white-space: normal;
 
   @media screen and (max-width: 1024px) {
     margin-bottom: 60px;
@@ -32,14 +32,14 @@
 }
 
 .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 425px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 2em; 
+  align-items: baseline;
 
   @media screen and (max-width: 1024px) {
-    flex-direction: column;
-    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4);
   }
 }
 
@@ -90,8 +90,10 @@
 .item {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+
+  img {
+    margin: 0 auto;
+  }
 
   @media screen and (max-width: 1024px) {
     align-items: center;
@@ -108,7 +110,7 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 21px;
-    color: #000000;
+    color: #1e3676;
 
     > a {
       font-weight: normal;
