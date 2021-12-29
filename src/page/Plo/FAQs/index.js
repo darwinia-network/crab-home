@@ -40,7 +40,7 @@ const FAQs = () => {
             <p className={cx("content-text")}>
               The batch 5 Kusama parachain auction will start on block
               #10,887,000, and Crab Network will participate in this batch 5
-              Kusama slot auction. Referendum #39
+              Kusama slot auction.
             </p>
           </Collapse.Panel>
           <Collapse.Panel

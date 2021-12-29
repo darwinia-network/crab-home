@@ -65,9 +65,9 @@ const FourCards = () => {
                 target="_blank"
                 href="https://www.evolution.land/"
               >
-                Evolution{" "}
+                Evolution Land{" "}
               </a>
-              Land Metaverse NFT Package, including Land, Apostle, Drills, and
+              Metaverse NFT Package, including Land, Apostle, Drills, and
               treasure boxes, when your contribution share is greater or equal
               to 1 KSM.
               <br />
@@ -94,7 +94,7 @@ const FourCards = () => {
               target="_blank"
               href="https://darwinianetwork.medium.com/support-darwinia-while-investing-in-the-next-generation-infrastructure-for-the-web3-0-metaverse-aaf3defb234a"
             >
-              Learn more
+              {/* Learn more */}
             </a>
           </div>
         </div>

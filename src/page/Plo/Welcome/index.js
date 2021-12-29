@@ -47,9 +47,9 @@ const Welcome = () => {
             Metaverse.
           </p>
           <div className={cx("link-wrap")}>
-            <Link className={cx("join-our-crowdloan-link")} to="plo_contribute">
-              <span>Contribute now</span>
-            </Link>
+            <a className={cx("join-our-crowdloan-link")} href="#waitlist-section">
+              <span>Sign up for waitlist</span>
+            </a>
           </div>
         </div>
       </div>

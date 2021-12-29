@@ -66,12 +66,12 @@ const PloBanner = () => {
               <span role="img" aria-label="fire">
                 🔥
               </span>{" "}
-              We are launching our Parachain Crowdloan on Polkadot.
+              We are launching our Parachain Crowdloan on Kusama. 
             </h5>
             <p className={cx("desc")}>
-              Contribute your DOT to help build a Web3.0 Bridge Hub by joining
-              our crowdloan, unlock RING and KTON bonus, also BTC and Metaverse
-              limited edition commemorative NFT waiting for you.
+              Contribute your KSM to help build a Web3.0 Bridge Hub by joining
+              our crowdloan, unlock CRAB and CKTON bonus, also BTC and Metaverse
+              NFT Package waiting for you.
             </p>
           </div>
           <Link className={cx("banner-link")} to="plo">

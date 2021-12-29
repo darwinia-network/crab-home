@@ -34,20 +34,21 @@ const Contribute = () => {
 
           <div className={cx("item")}>
             <img alt="..." src={ring} />
-            <h5 className={cx("item-title")}>8,000 KTON</h5>
+            <h5 className={cx("item-title")}>200,000,000 CRAB</h5>
             <p className={cx("item-desc")}>
-              CKTON is the commitment token of Crab Network. 8,000 CKTON prize
-              pool will be linearly rewarded after Crab Networ wins the auction.
+              CRAB is Crab Network native token, and 10% CRAB rewards will be
+              immediately released after Crab Network wins the auction, and the
+              other 90% CRAB rewards will be linearly released.
             </p>
           </div>
 
           <div className={cx("item")}>
             <img alt="..." src={kton} />
-            <h5 className={cx("item-title")}>200,000,000 RING</h5>
+            <h5 className={cx("item-title")}>8,000 CKTON</h5>
             <p className={cx("item-desc")}>
-              CRAB is Crab Network native token, and 10% CRAB rewards will be
-              immediately released after Crab Network wins the auction, and the
-              other 90% CRAB rewards will be linearly released.
+              CKTON is the commitment token of Crab Network. 8,000 CKTON prize
+              pool will be linearly rewarded after Crab Network wins the
+              auction.
             </p>
           </div>
 

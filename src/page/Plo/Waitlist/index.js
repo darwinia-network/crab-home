@@ -22,7 +22,7 @@ const Waitlist = () => {
 
   return (
     <Container>
-      <div className={cx("main")}>
+      <div className={cx("main")} id="waitlist-section">
         <img alt="..." src={crabIcon} className={cx("darwinia-icon")} />
 
         <div className={cx("right-part")}>
