@@ -134,7 +134,7 @@ function Grants() {
               <div className="text-center text-md-start">
                 <a
                   href="https://forms.gle/MwiBAWbmcj5GLssm8"
-                  className="btn btn-primary-soft lift"
+                  className="btn btn-primary-soft lift mx-auto mx-md-0"
                   style={{
                     display: "flex",
                     flexDirection: "row",
@@ -174,10 +174,10 @@ function Grants() {
             <div className="col-12 col-lg-6 d-lg-flex mb-4">
               <div data-aos="fade-up">
                 <div className="row">
-                  <div className="col-md-2 position-relative">
+                  <div className="col-3 col-md-4 position-relative">
                     <img
                       src={png46}
-                      className={`position-absolute mt-11 right-0 ${styles.mainBorder}`}
+                      className={`position-absolute mt-9 mt-md-11 right-0 ${styles.mainBorder}`}
                       alt="..."
                       style={{
                         width: 80,
@@ -188,7 +188,7 @@ function Grants() {
                       }}
                     />
                   </div>
-                  <div className="col-md-8">
+                  <div className="col-9 col-md-8 offset-3 offset-md-0">
                     <div className="py-7 py-md-9">
                       <h4 className="fw-bold">Purpose</h4>
 
@@ -203,9 +203,9 @@ function Grants() {
               </div>
             </div>
             <div className="col-12 col-lg-6 d-lg-flex mb-4">
-              <div className="overflow-hidden" data-aos="fade-up">
+              <div className="" data-aos="fade-up">
                 <div className="row">
-                  <div className="col-md-4">
+                  <div className="col-3 col-md-4">
                     <img
                       src={png47}
                       className={`position-absolute right-0 mt-11 ${styles.mainBorder}`}
@@ -219,7 +219,7 @@ function Grants() {
                       }}
                     />
                   </div>
-                  <div className="col-md-8">
+                  <div className="col-9 col-md-8 offset-3 offset-md-0">
                     <div className="py-7 py-md-9">
                       <h4 className="fw-bold">Mission</h4>
 
@@ -240,19 +240,19 @@ function Grants() {
       <section className="py-8">
         <div className="row">
           <div
-            className={`col-6 offset-3 ${styles.mainBorder}`}
+            className={`col-10 col-md-6 offset-1 offset-md-3 ${styles.mainBorder}`}
             style={{ borderRadius: 40 }}
           >
-            <div className="text-center text-lg-start" data-aos="fade-up">
+            <div className="text-start" data-aos="fade-up">
               <div className="row">
-                <div className="col-md-4 position-relative">
+                <div className="col-12 col-md-4 position-relative">
                   <img
                     src={png48}
                     className="h-75 position-absolute left-0 mt-6"
                     alt="..."
                   />
                 </div>
-                <div className="col-md-6 offset-2">
+                <div className="col-12 col-md-6 offset-0 offset-md-2">
                   <div className="card-body py-7 py-md-9">
                     <h4 className="fw-bold">Grants Amount</h4>
 
@@ -293,7 +293,7 @@ function Grants() {
                       style={{ borderRadius: 38 }}
                     />
                   </div>
-                  <div className="col-12 col-md-7 offset-1">
+                  <div className="col-12 col-md-7 offset-md-1">
                     <a className="card-body" href="#!">
                       <h3>Tooling and Infrastructure</h3>
 
@@ -311,7 +311,7 @@ function Grants() {
               <div className="mb-6">
                 <div className="row gx-0">
                   <div
-                    className={`col-12 col-md-4 order-md-1 offset-1 ${styles.mainBorder}`}
+                    className={`col-12 col-md-4 order-md-1 offset-md-1 ${styles.mainBorder}`}
                   >
                     <img
                       src={png44}
@@ -349,7 +349,7 @@ function Grants() {
             </div>
           </div>
           <div className="row">
-            <div className="col-12 col-md-6 col-lg-4 d-flex">
+            <div className="col-12 col-md-6 col-lg-4 mb-6 mb-md-8 d-flex">
               <div
                 className={`card shadow-light-lg lift lift-lg ${styles.mainBorder} overflow-hidden`}
               >
@@ -366,7 +366,7 @@ function Grants() {
                 </a>
               </div>
             </div>
-            <div className="col-12 col-md-6 col-lg-4 d-flex">
+            <div className="col-12 col-md-6 col-lg-4 mb-6 mb-md-8 d-flex">
               <div
                 className={`card shadow-light-lg lift lift-lg ${styles.mainBorder} overflow-hidden`}
               >
@@ -383,8 +383,7 @@ function Grants() {
                 </a>
               </div>
             </div>
-
-            <div className={`col-12 col-lg-4 d-flex`}>
+            <div className="col-12 col-md-6 col-lg-4 mb-6 mb-md-8 d-flex">
               <div
                 className={`card shadow-light-lg lift lift-lg ${styles.mainBorder} overflow-hidden`}
               >
