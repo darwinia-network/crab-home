@@ -267,7 +267,7 @@ function Home() {
                           className="rounded mx-auto d-block"
                           alt="..."
                         />
-                        <h3 className="mt-4 text-white">CRAB</h3>
+                        <h3 className="mt-4 text-white" style={{fontWeight: 800}}>CRAB</h3>
                       </div>
                       <div className="col-8 d-flex ">
                         <div className="row flex-column justify-content-between">
@@ -348,7 +348,7 @@ function Home() {
                           className="rounded mx-auto d-block"
                           alt="..."
                         />
-                        <h3 className="mt-4 text-white">CKTON</h3>
+                        <h3 className="mt-4 text-white" style={{fontWeight: 800}}>CKTON</h3>
                       </div>
                       <div className="col-8 d-flex ">
                         <div className="row flex-column justify-content-between">
