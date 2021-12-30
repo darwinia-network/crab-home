@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames/bind";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 import crab from "./img/crab.png";
 import contribute from "./img/contribute.png";
@@ -14,12 +13,12 @@ const cx = classNames.bind(styles);
 
 const intros = [
   {
-    img: contribute,
+    img: kusama,
     title: "What is Crowdloan？",
     text: "Understand Kusama Parachain Auction and Crab Crowdloan.",
   },
   {
-    img: kusama,
+    img: contribute,
     title: "Contribute to Crab Crowdloan",
     text:
       "Unlock 200,000,000 CRAB and 8,000 CKTON bonus, also BTC and Metaverse NFT Package waiting for you.",
