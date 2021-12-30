@@ -50,7 +50,7 @@ const Waitlist = () => {
                 placeholder="Enter your email"
                 aria-label="Enter your email"
                 aria-describedby="Enter your email"
-                style={{ borderRadius: "10px" }}
+                style={{ borderRadius: "10px", border: '1px solid #ccc', background: 'rgba(255, 255, 255, 0.5)' }}
               />
               <div
                 htmlFor="mce-EMAIL"

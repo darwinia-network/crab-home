@@ -10,17 +10,14 @@
     margin-top: 30px;
   }
 
-  & > img {
-    width: 565px;
-  }
-
   @media screen and (max-width: 1024px) {
     flex-direction: column;
   }
 }
 
 .bridge {
-  width: 578px;
+  width: 644px;
+  height: 410px;
 
   @media screen and (max-width: 1024px) {
     width: 345px;
@@ -97,7 +94,14 @@
 }
 
 .title-h2 {
+  font-family: IBM Plex Sans;
+  font-style: normal;
   font-weight: bold;
+  font-size: 46px;
+  line-height: 60px;
+
+  /* text */
+
   color: #1e3676;
 
   span {
@@ -138,7 +142,7 @@
   margin-bottom: 40px;
 
   img {
-    margin-right: 10px;
+    margin-right: 20px;
     width: 80px;
     height: 80px;
   }
@@ -178,6 +182,13 @@ h5 {
   font-weight: 600;
   white-space: nowrap;
   color: #1e3676;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  /* text */
 }
 
 p {
@@ -200,7 +211,7 @@ p {
   }
 
   & > div {
-    max-width: 250px;
+    max-width: 270px;
     padding: 1em 2em;
 
     &:nth-child(2) {

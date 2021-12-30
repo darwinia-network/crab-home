@@ -1,7 +1,7 @@
 @import "../../../theme/scss/project-var";
 
 .main {
-  margin-top: 60px;
+  margin-top: 44px;
   margin-bottom: 20px;
   padding: 48px 0;
   background: #ffffff;
@@ -12,7 +12,7 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 80px 50px;
+  padding: 30px 44px 50px;
 
   @include main-border();
 
@@ -27,6 +27,7 @@
 }
 
 .darwinia-icon {
+  width: 550px;
   @media screen and (max-width: 1280px) {
     display: none;
   }
@@ -136,7 +137,9 @@
   font-weight: normal;
   font-size: 10px;
   line-height: 13px;
-  
+  width: 90%;
+  height: 26px;
+
   color: #808080;
   margin-top: 20px;
 }
