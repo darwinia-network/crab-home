@@ -25,6 +25,16 @@
   margin-top: 26px;
   margin-bottom: 20px;
   white-space: normal;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+
+  /* text */
+
+  color: #1e3676;
 
   @media screen and (max-width: 1024px) {
     margin-bottom: 60px;
@@ -33,8 +43,8 @@
 
 .content {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-gap: 2em; 
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2em;
   align-items: baseline;
 
   @media screen and (max-width: 1024px) {
@@ -104,12 +114,31 @@
     font-size: 20px;
     line-height: 26px;
     color: #1e3676;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    /* identical to box height */
+
+    /* text */
+
+    color: #1e3676;
   }
 
   .item-desc {
     font-weight: normal;
     font-size: 16px;
     line-height: 21px;
+    color: #1e3676;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+
+    /* text */
+
     color: #1e3676;
 
     > a {

@@ -29,6 +29,15 @@
   padding: 30px;
   padding-bottom: 0;
   display: flex;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+
+  /* text */
+
+  color: #1e3676;
 
   @include main-border();
 
@@ -74,7 +83,15 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 21px;
-  color: #555555;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+
+  /* text */
+
+  color: #1e3676;
 
   > a {
     color: #0027ff;
@@ -128,4 +145,16 @@
   background: $main;
   color: #fff;
   align-self: flex-start;
+}
+
+p {
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+
+  /* text */
+
+  color: #1e3676;
 }

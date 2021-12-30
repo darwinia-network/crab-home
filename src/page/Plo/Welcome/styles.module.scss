@@ -1,11 +1,18 @@
-@import '../../../theme/scss/project-var';
+@import "../../../theme/scss/project-var";
 
 .main {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding-top: 80px;
   padding-bottom: 20px;
+
+  & > div {
+    margin-top: 30px;
+  }
+
+  & > img {
+    width: 565px;
+  }
 
   @media screen and (max-width: 1024px) {
     flex-direction: column;
@@ -123,6 +130,12 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 40px;
 
   img {
     margin-right: 10px;
@@ -133,7 +146,7 @@
   > div {
     display: flex;
     align-items: flex-start;
-    max-width: 33%;
+    max-width: 37%;
 
     &:nth-child(1) {
       padding-right: 0.5em;
@@ -178,6 +191,9 @@ p {
   border-radius: 38px;
   display: flex;
   flex-direction: row-reverse;
+  line-height: 21px;
+  margin: 10px;
+  padding-top: 20px;
 
   img {
     display: none;
@@ -223,12 +239,11 @@ p {
   }
 }
 
-
 .main-border {
   margin-bottom: 70px;
 
   @include main-border();
   @media screen and (max-width: 1024px) {
-    border: none; 
+    border: none;
   }
 }

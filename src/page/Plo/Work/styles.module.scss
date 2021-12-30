@@ -3,15 +3,15 @@
 .wrapper {
   background: linear-gradient(
     315.52deg,
-    rgba(255,0, 80, .1) 0.88%,
-    rgba(112,0, 255, .1) 71.7%,
-    rgba(0, 39, 255, .1) 100%
+    rgba(255, 0, 80, 0.1) 0.88%,
+    rgba(112, 0, 255, 0.1) 71.7%,
+    rgba(0, 39, 255, 0.1) 100%
   );
-  padding: 97px 0;
+  padding: 40px 0 97px 0;
 
   @media screen and (max-width: 1024px) {
     padding: 0;
-    background: none; 
+    background: none;
   }
 }
 
@@ -27,6 +27,13 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(50px);
   border-radius: 40px;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #1e3676;
+
   @include main-border();
 
   @media screen and (max-width: 1024px) {
@@ -82,13 +89,26 @@
     color: #1e3676;
     margin-top: 25px;
     margin-bottom: 10px;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    /* identical to box height */
+
+    color: #1e3676;
   }
 
   .item-desc {
+    font-family: IBM Plex Sans;
+    font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 21px;
-    color: #555555;
+
+    /* text */
+
+    color: #1e3676;
   }
 
   @media screen and (max-width: 1024px) {

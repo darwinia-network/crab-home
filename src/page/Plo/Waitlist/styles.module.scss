@@ -12,7 +12,7 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 30px 80px 50px;
 
   @include main-border();
 
@@ -50,13 +50,33 @@
   font-size: 30px;
   line-height: 39px;
   color: #1e3676;
+
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 39px;
+  /* identical to box height */
+
+  /* text */
+
+  color: #1e3676;
 }
 
 .desc-join {
   font-weight: normal;
   font-size: 16px;
   line-height: 21px;
-  color: #000000;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 40px;
+
+  /* text */
+
+  color: #1e3676;
 }
 
 .join-btn {
@@ -111,6 +131,14 @@
   font-size: 10px;
   line-height: 13px;
   color: #808080;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 13px;
+  
+  color: #808080;
+  margin-top: 20px;
 }
 
 .contact-list {
