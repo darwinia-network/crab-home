@@ -34,7 +34,11 @@ const FAQs = () => {
           className={cx("faqs-collapse")}
         >
           <Collapse.Panel
-            header="When will the batch 5 Kusama parachain auction start?"
+            header={
+              <div style={{ color: "#1e3676" }}>
+                When will the batch 5 Kusama parachain auction start?
+              </div>
+            }
             key="1"
           >
             <p className={cx("content-text")}>
@@ -44,7 +48,12 @@ const FAQs = () => {
             </p>
           </Collapse.Panel>
           <Collapse.Panel
-            header="Can I contribute to the Crab crowdloan before the auction starts?"
+            header={
+              <div style={{ color: "#1e3676" }}>
+                Can I contribute to the Crab crowdloan before the auction
+                starts?
+              </div>
+            }
             key="2"
           >
             <p className={cx("content-text")}>
@@ -54,15 +63,28 @@ const FAQs = () => {
               auction is first started, and continues to decline as the auction.
             </p>
           </Collapse.Panel>
-          <Collapse.Panel header="How can i contribute my KSM?" key="3">
+          <Collapse.Panel
+            header={
+              <div style={{ color: "#1e3676" }}>
+                How can i contribute my KSM?
+              </div>
+            }
+            key="3"
+          >
             <p className={cx("content-text")}>
               We will release the crowdloan entrance soon. You can contribute
-              your KSM on this page or go to the polkado {"{.js}"} app to finish
-              contributing your KSM. In the meantime, cooperating exchanges will
-              be good destinations to contribute your KSM too.
+              your KSM on this page or go to the{" "}
+              <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpub.elara.patract.io%2Fkusama#/parachains/crowdloadn">
+                polkadot {"{.js}"}
+              </a>{" "}
+              app to finish contributing your KSM. In the meantime, cooperating
+              exchanges will be good destinations to contribute your KSM too.
             </p>
           </Collapse.Panel>
-          <Collapse.Panel header="Is my KSM safe?" key="4">
+          <Collapse.Panel
+            header={<div style={{ color: "#1e3676" }}>Is my KSM safe?</div>}
+            key="4"
+          >
             <p className={cx("content-text")}>
               Yes. Your KSM will not leave your wallet and it will be locked in
               the crowdloan module of the Kusama network.

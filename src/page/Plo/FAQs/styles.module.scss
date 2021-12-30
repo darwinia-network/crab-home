@@ -22,14 +22,13 @@
   font-weight: 600;
   font-size: 30px;
   line-height: 39px;
-  color: #1e3676;
+  color: #1e3676 !important;
 }
 
 .content-text {
   font-weight: normal;
   font-size: 16px;
   line-height: 21px;
-  // color: #000000;
 
   > a {
     color: #0027ff;
@@ -51,7 +50,7 @@
 
   /* text */
 
-  color: #1e3676;
+  color: #1e3676 !important;
 }
 
 .faqs-collapse {
@@ -71,7 +70,7 @@
 
   /* text */
 
-  color: #1e3676;
+  color: #1e3676 !important;
 
   @include main-border();
 
