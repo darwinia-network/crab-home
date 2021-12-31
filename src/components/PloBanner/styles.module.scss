@@ -104,3 +104,29 @@ $main: #5c33d5;
     white-space: nowrap;
   }
 }
+
+.join-our-crowdloan-link {
+  background: #ec3783;
+  border-radius: 10px;
+  height: 40px;
+  width: 174px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  > span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #ffffff;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 48%;
+    margin: 0 auto;
+  }
+}

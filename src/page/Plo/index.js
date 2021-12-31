@@ -45,7 +45,7 @@ const PloPage = () => {
       </Fade>
 
       <Container fluid className={cx("wrapper")}>
-        <img alt="..." src={crabBg} />
+        <img alt="..." src={crabBg} className="d-md-block d-none" />
         <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
           <FAQs />
         </Fade>

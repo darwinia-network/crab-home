@@ -21,6 +21,7 @@
 
   @media screen and (max-width: 1024px) {
     width: 345px;
+    height: auto;
   }
 }
 
@@ -165,6 +166,7 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    align-items: center;
 
     img {
       margin: 0 auto;
@@ -174,6 +176,7 @@
       flex-direction: column;
       max-width: 100%;
       flex: 1;
+      justify-content: center;
     }
   }
 }
@@ -235,7 +238,9 @@ p {
     text-align: center;
     flex-direction: column-reverse;
     background-image: none;
-    background-color: #eaeaf3;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding-top: 0;;
 
     > div {
       max-width: 100%;

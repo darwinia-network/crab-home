@@ -108,6 +108,9 @@
 
   @media screen and (max-width: 1024px) {
     align-items: center;
+    img {
+      margin-left: auto;
+    }
   }
 
   .item-title {

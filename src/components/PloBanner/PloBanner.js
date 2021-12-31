@@ -32,20 +32,33 @@ const MobileModal = () => {
     >
       <div className={cx("mobile-main")}>
         <img alt="..." src={mobileIcon} className={cx("banner-logo")} />
-        <div className={cx("banner-content")}>
-          <h5 className={cx("title")}>
+        <div className={cx("banner-content")} style={{
+          maxWidth: '100%',
+        }}>
+          <h5
+            className={cx("title")}
+            style={{
+              color: "#1e3676",
+              whiteSpace: 'normal'
+            }}
+          >
             <span role="img" aria-label="fire">
               🔥
             </span>{" "}
             We are launching our Parachain Crowdloan on Kusama.
           </h5>
-          <p className={cx("desc")}>
+          <p
+            className={cx("desc")}
+            style={{
+              color: "#555",
+            }}
+          >
             Contribute your KSM to help build a Web3.0 Bridge Hub by joining our
             crowdloan, unlock CRAB and CKTON bonus, also BTC and Metaverse NFT
             Package waiting for you.
           </p>
         </div>
-        <Link className={cx("banner-link")} to="plo">
+        <Link className={cx("join-our-crowdloan-link")} to="plo">
           <span>Join our crowdloan</span>
         </Link>
       </div>
@@ -66,7 +79,7 @@ const PloBanner = () => {
               <span role="img" aria-label="fire">
                 🔥
               </span>{" "}
-              We are launching our Parachain Crowdloan on Kusama. 
+              We are launching our Parachain Crowdloan on Kusama.
             </h5>
             <p className={cx("desc")}>
               Contribute your KSM to help build a Web3.0 Bridge Hub by joining
