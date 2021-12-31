@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
-import styles from "./style.module.scss";
+import "./style.module.scss";
 
 import png35 from "./img/image 35.png";
 import png37 from "./img/image 37.png";
