@@ -1,4 +1,5 @@
 import React from "react";
+import Fade from "react-reveal/Fade";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import "./style.module.scss";
@@ -97,177 +98,166 @@ function Grants() {
       <section className="pt-4 pt-md-8 welcome" style={{ paddingBottom: 40 }}>
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-12 col-md-5 col-lg-6 order-md-2">
-              <img
-                src={png35}
-                className="img-fluid mw-md-100 mw-lg-100 mb-6 mb-md-0"
-                alt="..."
+            <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+              <div className="col-12 col-md-5 col-lg-6 order-md-2">
+                <img
+                  src={png35}
+                  className="img-fluid mw-md-100 mw-lg-100 mb-6 mb-md-0"
+                  alt="..."
+                />
+              </div>
+            </Fade>
+            <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+              <div
+                className="col-12 col-md-7 col-lg-6 order-md-1"
                 data-aos="fade-up"
-                data-aos-delay="100"
-              />
-            </div>
-            <div
-              className="col-12 col-md-7 col-lg-6 order-md-1"
-              data-aos="fade-up"
-            >
-              <h1
-                className="display-3 text-center text-md-start"
-                style={{
-                  fontFamily: "IBM Plex Sans",
-                  fontStyle: "normal",
-                  fontWeight: "bold",
-                  fontSize: "30px",
-                }}
               >
-                Grants Program
-              </h1>
-
-              <p
-                className="lead text-center text-md-start text-muted mb-6 mb-lg-8"
-                style={{
-                  fontFamily: "IBM Plex Sans",
-                  fontStyle: "normal",
-                  fontWeight: "normal",
-                  fontSize: "16px",
-                  lineHeight: "21px",
-                }}
-              >
-                Projects that add value to the Crab ecosystem are eligible for
-                funding opportunities.
-              </p>
-
-              <div className="text-center text-md-start">
-                <a
-                  href="https://forms.gle/MwiBAWbmcj5GLssm8"
-                  className="btn btn-primary-soft lift mx-auto mx-md-0"
+                <h1
+                  className="display-3 text-center text-md-start"
                   style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "10px",
-                    padding: "0px",
-                    width: "215px",
-                    height: "41px",
-                    background: "#ec3783",
-                    color: "#fff",
+                    fontFamily: "IBM Plex Sans",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    fontSize: "30px",
                   }}
                 >
-                  Start your Application
-                </a>
+                  Grants Program
+                </h1>
+
+                <p
+                  className="lead text-center text-md-start text-muted mb-6 mb-lg-8"
+                  style={{
+                    fontFamily: "IBM Plex Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    fontSize: "16px",
+                    lineHeight: "21px",
+                  }}
+                >
+                  Projects that add value to the Crab ecosystem are eligible for
+                  funding opportunities.
+                </p>
+
+                <div className="text-center text-md-start">
+                  <a
+                    href="https://forms.gle/MwiBAWbmcj5GLssm8"
+                    className="btn btn-primary-soft lift mx-auto mx-md-0"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "10px",
+                      padding: "0px",
+                      width: "215px",
+                      height: "41px",
+                      background: "#ec3783",
+                      color: "#fff",
+                    }}
+                  >
+                    Start your Application
+                  </a>
+                </div>
               </div>
-            </div>
+            </Fade>
           </div>
         </div>
       </section>
 
       <section className="py-8 py-md-8 bg-gray-200">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-10 col-lg-7 text-center">
-              <h2 className="fw-bold">Purpose and Mission</h2>
-
-              <p className="fs-lg text-muted mb-7 mb-md-9">
-                No matter what you're working on, who you're with, or how many
-                of you there are, Landkit can help.
-              </p>
-            </div>
-          </div>
           <div className="row gx-4">
             <div className="col-12 col-lg-6 d-lg-flex mb-4">
-              <div
-                className="card shadow-light-lg overflow-hidden"
-                data-aos="fade-up"
-              >
-                <div className="row">
-                  <div className="col-md-4 position-relative">
-                    <img
-                      src={png46}
-                      className="h-75 position-absolute right-0 mt-7 me-n4"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body py-7 py-md-9 text-center">
-                      <h4 className="fw-bold">Purpose</h4>
+              <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+                <div className="card shadow-light-lg overflow-hidden">
+                  <div className="row">
+                    <div className="col-md-4 position-relative">
+                      <img
+                        src={png46}
+                        className="h-75 position-absolute right-0 mt-7 me-n4"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body py-7 py-md-9 text-center">
+                        <h4 className="fw-bold">Purpose</h4>
 
-                      <p className="text-muted mb-0">
-                        To fund the development of projects and applications
-                        that contribute to the Crab ecosystem and promote
-                        overall network growth.
-                      </p>
+                        <p className="text-muted mb-0">
+                          To fund the development of projects and applications
+                          that contribute to the Crab ecosystem and promote
+                          overall network growth.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Fade>
             </div>
             <div className="col-12 col-lg-6 d-lg-flex mb-4">
-              <div
-                className="card shadow-light-lg overflow-hidden text-center"
-                data-aos="fade-up"
-              >
-                <div className="row">
-                  <div className="col-md-8">
-                    <div className="card-body py-7 py-md-9">
-                      <h4 className="fw-bold">Mission</h4>
+              <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+                <div className="card shadow-light-lg overflow-hidden text-center">
+                  <div className="row">
+                    <div className="col-md-8">
+                      <div className="card-body py-7 py-md-9">
+                        <h4 className="fw-bold">Mission</h4>
 
-                      <p className="text-muted mb-0">
-                        We encourage passionate teams to build innovative,
-                        interconnected projects on Crab and reward use cases
-                        with application scenarios.
-                      </p>
+                        <p className="text-muted mb-0">
+                          We encourage passionate teams to build innovative,
+                          interconnected projects on Crab and reward use cases
+                          with application scenarios.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <img
+                        src={png47}
+                        className="h-75 position-absolute left-0 mt-7"
+                        alt="..."
+                      />
                     </div>
                   </div>
-                  <div className="col-md-4">
-                    <img
-                      src={png47}
-                      className="h-75 position-absolute left-0 mt-7"
-                      alt="..."
-                    />
-                  </div>
                 </div>
-              </div>
+              </Fade>
             </div>
           </div>
           <div className="row">
             <div className="col-12">
-              <div
-                className="card shadow-light-lg overflow-hidden text-center text-lg-start"
-                data-aos="fade-up"
-              >
-                <div className="row">
-                  <div className="col-md-4 mt-6 position-relative">
-                    <img
-                      src={png48}
-                      className={`position-absolute top-middle w-100`}
-                      alt="..."
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body py-7 py-md-9">
-                      <h4 className="fw-bold">Grants Amount</h4>
+              <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+                <div className="card shadow-light-lg overflow-hidden text-center text-lg-start">
+                  <div className="row">
+                    <div className="col-md-4 mt-6 position-relative">
+                      <img
+                        src={png48}
+                        className={`position-absolute top-middle w-100`}
+                        alt="..."
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body py-7 py-md-9">
+                        <h4 className="fw-bold">Grants Amount</h4>
 
-                      <ul
-                        className="text-muted mb-0"
-                        style={{ listStyle: "auto" }}
-                      >
-                        <li>
-                          Grant's maximum amount of incentives is USD6,000
-                        </li>
-                        <li>
-                          USD 2,000(USDT/DAI/RING/CRAB) or less will be approved
-                          the fastest.
-                        </li>
-                        <li>
-                          Applications from USD2,000 to USD6,000
-                          (USDT/DAI/RING/CRAB) will take longer to review.
-                        </li>
-                        <li>Crab Grants Program is funded by Darwinia.</li>
-                      </ul>
+                        <ul
+                          className="text-muted mb-0"
+                          style={{ listStyle: "auto" }}
+                        >
+                          <li>
+                            Grant's maximum amount of incentives is USD6,000
+                          </li>
+                          <li>
+                            USD 2,000(USDT/DAI/RING/CRAB) or less will be
+                            approved the fastest.
+                          </li>
+                          <li>
+                            Applications from USD2,000 to USD6,000
+                            (USDT/DAI/RING/CRAB) will take longer to review.
+                          </li>
+                          <li>Crab Grants Program is funded by Darwinia.</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Fade>
             </div>
           </div>
         </div>
@@ -755,4 +745,4 @@ function Grants() {
   );
 }
 
-export default React.memo(Grants);
+export default Grants;
