@@ -166,6 +166,13 @@ function Grants() {
 
       <section className="py-8 py-md-8 bg-gray-200">
         <div className="container">
+          <div className="row">
+            <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
+              <div className="col-12">
+                <h2 className="mb-8 text-center">Purpose and Mission</h2>
+              </div>
+            </Fade>
+          </div>
           <div className="row gx-4">
             <div className="col-12 col-lg-6 d-lg-flex mb-4">
               <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
@@ -235,24 +242,12 @@ function Grants() {
                     <div className="col-md-8">
                       <div className="card-body py-7 py-md-9">
                         <h4 className="fw-bold">Grants Amount</h4>
-
-                        <ul
-                          className="text-muted mb-0"
-                          style={{ listStyle: "auto" }}
-                        >
-                          <li>
-                            Grant's maximum amount of incentives is USD6,000
-                          </li>
-                          <li>
-                            USD 2,000(USDT/DAI/RING/CRAB) or less will be
-                            approved the fastest.
-                          </li>
-                          <li>
-                            Applications from USD2,000 to USD6,000
-                            (USDT/DAI/RING/CRAB) will take longer to review.
-                          </li>
-                          <li>Crab Grants Program is funded by Darwinia.</li>
-                        </ul>
+                        <p className="text-muted mb-0" style={{wordBreak: 'break-all'}}>
+                          1. Grant’s maximum amount of incentives is USD 6,000 (USDT/DAI/RING/CRAB) per project. <br/>
+                          2. USD 2,000 (USDT/DAI/RING/CRAB) or less will be approved the fastest.<br/>
+                          3. Applications from USD 2,000 to USD 6,000 (USDT/DAI/RING/CRAB) will take longer to review.<br/>
+                          4. Crab Grants Program is funded by Darwinia.
+                        </p>
                       </div>
                     </div>
                   </div>
