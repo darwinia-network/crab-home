@@ -2,8 +2,6 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import { PloBanner } from '../../components/PloBanner';
 
-import styles from "./style.module.scss";
-
 function Home() {
   return (
     <>

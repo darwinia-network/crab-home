@@ -58,15 +58,6 @@ function Navbar({ classList, container, button }) {
               </Link>
             </li>
 
-            {/* <li className="nav-item dropdown">
-              <Link
-                className="nav-link"
-                to="/plo"
-              >
-                PLO
-              </Link>
-            </li> */}
-
             <li className="nav-item dropdown">
               <a
                 className="nav-link"
@@ -76,6 +67,15 @@ function Navbar({ classList, container, button }) {
               >
                 Documentation
               </a>
+            </li>
+
+            <li className="nav-item dropdown">
+              <Link
+                className="nav-link"
+                to="/grants"
+              >
+                Grants Program
+              </Link>
             </li>
           </ul>
 
