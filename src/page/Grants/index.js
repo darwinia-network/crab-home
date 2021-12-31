@@ -25,35 +25,35 @@ const applies = [
     title: "Multi-Chain",
     des:
       "You’re bullish on the future of multi-chain strategy and want to execute a multi- or dual-chain deployment.",
-    type: 'primary'
+    type: "primary",
   },
   {
     img: png38,
     title: "Scalability",
     des:
       "You need a lower-cost execution environment but don’t want (or need) to invest time and money into refactoring your Solidity code.",
-    type: 'success'
+    type: "success",
   },
   {
     img: png39,
     title: "Experimentation",
     des:
       "You want to build and test your application in a growing ecosystem with a strong community and a growing user base.",
-    type: 'warning'
+    type: "warning",
   },
   {
     img: png40,
     title: "Enthusiasm",
     des:
       "You’re excited about the potential of Crab and Kusama, and want to help build the ecosystem.",
-    type: 'dark'
+    type: "dark",
   },
   {
     img: png41,
     title: "Win-Win",
     des:
       "By joining the Crab Grants Program, you will have a greater ability to contribute to Crab’s growth, and your team will have access to great benefits that will boost your project's growth and development.",
-    type: 'primary-desat'
+    type: "primary-desat",
   },
 ];
 
@@ -245,17 +245,25 @@ function Grants() {
                   </div>
                   <div className="col-md-8">
                     <div className="card-body py-7 py-md-9">
-                      <h4 className="fw-bold">Building a community.</h4>
+                      <h4 className="fw-bold">Grants Amount</h4>
 
-                      <p className="text-muted mb-0">
-                        Landkit is focused on helping foster a community. Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                        quis diam tempus tortor egestas blandit. Aliquam erat
-                        volutpat. Phasellus rhoncus pretium molestie. Nulla
-                        facilisi. Etiam sollicitudin lectus ac nisi tincidunt
-                        porttitor. Phasellus eros metus, gravida eu mi ac,
-                        gravida convallis ipsum.
-                      </p>
+                      <ul
+                        className="text-muted mb-0"
+                        style={{ listStyle: "auto" }}
+                      >
+                        <li>
+                          Grant's maximum amount of incentives is USD6,000
+                        </li>
+                        <li>
+                          USD 2,000(USDT/DAI/RING/CRAB) or less will be approved
+                          the fastest.
+                        </li>
+                        <li>
+                          Applications from USD2,000 to USD6,000
+                          (USDT/DAI/RING/CRAB) will take longer to review.
+                        </li>
+                        <li>Crab Grants Program is funded by Darwinia.</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -685,11 +693,16 @@ function Grants() {
       <section
         className="py-8"
         style={{
-          background: '#fff'
-            // "linear-gradient(315.52deg, rgba(255,0,80, .1) 0.88%, rgba(112,0,255, .1) 71.7%, rgba(0,39,255,.1) 100%)",
+          background: "#fff",
+          // "linear-gradient(315.52deg, rgba(255,0,80, .1) 0.88%, rgba(112,0,255, .1) 71.7%, rgba(0,39,255,.1) 100%)",
         }}
       >
         <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-10 col-lg-8 mb-4 mt-4 mt-md-7 mb-md-7 text-center">
+              <h1>How to Apply</h1>
+            </div>
+          </div>
           <div className="row">
             <div className="col-12 col-md-6 col-lg-7">
               <div className="mb-8 mb-md-0">
@@ -700,8 +713,7 @@ function Grants() {
                 />
               </div>
             </div>
-            <div className="col-12 col-md-6 col-lg-5 mt-8">
-              <h2 className="text-center">How to Apply</h2>
+            <div className="col-12 col-md-6 col-lg-5">
               {appliesAnswers.map(({ title, des }, index) => (
                 <div className="d-flex" key={index}>
                   <div className="badge badge-lg badge-rounded-circle bg-primary-soft mt-1">
@@ -715,6 +727,24 @@ function Grants() {
                   </div>
                 </div>
               ))}
+              <a
+                href="https://forms.gle/MwiBAWbmcj5GLssm8"
+                className="btn btn-primary-soft lift mx-auto mx-md-0"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "10px",
+                  padding: "0px",
+                  width: "215px",
+                  height: "41px",
+                  background: "#ec3783",
+                  color: "#fff",
+                }}
+              >
+                Start your Application
+              </a>
             </div>
           </div>
         </div>
