@@ -92,9 +92,9 @@ const FourCards = () => {
               className={cx("card-content-btn")}
               rel="noopener noreferrer"
               target="_blank"
-              href="https://darwinianetwork.medium.com/support-darwinia-while-investing-in-the-next-generation-infrastructure-for-the-web3-0-metaverse-aaf3defb234a"
+              href="https://darwinianetwork.medium.com/support-crab-while-investing-in-the-next-generation-infrastructure-for-the-web3-0-metaverse-d194ff902f6d"
             >
-              {/* Learn more */}
+              Learn more
             </a>
           </div>
         </div>
