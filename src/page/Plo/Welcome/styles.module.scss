@@ -1,0 +1,260 @@
+@import "../../../theme/scss/project-var";
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 80px;
+  padding-bottom: 20px;
+
+  & > div {
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+.bridge {
+  width: 644px;
+  height: 410px;
+
+  @media screen and (max-width: 1024px) {
+    width: 345px;
+  }
+}
+
+.link-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sign-up-for-wautlist-link,
+.join-our-crowdloan-link {
+  background: $main;
+  border-radius: 10px;
+  height: 40px;
+  width: 174px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  > span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #ffffff;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 48%;
+    margin: 0 auto;
+  }
+}
+
+.learn-more-link {
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(white, white),
+    linear-gradient(
+      315deg,
+      rgba(0, 208, 222, 1),
+      rgba(55, 92, 223, 1),
+      rgba(175, 74, 252, 1)
+    );
+  background-origin: border-box;
+  border: solid 1px transparent;
+  margin-left: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 146px;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  > span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #6604ff;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 48%;
+    margin-left: 10px;
+  }
+}
+
+.title-h2 {
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 60px;
+
+  /* text */
+
+  color: #1e3676;
+
+  span {
+    color: $main;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 26px;
+    line-height: 34px;
+    text-align: center;
+  }
+}
+
+.desc {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #1e3676;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+  }
+}
+
+.intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 40px;
+
+  img {
+    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+  }
+
+  > div {
+    display: flex;
+    align-items: flex-start;
+    max-width: 37%;
+
+    &:nth-child(1) {
+      padding-right: 0.5em;
+    }
+
+    &:nth-child(3) {
+      padding-left: 0.5em;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    img {
+      margin: 0 auto;
+    }
+
+    > div {
+      flex-direction: column;
+      max-width: 100%;
+      flex: 1;
+    }
+  }
+}
+
+h5 {
+  font-weight: 600;
+  white-space: nowrap;
+  color: #1e3676;
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  /* text */
+}
+
+p {
+  color: #555;
+  line-height: 21px;
+}
+
+.intro-kusama {
+  background: #fff url(./img/kusama-bg.png) no-repeat 100% / 100%;
+  background-position: bottom;
+  border-radius: 38px;
+  display: flex;
+  flex-direction: row-reverse;
+  line-height: 21px;
+  margin: 10px;
+  padding-top: 20px;
+
+  img {
+    display: none;
+  }
+
+  & > div {
+    max-width: 270px;
+    padding: 1em 2em;
+
+    &:nth-child(2) {
+      order: 2;
+    }
+
+    h5 {
+      white-space: inherit;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    img {
+      display: block;
+      width: 100%;
+      order: 3;
+    }
+
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    flex-direction: column-reverse;
+    background-image: none;
+    background-color: #eaeaf3;
+
+    > div {
+      max-width: 100%;
+      flex-direction: column;
+      padding: 1em;
+      flex: 1;
+
+      p {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.main-border {
+  margin-bottom: 70px;
+
+  @include main-border();
+  @media screen and (max-width: 1024px) {
+    border: none;
+  }
+}
