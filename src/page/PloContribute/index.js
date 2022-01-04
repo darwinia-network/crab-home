@@ -226,45 +226,12 @@ const PloContribute = () => {
   ) {
     myTotalContribute = new BN(myWhoCrowdloan.data.crowdloanWhoStatistic.totalBalance);
 
-    if (
-      myWhoCrowdloan.data.crowdloanWhoStatistic.contributors.nodes &&
-      myWhoCrowdloan.data.crowdloanWhoStatistic.contributors.nodes.length
-    ) {
-      let myRingRewardTmp = new Big(0);
-      let myktonRewardTmp = new Big(0);
-      for (let node of myWhoCrowdloan.data.crowdloanWhoStatistic.contributors.nodes) {
-        const contributePer = Big(node.balance).div(globalTotalPower.toString());
+    const totalPower = new BN(myWhoCrowdloan.data.crowdloanWhoStatistic.totalPower);
 
-        if (currentBlockNumber) {
-          const bonusN = currentBlockNumber < T1_BLOCK_NUMBER ? 0.2 : 0;
-          const referN = isValidAddressPolkadotAddress(node.refer) ? 0.05 : 0;
-
-          const base = {
-            ring: contributePer.mul(RING_REWARD),
-            kton: contributePer.mul(KTON_REWARD),
-          };
-          const bonus = {
-            ring: base.ring.mul(bonusN),
-            kton: base.kton.mul(bonusN),
-          };
-          const referral = {
-            ring: base.ring.add(bonus.ring).mul(referN),
-            kton: base.kton.add(bonus.kton).mul(referN),
-          };
-          const total = {
-            ring: base.ring.add(bonus.ring).add(referral.ring),
-            kton: base.kton.add(bonus.kton).add(referral.kton),
-          };
-
-          myRingRewardTmp = myRingRewardTmp.add(total.ring);
-          myktonRewardTmp = myktonRewardTmp.add(total.kton);
-        }
-      }
-
-      myRingReward = myRingRewardTmp.toFixed(4);
-      myKtonReward = myktonRewardTmp.toFixed(4);
-    }
+    myRingReward = Big(totalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toString()
+    myKtonReward = Big(totalPower).div(globalTotalPower.toString()).mul(Big('8000')).toString();
   }
+  
   const myContributePer = Big(myTotalContribute.toString()).div(globalTotalPower.toString());
 
   const top5contribute = useMemo(() => btcTop5.reduce((acc, cur) => acc.add(new Big(cur.amount)), new Big('0')), []);
