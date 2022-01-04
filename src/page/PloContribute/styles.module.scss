@@ -1,4 +1,4 @@
-$main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+$main-bg: #ec3783;
 
 .main {
   background-image: url("./img/bg.png");
@@ -14,7 +14,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   left: -197px;
   top: -117px;
 
-  background: linear-gradient(344.64deg, #ff0050 7.81%, #7000ff 68.09%, #0027ff 92.19%);
+  background: $main-bg;
   opacity: 0.1;
   filter: blur(100px);
 
@@ -30,7 +30,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   left: 1051px;
   top: 459px;
 
-  background: linear-gradient(344.64deg, #ff0050 7.81%, #7000ff 68.09%, #0027ff 92.19%);
+  background: $main-bg;
   opacity: 0.1;
   filter: blur(100px);
 
@@ -124,7 +124,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(315.52deg, #ff0050 0.88%, #7000ff 71.7%, #0027ff 100%);
+  background: $main-bg;
   border-radius: 10px;
 
   > span {
@@ -219,7 +219,8 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   @extend %-base-btn;
   padding: 10px 17px;
 
-  background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+  // background: $main-bg;
+  background: $main-bg;
   border-radius: 10px;
 
   > span {
@@ -399,7 +400,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   @extend %-base-btn;
   width: 70px;
   height: 42px;
-  background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+  background: $main-bg;
   border-radius: 10px;
   margin-left: 10px;
 
@@ -479,7 +480,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   }
 
   > .total {
-    background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+    background: $main-bg;
     background-clip: text;
     color: transparent;
     font-weight: bold;
@@ -507,7 +508,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   padding: 4px 5px;
   margin-left: 8px;
 
-  background: #7000ff;
+  background: $main-bg;
   border-radius: 10px;
 
   > span {
@@ -548,7 +549,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
 
 .contribute-btn {
   @extend %-base-btn;
-  background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+  background: $main-bg;
   border-radius: 10px;
   width: 100%;
   height: 51px;
@@ -818,7 +819,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
 
 .my-contribute-connect-wallet-btn {
   @extend %-base-btn;
-  background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+  background: $main-bg;
   border-radius: 10px;
   height: 41px;
   padding: 0 17px;
@@ -901,7 +902,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   font-size: 20px;
   line-height: 26px;
   text-align: center;
-  background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+  background: $main-bg;
   background-clip: text;
   color: transparent;
 
@@ -1147,7 +1148,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
 
 .pioneers-item-dot-amount {
   @extend %-base-p;
-  background: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
+  background: $main-bg;
   background-clip: text;
   color: transparent;
   margin: 0;
@@ -1216,7 +1217,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background: linear-gradient(315.52deg, #ff0050 0.88%, #7000ff 71.7%, #0027ff 100%);
+    background: $main-bg;
 
     @media screen and (max-width: 1024px) {
       width: 20px;
@@ -1348,7 +1349,7 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
     }
 
     .ant-pagination-item {
-      background: #7000ff;
+      background: #ec3783;
       border: 1px solid #451892;
       box-sizing: border-box;
       border-radius: 5px;
@@ -1675,12 +1676,12 @@ $main-bg: linear-gradient(270deg, #ff0050 0%, #7000ff 71.44%, #0027ff 100%);
   color: #000000;
 
   > a {
-    color: #7000ff;
+    color: $main-bg;
   }
 }
 
 .current-tag {
-  background: #7000ff;
+  background: $main-bg;
   border-radius: 10px;
   display: flex;
   justify-content: center;

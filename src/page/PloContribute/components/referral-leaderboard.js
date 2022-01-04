@@ -76,11 +76,11 @@ const ReferralLeaderboard = ({ globalTotalPower }) => {
                 </a>
                 <span className={cx("referral-leaderboard-item-referrals")}>{data.referrals}</span>
                 <span className={cx("referral-leaderboard-item-accumulated")}>
-                  {formatBalanceFromOrigToDOT(data.accumulatedContribution)} DOT
+                  {formatBalanceFromOrigToDOT(data.accumulatedContribution)} KSM
                 </span>
                 <div className={cx("referral-leaderboard-item-rewards")}>
-                  <span>{data.referralRewards.ring.toFixed(2)} RING</span>
-                  <span>{data.referralRewards.kton.toFixed(2)} KTON</span>
+                  <span>{data.referralRewards.ring.toFixed(2)} CRAB</span>
+                  <span>{data.referralRewards.kton.toFixed(2)} CKTON</span>
                 </div>
               </div>
             ))

@@ -24,9 +24,9 @@ function BTCReward({ currentAccount }) {
   const contributeAmount = target ? target.amount : 0;
 
   const claim = async () => {
-    const mark = `BTC rewards for Darwinia Crowdloan: ${
+    const mark = `BTC rewards for Crab Crowdloan: ${
       target.reward
-    } BTC; Reward receiving address: ${address}; DOT contribution amount: ${target && target.amount}`;
+    } BTC; Reward receiving address: ${address}; KSM contribution amount: ${target && target.amount}`;
     const injector = await web3FromAddress(currentAccount.address);
 
     api.setSigner(injector.signer);
@@ -103,12 +103,12 @@ function BTCReward({ currentAccount }) {
                 BTC rewards are dynamic.
                 <br />
                 <br />
-                At the beginning of the second round auction, supporters who have contributed more than 10,000 DOT and
+                At the beginning of the second round auction, supporters who have contributed more than 1 KSM and
                 the top 5 people (exclude the Exchange address) ranking will distribute 1 BTC in proportion to their
                 contribution.
                 <br />
                 <br />1 BTC will be released immediately after the second round auction starts regardless of whether
-                Darwinia Network wins the slot auction or not.
+                Crab Network wins the slot auction or not.
               </p>
             }
           >
@@ -138,7 +138,7 @@ function BTCReward({ currentAccount }) {
         <Form noValidate>
           <ul>
             <li>
-              <Paragraph>The BTC is sent as a reward for your support of Darwinia Network Crowdloan.</Paragraph>
+              <Paragraph>The BTC is sent as a reward for your support of Crab Network Crowdloan.</Paragraph>
             </li>
 
             <li>

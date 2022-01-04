@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import { Tooltip, Modal, Typography, Spin, message, notification } from "antd";
 import Fade from "react-reveal/Fade";
 
-import darwiniaLogo from "./img/logo-darwinia.png";
+import darwiniaLogo from "./img/logo-crab-plo.png";
 import infoIcon from "./img/info-icon.png";
-import dotIcon from "./img/dot-icon.png";
+// import dotIcon from "./img/dot-icon.png";
 import modalCloseIcon from "./img/modal-close.png";
 import copyIcon from "./img/copy-icon.png";
 
@@ -280,7 +280,7 @@ const PloContribute = () => {
       }
 
       const keyring = new Keyring();
-      keyring.setSS58Format(0); // Polkadot format address
+      keyring.setSS58Format(2); // Kusama format address
 
       if (isMobile()) {
         const allAccounts = await web3Accounts();
@@ -498,14 +498,14 @@ const PloContribute = () => {
             </div>
 
             <div className={cx("heading-container-right")}>
-              <a
+              {/* <a
                 rel="noopener noreferrer"
                 target="_blank"
                 href="https://darwinianetwork.medium.com/guide-to-participate-in-the-darwinia-plo-e14b1718787f"
                 className={cx("heading-container-right-how-it-works-link")}
               >
                 <span>How it works</span>
-              </a>
+              </a> */}
               {currentAccount ? (
                 <div className={cx("heading-container-current-account-wrap")}>
                   <div className={cx("heading-container-current-account")}>
@@ -539,7 +539,7 @@ const PloContribute = () => {
                 <div className={cx("dot-amount-input-control")}>
                   <input className={cx("contribute-input")} value={inputDot} onChange={handleChangeInputDot}></input>
                   <div className={cx("dot-amount-input-suffix")}>
-                    <span className={cx("dot-amount-input-dot-suffix")}>DOT</span>
+                    <span className={cx("dot-amount-input-dot-suffix")}>KSM</span>
                     <button
                       className={cx("dot-amount-input-max-btn")}
                       onClick={handleClickMaxInput}
@@ -556,10 +556,10 @@ const PloContribute = () => {
                         (inputDot.length && 0 <= Number(inputDot) && Number(inputDot) < 5) || insufficientBalance,
                     })}
                   >
-                    {insufficientBalance ? "Insufficient balance" : "Min contribution: 5 DOT"}
+                    {insufficientBalance ? "Insufficient balance" : "Min contribution: 0.1 KSM"}
                   </span>
                   <span className={cx("my-available-dot")}>
-                    Available: {formatBalanceFromOrigToDOT(currentAccountBalannce.availableBalance)} DOT
+                    Available: {formatBalanceFromOrigToDOT(currentAccountBalannce.availableBalance)} KSM
                   </span>
                 </div>
               </div>
@@ -600,7 +600,7 @@ const PloContribute = () => {
                         The rewards on basis of contribution share will be displayed in real-time.
                         <br />
                         <br />
-                        RING and KTON will be released linearly based on the contribution share after Darwinia Network
+                        CRAB and CKTON will be released linearly based on the contribution share after Darwinia Network
                         wins the slot auction.
                       </p>
                     }
@@ -610,8 +610,8 @@ const PloContribute = () => {
                 </div>
                 <div className={cx("auction-success-rewards")}>
                   <span>Base</span>
-                  <span className={cx("token-amount")}>{auctionSuccessReward.base.ring.toFixed(2)} RING</span>
-                  <span className={cx("token-amount")}>{auctionSuccessReward.base.kton.toFixed(2)} KTON</span>
+                  <span className={cx("token-amount")}>{auctionSuccessReward.base.ring.toFixed(2)} CRAB</span>
+                  <span className={cx("token-amount")}>{auctionSuccessReward.base.kton.toFixed(2)} CKTON</span>
 
                   <div className={cx("auction-success-rewards-content-wrap")}>
                     <span>Bonus</span>
@@ -619,16 +619,16 @@ const PloContribute = () => {
                       <span>Limited Time</span>
                     </div>
                   </div>
-                  <span className={cx("token-amount")}>{auctionSuccessReward.bonus.ring.toFixed(2)} RING</span>
-                  <span className={cx("token-amount")}>{auctionSuccessReward.bonus.kton.toFixed(2)} KTON</span>
+                  <span className={cx("token-amount")}>{auctionSuccessReward.bonus.ring.toFixed(2)} CRAB</span>
+                  <span className={cx("token-amount")}>{auctionSuccessReward.bonus.kton.toFixed(2)} CKTON</span>
 
                   <span>Referral</span>
-                  <span className={cx("token-amount")}>{auctionSuccessReward.referral.ring.toFixed(2)} RING</span>
-                  <span className={cx("token-amount")}>{auctionSuccessReward.referral.kton.toFixed(2)} KTON</span>
+                  <span className={cx("token-amount")}>{auctionSuccessReward.referral.ring.toFixed(2)} CRAB</span>
+                  <span className={cx("token-amount")}>{auctionSuccessReward.referral.kton.toFixed(2)} CKTON</span>
 
                   <span>Total</span>
-                  <span className={cx("total", "token-amount")}>{auctionSuccessReward.total.ring.toFixed(2)} RING</span>
-                  <span className={cx("total", "token-amount")}>{auctionSuccessReward.total.kton.toFixed(2)} KTON</span>
+                  <span className={cx("total", "token-amount")}>{auctionSuccessReward.total.ring.toFixed(2)} CRAB</span>
+                  <span className={cx("total", "token-amount")}>{auctionSuccessReward.total.kton.toFixed(2)} CKTON</span>
                 </div>
               </div>
 
@@ -672,8 +672,8 @@ const PloContribute = () => {
                 <div className={cx("current-total-contribute")}>
                   <span>Current total contributions</span>
                   <div className={cx("total-contribute-dot")}>
-                    <img alt="..." src={dotIcon} />
-                    <span>{formatBalanceFromOrigToDOT(currentTotalContribute)} DOT</span>
+                    {/* <img alt="..." src={dotIcon} /> */}
+                    <span>{formatBalanceFromOrigToDOT(currentTotalContribute)} KSM</span>
                   </div>
                 </div>
               </div>
@@ -759,7 +759,7 @@ const PloContribute = () => {
 
             <div className={cx("contribute-info-card")}>
               <div className={cx("contribute-info-item")}>
-                <span className={cx("contribute-info-item-title")}>Total DOT Contributed</span>
+                <span className={cx("contribute-info-item-title")}>Total KSM Contributed</span>
                 <div className={cx("current-tag", "space")}>
                   <span>Current</span>
                 </div>
@@ -789,12 +789,12 @@ const PloContribute = () => {
                         <a target="_blank" rel="noopener noreferrer" href="https://www.evolution.land/">
                           Evolution Land
                         </a>{" "}
-                        Metaverse NFT Package when your contribution share greater or equal 10 DOT and you will have a
+                        Metaverse NFT Package when your contribution share greater or equal 1 KSM and you will have a
                         chance to get a limited edition commemorative NFT in the Package.
                         <br />
                         <br />
-                        The Metaverse NFT Package will be awarded after the Polkadot Slot Auction is terminated
-                        regardless of whether Darwinia Network wins the slot auction or not.
+                        The Metaverse NFT Package will be awarded after the Kusama Slot Auction is terminated
+                        regardless of whether Crab Network wins the slot auction or not.
                       </p>
                     }
                   >
@@ -817,7 +817,7 @@ const PloContribute = () => {
               <div className={cx("contribute-info-item-wrap")}>
                 <div className={cx("contribute-info-item")}>
                   <div className={cx("contribute-info-item-title-wrap")}>
-                    <span className={cx("contribute-info-item-title")}>RING Rewards</span>
+                    <span className={cx("contribute-info-item-title")}>CRAB Rewards</span>
                     <Tooltip
                       overlayClassName="tooltip-overlay"
                       overlayInnerStyle={{ padding: "20px", paddingBottom: "10px" }}
@@ -826,10 +826,10 @@ const PloContribute = () => {
                       trigger={["click", "hover"]}
                       title={
                         <p className={cx("tips")}>
-                          RING rewards are dynamic.
+                          CRAB rewards are dynamic.
                           <br />
                           <br />
-                          200,000,000 RING will be released linearly based on the contribution share after Darwinia
+                          200,000,000 CRAB will be released linearly based on the contribution share after Crab
                           Network wins the slot auction.
                         </p>
                       }
@@ -847,7 +847,7 @@ const PloContribute = () => {
                 </div>
                 <div className={cx("contribute-info-item")}>
                   <div className={cx("contribute-info-item-title-wrap")}>
-                    <span className={cx("contribute-info-item-title")}>KTON Rewards</span>
+                    <span className={cx("contribute-info-item-title")}>CKTON Rewards</span>
                     <Tooltip
                       overlayClassName="tooltip-overlay"
                       overlayInnerStyle={{ padding: "20px", paddingBottom: "10px" }}
@@ -856,10 +856,10 @@ const PloContribute = () => {
                       trigger={["click", "hover"]}
                       title={
                         <p className={cx("tips")}>
-                          KTON rewards are dynamic.
+                          CKTON rewards are dynamic.
                           <br />
                           <br />
-                          8,000 KTON will be released linearly based on the contribution share after Darwinia Network
+                          8,000 CKTON will be released linearly based on the contribution share after Crab Network
                           wins the slot auction.
                         </p>
                       }
@@ -891,7 +891,7 @@ const PloContribute = () => {
                           {new Date(node.timestamp).toDateString().split(" ")[1]}{" "}
                           {new Date(node.timestamp).toDateString().split(" ")[2]}
                         </span>
-                        <span className={cx("dot-amount")}>{formatBalanceFromOrigToDOT(node.balance)} DOT</span>
+                        <span className={cx("dot-amount")}>{formatBalanceFromOrigToDOT(node.balance)} KSM</span>
                         <a
                           className={cx("hash-id")}
                           target="_blank"
@@ -917,7 +917,7 @@ const PloContribute = () => {
                           {new Date(data.timestamp).toDateString().split(" ")[1]}{" "}
                           {new Date(data.timestamp).toDateString().split(" ")[2]}
                         </span>
-                        <span className={cx("dot-amount")}>{formatBalanceFromOrigToDOT(data.balance)} DOT</span>
+                        <span className={cx("dot-amount")}>{formatBalanceFromOrigToDOT(data.balance)} KSM</span>
                         <a
                           className={cx("hash-id")}
                           target="_blank"
@@ -951,7 +951,7 @@ const PloContribute = () => {
                   trigger={["click", "hover"]}
                   title={
                     <p className={cx("tips")}>
-                      At the beginning of the second round auction, supporters who have contributed more than 10,000 DOT
+                      At the beginning of the second round auction, supporters who have contributed more than 1 KSM
                       and the top 5 people (exclude the Exchange address) ranking will distribute 1 BTC in proportion to
                       their contribution.
                     </p>
@@ -1002,7 +1002,7 @@ const PloContribute = () => {
                         />
                         <span className={cx("pioneers-item-account-name")}>{shortAddress(node.id)}</span>
                         <span className={cx("pioneers-item-dot-amount")}>
-                          {formatBalanceFromOrigToDOT(node.contributedTotal)} DOT
+                          {formatBalanceFromOrigToDOT(node.contributedTotal)} KSM
                         </span>
                       </div>
                     )
@@ -1021,7 +1021,7 @@ const PloContribute = () => {
         />
 
         <Fade bottom fraction={0.1} duration={1000} distance={"50px"}>
-          <p className={cx("all-right")}>Copyright@2021 Darwinia Network</p>
+          <p className={cx("all-right")}>Copyright@2022 Darwinia Network</p>
         </Fade>
       </Container>
 

@@ -76,7 +76,7 @@ export const useEcharts = (dom, dataSource) => {
         ],
         series: [
           {
-            name: "Contribute DOT",
+            name: "Contribute KSM",
             type: "line",
             symbol: "none",
             sampling: "lttb",
