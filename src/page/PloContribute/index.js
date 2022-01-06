@@ -66,8 +66,8 @@ import btcTop5 from './top5.json';
 
 const cx = classNames.bind(styles);
 
-const PARA_ID = 2003;
-const T1_BLOCK_NUMBER = 8263710;
+const PARA_ID = 2105;
+const T1_BLOCK_NUMBER = 10914000;
 const LOCAL_STORAGE_CURRENT_ADDRESS_KEY = stringToHex("plo current address");
 
 /**
@@ -567,7 +567,7 @@ const PloContribute = () => {
                         The rewards on basis of contribution share will be displayed in real-time.
                         <br />
                         <br />
-                        CRAB and CKTON will be released linearly based on the contribution share after Darwinia Network
+                        CRAB and CKTON will be released linearly based on the contribution share after Crab Network
                         wins the slot auction.
                       </p>
                     }
@@ -918,9 +918,7 @@ const PloContribute = () => {
                   trigger={["click", "hover"]}
                   title={
                     <p className={cx("tips")}>
-                      At the beginning of the second round auction, supporters who have contributed more than 1 KSM
-                      and the top 5 people (exclude the Exchange address) ranking will distribute 1 BTC in proportion to
-                      their contribution.
+                      At the ending period starts of the first slot of the batch 5 auction, supporters who have contributed more than 1,000 KSM and the top 5 people (exclude the Exchange address) ranking will distribute 1 BTC in proportion to their contribution.
                     </p>
                   }
                 >
@@ -988,7 +986,7 @@ const PloContribute = () => {
         />
 
         <Fade bottom fraction={0.1} duration={1000} distance={"50px"}>
-          <p className={cx("all-right")}>Copyright@2022 Darwinia Network</p>
+          <p className={cx("all-right")}>Copyright@2022 Crab Network</p>
         </Fade>
       </Container>
 
@@ -1045,10 +1043,10 @@ const PloContribute = () => {
             <span role="img" aria-label="thx">
               🎉
             </span>{" "}
-            Thank you for supporting Darwinia Network!
+            Thank you for supporting Crab Network!
           </h3>
           <p className={cx("thanks-for-support-modal-content-desc")}>
-            You can track the latest progress of Darwinia Network PLO in the following ways:
+            You can track the latest progress of Crab Network PLO in the following ways:
           </p>
           <div className={cx("thanks-for-support-modal-content-contact")}>
             <a

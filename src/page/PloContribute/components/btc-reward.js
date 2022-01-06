@@ -103,12 +103,10 @@ function BTCReward({ currentAccount }) {
                 BTC rewards are dynamic.
                 <br />
                 <br />
-                At the beginning of the second round auction, supporters who have contributed more than 1 KSM and
-                the top 5 people (exclude the Exchange address) ranking will distribute 1 BTC in proportion to their
-                contribution.
+                At the ending period starts of the first slot of the batch 5 auction, supporters who have contributed more than 1,000 KSM and the top 5 people (exclude the Exchange address) ranking will distribute 1 BTC in proportion to their contribution.
                 <br />
-                <br />1 BTC will be released immediately after the second round auction starts regardless of whether
-                Crab Network wins the slot auction or not.
+                <br />
+                1 BTC will be released immediately regardless of whether Crab Network wins the slot auction or not.
               </p>
             }
           >
