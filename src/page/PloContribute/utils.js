@@ -63,7 +63,7 @@ export const formatBalanceFromOrigToDOT = (origBalance) =>
     forceUnit: true,
     withUnit: false,
     withSi: false,
-    decimals: 10,
+    decimals: 12,
   });
 
 export const formatBalanceFromDOTToOrig = (dotBalance) => Big(dotBalance).mul(DOT_TO_ORIG.toString()).toString();

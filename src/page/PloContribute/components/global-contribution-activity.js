@@ -32,7 +32,7 @@ const GlobalContributionActivity = ({ allReferContributeData, globalTotalPower, 
           className={cx("global-contribute-address")}
           target="_blank"
           rel="noopener noreferrer"
-          href={`https://polkadot.subscan.io/account/${text}`}
+          href={`https://kusama.subscan.io/account/${text}`}
         >
           {shortAddress(text)}
         </a>
