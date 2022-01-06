@@ -60,17 +60,6 @@ const ConnectionFailedModal = ({ showConnectionFailedModal = false, onCancel = (
             </a>
             {"."}
           </span>
-          <span className={cx("tip")}>{"Or contribute via other ways :"}</span>
-        </div>
-        <div className={cx("apps-container")}>
-          {apps.map((app) => (
-            <div key={app.name} className={cx("app")}>
-              <img src={app.icon} alt={app.name} className={cx("icon")} />
-              <a target="_blank" rel="noopener noreferrer" href={app.url}>
-                {app.name}
-              </a>
-            </div>
-          ))}
         </div>
       </div>
     </Modal>

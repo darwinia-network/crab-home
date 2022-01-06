@@ -8,7 +8,7 @@ import Big from "big.js";
 export const RING_REWARD = 200000000;
 export const KTON_REWARD = 8000;
 export const BTC_THRESHOLD = 10000; // 10000 DOT
-export const DOT_TO_ORIG = new BN("10000000000");
+export const DOT_TO_ORIG = new BN("1000000000000"); // 貌似是精度
 
 export const shortAddress = (address = "") => {
   if (address.length && address.length > 12) {

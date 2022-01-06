@@ -137,7 +137,7 @@ const PloContribute = () => {
     referralsContributeHistory = tmp;
   }
 
-  let globalTotalPower = new BN("1000000").mul(DOT_TO_ORIG);
+  let globalTotalPower = new BN("20000").mul(DOT_TO_ORIG); // 20000 是啥？
   const allReferContributeData = [];
   if (!allWhoCrowdloan.loading && !allWhoCrowdloan.error && !allReferCrowdloan.loading && !allReferCrowdloan.error) {
     let totalPowerTmp = new BN(0);
