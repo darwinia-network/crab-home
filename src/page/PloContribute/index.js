@@ -731,7 +731,7 @@ const PloContribute = () => {
                   <span>Current</span>
                 </div>
                 <span className={cx("contribute-info-item-value")}>
-                  {formatBalanceFromOrigToDOT(myTotalContribute).split(".")[0]}(
+                  {formatBalanceFromOrigToDOT(myTotalContribute)}(
                   {myTotalContribute.isZero() ? 0 : (myContributePer * 100).toFixed(4)}%)
                 </span>
                 <button className={cx("claim-reward-btn", "space")} disabled={true}>
