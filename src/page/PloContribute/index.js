@@ -186,7 +186,7 @@ const PloContribute = () => {
     total: { ring: Big(0), kton: Big(0) },
   };
   if (currentBlockNumber && Number(inputDot) && Number(inputDot) > 0) {
-    const inputDotBN = new BN(Number(inputDot)).mul(DOT_TO_ORIG);
+    const inputDotBN = Big(Number(inputDot)).times(DOT_TO_ORIG);
     const contributePer = Big(inputDotBN.toString()).div(globalTotalPower.toString());
 
     const bonusN = currentBlockNumber < T1_BLOCK_NUMBER ? 0.2 : 0;
@@ -604,7 +604,7 @@ const PloContribute = () => {
                   <button
                     className={cx("contribute-btn")}
                     onClick={handleClickContribute}
-                    disabled={!currentAccount || Number(inputDot) < 5 || contributeBtnLoading || insufficientBalance}
+                    disabled={!currentAccount || Number(inputDot) < 0.1 || contributeBtnLoading || insufficientBalance}
                   >
                     <Spin spinning={contributeBtnLoading} wrapperClassName={cx("contribute-btn-spinning")}>
                       <span>{contributeBtnLoading ? "" : "Contribute"}</span>
@@ -954,7 +954,7 @@ const PloContribute = () => {
               contributePionners.data.accounts.nodes &&
               contributePionners.data.accounts.nodes.length
                 ? contributePionners.data.accounts.nodes.map((node, index) =>
-                    index === 0 || index > 5 ? null : (
+                    index > 4 ? null : (
                       <div className={cx("pioneers-item")} key={index}>
                         <div className={cx("pioneers-item-num-icon")}>
                           <span>{index + 1}</span>
