@@ -371,7 +371,7 @@ const PloContribute = () => {
       return;
     }
 
-    if (Number(inputDot) >= 5) {
+    if (Number(inputDot) >= 0.1) {
       const extrinsicContribute = api.tx.crowdloan.contribute(PARA_ID, formatBalanceFromDOTToOrig(inputDot), null);
       const extrinsicAddMemo = myReferralCodeFromGql
         ? api.tx.crowdloan.addMemo(PARA_ID, polkadotAddressToReferralCode(myReferralCodeFromGql))
