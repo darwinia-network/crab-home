@@ -465,14 +465,14 @@ const PloContribute = () => {
             </div>
 
             <div className={cx("heading-container-right")}>
-              {/* <a
+              <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href="https://darwinianetwork.medium.com/guide-to-participate-in-the-darwinia-plo-e14b1718787f"
+                href="xxx"
                 className={cx("heading-container-right-how-it-works-link")}
               >
                 <span>How it works</span>
-              </a> */}
+              </a>
               {currentAccount ? (
                 <div className={cx("heading-container-current-account-wrap")}>
                   <div className={cx("heading-container-current-account")}>

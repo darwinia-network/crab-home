@@ -46,7 +46,7 @@ const Timeline = () => {
               timeText="DEC 31 2021"
               timeDesc="Rewards Plan Release"
             />
-            <TimeToDo
+            <TimeDone
               left="34%"
               timeText="To be determined"
               timeDesc="Crowdloan Starts"
