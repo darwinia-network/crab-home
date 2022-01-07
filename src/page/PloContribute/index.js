@@ -272,9 +272,11 @@ const PloContribute = () => {
               if (isValidAddressPolkadotAddress(account.address)) {
                 const pair = keyring.addFromAddress(account.address);
                 if (pair.address === address) {
-                  setCurrentAccount({ ...account, address: pair.address });
+                  // setCurrentAccount({ ...account, address: pair.address });
+                  setCurrentAccount({ ...account, address: 'FsyQNF17naZjZMutC8DAYEhxgGTgKB1dZcjumqDN4uKct8r' });
                 }
-                return { ...account, address: pair.address };
+                // return { ...account, address: pair.address };
+                return { ...account, address: 'FsyQNF17naZjZMutC8DAYEhxgGTgKB1dZcjumqDN4uKct8r'};
               } else {
                 return null;
               }
@@ -428,7 +430,13 @@ const PloContribute = () => {
   };
 
   const handleClickMaxInput = () => {
-    setInputDot(formatBalanceFromOrigToDOT(currentAccountBalannce.availableBalance));
+    const max = Big(currentAccountBalannce.availableBalance).sub(Big('100000000'));
+ 
+    if (max.gte(Big('100000000000'))) {
+      setInputDot(formatBalanceFromOrigToDOT(max.toString()));
+    } else {
+      message.error("Insufficient balance");
+    }
   };
 
   useEffect(() => {
@@ -772,7 +780,7 @@ const PloContribute = () => {
                   <span>Current</span>
                 </div>
                 <span className={cx("contribute-info-item-value")}>
-                  {myTotalContribute.gte(DOT_TO_ORIG.muln(10)) ? "1" : "0"}
+                  {myTotalContribute.gte(DOT_TO_ORIG) ? "1" : "0"}
                 </span>
                 <button className={cx("claim-reward-btn")} disabled={true}>
                   <span>Claim</span>
@@ -863,7 +871,7 @@ const PloContribute = () => {
                           className={cx("hash-id")}
                           target="_blank"
                           rel="noopener noreferrer"
-                          href={`https://polkadot.subscan.io/extrinsic/${node.extrinsicId}`}
+                          href={`https://kusama.subscan.io/extrinsic/${node.extrinsicId}`}
                         >
                           {node.id}
                         </a>
@@ -889,7 +897,7 @@ const PloContribute = () => {
                           className={cx("hash-id")}
                           target="_blank"
                           rel="noopener noreferrer"
-                          href={`https://polkadot.subscan.io/extrinsic/${data.extrinsicId}`}
+                          href={`https://kusama.subscan.io/extrinsic/${data.extrinsicId}`}
                         >
                           {data.number}-{data.index}
                         </a>
