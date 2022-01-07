@@ -305,7 +305,7 @@ const PloContribute = () => {
     }
 
     const keyring = new Keyring();
-    keyring.setSS58Format(0); // Polkadot format address
+    keyring.setSS58Format(2); // Polkadot format address
 
     if (isMobile()) {
       const allAccounts = await web3Accounts();

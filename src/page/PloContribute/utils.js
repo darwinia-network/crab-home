@@ -47,7 +47,7 @@ export const publicKeyToPolkadotAddress = (publicKey) => {
   try {
     const address = encodeAddress(hexToU8a(publicKey));
     const keyring = new Keyring();
-    keyring.setSS58Format(0); // Polkadot format address
+    keyring.setSS58Format(2); // Kusama format address
     return keyring.addFromAddress(address).address;
   } catch (error) {
     // console.error(error);
