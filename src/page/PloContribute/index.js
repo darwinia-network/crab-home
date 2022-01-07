@@ -231,7 +231,7 @@ const PloContribute = () => {
     myRingReward = Big(totalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toString()
     myKtonReward = Big(totalPower).div(globalTotalPower.toString()).mul(Big('8000')).toString();
   }
-  
+
   const myContributePer = Big(myTotalContribute.toString()).div(globalTotalPower.toString());
 
   const top5contribute = useMemo(() => btcTop5.reduce((acc, cur) => acc.add(new Big(cur.amount)), new Big('0')), []);
@@ -468,7 +468,7 @@ const PloContribute = () => {
               <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href="xxx"
+                href="https://darwinianetwork.medium.com/guide-to-participate-in-the-crab-plo-e9b145bed4c9"
                 className={cx("heading-container-right-how-it-works-link")}
               >
                 <span>How it works</span>
@@ -779,7 +779,7 @@ const PloContribute = () => {
                 </button>
               </div>
 
-             <BTCReward currentAccount={currentAccount} /> 
+             <BTCReward currentAccount={currentAccount} />
 
               <div className={cx("contribute-info-item-wrap")}>
                 <div className={cx("contribute-info-item")}>

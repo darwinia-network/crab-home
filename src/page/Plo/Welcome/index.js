@@ -52,7 +52,7 @@ const Welcome = () => {
             </Link>
             <a
               className={cx("learn-more-link")}
-              href="xxx"
+              href="https://darwinianetwork.medium.com/guide-to-participate-in-the-crab-plo-e9b145bed4c9"
               rel="noopener noreferrer"
               target="_blank"
             >
