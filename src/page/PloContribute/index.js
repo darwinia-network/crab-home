@@ -272,11 +272,11 @@ const PloContribute = () => {
               if (isValidAddressPolkadotAddress(account.address)) {
                 const pair = keyring.addFromAddress(account.address);
                 if (pair.address === address) {
-                  // setCurrentAccount({ ...account, address: pair.address });
-                  setCurrentAccount({ ...account, address: 'FsyQNF17naZjZMutC8DAYEhxgGTgKB1dZcjumqDN4uKct8r' });
+                  setCurrentAccount({ ...account, address: pair.address });
+                  // setCurrentAccount({ ...account, address: 'FsyQNF17naZjZMutC8DAYEhxgGTgKB1dZcjumqDN4uKct8r' });
                 }
-                // return { ...account, address: pair.address };
-                return { ...account, address: 'FsyQNF17naZjZMutC8DAYEhxgGTgKB1dZcjumqDN4uKct8r'};
+                return { ...account, address: pair.address };
+                // return { ...account, address: 'FsyQNF17naZjZMutC8DAYEhxgGTgKB1dZcjumqDN4uKct8r'};
               } else {
                 return null;
               }
