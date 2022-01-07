@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames/bind";
 import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import crab from "./img/crab.png";
 import contribute from "./img/contribute.png";
@@ -46,8 +47,16 @@ const Welcome = () => {
             Metaverse.
           </p>
           <div className={cx("link-wrap")}>
-            <a className={cx("join-our-crowdloan-link")} href="#waitlist-section">
-              <span>Sign up for waitlist</span>
+            <Link className={cx("join-our-crowdloan-link")} to="plo_contribute">
+              <span>Join our crowdloan</span>
+            </Link>
+            <a
+              className={cx("learn-more-link")}
+              href="https://darwinianetwork.medium.com/guide-to-participate-in-the-crab-plo-e9b145bed4c9"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span>Learn more</span>
             </a>
           </div>
         </div>
@@ -65,7 +74,7 @@ const Welcome = () => {
         ))}
       </div>
 
-      <div className={cx("main-border")}  id="crowdloan-section">
+      <div className={cx("main-border")} id="crowdloan-section">
         <div className={cx("intro-kusama")}>
           <img alt="..." src={kusamaBg} />
           <div>

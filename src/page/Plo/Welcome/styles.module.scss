@@ -59,16 +59,7 @@
 }
 
 .learn-more-link {
-  background-clip: content-box, border-box;
-  background-image: linear-gradient(white, white),
-    linear-gradient(
-      315deg,
-      rgba(0, 208, 222, 1),
-      rgba(55, 92, 223, 1),
-      rgba(175, 74, 252, 1)
-    );
-  background-origin: border-box;
-  border: solid 1px transparent;
+  border: solid 1px $main;
   margin-left: 20px;
   border-radius: 10px;
   display: flex;
@@ -85,7 +76,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 21px;
-    color: #6604ff;
+    color: $main;
   }
 
   @media screen and (max-width: 1024px) {

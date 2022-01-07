@@ -6,6 +6,7 @@ const AsyncEconomic = asyncComponent(import("./page/Economic"));
 const AsyncPlo = asyncComponent(import("./page/Plo"));
 const AsyncGrants = asyncComponent(import("./page/Grants"));
 const AsyncNotFound = asyncComponent(import("./page/NotFound"));
+const AsyncPloContribute = asyncComponent(import("./page/PloContribute"));
 
 export default function router() {
   return (
@@ -14,6 +15,7 @@ export default function router() {
       <Route exact component={AsyncEconomic} path="/economic" />
       <Route exact component={AsyncPlo} path="/plo" />
       <Route exact component={AsyncGrants} path="/grants" />
+      <Route exact component={AsyncPloContribute} path="/plo_contribute" />
       <Route component={AsyncNotFound} />
     </Switch>
   );
