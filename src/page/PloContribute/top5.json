@@ -1,7 +1,7 @@
 [
-  { "address": "16AoT18d9dTztTmwmmzX65t1RWhteB2PbCCnzraWxQx25M5e", "amount": "12001", "reward": "0.2307" },
-  { "address": "14FuXNe5M5HNnWVaNH4Lnege4y2tupo27ccQGcdmQxyA28BV", "amount": "10010", "reward": "0.1924" },
-  { "address": "15au8WWatxtZbyoupa2efRviFg23GFT861tSDtPgNFkG7qKk", "amount": "10002", "reward": "0.1923" },
-  { "address": "13ugQ1bH2JRfjEgma8LVzJotVBK32TEUPT3ExfRZjXGkVEFe", "amount": "10001", "reward": "0.1923" },
-  { "address": "15VJ7xT1UbTLReb1qDNGiH3ncjbNLXKgrhy23Dapg4h6ATDV", "amount": "10001", "reward": "0.1923" }
+  { "address": "16AoT18d9dTztTmwmmzX65t1RWhteB2PbCCnzraWxQx25M5e", "hash": "3f49502462acdcf288944e1e154164cf2bfeb55bd74050e2c5d04a9634c7baac", "amount": "12001", "reward": "0.2307" },
+  { "address": "14FuXNe5M5HNnWVaNH4Lnege4y2tupo27ccQGcdmQxyA28BV", "hash": "c55a9450bf5ab15bc7390879ea4535f3bfacb38140f5b084e65c76b1e269bc7c", "amount": "10010", "reward": "0.1924" },
+  { "address": "15au8WWatxtZbyoupa2efRviFg23GFT861tSDtPgNFkG7qKk", "hash": "aa8694acbecd7fcde0f246cf406fcc78740d9a8c05382e7d80c086a6248b8cbd", "amount": "10002", "reward": "0.1923" },
+  { "address": "13ugQ1bH2JRfjEgma8LVzJotVBK32TEUPT3ExfRZjXGkVEFe", "hash": "8296cbda243462f030150d47e1508147319164f384a9345fc9bf505044ae1375", "amount": "10001", "reward": "0.1923" },
+  { "address": "15VJ7xT1UbTLReb1qDNGiH3ncjbNLXKgrhy23Dapg4h6ATDV", "hash": "1b033652f19eda1dd191b1b8f0ee8891860b1d478f7f18b8bdaf9d589888db1b", "amount": "10001", "reward": "0.1923" }
 ]
