@@ -51,12 +51,12 @@ const Timeline = () => {
               timeText="To be determined"
               timeDesc="Crowdloan Starts"
             />
-            <TimeToDo
+            <TimeDone
               left="49%"
               timeText="JAN 9 2022"
               timeDesc="Batch 5 Auction Starts"
             />
-            <TimeToDo
+            <TimeDone
               right="34%"
               timeText="JAN 11 2022"
               timeDesc="The First Slot Ending Period Starts"
