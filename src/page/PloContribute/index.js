@@ -112,31 +112,6 @@ const PloContribute = () => {
   const { currentTotalContribute } = useEcharts(echartsRef.current, totalContributeHistory);
   const { currentAccountBalannce } = useBalanceAll(api, currentAccount ? currentAccount.address : null);
 
-  let referralsContributeHistory = [];
-  if (
-    !myReferCrwonloan.loading &&
-    !myReferCrwonloan.error &&
-    myReferCrwonloan.data &&
-    myReferCrwonloan.data.crowdloanReferStatistic &&
-    myReferCrwonloan.data.crowdloanReferStatistic.contributors &&
-    myReferCrwonloan.data.crowdloanReferStatistic.contributors.nodes &&
-    myReferCrwonloan.data.crowdloanReferStatistic.contributors.nodes.length
-  ) {
-    const tmp = [];
-    for (let node1 of myReferCrwonloan.data.crowdloanReferStatistic.contributors.nodes) {
-      const { block: { number }, extrinsicId, timestamp, balance, id } = node1;
-
-      tmp.push({
-        number,
-        balance,
-        timestamp,
-        extrinsicId,
-        index: id.split('-')[1]
-      })
-    }
-    referralsContributeHistory = tmp;
-  }
-
   let globalTotalPower = new BN("20000").mul(DOT_TO_ORIG); // 20000 是啥？
   const allReferContributeData = [];
   if (!allWhoCrowdloan.loading && !allWhoCrowdloan.error && !allReferCrowdloan.loading && !allReferCrowdloan.error) {
@@ -215,9 +190,38 @@ const PloContribute = () => {
     auctionSuccessReward = { base, bonus, referral, total };
   }
 
+  let myReferTotalPower = new BN(0);
+  let referralsContributeHistory = [];
+  if (
+    !myReferCrwonloan.loading &&
+    !myReferCrwonloan.error &&
+    myReferCrwonloan.data &&
+    myReferCrwonloan.data.crowdloanReferStatistic
+  ) {
+    myReferTotalPower = new BN(myReferCrwonloan.data.crowdloanReferStatistic.totalPower);
+
+    if (
+      myReferCrwonloan.data.crowdloanReferStatistic.contributors &&
+      myReferCrwonloan.data.crowdloanReferStatistic.contributors.nodes &&
+      myReferCrwonloan.data.crowdloanReferStatistic.contributors.nodes.length
+    ) {
+      const tmp = [];
+      for (let node1 of myReferCrwonloan.data.crowdloanReferStatistic.contributors.nodes) {
+        const { block: { number }, extrinsicId, timestamp, balance, id } = node1;
+        tmp.push({
+          number,
+          balance,
+          timestamp,
+          extrinsicId,
+          index: id.split('-')[1]
+        })
+      }
+      referralsContributeHistory = tmp;
+    }
+  }
+
   let myTotalContribute = new BN(0);
-  let myRingReward = "0";
-  let myKtonReward = "0";
+  let myContributeTotalPower = new BN(0);
   if (
     !myWhoCrowdloan.loading &&
     !myWhoCrowdloan.error &&
@@ -225,11 +229,15 @@ const PloContribute = () => {
     myWhoCrowdloan.data.crowdloanWhoStatistic
   ) {
     myTotalContribute = new BN(myWhoCrowdloan.data.crowdloanWhoStatistic.totalBalance);
+    myContributeTotalPower = new BN(myWhoCrowdloan.data.crowdloanWhoStatistic.totalPower);
+  }
 
-    const totalPower = new BN(myWhoCrowdloan.data.crowdloanWhoStatistic.totalPower);
-
-    myRingReward = Big(totalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toString()
-    myKtonReward = Big(totalPower).div(globalTotalPower.toString()).mul(Big('8000')).toString();
+  let myRingReward = "0";
+  let myKtonReward = "0";
+  const myTotalPower = myReferTotalPower.add(myContributeTotalPower);
+  if (myTotalPower.gt(new BN(0))) {
+    myRingReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toString()
+    myKtonReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('8000')).toString();
   }
 
   const myContributePer = Big(myTotalContribute.toString()).div(globalTotalPower.toString());
