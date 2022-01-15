@@ -67,6 +67,7 @@ query {
 export const gqlCrowdloanReferStatisticByReferralCode = (referralCode) => gql`
 query {
   crowdloanReferStatistic(id: "${referralCode}") {
+      totalPower
       contributors (orderBy: TIMESTAMP_DESC) {
         nodes {
           id
