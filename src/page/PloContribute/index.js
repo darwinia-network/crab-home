@@ -112,7 +112,7 @@ const PloContribute = () => {
   const { currentTotalContribute } = useEcharts(echartsRef.current, totalContributeHistory);
   const { currentAccountBalannce } = useBalanceAll(api, currentAccount ? currentAccount.address : null);
 
-  let globalTotalPower = new BN("20000").mul(DOT_TO_ORIG); // 20000 是啥？
+  let globalTotalPower = new BN("10000").mul(DOT_TO_ORIG);  // if it doesnt reach 10000, it will be counted as 10000
   const allReferContributeData = [];
   if (!allWhoCrowdloan.loading && !allWhoCrowdloan.error && !allReferCrowdloan.loading && !allReferCrowdloan.error) {
     let totalPowerTmp = new BN(0);
