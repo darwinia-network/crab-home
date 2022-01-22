@@ -1800,6 +1800,12 @@ $main-bg: #ec3783;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 1024px) {
+    padding: 20px {
+      top: 30px;
+    };
+  }
 }
 
 .total-contribute-history-title-wrap {
@@ -1807,6 +1813,10 @@ $main-bg: #ec3783;
   border-radius: 10px;
   padding: 20px 80px;
   width: fit-content;
+
+  @media screen and (max-width: 1024px) {
+    padding: 20px 10px;
+  }
 
   >span {
     font-family: IBM Plex Sans;
@@ -1816,5 +1826,11 @@ $main-bg: #ec3783;
     line-height: 39px;
     text-align: center;
     color: #EC3783;
+
+    @media screen and (max-width: 1024px) {
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 21px;
+    }
   }
 }
