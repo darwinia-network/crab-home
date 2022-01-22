@@ -61,7 +61,7 @@ export const useEcharts = (dom, dataSource) => {
         },
         yAxis: {
           type: "value",
-          boundaryGap: [0, "100%"],
+          boundaryGap: [0, "10%"],
         },
         dataZoom: [
           {
@@ -69,10 +69,10 @@ export const useEcharts = (dom, dataSource) => {
             start: 0,
             end: 100,
           },
-          {
-            start: 0,
-            end: 100,
-          },
+          // {
+          //   start: 0,
+          //   end: 100,
+          // },
         ],
         series: [
           {
