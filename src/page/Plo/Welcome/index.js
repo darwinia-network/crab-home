@@ -4,11 +4,13 @@ import classNames from "classnames/bind";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import crab from "./img/crab.png";
+// import crab from "./img/crab.png";
 import contribute from "./img/contribute.png";
 import kusama from "./img/kusama.png";
 import timeline from "./img/timeline.png";
 import kusamaBg from "./img/kusama-bg.png";
+import crabHero from './img/crab-hero.svg';
+import crabHeroM from './img/crab-hero-m.svg';
 
 const cx = classNames.bind(styles);
 
@@ -34,7 +36,7 @@ const intros = [
 const Welcome = () => {
   return (
     <Container>
-      <div className={cx("main")}>
+      {/* <div className={cx("main")}>
         <img alt="..." src={crab} className={cx("bridge")} />
 
         <div>
@@ -59,6 +61,28 @@ const Welcome = () => {
               <span>Learn more</span>
             </a>
           </div>
+        </div>
+      </div> */}
+
+      <div className={cx('main-crab-hero')}>
+        <img alt='...' src={crabHero} className={cx('crab-hero')} />
+        <img alt='...' src={crabHeroM} className={cx('crab-hero-m')} />
+
+        <h2 className={cx('main-crab-hero-title')}>🎉 Crab Network wins the 22nd Parachain Auction.<br />Thank you for supporting Crab Network!</h2>
+        <p className={cx('crab-hero-desc')}>We are bridging heterogeneous chains to build the Web3.0 Metaverse.</p>
+
+        <div className={cx("main-crab-hero-btn-group")}>
+          <Link className={cx("join-our-crowdloan-link")} to="plo_contribute">
+            <span>Crowdloan details</span>
+          </Link>
+          <a
+            className={cx("learn-more-link")}
+            href="https://darwinianetwork.medium.com/guide-to-participate-in-the-crab-plo-e9b145bed4c9"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span>Learn more</span>
+          </a>
         </div>
       </div>
 
