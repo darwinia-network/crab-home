@@ -61,9 +61,9 @@ const Timeline = () => {
               timeText="JAN 11 2022"
               timeDesc="The First Slot Ending Period Starts"
             />
-            <TimeToDo
+            <TimeDone
               right="19%"
-              timeText="To be determined"
+              timeText="JAN 23 2022"
               timeDesc="Crowdloan Ends"
             />
             <TimeToDo

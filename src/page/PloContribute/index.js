@@ -513,7 +513,7 @@ const PloContribute = () => {
 
         {/* Contribute, Crowloan, Referral link */}
         <Fade bottom fraction={0.1} duration={1200} distance={"50px"}>
-          <div className={cx("contribute-crowloan-referral")}>
+          <div className={cx("contribute-crowloan-referral")} style={{ display: 'none' }}>
             <div className={cx("contribute")}>
               <h3 className={cx("contribute-title")}>Contribute</h3>
 
@@ -705,6 +705,16 @@ const PloContribute = () => {
                 )}
               </div>
             </div>
+          </div>
+        </Fade>
+
+        {/* Total Contribute History */}
+        <Fade bottom fraction={0.1} duration={1200} distance={"50px"}>
+          <div className={cx('total-contribute-history')}>
+            <div className={cx('total-contribute-history-title-wrap')}>
+              <span>👏 Current Total contributions: {formatBalanceFromOrigToDOT(currentTotalContribute)} KSM 👏</span>
+            </div>
+            <div ref={echartsRef} className={cx("crowloan-echarts")} />
           </div>
         </Fade>
 
