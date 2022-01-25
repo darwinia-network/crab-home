@@ -119,16 +119,16 @@ const PloContribute = () => {
   if (!allWhoCrowdloan.loading && !allWhoCrowdloan.error && !allReferCrowdloan.loading && !allReferCrowdloan.error) {
     // let totalPowerTmp = new BN(0);
 
-    if (
-      allWhoCrowdloan.data &&
-      allWhoCrowdloan.data.crowdloanWhoStatistics &&
-      allWhoCrowdloan.data.crowdloanWhoStatistics.nodes &&
-      allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.length
-    ) {
-      allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.forEach((node) => {
-        // totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
-      });
-    }
+    // if (
+    //   allWhoCrowdloan.data &&
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics &&
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics.nodes &&
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.length
+    // ) {
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.forEach((node) => {
+    //     totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
+    //   });
+    // }
 
     if (
       allReferCrowdloan.data &&
