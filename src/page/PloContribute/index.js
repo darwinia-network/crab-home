@@ -113,10 +113,11 @@ const PloContribute = () => {
   const { currentTotalContribute } = useEcharts(echartsRef.current, totalContributeHistory);
   const { currentAccountBalannce } = useBalanceAll(api, currentAccount ? currentAccount.address : null);
 
-  let globalTotalPower = new BN("10000").mul(DOT_TO_ORIG);  // if it doesnt reach 10000, it will be counted as 10000
+  let globalTotalPower = new BN("7553777745215274");  // 7,553.777745215274 KSM. This is definite
+  // let globalTotalPower = new BN("10000").mul(DOT_TO_ORIG);  // if it doesnt reach 10000, it will be counted as 10000
   const allReferContributeData = [];
   if (!allWhoCrowdloan.loading && !allWhoCrowdloan.error && !allReferCrowdloan.loading && !allReferCrowdloan.error) {
-    let totalPowerTmp = new BN(0);
+    // let totalPowerTmp = new BN(0);
 
     if (
       allWhoCrowdloan.data &&
@@ -125,7 +126,7 @@ const PloContribute = () => {
       allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.length
     ) {
       allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.forEach((node) => {
-        totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
+        // totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
       });
     }
 
@@ -136,7 +137,7 @@ const PloContribute = () => {
       allReferCrowdloan.data.crowdloanReferStatistics.nodes.length
     ) {
       allReferCrowdloan.data.crowdloanReferStatistics.nodes.forEach((node) => {
-        totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
+        // totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
 
         allReferContributeData.push({
           user: referralCodeToPolkadotAddress(node.user),
@@ -147,7 +148,7 @@ const PloContribute = () => {
       });
     }
 
-    globalTotalPower = totalPowerTmp.gt(globalTotalPower) ? totalPowerTmp : globalTotalPower;
+    // globalTotalPower = totalPowerTmp.gt(globalTotalPower) ? totalPowerTmp : globalTotalPower;
   }
 
   let myReferralCodeFromGql = null;
