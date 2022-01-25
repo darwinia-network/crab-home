@@ -1088,6 +1088,12 @@ $main-bg: #ec3783;
     align-items: center;
     padding: 10px;
   }
+
+  &.no-data {
+    grid-template-columns: 100%;
+    padding: 40px 0;
+    justify-items: center;
+  }
 }
 
 .pioneers-item {

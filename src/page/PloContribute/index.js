@@ -26,7 +26,7 @@ import {
   gqlCrowdloanReferStatisticByReferralCode,
   CONTRIBUTES_BY_ADDRESS_PARA_ID,
   REFERRAL_CODE_BY_ADDRESS_PARA_ID,
-  CONTRIBUTE_PIONEERS,
+  // CONTRIBUTE_PIONEERS,
   ALL_WHO_CROWDLOAN,
   ALL_REFER_CROWDLOAN,
 } from "./gql";
@@ -87,7 +87,8 @@ const PloContribute = () => {
   const myReferralCode = useQuery(REFERRAL_CODE_BY_ADDRESS_PARA_ID, {
     variables: { paraId: PARA_ID, address: currentAccount ? currentAccount.address : "" },
   });
-  const contributePionners = useQuery(CONTRIBUTE_PIONEERS);
+  const contributePionners = {};
+  // const contributePionners = useQuery(CONTRIBUTE_PIONEERS);
   const myWhoCrowdloan = useQuery(gqlCrowdloanWhoStatisticByAddress(currentAccount ? currentAccount.address : ""));
   const myReferCrwonloan = useQuery(
     gqlCrowdloanReferStatisticByReferralCode(
@@ -974,7 +975,7 @@ const PloContribute = () => {
                 )}
             </div>
 
-            <div className={cx("pioneers-container")}>
+            <div className={cx("pioneers-container", "no-data")}>
               {contributePionners.data &&
               contributePionners.data.accounts &&
               contributePionners.data.accounts.nodes &&
@@ -998,7 +999,7 @@ const PloContribute = () => {
                       </div>
                     )
                   )
-                : null}
+                : <span>No Data</span>}
             </div>
           </div>
         </Fade>
