@@ -11,6 +11,7 @@ import infoIcon from "./img/info-icon.png";
 // import dotIcon from "./img/dot-icon.png";
 import modalCloseIcon from "./img/modal-close.png";
 import copyIcon from "./img/copy-icon.png";
+import crabRewardsNoticeIcon from './img/crab-rewards-notice.svg';
 
 import twitterIcon from "./img/twitter.png";
 import mediumIcon from "./img/medium.png";
@@ -468,6 +469,13 @@ const PloContribute = () => {
     <div className={cx("main")}>
       <div className={cx("magic-01")} />
       <div className={cx("magic-02")} />
+
+      <div className={cx('rewards-time-notice')}>
+        <img alt="..." src={crabRewardsNoticeIcon} />
+        <div className={cx('rewards-time-notice-content')}>
+          <p>After Crab Network is successfully connected to Kusama (#block 11491800), 10% CRAB and CKTON will be immediately released, <br />meanwhile, the Metaverse NFT Package will be released. And the other 90% CRAB rewards will be linearly released within 44 weeks.</p>
+        </div>
+      </div>
 
       <Container>
         {/* Heading */}
