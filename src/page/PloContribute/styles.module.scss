@@ -3,7 +3,7 @@ $main-bg: #ec3783;
 .main {
   background-image: url("./img/bg.png");
   background-repeat: repeat;
-  padding-top: 20px;
+  // padding-top: 20px;
   padding-bottom: 50px;
 }
 
@@ -1840,6 +1840,47 @@ $main-bg: #ec3783;
       font-weight: 500;
       font-size: 26px;
       line-height: 21px;
+    }
+  }
+}
+
+.rewards-time-notice {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+  margin-bottom: 14px;
+  background: rgba(236, 55, 131, 0.1);
+
+  @media screen and (max-width: 1024px) {
+    padding: 12px 6px;
+    >img {
+      display: none;
+    }
+  }
+}
+
+.rewards-time-notice-content {
+  margin-left: 16px;
+
+  >p {
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px !important;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (max-width: 1024px) {
+      font-size: 12px;
+      line-height: 16px !important;
+
+      >br {
+        display: none;
+      }
     }
   }
 }
