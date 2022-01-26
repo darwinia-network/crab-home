@@ -1164,6 +1164,8 @@ $main-bg: #ec3783;
 .crowloan-echarts {
   height: 258px;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .referral-leaderboard {
@@ -1806,6 +1808,7 @@ $main-bg: #ec3783;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   @media screen and (max-width: 1024px) {
     padding: 20px {
