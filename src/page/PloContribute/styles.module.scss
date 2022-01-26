@@ -1088,6 +1088,12 @@ $main-bg: #ec3783;
     align-items: center;
     padding: 10px;
   }
+
+  &.no-data {
+    grid-template-columns: 100%;
+    padding: 40px 0;
+    justify-items: center;
+  }
 }
 
 .pioneers-item {
@@ -1158,6 +1164,8 @@ $main-bg: #ec3783;
 .crowloan-echarts {
   height: 258px;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .referral-leaderboard {
@@ -1800,6 +1808,7 @@ $main-bg: #ec3783;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   @media screen and (max-width: 1024px) {
     padding: 20px {

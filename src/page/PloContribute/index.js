@@ -26,7 +26,7 @@ import {
   gqlCrowdloanReferStatisticByReferralCode,
   CONTRIBUTES_BY_ADDRESS_PARA_ID,
   REFERRAL_CODE_BY_ADDRESS_PARA_ID,
-  CONTRIBUTE_PIONEERS,
+  // CONTRIBUTE_PIONEERS,
   ALL_WHO_CROWDLOAN,
   ALL_REFER_CROWDLOAN,
 } from "./gql";
@@ -87,7 +87,8 @@ const PloContribute = () => {
   const myReferralCode = useQuery(REFERRAL_CODE_BY_ADDRESS_PARA_ID, {
     variables: { paraId: PARA_ID, address: currentAccount ? currentAccount.address : "" },
   });
-  const contributePionners = useQuery(CONTRIBUTE_PIONEERS);
+  const contributePionners = {};
+  // const contributePionners = useQuery(CONTRIBUTE_PIONEERS);
   const myWhoCrowdloan = useQuery(gqlCrowdloanWhoStatisticByAddress(currentAccount ? currentAccount.address : ""));
   const myReferCrwonloan = useQuery(
     gqlCrowdloanReferStatisticByReferralCode(
@@ -112,21 +113,22 @@ const PloContribute = () => {
   const { currentTotalContribute } = useEcharts(echartsRef.current, totalContributeHistory);
   const { currentAccountBalannce } = useBalanceAll(api, currentAccount ? currentAccount.address : null);
 
-  let globalTotalPower = new BN("10000").mul(DOT_TO_ORIG);  // if it doesnt reach 10000, it will be counted as 10000
+  let globalTotalPower = new BN("7553777745215274");  // 7,553.777745215274 KSM. This is definite
+  // let globalTotalPower = new BN("10000").mul(DOT_TO_ORIG);  // if it doesnt reach 10000, it will be counted as 10000
   const allReferContributeData = [];
   if (!allWhoCrowdloan.loading && !allWhoCrowdloan.error && !allReferCrowdloan.loading && !allReferCrowdloan.error) {
-    let totalPowerTmp = new BN(0);
+    // let totalPowerTmp = new BN(0);
 
-    if (
-      allWhoCrowdloan.data &&
-      allWhoCrowdloan.data.crowdloanWhoStatistics &&
-      allWhoCrowdloan.data.crowdloanWhoStatistics.nodes &&
-      allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.length
-    ) {
-      allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.forEach((node) => {
-        totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
-      });
-    }
+    // if (
+    //   allWhoCrowdloan.data &&
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics &&
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics.nodes &&
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.length
+    // ) {
+    //   allWhoCrowdloan.data.crowdloanWhoStatistics.nodes.forEach((node) => {
+    //     totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
+    //   });
+    // }
 
     if (
       allReferCrowdloan.data &&
@@ -135,7 +137,7 @@ const PloContribute = () => {
       allReferCrowdloan.data.crowdloanReferStatistics.nodes.length
     ) {
       allReferCrowdloan.data.crowdloanReferStatistics.nodes.forEach((node) => {
-        totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
+        // totalPowerTmp = totalPowerTmp.add(new BN(node.totalPower));
 
         allReferContributeData.push({
           user: referralCodeToPolkadotAddress(node.user),
@@ -146,7 +148,7 @@ const PloContribute = () => {
       });
     }
 
-    globalTotalPower = totalPowerTmp.gt(globalTotalPower) ? totalPowerTmp : globalTotalPower;
+    // globalTotalPower = totalPowerTmp.gt(globalTotalPower) ? totalPowerTmp : globalTotalPower;
   }
 
   let myReferralCodeFromGql = null;
@@ -236,8 +238,8 @@ const PloContribute = () => {
   let myKtonReward = "0";
   const myTotalPower = myReferTotalPower.add(myContributeTotalPower);
   if (myTotalPower.gt(new BN(0))) {
-    myRingReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toString()
-    myKtonReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('8000')).toString();
+    myRingReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toFixed(4);
+    myKtonReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('8000')).toFixed(4);
   }
 
   const myContributePer = Big(myTotalContribute.toString()).div(globalTotalPower.toString());
@@ -974,7 +976,7 @@ const PloContribute = () => {
                 )}
             </div>
 
-            <div className={cx("pioneers-container")}>
+            <div className={cx("pioneers-container", "no-data")}>
               {contributePionners.data &&
               contributePionners.data.accounts &&
               contributePionners.data.accounts.nodes &&
@@ -998,7 +1000,7 @@ const PloContribute = () => {
                       </div>
                     )
                   )
-                : null}
+                : <span>No Data</span>}
             </div>
           </div>
         </Fade>
