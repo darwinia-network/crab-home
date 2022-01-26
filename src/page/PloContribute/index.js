@@ -238,8 +238,8 @@ const PloContribute = () => {
   let myKtonReward = "0";
   const myTotalPower = myReferTotalPower.add(myContributeTotalPower);
   if (myTotalPower.gt(new BN(0))) {
-    myRingReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toString()
-    myKtonReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('8000')).toString();
+    myRingReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toFixed(4);
+    myKtonReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('8000')).toFixed(4);
   }
 
   const myContributePer = Big(myTotalContribute.toString()).div(globalTotalPower.toString());
