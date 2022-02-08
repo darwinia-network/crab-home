@@ -48,7 +48,7 @@ const Timeline = () => {
             />
             <TimeDone
               left="34%"
-              timeText="To be determined"
+              timeText="JAN 6 2022"
               timeDesc="Crowdloan Starts"
             />
             <TimeDone
