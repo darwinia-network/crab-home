@@ -45,7 +45,7 @@ const MobileModal = () => {
             <span role="img" aria-label="fire">
               🔥
             </span>{" "}
-            We are launching our Parachain Crowdloan on Kusama.
+            Crab Network will Connect with the Kusama Network as the 22nd Parachain Slot.
           </h5>
           <p
             className={cx("desc")}
@@ -53,13 +53,11 @@ const MobileModal = () => {
               color: "#555",
             }}
           >
-            Contribute your KSM to help build a Web3.0 Bridge Hub by joining our
-            crowdloan, unlock CRAB and CKTON bonus, also BTC and Metaverse NFT
-            Package waiting for you.
+            Thanks to all contributors for your support! Crab Network has won the 22nd Kusama parachain slot and was awarded the parachain ID 2105. In two weeks, Crab Network will complete connecting with Kusama Network.
           </p>
         </div>
         <Link className={cx("join-our-crowdloan-link")} to="plo">
-          <span>Join our crowdloan</span>
+          <span>Crowdloan details</span>
         </Link>
       </div>
     </Modal>
@@ -79,16 +77,14 @@ const PloBanner = () => {
               <span role="img" aria-label="fire">
                 🔥
               </span>{" "}
-              We are launching our Parachain Crowdloan on Kusama.
+              Crab Network has won the 22nd Kusama parachain slot!
             </h5>
             <p className={cx("desc")}>
-              Contribute your KSM to help build a Web3.0 Bridge Hub by joining
-              our crowdloan, unlock CRAB and CKTON bonus, also BTC and Metaverse
-              NFT Package waiting for you.
+            Thanks to all contributors for your support! Crab Network has won the 22nd Kusama parachain slot and was awarded the parachain ID 2105. In two weeks, Crab Network will complete connecting with Kusama Network.
             </p>
           </div>
           <Link className={cx("banner-link")} to="plo">
-            <span>Join our crowdloan</span>
+            <span>Crowdloan details</span>
           </Link>
         </Container>
       </Container>
