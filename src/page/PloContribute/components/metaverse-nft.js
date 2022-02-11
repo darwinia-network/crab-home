@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import classNames from "classnames/bind";
 import styles from "../styles.module.scss";
-import { Tooltip, Modal } from "antd";
+import { web3FromAddress } from "@polkadot/extension-dapp";
+import { Tooltip, Modal, Spin, message } from "antd";
 import infoIcon from "../img/info-icon.png";
 import modalCloseIcon from "../img/modal-close.png";
 import acceptIcon from '../img/accept.svg';
 import acceptedIcon from '../img/accepted.svg';
 import { DOT_TO_ORIG } from "../utils";
+import { useApi } from "../hooks";
 
 const cx = classNames.bind(styles);
 
@@ -15,8 +17,10 @@ const isAnAalidCrabAddress = (address) => {
   // return (address || "").startsWith("0x");
 }
 
-const MetaverseNFT = ({ myTotalContribute }) => {
+const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
+  const { api } = useApi();
   const [isAccepted, setIsAccepted] = useState(false);
+  const [claimLoading, setClaimLoading] = useState(false);
   const [visibleModalCopyThat, setVisibleModalCopyThat] = useState(false);
   const [visibleModalClaimNFT, setVisibleModalClaimNFT] = useState(false);
   const [nftCrabAddress, setNftCrabAddress] = useState('');
@@ -25,9 +29,52 @@ const MetaverseNFT = ({ myTotalContribute }) => {
     setVisibleModalClaimNFT(true);
   };
 
-  const handleClickAcceptAndClaim = () => {
-    setVisibleModalClaimNFT(false);
-    setVisibleModalCopyThat(true);
+  const handleClickAcceptAndClaim = async () => {
+    setClaimLoading(true);
+    const injector = await web3FromAddress(currentAccount.address);
+    api.setSigner(injector.signer);
+
+    try {
+      message.info("Please sign and send the transaction in Polkadot extension");
+
+      const mark = `NFT amount: 1; Rewards receiving address: ${nftCrabAddress}`;
+      const unsubscribe = await api.tx.system.remark(mark).signAndSend(currentAccount.address, async (result) => {
+        if (!result || !result.status) {
+          return;
+        }
+        message.info("Extrinsic processing");
+
+        if (result.status.isFinalized || result.status.isInBlock) {
+          unsubscribe();
+
+          result.events
+            .filter(({ event: { section } }) => section === "system")
+            .forEach((res) => {
+              const {
+                event: { method },
+              } = res;
+
+              if (method === "ExtrinsicFailed") {
+                message.error("Extrinsic failed");
+              } else if (method === "ExtrinsicSuccess") {
+                message.success("Extrinsic success");
+                setClaimLoading(false);
+                setVisibleModalClaimNFT(false);
+                setVisibleModalCopyThat(true);
+              }
+            });
+        }
+
+        if (result.isError) {
+          setClaimLoading(false);
+          message.error("Extrinsic Failed");
+        }
+      });
+    } catch (err) {
+      console.error(err);
+      setClaimLoading(false);
+      message.error("Extrinsic Failed");
+    }
   };
 
   const handleChangeNftCrabAddress = (e) => {
@@ -89,8 +136,8 @@ const MetaverseNFT = ({ myTotalContribute }) => {
             <li>Please track the NFT rewards by switching to Columbus Continent of Evolution Land.</li>
             <li>Please feel free to contact us through "<a target='_blank' rel='noopener noreferrer' href='mailto:hello@crab.network'>hello@crab.network</a>" if you have any questions.</li>
           </ul>
-          <button className={cx('metaverse-nft-modal-ok-btn')} style={{ width: '320px' }} onClick={() => setVisibleModalCopyThat(false)}>
-            <span>OK</span>
+          <button className={cx('metaverse-nft-modal-ok-btn', 'metaverse-nft-modal-copy-that-ok-btn')} onClick={() => setVisibleModalCopyThat(false)}>
+            <span className={cx('metaverse-nft-modal-ok-btn-text')}>OK</span>
           </button>
         </div>
       </Modal>
@@ -115,11 +162,11 @@ const MetaverseNFT = ({ myTotalContribute }) => {
             <span>I accept and continue to claim</span>
           </div>
           <div className={cx('metaverse-nft-modal-address-input-wrap')}>
-            <input onChange={handleChangeNftCrabAddress} className={cx('metaverse-nft-modal-address-input')} disabled={!isAccepted} placeholder='Please enter your Crab Smart Chain receiving address' />
+            <input onChange={handleChangeNftCrabAddress} className={cx('metaverse-nft-modal-address-input')} disabled={claimLoading || !isAccepted} placeholder='Please enter your Crab Smart Chain receiving address' />
             <span className={cx('metaverse-nft-modal-address-warning', { 'disbaled': !nftCrabAddress || isAnAalidCrabAddress(nftCrabAddress) })}>Invalid address</span>
           </div>
-          <button className={cx('metaverse-nft-modal-ok-btn')} disabled={!isAccepted || !nftCrabAddress || !isAnAalidCrabAddress(nftCrabAddress)} onClick={handleClickAcceptAndClaim}>
-            <span>I accept and claim</span>
+          <button className={cx('metaverse-nft-modal-ok-btn')} disabled={claimLoading || !isAccepted || !nftCrabAddress || !isAnAalidCrabAddress(nftCrabAddress)} onClick={handleClickAcceptAndClaim}>
+            <Spin wrapperClassName={cx('metaverse-nft-modal-ok-btn-spin')} spinning={claimLoading}><span className={cx('metaverse-nft-modal-ok-btn-text')}>I accept and claim</span></Spin>
           </button>
         </div>
       </Modal>

@@ -1960,31 +1960,32 @@ $main-bg: #ec3783;
   }
 }
 
+.metaverse-nft-modal-ok-btn-text {
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  @media screen and (max-width: 1024px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
 .metaverse-nft-modal-ok-btn {
   transition: all 0.3s;
   width: calc(100% - 16px);
   border: none;
   background: #EC3783;
   border-radius: 10px;
-  padding: 8px 0;
+  padding: 9px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  >span {
-    font-family: IBM Plex Sans;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    @media screen and (max-width: 1024px) {
-      font-size: 14px;
-      line-height: 16px;
-    }
-  }
   &:hover {
     box-shadow: 0 0 3px #EC3783;
   }
@@ -1995,6 +1996,13 @@ $main-bg: #ec3783;
     >span {
       color: #555555;
     }
+  }
+}
+
+.metaverse-nft-modal-copy-that-ok-btn {
+  width: 320px;
+  @media screen and (max-width: 1024px) {
+    width: calc(100% - 40px);
   }
 }
 
@@ -2072,5 +2080,18 @@ $main-bg: #ec3783;
   color: #EC3783;
   &.disbaled {
     display: none;
+  }
+}
+
+.metaverse-nft-modal-ok-btn-spin {
+  :global {
+    .ant-spin-blur {
+      &::after {
+        opacity: 0;
+      }
+    }
+    .ant-spin-dot-item {
+      background-color: #EC3783;
+    }
   }
 }
