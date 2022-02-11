@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from "classnames/bind";
 import styles from "../styles.module.scss";
+import Web3Utils from 'web3-utils';
 import { web3FromAddress } from "@polkadot/extension-dapp";
 import { Tooltip, Modal, Spin, message } from "antd";
 import infoIcon from "../img/info-icon.png";
@@ -13,8 +14,7 @@ import { useApi } from "../hooks";
 const cx = classNames.bind(styles);
 
 const isAnAalidCrabAddress = (address) => {
-  return true;  // TODO
-  // return (address || "").startsWith("0x");
+  return Web3Utils.isAddress(address || "");
 }
 
 const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
