@@ -11,6 +11,33 @@ import acceptedIcon from '../img/accepted.svg';
 import { DOT_TO_ORIG } from "../utils";
 import { useApi } from "../hooks";
 
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+
+const GET_MY_ADDRESS_REMARKS = gql`
+  query RemarkedNftAddresses($signer: String!) {
+    remarkedNftAddresses (filter: { signer: { equalTo: $signer } }, orderBy: [BLOCK_NUMBER_ASC, EXTRINSIC_INDEX_ASC], first: 5) {
+      nodes {
+        id
+        # signer
+        # value
+        # addressValue
+        # blockNumber
+        # extrinsicIndex
+        # extrinsicTimestamp
+        # extrinsicHash
+        # https://kusama.subscan.io/extrinsic/11416211-2
+        # https://kusama.subscan.io/extrinsic/0x59ffa39f7b6f08c0958f824b140a839e049dda47aa89ea6337257712d4d2e0bd
+      }
+    }
+  }
+`;
+
 const cx = classNames.bind(styles);
 
 const isAnAalidCrabAddress = (address) => {
@@ -19,12 +46,19 @@ const isAnAalidCrabAddress = (address) => {
 
 const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
   const { api } = useApi();
+  const [isRemarked, setIsRemarked] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
   const [claimLoading, setClaimLoading] = useState(false);
   const [visibleModalCopyThat, setVisibleModalCopyThat] = useState(false);
   const [visibleModalClaimNFT, setVisibleModalClaimNFT] = useState(false);
   const [nftCrabAddress, setNftCrabAddress] = useState('');
-  
+
+  const { loading, error, data } = useQuery(GET_MY_ADDRESS_REMARKS, {
+    variables: { signer: currentAccount ? currentAccount.address : ""},
+  });
+  error && console.error(error);
+  const myRemarked = !loading && !error && data && data.remarkedNftAddresses && data.remarkedNftAddresses.nodes.length ? data.remarkedNftAddresses.nodes[0] : null;
+
   const handleClickClaim = () => {
     setVisibleModalClaimNFT(true);
   };
@@ -58,6 +92,7 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
                 message.error("Extrinsic failed");
               } else if (method === "ExtrinsicSuccess") {
                 message.success("Extrinsic success");
+                setIsRemarked(true);
                 setClaimLoading(false);
                 setVisibleModalClaimNFT(false);
                 setVisibleModalCopyThat(true);
@@ -116,8 +151,12 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
         <span className={cx("contribute-info-item-value")}>
           {myTotalContribute.gte(DOT_TO_ORIG) ? "1" : "0"}
         </span>
-        <button className={cx("claim-reward-btn")} disabled={false} onClick={handleClickClaim}>
-          <span>Claim</span>
+        <button className={cx("claim-reward-btn")} disabled={loading || isRemarked || myRemarked || !currentAccount} onClick={handleClickClaim}>
+          <Spin wrapperClassName={cx('metaverse-nft-modal-ok-btn-spin')} spinning={loading}>
+            <span className={cx('claim-reward-btn-text')}>
+              {isRemarked || myRemarked ? 'Claimed' : 'Claim'}
+            </span>
+          </Spin>
         </button>
       </div>
 
@@ -174,4 +213,15 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
   );
 };
 
-export default React.memo(MetaverseNFT)
+const client = new ApolloClient({
+  uri: 'https://api.subquery.network/sq/darwinia-network/crab-plo-nft__ZGFyd',
+  cache: new InMemoryCache()
+});
+
+const MetaverseNFTWrap = (props) => (
+  <ApolloProvider client={client}>
+    <MetaverseNFT {...props} />
+  </ApolloProvider>
+)
+
+export default React.memo(MetaverseNFTWrap);
