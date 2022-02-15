@@ -151,7 +151,7 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
         <span className={cx("contribute-info-item-value")}>
           {myTotalContribute.gte(DOT_TO_ORIG) ? "1" : "0"}
         </span>
-        <button className={cx("claim-reward-btn")} disabled={loading || isRemarked || myRemarked || !currentAccount} onClick={handleClickClaim}>
+        <button className={cx("claim-reward-btn")} disabled={myTotalContribute.lt(DOT_TO_ORIG) || loading || isRemarked || myRemarked || !currentAccount} onClick={handleClickClaim}>
           <Spin wrapperClassName={cx('metaverse-nft-modal-ok-btn-spin')} spinning={loading}>
             <span className={cx('claim-reward-btn-text')}>
               {isRemarked || myRemarked ? 'Claimed' : 'Claim'}
