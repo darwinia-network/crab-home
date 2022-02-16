@@ -1729,8 +1729,10 @@ $main-bg: #ec3783;
     border-radius: 8px;
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background: #ccc;
+    cursor: not-allowed;
   }
 
   > span {

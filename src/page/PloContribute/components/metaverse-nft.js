@@ -151,13 +151,36 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
         <span className={cx("contribute-info-item-value")}>
           {myTotalContribute.gte(DOT_TO_ORIG) ? "1" : "0"}
         </span>
-        <button className={cx("claim-reward-btn")} disabled={myTotalContribute.lt(DOT_TO_ORIG) || loading || isRemarked || myRemarked || !currentAccount} onClick={handleClickClaim}>
-          <Spin wrapperClassName={cx('metaverse-nft-modal-ok-btn-spin')} spinning={loading}>
-            <span className={cx('claim-reward-btn-text')}>
-              {isRemarked || myRemarked ? 'Claimed' : 'Claim'}
-            </span>
-          </Spin>
-        </button>
+        {isRemarked || myRemarked ? (
+          <Tooltip
+            overlayClassName="tooltip-overlay"
+            overlayInnerStyle={{ padding: "20px", paddingBottom: "10px" }}
+            color="white"
+            placement="rightTop"
+            trigger={["click", "hover"]}
+            title={
+              <p className={cx("tips")}>
+                Your address has been recorded!
+                <br />
+                <br />
+                After the <a target='_blank' rel='noopener noreferrer' href='https://www.evolution.land/lands'>Columbus Continent</a> of Evolution Land release, the NFT rewards will be directly distributed to Crab Smart Chain Address that you filled before.
+                <br />
+                <br />
+                Columbus Continent of Evolution Land will release within one month.
+              </p>
+            }
+          >
+            <button className={cx("claim-reward-btn", "disabled")}>
+              <span className={cx('claim-reward-btn-text')}>Claimed</span>
+            </button>
+          </Tooltip>
+        ) : (
+          <button className={cx("claim-reward-btn")} disabled={myTotalContribute.lt(DOT_TO_ORIG) || loading || !currentAccount} onClick={handleClickClaim}>
+            <Spin wrapperClassName={cx('metaverse-nft-modal-ok-btn-spin')} spinning={loading}>
+              <span className={cx('claim-reward-btn-text')}>Claim</span>
+            </Spin>
+          </button>
+        )}
       </div>
 
       <Modal
