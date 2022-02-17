@@ -21,5 +21,11 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/economic", "destination": "/index.html" },
+    { "source": "/plo", "destination": "/index.html" },
+    { "source": "/grants", "destination": "/index.html" }
+    { "source": "/plo_contribute", "destination": "/index.html" }
   ]
 }
