@@ -474,7 +474,7 @@ const PloContribute = () => {
       <div className={cx('rewards-time-notice')}>
         <img alt="..." src={crabRewardsNoticeIcon} />
         <div className={cx('rewards-time-notice-content')}>
-          <p>After Crab Network is successfully connected to Kusama (#block 11491800), 10% CRAB and CKTON will be immediately released, <br />meanwhile, the Metaverse NFT Package will be released. And the other 90% CRAB rewards will be linearly released within 44 weeks.</p>
+          <p>Supporters! We are distributing the Metaverse NFT Package rewards of the Crab Kusama Slot Auction. There is a guide for you to claim your NFT reward. About in one week, 10% CRAB and CKTON will be immediately released.</p>
         </div>
       </div>
 
