@@ -215,7 +215,7 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
           <h5 className={cx('metaverse-nft-modal-title')}>Claim NFT</h5>
           <ul className={cx('metaverse-nft-modal-content')}>
             <li>The NFT is sent as a reward for your support of Crab Network Crowdloan.</li>
-            <li>You need to fill in the correct <a target='_blank' rel='noopener noreferrer' href='https://www.baidu.com'>Crab Smart Chain receiving address</a> starts with “0x”.</li>
+            <li>You need to fill in the correct Crab Smart Chain receiving address starts with “0x”.</li>
             <li>The reward will be distributed after the <a target='_blank' rel='noopener noreferrer' href='https://www.evolution.land/lands'>Columbus Continent</a> of Evolution Land release.</li>
             <li>Please feel free to contact us through "<a target='_blank' rel='noopener noreferrer' href='mailto:hello@crab.network'>hello@crab.network</a>" if you have any questions.</li>
           </ul>
