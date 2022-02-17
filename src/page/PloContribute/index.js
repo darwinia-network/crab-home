@@ -474,7 +474,7 @@ const PloContribute = () => {
       <div className={cx('rewards-time-notice')}>
         <img alt="..." src={crabRewardsNoticeIcon} />
         <div className={cx('rewards-time-notice-content')}>
-          <p>Supporters! We are distributing the Metaverse NFT Package rewards of the Crab Kusama Slot Auction. There is a guide for you to claim your NFT reward. About in one week, 10% CRAB and CKTON will be immediately released.</p>
+          <p>Supporters! We are distributing the Metaverse NFT Package rewards of the Crab Kusama Slot Auction. There is a <a target='_blank' rel="noopener noreferrer" href="https://darwinianetwork.medium.com/metaverse-nft-package-rewards-release-now-4f4544e3c5a6">guide</a> for you to claim your NFT reward. About in one week, 10% CRAB and CKTON will be immediately released.</p>
         </div>
       </div>
 
