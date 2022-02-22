@@ -27,7 +27,10 @@ echarts.use([
 ]);
 
 export const useEcharts = (dom, dataSource) => {
-  const [currentTotalContribute, setCurrentTotalContribute] = useState(new BN());
+  // 7,553.777745215274 KSM. This is definite
+  // See: https://kusama.subscan.io/parachain/2105?tab=crowdloan
+  // Even we can use it directly as: const [currentTotalContribute] = useState(new BN("7553777745215274"));
+  const [currentTotalContribute, setCurrentTotalContribute] = useState(new BN("0"));
 
   useEffect(() => {
     if (
