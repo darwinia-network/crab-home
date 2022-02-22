@@ -115,8 +115,11 @@ const PloContribute = () => {
   const { currentTotalContribute } = useEcharts(echartsRef.current, totalContributeHistory);
   const { currentAccountBalannce } = useBalanceAll(api, currentAccount ? currentAccount.address : null);
 
-  let globalTotalPower = new BN("7553777745215274");  // 7,553.777745215274 KSM. This is definite
+  // Now we know its value is 7099040920573355
+  // Note that it's a power value instead balance value
+  const globalTotalPower = new BN("7099040920573355");
   // let globalTotalPower = new BN("10000").mul(DOT_TO_ORIG);  // if it doesnt reach 10000, it will be counted as 10000
+
   const allReferContributeData = [];
   if (!allWhoCrowdloan.loading && !allWhoCrowdloan.error && !allReferCrowdloan.loading && !allReferCrowdloan.error) {
     // let totalPowerTmp = new BN(0);
