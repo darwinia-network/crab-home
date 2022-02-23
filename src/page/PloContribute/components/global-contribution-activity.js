@@ -104,7 +104,8 @@ const GlobalContributionActivity = ({ allReferContributeData, globalTotalPower, 
   for (let i = 0; i < allWhoContributeData.length; i++) {
     const nodeWho = allWhoContributeData[i];
     const nodeRefer = allReferContributeData.find((node) => node.user === nodeWho.user); // { user: address };
-    const contributePer = Big(nodeWho.totalPower).div(globalTotalPower.toString());
+    const userPower = nodeRefer ? Big(nodeWho.totalPower).add(nodeRefer.totalPower) : Big(nodeWho.totalPower);
+    const share = userPower.div(globalTotalPower.toString());
     const target = btcTop5.find(item => item.address === nodeWho.user);
 
     globalContributeDataSource.push({
@@ -113,8 +114,8 @@ const GlobalContributionActivity = ({ allReferContributeData, globalTotalPower, 
       myDot: formatBalanceFromOrigToDOT(nodeWho.totalBalance),
       referrals: nodeRefer ? nodeRefer.contributorsCount : 0,
       referralDot: nodeRefer ? formatBalanceFromOrigToDOT(nodeRefer.totalBalance) : 0,
-      curRingRewards: contributePer.times(RING_REWARD).toFixed(8),
-      curKtonRewards: contributePer.times(KTON_REWARD).toFixed(8),
+      curRingRewards: share.times(RING_REWARD).toFixed(8),
+      curKtonRewards: share.times(KTON_REWARD).toFixed(8),
       curBtcRewards: target ? target.reward : '0',
       curNft: "No Status",
     });
