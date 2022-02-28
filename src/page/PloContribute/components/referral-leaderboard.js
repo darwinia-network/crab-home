@@ -70,7 +70,7 @@ const ReferralLeaderboard = ({ globalTotalPower }) => {
                   style={{ color: "#488CCB" }}
                   rel="noopener noreferrer"
                   target="_blank"
-                  href={`https://polkadot.subscan.io/account/${data.address}`}
+                  href={`https://kusama.subscan.io/account/${data.address}`}
                 >
                   {shortAddress(data.address)}
                 </a>
