@@ -53,7 +53,7 @@ const MobileModal = () => {
               color: "#555",
             }}
           >
-            Thanks to all contributors for your support! Crab Network has won the 22nd Kusama parachain slot and was awarded the parachain ID 2105. In two weeks, Crab Network will complete connecting with Kusama Network.
+            Thanks to all contributors for your support! Crab parachain successfully connected to Kusama relaychain, and the Crab parachain collators are working smoothly.
           </p>
         </div>
         <Link className={cx("join-our-crowdloan-link")} to="plo">
@@ -80,7 +80,7 @@ const PloBanner = () => {
               Crab Network has won the 22nd Kusama parachain slot!
             </h5>
             <p className={cx("desc")}>
-            Thanks to all contributors for your support! Crab Network has won the 22nd Kusama parachain slot and was awarded the parachain ID 2105. In two weeks, Crab Network will complete connecting with Kusama Network.
+            Thanks to all contributors for your support! Crab parachain successfully connected to Kusama relaychain, and the Crab parachain collators are working smoothly.
             </p>
           </div>
           <Link className={cx("banner-link")} to="plo">
