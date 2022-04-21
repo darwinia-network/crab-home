@@ -126,8 +126,7 @@ function Home() {
 
                 {/* Text  */}
                 <p
-                  className="fs-lg text-gray-700 mb-7 mb-md-9"
-                  style={{ lineHeight: "25px" }}
+                  className="fs-lg text-muted mb-7 mb-md-9"
                 >
                   Crab Network will distribute CRABs as an incentive to the
                   participants of Staking. The process of Staking can also be
@@ -244,8 +243,7 @@ function Home() {
 
                 {/* Text  */}
                 <p
-                  className="fs-lg text-gray-700 mb-7 mb-md-9"
-                  style={{ lineHeight: "25px" }}
+                  className="fs-lg text-muted mb-7 mb-md-9"
                 >
                   The data here may lag behind the actual situation. If you need
                   accurate data, please click here.
