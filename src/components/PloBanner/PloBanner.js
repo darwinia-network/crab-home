@@ -83,7 +83,7 @@ const PloBanner = () => {
             Thanks to all contributors for your support! Crab parachain successfully connected to Kusama relaychain, and the Crab parachain collators are working smoothly.
             </p>
           </div>
-          <Link className={cx("banner-link")} to="plo">
+          <Link className={cx("banner-link", 'navbar-btn btn lift ms-auto')} to="plo">
             <span>Crowdloan details</span>
           </Link>
         </Container>
