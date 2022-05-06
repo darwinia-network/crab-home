@@ -203,7 +203,7 @@ function Home() {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href="https://docs.crab.network/crab-tut-nominator"
+                    href="https://docs.crab.network/substrate-based-crab-chain/crab-tut-nominator"
                     className="btn btn-primary shadow lift me-1"
                   >
                     Staking
