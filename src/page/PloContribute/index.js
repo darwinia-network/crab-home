@@ -477,7 +477,7 @@ const PloContribute = () => {
       <div className={cx('rewards-time-notice')}>
         <img alt="..." src={crabRewardsNoticeIcon} />
         <div className={cx('rewards-time-notice-content')}>
-          <p>Supporters! We are distributing the Metaverse NFT Package rewards of the Crab Kusama Slot Auction. There is a <a target='_blank' rel="noopener noreferrer" href="https://darwinianetwork.medium.com/metaverse-nft-package-rewards-release-now-4f4544e3c5a6">guide</a> for you to claim your NFT reward. About in one week, 10% CRAB and CKTON will be immediately released.</p>
+          <p>Supporters! May's 7.5% CRAB + CKTON rewards from Crab Kusama Parachain Slot Auction have been delivered. There is a <a target='_blank' rel="noopener noreferrer" href="https://darwinianetwork.medium.com/metaverse-nft-package-rewards-release-now-4f4544e3c5a6">guide</a> for you to claim your NFT reward. The calculation of the second round of PLO rewards distribution will end on June 30, 17:00 (UTC+8). Kindly claim the NFT package before this time. Please Note: Contributors who claim after the 30th of June will no longer receive the NFT Package rewards!</p>
         </div>
       </div>
 
