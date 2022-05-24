@@ -25,7 +25,7 @@ const TimeDone = ({ left, right, timeText, timeDesc }) => (
 
 const Timeline = () => {
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-duration="500">
       <div className={cx("main")} id="timeline-section">
         <h3 className={cx("title")}>Timeline</h3>
         <div className={cx("time-line-style-01")}>
@@ -74,4 +74,4 @@ const Timeline = () => {
   );
 };
 
-export default React.memo(Timeline);
+export default Timeline;

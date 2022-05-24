@@ -26,7 +26,7 @@ const PloPage = () => {
       <FourCards />
       <Timeline />
 
-      <Container fluid className={cx("wrapper")}>
+      <Container fluid className={cx("wrapper")} data-aos="fade-up" data-aos-duration="500">
         <img alt="..." src={crabBg} className="d-md-block d-none" />
         <FAQs />
         <Waitlist />
@@ -38,4 +38,4 @@ const PloPage = () => {
   );
 };
 
-export default React.memo(PloPage);
+export default PloPage;

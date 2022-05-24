@@ -1,6 +1,6 @@
 function Footer({ classList, container, button }) {
   return (
-    <footer className={`py-8 py-md-11 ${classList}`}>
+    <footer className={`py-8 py-md-11 ${classList}`} data-aos="fade-up" data-aos-duration="500">
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-4 col-lg-3">

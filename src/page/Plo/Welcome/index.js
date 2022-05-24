@@ -34,7 +34,7 @@ const intros = [
 
 const Welcome = () => {
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-duration="500">
       {/* <div className={cx("main")}>
         <img alt="..." src={crab} className={cx("bridge")} />
 
@@ -75,11 +75,11 @@ const Welcome = () => {
         <p className={cx("crab-hero-desc")}>We are bridging heterogeneous chains to build the Web3.0 Metaverse.</p>
 
         <div className={cx("main-crab-hero-btn-group")}>
-          <Link className={cx("join-our-crowdloan-link")} to="plo_contribute">
+          <Link className={cx("join-our-crowdloan-link", "lift")} to="plo_contribute">
             <span>Crowdloan details</span>
           </Link>
           <a
-            className={cx("learn-more-link")}
+            className={cx("learn-more-link", "lift")}
             href="https://darwinianetwork.medium.com/guide-to-participate-in-the-crab-plo-e9b145bed4c9"
             rel="noopener noreferrer"
             target="_blank"
@@ -126,4 +126,4 @@ const Welcome = () => {
   );
 };
 
-export default React.memo(Welcome);
+export default Welcome;

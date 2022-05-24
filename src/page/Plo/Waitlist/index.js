@@ -57,7 +57,7 @@ const Waitlist = () => {
                 className={`mce_inline_error text-muted ${styles.mailtip}`}
               />
             </div>
-            <button className={cx("join-btn")} type="submit">
+            <button className={cx("join-btn", "lift")} type="submit">
               <span>Join</span>
             </button>
             <Form.Text
@@ -114,4 +114,4 @@ const Waitlist = () => {
   );
 };
 
-export default React.memo(Waitlist);
+export default Waitlist;

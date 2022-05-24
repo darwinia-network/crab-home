@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 
 const FourCards = () => {
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-duration="500">
       <div className={cx("main")}>
         <div className={cx("card")}>
           <img alt="..." src={icon01} className={cx("card-icon")} />
@@ -78,7 +78,7 @@ const FourCards = () => {
               calculation algorithm. You can earn up to an extra 20% reward if you contribute earlier.
             </p>
             <a
-              className={cx("card-content-btn")}
+              className={cx("card-content-btn", "lift")}
               rel="noopener noreferrer"
               target="_blank"
               href="https://darwinianetwork.medium.com/support-crab-while-investing-in-the-next-generation-infrastructure-for-the-web3-0-metaverse-d194ff902f6d"
@@ -92,4 +92,4 @@ const FourCards = () => {
   );
 };
 
-export default React.memo(FourCards);
+export default FourCards;

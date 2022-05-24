@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 
 const Contribute = () => {
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-duration="500">
       <div className={cx("main")} id="contribute-section">
         <h3 className={cx("title")}>Contribute to Crab Crowdloan</h3>
         <h5 className={cx("sub-title")}>
@@ -63,4 +63,4 @@ const Contribute = () => {
   );
 };
 
-export default React.memo(Contribute);
+export default Contribute;

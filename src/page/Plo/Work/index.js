@@ -42,7 +42,7 @@ const Work = () => {
   ];
 
   return (
-    <Container fluid className={cx("wrapper")}>
+    <Container fluid className={cx("wrapper")} data-aos="fade-up" data-aos-duration="500">
       <Container>
         <div className={cx("main")}>
           <h3 className={cx("title")}>How does a Parachain Crowdloan work?</h3>
@@ -57,4 +57,4 @@ const Work = () => {
   );
 };
 
-export default React.memo(Work);
+export default Work;
