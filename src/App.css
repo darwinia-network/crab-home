@@ -39,9 +39,3 @@ html {
     transform: rotate(360deg);
   }
 }
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1200px;
-  }
-}
