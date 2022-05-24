@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Tooltip, Modal, Typography, Spin, message, notification } from "antd";
 import Fade from "react-reveal/Fade";
 
-import darwiniaLogo from "./img/logo-crab-plo.png";
+import brand from "./img/crab-plo-brand.svg";
 import infoIcon from "./img/info-icon.png";
 // import dotIcon from "./img/dot-icon.png";
 import modalCloseIcon from "./img/modal-close.png";
@@ -506,7 +506,7 @@ const PloContribute = () => {
           <div className={cx("heading-container")}>
             <div className={cx("heading-container-logo")}>
               <Link to="/">
-                <img alt="..." src={darwiniaLogo} className={cx("heading-container-logo-img")} />
+                <img alt="..." src={brand} className={cx("heading-container-logo-img")} />
               </Link>
               <div className={cx("heading-container-logo-plo")}>
                 <span>PLO</span>
@@ -529,14 +529,14 @@ const PloContribute = () => {
                     <Identicon value={currentAccount.address} size={isMobile() ? 15 : 30} theme="polkadot" />
                   </div>
                   <button
-                    className={cx("heading-container-change-account")}
+                    className={cx("heading-container-change-account", "lift")}
                     onClick={() => setShowSelectAccountModal(true)}
                   >
                     <span>Change</span>
                   </button>
                 </div>
               ) : (
-                <button className={cx("heading-container-connnect-wallet-btn")} onClick={handleClickConnectWallet}>
+                <button className={cx("heading-container-connnect-wallet-btn", "lift")} onClick={handleClickConnectWallet}>
                   <span>Connect Wallet</span>
                 </button>
               )}
