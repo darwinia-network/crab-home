@@ -1,17 +1,13 @@
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
-import { PloBanner } from '../../components/PloBanner';
+import { PloBanner } from "../../components/PloBanner";
 
 function Home() {
   return (
     <>
       <PloBanner />
 
-      <Navbar
-        classList="navbar-light bg-white"
-        container="container"
-        button="primary"
-      />
+      <Navbar classList="navbar-light bg-white" container="container" button="primary" />
 
       {/*  WELCOME */}
       <section className="pt-4 pt-md-10">
@@ -31,17 +27,17 @@ function Home() {
               {/*  Heading */}
               <h1 className="display-4">
                 Crab Network. <br />
-                <span className="text-primary">
-                  Cross-chain Bridge Hub of Kusama.
-                </span>
+                <span className="text-primary">Cross-chain Bridge Hub of Kusama.</span>
               </h1>
 
               {/*  Text */}
               <p className="lead text-muted mb-0">
-                Crab is the canary network of <a target="_blank" rel="noreferrer" className="text-primary" href="https://darwinia.network">Darwinia</a>, and is the first
-                blockchain in the Kusama ecosystem to natively support
-                cross-chain as well as smart contract and NFT. Crab Network
-                intends to participate in the Kusama Parachain Slot Auctions.
+                Crab is the canary network of{" "}
+                <a target="_blank" rel="noreferrer" className="text-primary" href="https://darwinia.network">
+                  Darwinia
+                </a>
+                , and is the first blockchain in the Kusama ecosystem to natively support cross-chain as well as smart
+                contract and NFT. Crab Network intends to participate in the Kusama Parachain Slot Auctions.
               </p>
             </div>
           </div>
@@ -62,8 +58,8 @@ function Home() {
 
               {/*  Text */}
               <p className="fs-lg text-muted mb-9">
-                The positioning of Crab is similar to Polkadot's Kusama Network.
-                Expect Chaos is a reasonable expectation.
+                The positioning of Crab is similar to Polkadot's Kusama Network. Expect Chaos is a reasonable
+                expectation.
               </p>
             </div>
           </div>
@@ -74,11 +70,7 @@ function Home() {
               <div className="row align-items-center mb-8">
                 <div className="col-4 col-lg-5">
                   {/*  Image */}
-                  <img
-                    src="../../img/illustrations/illustration-4.png"
-                    alt="..."
-                    className="img-fluid"
-                  />
+                  <img src="../../img/illustrations/illustration-4.png" alt="..." className="img-fluid" />
                 </div>
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
@@ -86,9 +78,8 @@ function Home() {
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                    Crab provides an entrance to the Polkadot ecology for
-                    projects that have been deployed on public blockchains such
-                    as Ethereum and BSC.
+                    Crab provides an entrance to the Polkadot ecology for projects that have been deployed on public
+                    blockchains such as Ethereum and BSC.
                   </p>
                 </div>
               </div>
@@ -97,11 +88,7 @@ function Home() {
               <div className="row align-items-center mb-8">
                 <div className="col-4 col-lg-5">
                   {/*  Image */}
-                  <img
-                    src="../../img/illustrations/illustration-8.png"
-                    alt="..."
-                    className="img-fluid"
-                  />
+                  <img src="../../img/illustrations/illustration-8.png" alt="..." className="img-fluid" />
                 </div>
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
@@ -109,9 +96,8 @@ function Home() {
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                    Crab's DVM is compatible with the Ethereum virtual machine,
-                    and supports DApps such as Defi and NFT, which can be easily
-                    migrated to Polkadot.
+                    Crab's DVM is compatible with the Ethereum virtual machine, and supports DApps such as Defi and NFT,
+                    which can be easily migrated to Polkadot.
                   </p>
                 </div>
               </div>
@@ -122,11 +108,7 @@ function Home() {
               <div className="row align-items-center mb-8">
                 <div className="col-4 col-lg-5">
                   {/*  Image */}
-                  <img
-                    src="../../img/illustrations/illustration-7.png"
-                    alt="..."
-                    className="img-fluid"
-                  />
+                  <img src="../../img/illustrations/illustration-7.png" alt="..." className="img-fluid" />
                 </div>
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
@@ -134,7 +116,8 @@ function Home() {
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                    Evolution Land will launch a new continent built on Crab, integrating NFT blind box GameFi mining and other new gameplay methods.
+                    Evolution Land will launch a new continent built on Crab, integrating NFT blind box GameFi mining
+                    and other new gameplay methods.
                   </p>
                 </div>
               </div>
@@ -143,23 +126,16 @@ function Home() {
               <div className="row align-items-center mb-8">
                 <div className="col-4 col-lg-5">
                   {/*  Image */}
-                  <img
-                    src="../../img/illustrations/illustration-6.png"
-                    alt="..."
-                    className="img-fluid"
-                  />
+                  <img src="../../img/illustrations/illustration-6.png" alt="..." className="img-fluid" />
                 </div>
                 <div className="col-8 col-lg-7">
                   {/*  Heading */}
-                  <h3 className="fw-bold mb-2">
-                    Faster and Easier User Experience
-                  </h3>
+                  <h3 className="fw-bold mb-2">Faster and Easier User Experience</h3>
 
                   {/*  Text */}
                   <p className="text-gray-700 mb-0">
-                    Crab network can bring users a very high-quality experience,
-                    including very low transaction fees and ultra-fast
-                    transaction confirmation speed.
+                    Crab network can bring users a very high-quality experience, including very low transaction fees and
+                    ultra-fast transaction confirmation speed.
                   </p>
                 </div>
               </div>
@@ -189,14 +165,12 @@ function Home() {
                 </h1>
 
                 <p className="lead text-center text-md-start text-muted mb-6 mb-lg-8">
-                  The Crab network is a network with long-term value. Some RINGs
-                  are allocated to Crab Network as backing assets to make it
-                  serve as a canary network having real economic incentives and
-                  massive gaming theory testing, not just working a testnet.
+                  The Crab network is a network with long-term value. Some RINGs are allocated to Crab Network as
+                  backing assets to make it serve as a canary network having real economic incentives and massive gaming
+                  theory testing, not just working a testnet.
                   <br />
-                  The economic model parameters of the Crab network are the same
-                  as those of the Darwinia Mainnet, and use the same staking and
-                  inflation models.
+                  The economic model parameters of the Crab network are the same as those of the Darwinia Mainnet, and
+                  use the same staking and inflation models.
                 </p>
 
                 <div className="text-center text-md-start">
@@ -226,9 +200,8 @@ function Home() {
 
               {/* Text */}
               <p className="fs-lg text-muted mb-9">
-                There are two types of tokens in Crab Network. They represent
-                different economic strategies of the Crab Network. They are
-                designed to make Crab more reasonable and stable.
+                There are two types of tokens in Crab Network. They represent different economic strategies of the Crab
+                Network. They are designed to make Crab more reasonable and stable.
               </p>
             </div>
           </div>
@@ -240,19 +213,13 @@ function Home() {
                 {/* Logo */}
                 <div className="img-fluid mb-5 mb-md-6 svg-shim">
                   {/* {{> logotype/airbnb}} */}
-                  <img
-                    src="../../img/crab/crab.png"
-                    alt="CRAB TOKEN"
-                    width="120px"
-                  />
+                  <img src="../../img/crab/crab.png" alt="CRAB TOKEN" width="120px" />
                 </div>
 
                 {/* Text */}
                 <p className="text-gray-700 mb-5 mb-md-7">
-                  The native tokens for Crab Network is CRAB, CRAB can be used
-                  as gas for transactions. Gas include transaction fees,
-                  contract execution fees, network bandwidth charges, storage
-                  fees, and more.
+                  The native tokens for Crab Network is CRAB, CRAB can be used as gas for transactions. Gas include
+                  transaction fees, contract execution fees, network bandwidth charges, storage fees, and more.
                 </p>
 
                 {/* Footer */}
@@ -272,19 +239,14 @@ function Home() {
                 {/* Logo*/}
                 <div className="img-fluid mb-5 mb-md-6 svg-shim">
                   {/* {{> logotype/coinbase}} */}
-                  <img
-                    src="../../img/crab/ckton.png"
-                    alt="CKTON TOKEN"
-                    width="120px"
-                  />
+                  <img src="../../img/crab/ckton.png" alt="CKTON TOKEN" width="120px" />
                 </div>
 
                 {/* Text*/}
                 <p className="text-gray-700 mb-5 mb-md-7">
-                  To encourage users to make long term commitments, users can
-                  choose to lock CRAB for 3 - 36 months in the process of
-                  Staking, and the system will offer a CKTON token as reward for
-                  users participating in Staking.
+                  To encourage users to make long term commitments, users can choose to lock CRAB for 3 - 36 months in
+                  the process of Staking, and the system will offer a CKTON token as reward for users participating in
+                  Staking.
                 </p>
 
                 {/* Footer*/}

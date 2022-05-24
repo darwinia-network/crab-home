@@ -32,14 +32,17 @@ const MobileModal = () => {
     >
       <div className={cx("mobile-main")}>
         <img alt="..." src={mobileIcon} className={cx("banner-logo")} />
-        <div className={cx("banner-content")} style={{
-          maxWidth: '100%',
-        }}>
+        <div
+          className={cx("banner-content")}
+          style={{
+            maxWidth: "100%",
+          }}
+        >
           <h5
             className={cx("title")}
             style={{
               color: "#1e3676",
-              whiteSpace: 'normal'
+              whiteSpace: "normal",
             }}
           >
             <span role="img" aria-label="fire">
@@ -53,7 +56,8 @@ const MobileModal = () => {
               color: "#555",
             }}
           >
-            Thanks to all contributors for your support! Crab parachain successfully connected to Kusama relaychain, and the Crab parachain collators are working smoothly.
+            Thanks to all contributors for your support! Crab parachain successfully connected to Kusama relaychain, and
+            the Crab parachain collators are working smoothly.
           </p>
         </div>
         <Link className={cx("join-our-crowdloan-link")} to="plo">
@@ -80,10 +84,11 @@ const PloBanner = () => {
               Crab Network has won the 22nd Kusama parachain slot!
             </h5>
             <p className={cx("desc")}>
-            Thanks to all contributors for your support! Crab parachain successfully connected to Kusama relaychain, and the Crab parachain collators are working smoothly.
+              Thanks to all contributors for your support! Crab parachain successfully connected to Kusama relaychain,
+              and the Crab parachain collators are working smoothly.
             </p>
           </div>
-          <Link className={cx("banner-link", 'navbar-btn btn lift ms-auto')} to="plo">
+          <Link className={cx("banner-link", "navbar-btn btn lift ms-auto")} to="plo">
             <span>Crowdloan details</span>
           </Link>
         </Container>

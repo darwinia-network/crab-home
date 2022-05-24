@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Navbar({ classList, container, button }) {
   return (
@@ -39,41 +39,26 @@ function Navbar({ classList, container, button }) {
 
           {/*  Navigation */}
           <ul className="navbar-nav ms-auto">
-
             <li className="nav-item dropdown">
-              <Link
-                className="nav-link"
-                to="/"
-              >
+              <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
 
             <li className="nav-item dropdown">
-              <Link
-                className="nav-link"
-                to="/economic"
-              >
+              <Link className="nav-link" to="/economic">
                 Economic Model
               </Link>
             </li>
 
             <li className="nav-item dropdown">
-              <a
-                className="nav-link"
-                rel="noreferrer"
-                href="https://docs.crab.network/"
-                target="_blank"
-              >
+              <a className="nav-link" rel="noreferrer" href="https://docs.crab.network/" target="_blank">
                 Documentation
               </a>
             </li>
 
             <li className="nav-item dropdown">
-              <Link
-                className="nav-link"
-                to="/grants"
-              >
+              <Link className="nav-link" to="/grants">
                 Grants Program
               </Link>
             </li>

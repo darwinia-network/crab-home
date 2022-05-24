@@ -3,11 +3,7 @@ import brand from "./img/crab-plo-brand.svg";
 
 const Header = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light bg-light"
-      data-aos="fade-right"
-      data-aos-duration="500"
-    >
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" data-aos="fade-right" data-aos-duration="500">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img alt="..." src={brand} className="navbar-brand-img" />

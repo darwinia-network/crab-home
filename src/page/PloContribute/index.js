@@ -11,7 +11,7 @@ import infoIcon from "./img/info-icon.png";
 // import dotIcon from "./img/dot-icon.png";
 import modalCloseIcon from "./img/modal-close.png";
 import copyIcon from "./img/copy-icon.png";
-import crabRewardsNoticeIcon from './img/crab-rewards-notice.svg';
+import crabRewardsNoticeIcon from "./img/crab-rewards-notice.svg";
 
 import twitterIcon from "./img/twitter.png";
 import mediumIcon from "./img/medium.png";
@@ -19,8 +19,8 @@ import telegramIcon from "./img/telegram.png";
 import discordIcon from "./img/discord.png";
 import BTCReward from "./components/btc-reward";
 import MetaverseNFT from "./components/metaverse-nft";
-import ringIcon from './img/ring-icon.png';
-import ktonIcon from './img/kton-icon.png';
+import ringIcon from "./img/ring-icon.png";
+import ktonIcon from "./img/kton-icon.png";
 
 import {
   CONTRIBUTES_BY_PARA_ID,
@@ -64,7 +64,7 @@ import { useQuery } from "@apollo/client";
 import GlobalContributionActivity from "./components/global-contribution-activity";
 import ReferralLeaderboard from "./components/referral-leaderboard";
 import ConnectionFailedModal from "./components/connection-failed-modal";
-import btcTop5 from './top5.json';
+import btcTop5 from "./top5.json";
 
 const cx = classNames.bind(styles);
 
@@ -214,14 +214,20 @@ const PloContribute = () => {
     ) {
       const tmp = [];
       for (let node1 of myReferCrwonloan.data.crowdloanReferStatistic.contributors.nodes) {
-        const { block: { number }, extrinsicId, timestamp, balance, id } = node1;
+        const {
+          block: { number },
+          extrinsicId,
+          timestamp,
+          balance,
+          id,
+        } = node1;
         tmp.push({
           number,
           balance,
           timestamp,
           extrinsicId,
-          index: id.split('-')[1]
-        })
+          index: id.split("-")[1],
+        });
       }
       referralsContributeHistory = tmp;
     }
@@ -243,13 +249,13 @@ const PloContribute = () => {
   let myKtonReward = "0";
   const myTotalPower = myReferTotalPower.add(myContributeTotalPower);
   if (myTotalPower.gt(new BN(0))) {
-    myRingReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('200000000')).toFixed(4);
-    myKtonReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big('8000')).toFixed(4);
+    myRingReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big("200000000")).toFixed(4);
+    myKtonReward = Big(myTotalPower).div(globalTotalPower.toString()).mul(Big("8000")).toFixed(4);
   }
 
   const myContributePer = Big(myTotalContribute.toString()).div(globalTotalPower.toString());
 
-  const top5contribute = useMemo(() => btcTop5.reduce((acc, cur) => acc.add(new Big(cur.amount)), new Big('0')), []);
+  const top5contribute = useMemo(() => btcTop5.reduce((acc, cur) => acc.add(new Big(cur.amount)), new Big("0")), []);
 
   useEffect(() => {
     const address = localStorage.getItem(LOCAL_STORAGE_CURRENT_ADDRESS_KEY);
@@ -445,9 +451,9 @@ const PloContribute = () => {
   };
 
   const handleClickMaxInput = () => {
-    const max = Big(currentAccountBalannce.availableBalance).sub(Big('100000000'));
- 
-    if (max.gte(Big('100000000000'))) {
+    const max = Big(currentAccountBalannce.availableBalance).sub(Big("100000000"));
+
+    if (max.gte(Big("100000000000"))) {
       setInputDot(formatBalanceFromOrigToDOT(max.toString()));
     } else {
       message.error("Insufficient balance");
@@ -474,10 +480,23 @@ const PloContribute = () => {
       <div className={cx("magic-01")} />
       <div className={cx("magic-02")} />
 
-      <div className={cx('rewards-time-notice')}>
+      <div className={cx("rewards-time-notice")}>
         <img alt="..." src={crabRewardsNoticeIcon} />
-        <div className={cx('rewards-time-notice-content')}>
-          <p>Supporters! May's 7.5% CRAB + CKTON rewards from Crab Kusama Parachain Slot Auction have been delivered. There is a <a target='_blank' rel="noopener noreferrer" href="https://darwinianetwork.medium.com/metaverse-nft-package-rewards-release-now-4f4544e3c5a6">guide</a> for you to claim your NFT reward. The calculation of the second round of PLO rewards distribution will end on June 30, 17:00 (UTC+8). Kindly claim the NFT package before this time. Please Note: Contributors who claim after the 30th of June will no longer receive the NFT Package rewards!</p>
+        <div className={cx("rewards-time-notice-content")}>
+          <p>
+            Supporters! May's 7.5% CRAB + CKTON rewards from Crab Kusama Parachain Slot Auction have been delivered.
+            There is a{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://darwinianetwork.medium.com/metaverse-nft-package-rewards-release-now-4f4544e3c5a6"
+            >
+              guide
+            </a>{" "}
+            for you to claim your NFT reward. The calculation of the second round of PLO rewards distribution will end
+            on June 30, 17:00 (UTC+8). Kindly claim the NFT package before this time. Please Note: Contributors who
+            claim after the 30th of June will no longer receive the NFT Package rewards!
+          </p>
         </div>
       </div>
 
@@ -527,7 +546,7 @@ const PloContribute = () => {
 
         {/* Contribute, Crowloan, Referral link */}
         <Fade bottom fraction={0.1} duration={1200} distance={"50px"}>
-          <div className={cx("contribute-crowloan-referral")} style={{ display: 'none' }}>
+          <div className={cx("contribute-crowloan-referral")} style={{ display: "none" }}>
             <div className={cx("contribute")}>
               <h3 className={cx("contribute-title")}>Contribute</h3>
 
@@ -597,8 +616,8 @@ const PloContribute = () => {
                         The rewards on basis of contribution share will be displayed in real-time.
                         <br />
                         <br />
-                        CRAB and CKTON will be released linearly based on the contribution share after Crab Network
-                        wins the slot auction.
+                        CRAB and CKTON will be released linearly based on the contribution share after Crab Network wins
+                        the slot auction.
                       </p>
                     }
                   >
@@ -625,7 +644,9 @@ const PloContribute = () => {
 
                   <span>Total</span>
                   <span className={cx("total", "token-amount")}>{auctionSuccessReward.total.ring.toFixed(2)} CRAB</span>
-                  <span className={cx("total", "token-amount")}>{auctionSuccessReward.total.kton.toFixed(2)} CKTON</span>
+                  <span className={cx("total", "token-amount")}>
+                    {auctionSuccessReward.total.kton.toFixed(2)} CKTON
+                  </span>
                 </div>
               </div>
 
@@ -724,8 +745,8 @@ const PloContribute = () => {
 
         {/* Total Contribute History */}
         <Fade bottom fraction={0.1} duration={1200} distance={"50px"}>
-          <div className={cx('total-contribute-history')}>
-            <div className={cx('total-contribute-history-title-wrap')}>
+          <div className={cx("total-contribute-history")}>
+            <div className={cx("total-contribute-history-title-wrap")}>
               <span>👏 Current Total contributions: {formatBalanceFromOrigToDOT(currentTotalContribute)} KSM 👏</span>
             </div>
             <div ref={echartsRef} className={cx("crowloan-echarts")} />
@@ -783,7 +804,7 @@ const PloContribute = () => {
 
               <MetaverseNFT currentAccount={currentAccount} myTotalContribute={myTotalContribute} />
 
-             <BTCReward currentAccount={currentAccount} />
+              <BTCReward currentAccount={currentAccount} />
 
               <div className={cx("contribute-info-item-wrap")}>
                 <div className={cx("contribute-info-item")}>
@@ -800,8 +821,8 @@ const PloContribute = () => {
                           CRAB rewards are dynamic.
                           <br />
                           <br />
-                          200,000,000 CRAB will be released linearly based on the contribution share after Crab
-                          Network wins the slot auction.
+                          200,000,000 CRAB will be released linearly based on the contribution share after Crab Network
+                          wins the slot auction.
                         </p>
                       }
                     >
@@ -830,8 +851,8 @@ const PloContribute = () => {
                           CKTON rewards are dynamic.
                           <br />
                           <br />
-                          8,000 CKTON will be released linearly based on the contribution share after Crab Network
-                          wins the slot auction.
+                          8,000 CKTON will be released linearly based on the contribution share after Crab Network wins
+                          the slot auction.
                         </p>
                       }
                     >
@@ -922,7 +943,9 @@ const PloContribute = () => {
                   trigger={["click", "hover"]}
                   title={
                     <p className={cx("tips")}>
-                      At the ending period starts of the first slot of the batch 5 auction, supporters who have contributed more than 1,000 KSM and the top 5 people (exclude the Exchange address) ranking will distribute 1 BTC in proportion to their contribution.
+                      At the ending period starts of the first slot of the batch 5 auction, supporters who have
+                      contributed more than 1,000 KSM and the top 5 people (exclude the Exchange address) ranking will
+                      distribute 1 BTC in proportion to their contribution.
                     </p>
                   }
                 >
@@ -956,27 +979,29 @@ const PloContribute = () => {
               {contributePionners.data &&
               contributePionners.data.accounts &&
               contributePionners.data.accounts.nodes &&
-              contributePionners.data.accounts.nodes.length
-                ? contributePionners.data.accounts.nodes.map((node, index) =>
-                    index > 4 ? null : (
-                      <div className={cx("pioneers-item")} key={index}>
-                        <div className={cx("pioneers-item-num-icon")}>
-                          <span>{index + 1}</span>
-                        </div>
-                        <Identicon
-                          value={node.id}
-                          className={cx("pioneers-item-account-icon")}
-                          size={isMobile() ? 26 : 30}
-                          theme="polkadot"
-                        />
-                        <span className={cx("pioneers-item-account-name")}>{shortAddress(node.id)}</span>
-                        <span className={cx("pioneers-item-dot-amount")}>
-                          {formatBalanceFromOrigToDOT(node.contributedTotal)} KSM
-                        </span>
+              contributePionners.data.accounts.nodes.length ? (
+                contributePionners.data.accounts.nodes.map((node, index) =>
+                  index > 4 ? null : (
+                    <div className={cx("pioneers-item")} key={index}>
+                      <div className={cx("pioneers-item-num-icon")}>
+                        <span>{index + 1}</span>
                       </div>
-                    )
+                      <Identicon
+                        value={node.id}
+                        className={cx("pioneers-item-account-icon")}
+                        size={isMobile() ? 26 : 30}
+                        theme="polkadot"
+                      />
+                      <span className={cx("pioneers-item-account-name")}>{shortAddress(node.id)}</span>
+                      <span className={cx("pioneers-item-dot-amount")}>
+                        {formatBalanceFromOrigToDOT(node.contributedTotal)} KSM
+                      </span>
+                    </div>
                   )
-                : <span>No Data</span>}
+                )
+              ) : (
+                <span>No Data</span>
+              )}
             </div>
           </div>
         </Fade>

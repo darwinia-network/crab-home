@@ -13,28 +13,28 @@ export const CONTRIBUTES_BY_PARA_ID = gql`
 `;
 
 export const CONTRIBUTES_BY_ADDRESS_PARA_ID = gql`
-query CrowdloanContributeds ($paraId: Int!, $address: String!) {
-  crowdloanContributeds(filter: { paraId: { equalTo : $paraId }, and: { who : { equalTo : $address } } }) {
-    totalCount
-    nodes {
-      id
-      timestamp
-      extrinsicId
-      balance
+  query CrowdloanContributeds($paraId: Int!, $address: String!) {
+    crowdloanContributeds(filter: { paraId: { equalTo: $paraId }, and: { who: { equalTo: $address } } }) {
+      totalCount
+      nodes {
+        id
+        timestamp
+        extrinsicId
+        balance
+      }
     }
   }
-}
 `;
 
 export const REFERRAL_CODE_BY_ADDRESS_PARA_ID = gql`
-query CrowdloanMemos($paraId: Int!, $address: String!) {
-  crowdloanMemos(filter: { paraId: { equalTo: $paraId }, and: { who: { equalTo: $address } }}) {
-    totalCount
-    nodes {
-      memo
+  query CrowdloanMemos($paraId: Int!, $address: String!) {
+    crowdloanMemos(filter: { paraId: { equalTo: $paraId }, and: { who: { equalTo: $address } } }) {
+      totalCount
+      nodes {
+        memo
+      }
     }
   }
- }
 `;
 
 export const CONTRIBUTE_PIONEERS = gql`

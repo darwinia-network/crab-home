@@ -9,8 +9,8 @@ import contribute from "./img/contribute.png";
 import kusama from "./img/kusama.png";
 import timeline from "./img/timeline.png";
 import kusamaBg from "./img/kusama-bg.png";
-import crabHero from './img/crab-hero.svg';
-import crabHeroM from './img/crab-hero-m.svg';
+import crabHero from "./img/crab-hero.svg";
+import crabHeroM from "./img/crab-hero-m.svg";
 
 const cx = classNames.bind(styles);
 
@@ -23,8 +23,7 @@ const intros = [
   {
     img: contribute,
     title: "Contribute to Crab Crowdloan",
-    text:
-      "Unlock 200,000,000 CRAB and 8,000 CKTON bonus, also BTC and Metaverse NFT Package waiting for you.",
+    text: "Unlock 200,000,000 CRAB and 8,000 CKTON bonus, also BTC and Metaverse NFT Package waiting for you.",
   },
   {
     img: timeline,
@@ -64,12 +63,16 @@ const Welcome = () => {
         </div>
       </div> */}
 
-      <div className={cx('main-crab-hero')}>
-        <img alt='...' src={crabHero} className={cx('crab-hero')} />
-        <img alt='...' src={crabHeroM} className={cx('crab-hero-m')} />
+      <div className={cx("main-crab-hero")}>
+        <img alt="..." src={crabHero} className={cx("crab-hero")} />
+        <img alt="..." src={crabHeroM} className={cx("crab-hero-m")} />
 
-        <h2 className={cx('main-crab-hero-title')}>🎉 Crab Network wins the 22nd Parachain Auction.<br />Thank you for supporting Crab Network!</h2>
-        <p className={cx('crab-hero-desc')}>We are bridging heterogeneous chains to build the Web3.0 Metaverse.</p>
+        <h2 className={cx("main-crab-hero-title")}>
+          🎉 Crab Network wins the 22nd Parachain Auction.
+          <br />
+          Thank you for supporting Crab Network!
+        </h2>
+        <p className={cx("crab-hero-desc")}>We are bridging heterogeneous chains to build the Web3.0 Metaverse.</p>
 
         <div className={cx("main-crab-hero-btn-group")}>
           <Link className={cx("join-our-crowdloan-link")} to="plo_contribute">
@@ -104,18 +107,17 @@ const Welcome = () => {
           <div>
             <h5>What is Kusama Parachain Auction?</h5>
             <p>
-              Kusama Network facilitates parachain auction, through which
-              projects bid for limited slots to connect to the Kusama hub.
+              Kusama Network facilitates parachain auction, through which projects bid for limited slots to connect to
+              the Kusama hub.
             </p>
           </div>
 
           <div>
             <h5>What is the Crowdloan?</h5>
             <p>
-              Users can lock their KSM tokens in the crowdloan smart contract
-              hosted on the Kusama Network to signal their support for projects
-              such as Crab Network. Users' funds are safe, and they receive
-              rewards from the project.
+              Users can lock their KSM tokens in the crowdloan smart contract hosted on the Kusama Network to signal
+              their support for projects such as Crab Network. Users' funds are safe, and they receive rewards from the
+              project.
             </p>
           </div>
         </div>

@@ -24,8 +24,7 @@ const applies = [
   {
     img: png37,
     title: "Multi-Chain",
-    des:
-      "You’re bullish on the future of multi-chain strategy and want to execute a multi- or dual-chain deployment.",
+    des: "You’re bullish on the future of multi-chain strategy and want to execute a multi- or dual-chain deployment.",
     type: "primary",
   },
   {
@@ -45,8 +44,7 @@ const applies = [
   {
     img: png40,
     title: "Enthusiasm",
-    des:
-      "You’re excited about the potential of Crab and Kusama, and want to help build the ecosystem.",
+    des: "You’re excited about the potential of Crab and Kusama, and want to help build the ecosystem.",
     type: "dark",
   },
   {
@@ -71,47 +69,33 @@ const appliesAnswers = [
   },
   {
     title: "Decision",
-    des:
-      "We will contact you to tell you if your application is approved or rejected.",
+    des: "We will contact you to tell you if your application is approved or rejected.",
   },
   {
     title: "Onboarding",
-    des:
-      "We will welcome you to the Crab Grants Program and review the legal and funding aspects.",
+    des: "We will welcome you to the Crab Grants Program and review the legal and funding aspects.",
   },
   {
     title: "Follow-up",
-    des:
-      "We will have recurring calls with you and your team to follow up and give the support needed.",
+    des: "We will have recurring calls with you and your team to follow up and give the support needed.",
   },
 ];
 
 function Grants() {
   return (
     <section className="bg-gray-200">
-      <Navbar
-        classList="navbar-light bg-white"
-        container="container"
-        button="primary"
-      />
+      <Navbar classList="navbar-light bg-white" container="container" button="primary" />
 
       <section className="pt-4 pt-md-8 welcome" style={{ paddingBottom: 40 }}>
         <div className="container">
           <div className="row align-items-center">
             <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
               <div className="col-12 col-md-5 col-lg-6 order-md-2">
-                <img
-                  src={png35}
-                  className="img-fluid mw-md-100 mw-lg-100 mb-6 mb-md-0"
-                  alt="..."
-                />
+                <img src={png35} className="img-fluid mw-md-100 mw-lg-100 mb-6 mb-md-0" alt="..." />
               </div>
             </Fade>
             <Fade bottom fraction={0.2} duration={1000} distance={"50px"}>
-              <div
-                className="col-12 col-md-7 col-lg-6 order-md-1"
-                data-aos="fade-up"
-              >
+              <div className="col-12 col-md-7 col-lg-6 order-md-1" data-aos="fade-up">
                 <h1
                   className="display-3 text-center text-md-start"
                   style={{
@@ -134,8 +118,7 @@ function Grants() {
                     lineHeight: "21px",
                   }}
                 >
-                  Projects that add value to the Crab ecosystem are eligible for
-                  funding opportunities.
+                  Projects that add value to the Crab ecosystem are eligible for funding opportunities.
                 </p>
 
                 <div className="text-center text-md-start">
@@ -179,20 +162,15 @@ function Grants() {
                 <div className="card shadow-light-lg overflow-hidden">
                   <div className="row">
                     <div className="col-md-4 position-relative">
-                      <img
-                        src={png46}
-                        className="h-75 position-absolute right-0 mt-7 me-n4"
-                        alt="..."
-                      />
+                      <img src={png46} className="h-75 position-absolute right-0 mt-7 me-n4" alt="..." />
                     </div>
                     <div className="col-md-8">
                       <div className="card-body py-7 py-md-9 text-center">
                         <h4 className="fw-bold">Purpose</h4>
 
                         <p className="text-muted mb-0">
-                          To fund the development of projects and applications
-                          that contribute to the Crab ecosystem and promote
-                          overall network growth.
+                          To fund the development of projects and applications that contribute to the Crab ecosystem and
+                          promote overall network growth.
                         </p>
                       </div>
                     </div>
@@ -209,18 +187,13 @@ function Grants() {
                         <h4 className="fw-bold">Mission</h4>
 
                         <p className="text-muted mb-0">
-                          We encourage passionate teams to build innovative,
-                          interconnected projects on Crab and reward use cases
-                          with application scenarios.
+                          We encourage passionate teams to build innovative, interconnected projects on Crab and reward
+                          use cases with application scenarios.
                         </p>
                       </div>
                     </div>
                     <div className="col-md-4">
-                      <img
-                        src={png47}
-                        className="h-75 position-absolute left-0 mt-7"
-                        alt="..."
-                      />
+                      <img src={png47} className="h-75 position-absolute left-0 mt-7" alt="..." />
                     </div>
                   </div>
                 </div>
@@ -233,19 +206,17 @@ function Grants() {
                 <div className="card shadow-light-lg overflow-hidden text-center text-lg-start">
                   <div className="row">
                     <div className="col-md-4 mt-6 position-relative">
-                      <img
-                        src={png48}
-                        className={`position-absolute top-middle w-100`}
-                        alt="..."
-                      />
+                      <img src={png48} className={`position-absolute top-middle w-100`} alt="..." />
                     </div>
                     <div className="col-md-8">
                       <div className="card-body py-7 py-md-9">
                         <h4 className="fw-bold">Grants Amount</h4>
-                        <p className="text-muted mb-0" style={{wordBreak: 'break-all'}}>
-                          1. Grant’s maximum amount of incentives is USD 6,000 (USDT/DAI/RING/CRAB) per project. <br/>
-                          2. USD 2,000 (USDT/DAI/RING/CRAB) or less will be approved the fastest.<br/>
-                          3. Applications from USD 2,000 to USD 6,000 (USDT/DAI/RING/CRAB) will take longer to review.<br/>
+                        <p className="text-muted mb-0" style={{ wordBreak: "break-all" }}>
+                          1. Grant’s maximum amount of incentives is USD 6,000 (USDT/DAI/RING/CRAB) per project. <br />
+                          2. USD 2,000 (USDT/DAI/RING/CRAB) or less will be approved the fastest.
+                          <br />
+                          3. Applications from USD 2,000 to USD 6,000 (USDT/DAI/RING/CRAB) will take longer to review.
+                          <br />
                           4. Crab Grants Program is funded by Darwinia.
                         </p>
                       </div>
@@ -392,10 +363,7 @@ function Grants() {
                       <span className="h6 text-uppercase">Featured</span>
                     </span>
                   </div> */}
-                  <a
-                    className="col-12 col-md-6 order-md-2 bg-cover card-img-end"
-                    href="#!"
-                  >
+                  <a className="col-12 col-md-6 order-md-2 bg-cover card-img-end" href="#!">
                     <img src={png43} alt="..." className="img-fluid h-100" />
 
                     <div className="shape shape-start shape-fluid-y text-white d-none d-md-block">
@@ -407,11 +375,9 @@ function Grants() {
                       <h3>Tooling and Infrastructure</h3>
 
                       <p className="mb-0 text-muted">
-                        Projects that support the development tools and
-                        infrastructure needed by other teams. These projects
-                        must fill existing tooling gaps from the developer tools
-                        portfolio in Crab. Such as wallets, oracles, and API
-                        services.
+                        Projects that support the development tools and infrastructure needed by other teams. These
+                        projects must fill existing tooling gaps from the developer tools portfolio in Crab. Such as
+                        wallets, oracles, and API services.
                       </p>
                     </a>
                   </div>
@@ -425,10 +391,7 @@ function Grants() {
                       <span className="h6 text-uppercase">Featured</span>
                     </span>
                   </div> */}
-                  <a
-                    className="col-12 col-md-6 bg-cover card-img-start"
-                    href="#!"
-                  >
+                  <a className="col-12 col-md-6 bg-cover card-img-start" href="#!">
                     <img src={png44} alt="..." className="img-fluid h-100" />
 
                     <div className="shape shape-end shape-fluid-y text-white d-none d-md-block">
@@ -440,11 +403,9 @@ function Grants() {
                       <h3>Ecosystem Projects</h3>
 
                       <p className="mb-0 text-muted">
-                        Projects that support the ecosystem through a wide range
-                        of use cases, such as Defi, NFT, Dao, identity,
-                        Metaverse games, insurance, and more. This category aims
-                        to promote the Crab ecosystem development by providing
-                        useful services and utility on the network.
+                        Projects that support the ecosystem through a wide range of use cases, such as Defi, NFT, Dao,
+                        identity, Metaverse games, insurance, and more. This category aims to promote the Crab ecosystem
+                        development by providing useful services and utility on the network.
                       </p>
                     </a>
                   </div>
@@ -539,9 +500,7 @@ function Grants() {
                 <a className="card-body text-center" href="#!">
                   <h3>Developer Tools</h3>
 
-                  <p className="mb-0 text-muted">
-                    Resources and documentation for your team.
-                  </p>
+                  <p className="mb-0 text-muted">Resources and documentation for your team.</p>
                 </a>
               </div>
             </div>
@@ -555,9 +514,7 @@ function Grants() {
                 <a className="card-body text-center" href="#!">
                   <h3>End-to-End Support</h3>
 
-                  <p className="mb-0 text-muted">
-                    Guidance of technical hurdles and strategic development.
-                  </p>
+                  <p className="mb-0 text-muted">Guidance of technical hurdles and strategic development.</p>
                 </a>
               </div>
             </div>
@@ -572,8 +529,8 @@ function Grants() {
                   <h3 className="mt-auto">Business Development</h3>
 
                   <p className="mb-0 text-muted">
-                    Recommend well-known venture capital institutions and
-                    industry leaders to promote projects to the next phase.
+                    Recommend well-known venture capital institutions and industry leaders to promote projects to the
+                    next phase.
                   </p>
                 </a>
               </div>
@@ -691,11 +648,7 @@ function Grants() {
           <div className="row">
             <div className="col-12 col-md-6 col-lg-7">
               <div className="mb-8 mb-md-0">
-                <img
-                  src={png42}
-                  alt="..."
-                  className="screenshot img-fluid mw-md-110 float-end me-md-6 mb-6"
-                />
+                <img src={png42} alt="..." className="screenshot img-fluid mw-md-110 float-end me-md-6 mb-6" />
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-5">

@@ -181,15 +181,9 @@ const PolkadotConnect = (props) => {
 
   return accounts.length === 0 ? (
     <div className={className}>
-      <button
-        className="btn btn-primary-soft d-block w-100"
-        onClick={handleClickConnect}
-        disabled={connectLoading}
-      >
+      <button className="btn btn-primary-soft d-block w-100" onClick={handleClickConnect} disabled={connectLoading}>
         <span
-          className={`spinner-border spinner-border-sm me-2 ${
-            connectLoading ? "" : "invisible"
-          }`}
+          className={`spinner-border spinner-border-sm me-2 ${connectLoading ? "" : "invisible"}`}
           role="status"
           aria-hidden="true"
         ></span>
@@ -215,10 +209,7 @@ const PolkadotConnect = (props) => {
         >
           {accounts.map((account, index) => (
             <li key={index}>
-              <button
-                className="dropdown-item mb-2"
-                onClick={() => handleClickSelectIndex(index)}
-              >
+              <button className="dropdown-item mb-2" onClick={() => handleClickSelectIndex(index)}>
                 <AccountItem
                   account={account}
                   api={api.current}

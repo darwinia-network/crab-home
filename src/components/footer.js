@@ -5,12 +5,7 @@ function Footer({ classList, container, button }) {
         <div className="row">
           <div className="col-12 col-md-4 col-lg-3">
             {/* Brand*/}
-            <img
-              src="../img/brand.svg"
-              alt="..."
-              className="footer-brand img-fluid mb-2"
-              width="90px"
-            />
+            <img src="../img/brand.svg" alt="..." className="footer-brand img-fluid mb-2" width="90px" />
 
             {/* Text*/}
             <p className="text-gray-700 mb-2">A better way to build.</p>
@@ -18,39 +13,43 @@ function Footer({ classList, container, button }) {
             {/* Social*/}
             <ul className="list-unstyled list-inline list-social mb-6 mb-md-0">
               <li className="list-inline-item list-social-item me-3">
-                <a rel="noreferrer" target="_blank" href="mailto:hello@crab.network" className="text-decoratiResourceson-none">
-                  <img
-                    src="../img/icons/social/mail.svg"
-                    className="list-social-icon"
-                    alt="..."
-                  />
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="mailto:hello@crab.network"
+                  className="text-decoratiResourceson-none"
+                >
+                  <img src="../img/icons/social/mail.svg" className="list-social-icon" alt="..." />
                 </a>
               </li>
               <li className="list-inline-item list-social-item me-3">
-                <a rel="noreferrer" target="_blank" href="https://t.me/DarwiniaNetwork" className="text-decoration-none">
-                  <img
-                    src="../img/icons/social/twitter.svg"
-                    className="list-social-icon"
-                    alt="..."
-                  />
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://t.me/DarwiniaNetwork"
+                  className="text-decoration-none"
+                >
+                  <img src="../img/icons/social/twitter.svg" className="list-social-icon" alt="..." />
                 </a>
               </li>
               <li className="list-inline-item list-social-item me-3">
-                <a rel="noreferrer" target="_blank" href="https://medium.com/@DarwiniaNetwork" className="text-decoration-none">
-                  <img
-                    src="../img/icons/social/medium.svg"
-                    className="list-social-icon"
-                    alt="..."
-                  />
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://medium.com/@DarwiniaNetwork"
+                  className="text-decoration-none"
+                >
+                  <img src="../img/icons/social/medium.svg" className="list-social-icon" alt="..." />
                 </a>
               </li>
               <li className="list-inline-item list-social-item">
-                <a rel="noreferrer" target="_blank" href="https://github.com/darwinia-network/darwinia/tree/master/runtime/crab" className="text-decoration-none">
-                  <img
-                    src="../img/icons/social/github.svg"
-                    className="list-social-icon"
-                    alt="..."
-                  />
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://github.com/darwinia-network/darwinia/tree/master/runtime/crab"
+                  className="text-decoration-none"
+                >
+                  <img src="../img/icons/social/github.svg" className="list-social-icon" alt="..." />
                 </a>
               </li>
             </ul>
@@ -62,12 +61,22 @@ function Footer({ classList, container, button }) {
             {/* List*/}
             <ul className="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
               <li className="mb-3">
-                <a rel="noreferrer" target="_blank" href="https://darwinia.network/Darwinia_Genepaper_EN.pdf" className="text-reset">
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://darwinia.network/Darwinia_Genepaper_EN.pdf"
+                  className="text-reset"
+                >
                   Genepaper
                 </a>
               </li>
               <li className="mb-3">
-                <a rel="noreferrer" target="_blank" href="https://darwinia.network/ChainRelay_Technical_Paper(Preview)_EN.pdf" className="text-reset">
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://darwinia.network/ChainRelay_Technical_Paper(Preview)_EN.pdf"
+                  className="text-reset"
+                >
                   Technical Paper
                 </a>
               </li>
@@ -77,7 +86,12 @@ function Footer({ classList, container, button }) {
                 </a>
               </li>
               <li className="mb-3">
-                <a rel="noreferrer" target="_blank" href="https://github.com/darwinia-network/darwinia/tree/master/runtime/crab" className="text-reset">
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://github.com/darwinia-network/darwinia/tree/master/runtime/crab"
+                  className="text-reset"
+                >
                   Github
                 </a>
               </li>
@@ -114,7 +128,6 @@ function Footer({ classList, container, button }) {
                   PLO
                 </a>
               </li> */}
-
             </ul>
           </div>
           <div className="col-12 col-md-4 offset-md-4 col-lg-2 offset-lg-0">
@@ -140,7 +153,6 @@ function Footer({ classList, container, button }) {
               </li>
             </ul>
           </div>
-
         </div>
         {/* / .row*/}
       </div>

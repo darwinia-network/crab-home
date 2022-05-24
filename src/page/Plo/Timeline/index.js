@@ -9,20 +9,14 @@ import icon from "./img/icon.png";
 const cx = classNames.bind(styles);
 
 const TimeToDo = ({ left, right, timeText, timeDesc }) => (
-  <div
-    className={cx("time-line-style-03")}
-    style={left ? { left: left } : { left: "auto", right: right }}
-  >
+  <div className={cx("time-line-style-03")} style={left ? { left: left } : { left: "auto", right: right }}>
     <span className={cx("the-time")}>{timeText}</span>
     <span className={cx("the-desc")}>{timeDesc}</span>
   </div>
 );
 
 const TimeDone = ({ left, right, timeText, timeDesc }) => (
-  <div
-    className={cx("time-line-style-03")}
-    style={left ? { left: left } : { left: "auto", right: right }}
-  >
+  <div className={cx("time-line-style-03")} style={left ? { left: left } : { left: "auto", right: right }}>
     <div className={cx("time-line-style-04")} />
     <span className={cx("the-time")}>{timeText}</span>
     <span className={cx("the-desc")}>{timeDesc}</span>
@@ -36,54 +30,18 @@ const Timeline = () => {
         <h3 className={cx("title")}>Timeline</h3>
         <div className={cx("time-line-style-01")}>
           <div className={cx("time-line-style-02")}>
-            <TimeDone
-              left="5%"
-              timeText="DEC 30 2021"
-              timeDesc="Waitlist Signup"
-            />
-            <TimeDone
-              left="19%"
-              timeText="DEC 31 2021"
-              timeDesc="Rewards Plan Release"
-            />
-            <TimeDone
-              left="34%"
-              timeText="JAN 6 2022"
-              timeDesc="Crowdloan Starts"
-            />
-            <TimeDone
-              left="49%"
-              timeText="JAN 9 2022"
-              timeDesc="Batch 5 Auction Starts"
-            />
-            <TimeDone
-              right="34%"
-              timeText="JAN 11 2022"
-              timeDesc="The First Slot Ending Period Starts"
-            />
-            <TimeDone
-              right="19%"
-              timeText="JAN 23 2022"
-              timeDesc="Crowdloan Ends"
-            />
-            <TimeToDo
-              right="5%"
-              timeText="To be determined"
-              timeDesc="Distribute Rewards"
-            />
+            <TimeDone left="5%" timeText="DEC 30 2021" timeDesc="Waitlist Signup" />
+            <TimeDone left="19%" timeText="DEC 31 2021" timeDesc="Rewards Plan Release" />
+            <TimeDone left="34%" timeText="JAN 6 2022" timeDesc="Crowdloan Starts" />
+            <TimeDone left="49%" timeText="JAN 9 2022" timeDesc="Batch 5 Auction Starts" />
+            <TimeDone right="34%" timeText="JAN 11 2022" timeDesc="The First Slot Ending Period Starts" />
+            <TimeDone right="19%" timeText="JAN 23 2022" timeDesc="Crowdloan Ends" />
+            <TimeToDo right="5%" timeText="To be determined" timeDesc="Distribute Rewards" />
 
-            <div
-              className={cx("time-line-style-01-mini")}
-              style={{ left: "30%", right: "30%" }}
-            ></div>
-            <div
-              className={cx("time-line-style-02-mini")}
-              style={{ left: "35%", right: "35%" }}
-            >
+            <div className={cx("time-line-style-01-mini")} style={{ left: "30%", right: "30%" }}></div>
+            <div className={cx("time-line-style-02-mini")} style={{ left: "35%", right: "35%" }}>
               <div className={cx("pioneers")}>
-                <span className={cx("pioneers-content")}>
-                  Crowdloan Pioneers & Early Bird
-                </span>
+                <span className={cx("pioneers-content")}>Crowdloan Pioneers & Early Bird</span>
                 &nbsp;
                 <Tooltip
                   overlayClassName="tooltip-overlay"
@@ -93,14 +51,13 @@ const Timeline = () => {
                   trigger={["click", "hover"]}
                   title={
                     <p className={cx("tips")}>
-                      Crowdloan Pioneer: The top 5 of the supporters (exclude
-                      the Exchange address) who contribute more than 1,000 KSM
-                      within this period will be rewarded to share 1 BTC in
-                      proportion to your contribution.
+                      Crowdloan Pioneer: The top 5 of the supporters (exclude the Exchange address) who contribute more
+                      than 1,000 KSM within this period will be rewarded to share 1 BTC in proportion to your
+                      contribution.
                       <br />
                       <br />
-                      Early Bird: The Early Bird reward will be delivered to the
-                      supporters who contributed only within this period.
+                      Early Bird: The Early Bird reward will be delivered to the supporters who contributed only within
+                      this period.
                     </p>
                   }
                 >
@@ -108,14 +65,8 @@ const Timeline = () => {
                 </Tooltip>
               </div>
             </div>
-            <div
-              className={cx("time-line-style-03-mini")}
-              style={{ left: "calc(34% + 5px)" }}
-            ></div>
-            <div
-              className={cx("time-line-style-03-mini")}
-              style={{ left: "auto", right: "calc(34% + 5px)" }}
-            ></div>
+            <div className={cx("time-line-style-03-mini")} style={{ left: "calc(34% + 5px)" }}></div>
+            <div className={cx("time-line-style-03-mini")} style={{ left: "auto", right: "calc(34% + 5px)" }}></div>
           </div>
         </div>
       </div>
