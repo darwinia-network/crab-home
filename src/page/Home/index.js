@@ -248,7 +248,7 @@ function Home() {
                 </div>
 
                 {/* Text */}
-                <p className="lead text-gray-700 mb-5 mb-md-7">
+                <p className="text-gray-700 mb-5 mb-md-7">
                   The native tokens for Crab Network is CRAB, CRAB can be used
                   as gas for transactions. Gas include transaction fees,
                   contract execution fees, network bandwidth charges, storage
@@ -280,7 +280,7 @@ function Home() {
                 </div>
 
                 {/* Text*/}
-                <p className="lead text-gray-700 mb-5 mb-md-7">
+                <p className="text-gray-700 mb-5 mb-md-7">
                   To encourage users to make long term commitments, users can
                   choose to lock CRAB for 3 - 36 months in the process of
                   Staking, and the system will offer a CKTON token as reward for
