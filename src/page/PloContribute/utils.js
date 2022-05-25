@@ -8,7 +8,7 @@ import Big from "big.js";
 export const RING_REWARD = 200000000;
 export const KTON_REWARD = 8000;
 export const BTC_THRESHOLD = 10000; // 10000 DOT
-export const DOT_TO_ORIG = new BN("1000000000000"); // 貌似是精度
+export const DOT_PRECISION = new BN("1000000000000");
 
 export const shortAddress = (address = "") => {
   if (address.length && address.length > 12) {
@@ -21,7 +21,7 @@ const MAX_INPUT_DOT = Number(9999999999999);
 export const isValidContributeDOTInput = (amount) => !isNaN(amount) && Number(amount) <= MAX_INPUT_DOT;
 
 export const isInsufficientBalance = (availableOrig, needDOT) =>
-  Big(availableOrig).lt(Big(Number(needDOT)).mul(DOT_TO_ORIG.toString()));
+  Big(availableOrig).lt(Big(Number(needDOT)).mul(DOT_PRECISION.toString()));
 
 export const isValidAddressPolkadotAddress = (address) => {
   try {
@@ -66,4 +66,4 @@ export const formatBalanceFromOrigToDOT = (origBalance) =>
     decimals: 12,
   });
 
-export const formatBalanceFromDOTToOrig = (dotBalance) => Big(dotBalance).mul(DOT_TO_ORIG.toString()).toString();
+export const formatBalanceFromDOTToOrig = (dotBalance) => Big(dotBalance).mul(DOT_PRECISION.toString()).toString();

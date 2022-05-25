@@ -1,5 +1,5 @@
 import { web3FromAddress } from "@polkadot/extension-dapp";
-import { message, Modal, Tooltip, Typography } from "antd";
+import { message, Modal, Tooltip, Typography, Spin } from "antd";
 import classNames from "classnames/bind";
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
@@ -119,8 +119,10 @@ function BTCReward({ currentAccount }) {
           <span>Current</span>
         </div>
         <span className={cx("contribute-info-item-value")}>{contributeAmount}</span>
-        <button className={cx("claim-reward-btn")} disabled={!target || isReward} onClick={() => setVisible(1)}>
-          <span>Claim</span>
+        <button className={cx("claim-reward-btn", "lift")} disabled={!target || isReward} onClick={() => setVisible(1)}>
+            <Spin wrapperClassName={cx("metaverse-nft-modal-ok-btn-spin")} spinning={!!visible}>
+              <span className={cx("claim-reward-btn-text")}>Claim</span>
+            </Spin>
         </button>
       </div>
 

@@ -8,7 +8,7 @@ import infoIcon from "../img/info-icon.png";
 import modalCloseIcon from "../img/modal-close.png";
 import acceptIcon from "../img/accept.svg";
 import acceptedIcon from "../img/accepted.svg";
-import { DOT_TO_ORIG } from "../utils";
+import { DOT_PRECISION } from "../utils";
 import { useApi } from "../hooks";
 
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from "@apollo/client";
@@ -149,7 +149,7 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
         <div className={cx("current-tag", "space")}>
           <span>Current</span>
         </div>
-        <span className={cx("contribute-info-item-value")}>{myTotalContribute.gte(DOT_TO_ORIG) ? "1" : "0"}</span>
+        <span className={cx("contribute-info-item-value")}>{myTotalContribute.gte(DOT_PRECISION) ? "1" : "0"}</span>
         {isRemarked || myRemarked ? (
           <Tooltip
             overlayClassName="tooltip-overlay"
@@ -180,8 +180,8 @@ const MetaverseNFT = ({ myTotalContribute, currentAccount }) => {
           </Tooltip>
         ) : (
           <button
-            className={cx("claim-reward-btn")}
-            disabled={myTotalContribute.lt(DOT_TO_ORIG) || loading || !currentAccount}
+            className={cx("claim-reward-btn", "lift")}
+            disabled={myTotalContribute.lt(DOT_PRECISION) || loading || !currentAccount}
             onClick={handleClickClaim}
           >
             <Spin wrapperClassName={cx("metaverse-nft-modal-ok-btn-spin")} spinning={loading}>

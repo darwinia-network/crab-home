@@ -11,38 +11,29 @@ import classNames from "classnames/bind";
 import styles from "../styles.module.scss";
 import BN from "bn.js";
 import Big from "big.js";
-import { useQuery } from "@apollo/client";
-import { LIMITED_REFER_CROWDLOAN } from "../gql";
+
+import crowdloanReferStatistics from '../data/crowdloanReferStatistics.json';
 
 const cx = classNames.bind(styles);
 
 const ReferralLeaderboard = ({ globalTotalPower }) => {
-  const allReferCrowdloan = useQuery(LIMITED_REFER_CROWDLOAN);
+  const allReferCrowdloan = crowdloanReferStatistics.data.crowdloanReferStatistics.nodes.slice(0, 20);
 
   const referralLeaderboardData = [];
-  if (!allReferCrowdloan.loading && !allReferCrowdloan.error) {
-    if (
-      allReferCrowdloan.data &&
-      allReferCrowdloan.data.crowdloanReferStatistics &&
-      allReferCrowdloan.data.crowdloanReferStatistics.nodes &&
-      allReferCrowdloan.data.crowdloanReferStatistics.nodes.length
-    ) {
-      allReferCrowdloan.data.crowdloanReferStatistics.nodes.forEach((node) => {
-        const nodeTotalPowerBN = new BN(node.totalPower);
-        const contributePer = Big(nodeTotalPowerBN.toString()).div(globalTotalPower.toString());
+  allReferCrowdloan.forEach((node) => {
+    const nodeTotalPowerBN = new BN(node.totalPower);
+    const contributePer = Big(nodeTotalPowerBN.toString()).div(globalTotalPower.toString());
 
-        referralLeaderboardData.push({
-          address: referralCodeToPolkadotAddress(node.user),
-          referrals: node.contributors.nodes.length,
-          accumulatedContribution: node.totalBalance,
-          referralRewards: {
-            ring: contributePer.mul(RING_REWARD),
-            kton: contributePer.mul(KTON_REWARD),
-          },
-        });
-      });
-    }
-  }
+    referralLeaderboardData.push({
+      address: referralCodeToPolkadotAddress(node.user),
+      referrals: node.contributors.nodes.length,
+      accumulatedContribution: node.totalBalance,
+      referralRewards: {
+        ring: contributePer.mul(RING_REWARD),
+        kton: contributePer.mul(KTON_REWARD),
+      },
+    });
+  });
 
   return (
     <Fade bottom fraction={0.1} duration={1000} distance={"50px"}>

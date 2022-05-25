@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import BN from "bn.js";
 import Big from "big.js";
-import { DOT_TO_ORIG } from "./utils";
+import BN from "bn.js";
+import { DOT_PRECISION } from "./utils";
+import crowdloanContributeds from "./data/crowdloanContributeds.json";
 
 import * as echarts from "echarts/core";
 import {
@@ -26,36 +27,30 @@ echarts.use([
   UniversalTransition,
 ]);
 
-export const useEcharts = (dom, dataSource) => {
-  // 7,553.777745215274 KSM. This is definite
-  // See: https://kusama.subscan.io/parachain/2105?tab=crowdloan
-  // Even we can use it directly as: const [currentTotalContribute] = useState(new BN("7553777745215274"));
-  const [currentTotalContribute, setCurrentTotalContribute] = useState(new BN("0"));
+export const useEcharts = (dom) => {
+  const [totalContributed, setTotalContributed] = useState(new BN(0));
 
   useEffect(() => {
-    if (
-      dom &&
-      !dataSource.error &&
-      !dataSource.loading &&
-      dataSource.data.crowdloanContributeds.nodes &&
-      dataSource.data.crowdloanContributeds.nodes.length
-    ) {
+    const chart = dom ? echarts.init(dom) : null;
+
+    if (chart) {
       const date = [];
       const data = [];
-      for (let i = 0; i < dataSource.data.crowdloanContributeds.nodes.length; i++) {
-        const node = dataSource.data.crowdloanContributeds.nodes[i];
+
+      for (let node of crowdloanContributeds.data.crowdloanContributeds.nodes) {
         const amount = new BN(node.balance);
+
         date.push(node.timestamp.split("T")[0].replace(/-/g, "/"));
-        data.push(i > 0 ? data[i - 1].add(amount) : amount);
+        data.push(data.length ? data[data.length - 1].add(amount) : amount);
       }
-      setCurrentTotalContribute(data[data.length - 1]);
+
+      if (data.length) {
+        setTotalContributed(data[data.length - 1]);
+      }
 
       const option = {
         tooltip: {
           trigger: "axis",
-          position: function (pt) {
-            return [pt[0], "10%"];
-          },
         },
         xAxis: {
           type: "category",
@@ -64,19 +59,7 @@ export const useEcharts = (dom, dataSource) => {
         },
         yAxis: {
           type: "value",
-          boundaryGap: [0, "10%"],
         },
-        dataZoom: [
-          {
-            type: "inside",
-            start: 0,
-            end: 100,
-          },
-          // {
-          //   start: 0,
-          //   end: 100,
-          // },
-        ],
         series: [
           {
             name: "Contribute KSM",
@@ -98,14 +81,20 @@ export const useEcharts = (dom, dataSource) => {
                 },
               ]),
             },
-            data: data.map((d) => Big(d.toString()).div(DOT_TO_ORIG.toString()).toFixed(4)),
+            data: data.map((d) => Big(d.toString()).div(DOT_PRECISION.toString()).toFixed(4)),
           },
         ],
       };
 
-      echarts.init(dom).setOption(option);
+      chart.setOption(option);
     }
-  }, [dom, dataSource]);
 
-  return { currentTotalContribute };
+    return () => {
+      if (chart) {
+        chart.dispose();
+      }
+    };
+  }, [dom]);
+
+  return { totalContributed };
 };

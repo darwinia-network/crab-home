@@ -2,14 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { ApolloProvider } from "@apollo/client";
-import { graphqlClient } from "./graphql";
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <ApolloProvider client={graphqlClient}>
-    <App />
-  </ApolloProvider>,
+  <App />,
   document.getElementById("root")
 );
 
