@@ -76,3 +76,18 @@ query {
   }
 }
 ```
+
+> accounts.json
+
+```
+query {
+	accounts(orderBy: CONTRIBUTED_TOTAL_DESC) {
+    totalCount
+    nodes {
+      id
+      contributedTotalCount
+      contributedTotal
+    }
+  }
+}
+```
