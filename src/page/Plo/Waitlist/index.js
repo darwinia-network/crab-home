@@ -28,8 +28,7 @@ const Waitlist = () => {
         <div className={cx("right-part")}>
           <h3 className={cx("join-the-waitlist")}>Join the waitlist</h3>
           <p className={cx("desc-join")}>
-            Get alerted when our auction is about to start & receive emails for
-            important updates and events.
+            Get alerted when our auction is about to start & receive emails for important updates and events.
           </p>
 
           <Form
@@ -50,7 +49,7 @@ const Waitlist = () => {
                 placeholder="Enter your email"
                 aria-label="Enter your email"
                 aria-describedby="Enter your email"
-                style={{ borderRadius: "10px", border: '1px solid #ccc', background: 'rgba(255, 255, 255, 0.5)' }}
+                style={{ borderRadius: "10px", border: "1px solid #ccc", background: "rgba(255, 255, 255, 0.5)" }}
               />
               <div
                 htmlFor="mce-EMAIL"
@@ -58,7 +57,7 @@ const Waitlist = () => {
                 className={`mce_inline_error text-muted ${styles.mailtip}`}
               />
             </div>
-            <button className={cx("join-btn")} type="submit">
+            <button className={cx("join-btn", "lift")} type="submit">
               <span>Join</span>
             </button>
             <Form.Text
@@ -73,8 +72,7 @@ const Waitlist = () => {
             ></Form.Text>
           </Form>
           <p className={cx("desc-input")}>
-            By submitting your email, you are consenting to receive future
-            emails from Crab Network.
+            By submitting your email, you are consenting to receive future emails from Crab Network.
           </p>
           <div className={cx("contact-list")}>
             <a
@@ -116,4 +114,4 @@ const Waitlist = () => {
   );
 };
 
-export default React.memo(Waitlist);
+export default Waitlist;

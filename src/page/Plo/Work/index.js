@@ -42,18 +42,13 @@ const Work = () => {
   ];
 
   return (
-    <Container fluid className={cx("wrapper")}>
+    <Container fluid className={cx("wrapper")} data-aos="fade-up" data-aos-duration="500">
       <Container>
         <div className={cx("main")}>
           <h3 className={cx("title")}>How does a Parachain Crowdloan work?</h3>
           <div className={cx("item-container")}>
             {itemData.map((data, index) => (
-              <Item
-                key={index}
-                icon={data.icon}
-                title={data.title}
-                describe={data.describe}
-              />
+              <Item key={index} icon={data.icon} title={data.title} describe={data.describe} />
             ))}
           </div>
         </div>
@@ -62,4 +57,4 @@ const Work = () => {
   );
 };
 
-export default React.memo(Work);
+export default Work;

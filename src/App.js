@@ -1,24 +1,24 @@
-import { BrowserRouter } from 'react-router-dom';
-import BigNumber from 'bignumber.js';
+import { BrowserRouter } from "react-router-dom";
+import BigNumber from "bignumber.js";
 
-import Routes from './Routes'
-import './theme/scss/libs.scss'
-import './theme/scss/theme.scss'
-import './theme/js/theme'
-import './App.css';
+import Routes from "./Routes";
+import "./theme/scss/libs.scss";
+import "./theme/scss/theme.scss";
+import "./theme/js/theme";
+import "./App.css";
 
 const fmt = {
-  prefix: '',
-  decimalSeparator: '.',
-  groupSeparator: ',',
+  prefix: "",
+  decimalSeparator: ".",
+  groupSeparator: ",",
   groupSize: 3,
   secondaryGroupSize: 0,
-  fractionGroupSeparator: ' ',
+  fractionGroupSeparator: " ",
   fractionGroupSize: 0,
-  suffix: ''
-}
+  suffix: "",
+};
 
-BigNumber.config({ FORMAT: fmt })
+BigNumber.config({ FORMAT: fmt });
 
 function App() {
   return (

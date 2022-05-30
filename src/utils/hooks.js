@@ -19,9 +19,7 @@ export const unsubscribe = (tracker) => {
   tracker.current.isActive = false;
 
   if (tracker.current.subscriber) {
-    tracker.current.subscriber
-      .then((unsubFn) => unsubFn())
-      .catch(console.error);
+    tracker.current.subscriber.then((unsubFn) => unsubFn()).catch(console.error);
     tracker.current.subscriber = null;
   }
 };
@@ -83,19 +81,17 @@ export const useEventTrigger = (api, checks = [], filter = () => true) => {
 
   useEffect(() => {
     if (mountedRef.current && eventRecords) {
-      const events = eventRecords.filter(
-        (r) => r.event && checks.some((c) => c && c.is(r.event)) && filter(r)
-      );
+      const events = eventRecords.filter((r) => r.event && checks.some((c) => c && c.is(r.event)) && filter(r));
 
       if (events.length) {
-        setState(prev => {
+        setState((prev) => {
           if (prev.blockHash === eventRecords.createdAtHash?.toHex()) {
             return prev;
           }
           return {
             blockHash: eventRecords.createdAtHash?.toHex() || "",
             events,
-          }
+          };
         });
       }
     }

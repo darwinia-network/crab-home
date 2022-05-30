@@ -73,11 +73,7 @@ function Home() {
 
   return (
     <>
-      <Navbar
-        classList="navbar-light bg-white"
-        container="container"
-        button="primary"
-      />
+      <Navbar classList="navbar-light bg-white" container="container" button="primary" />
 
       {/* WELCOME  */}
       <section
@@ -95,14 +91,10 @@ function Home() {
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
               {/* Heading  */}
-              <h1 className="display-2 fw-bold text-white">
-                Crab economic model
-              </h1>
+              <h1 className="display-2 fw-bold text-white">Crab economic model</h1>
 
               {/* Text  */}
-              <p className="lead text-white-75 mb-0">
-                INTERNET OF TOKENS, CONNECTED!
-              </p>
+              <p className="lead text-white-75 mb-0">INTERNET OF TOKENS, CONNECTED!</p>
             </div>
           </div>
           {/* / .row  */}
@@ -125,14 +117,10 @@ function Home() {
                 <h1>Staking model</h1>
 
                 {/* Text  */}
-                <p
-                  className="fs-lg text-muted mb-7 mb-md-9"
-                >
-                  Crab Network will distribute CRABs as an incentive to the
-                  participants of Staking. The process of Staking can also be
-                  understood as the POS mining process, where the miner obtains
-                  Staking energy by staking tokens. According to complexity,
-                  Staking can be divided into basic and advanced versions.
+                <p className="fs-lg text-muted mb-7 mb-md-9">
+                  Crab Network will distribute CRABs as an incentive to the participants of Staking. The process of
+                  Staking can also be understood as the POS mining process, where the miner obtains Staking energy by
+                  staking tokens. According to complexity, Staking can be divided into basic and advanced versions.
                 </p>
               </div>
             </div>
@@ -166,9 +154,8 @@ function Home() {
 
                     {/* Text  */}
                     <p className="text-muted">
-                      If users start to retrieve the CRABs from Staking, the
-                      mining will stop, and the CRABs will take 14 days to fully
-                      unbond.
+                      If users start to retrieve the CRABs from Staking, the mining will stop, and the CRABs will take
+                      14 days to fully unbond.
                     </p>
 
                     {/* Link  */}
@@ -197,9 +184,7 @@ function Home() {
                     {/* Badge  */}
                     <div className="position-relative text-end mt-n8 me-n4 mb-3">
                       <span className="badge rounded-pill bg-primary">
-                        <span className="h6 text-uppercase">
-                          Advanced Model
-                        </span>
+                        <span className="h6 text-uppercase">Advanced Model</span>
                       </span>
                     </div>
 
@@ -208,9 +193,8 @@ function Home() {
 
                     {/* Text  */}
                     <p className="text-muted">
-                      During the locked period, users cannot unlock their CRABs.
-                      Unless they utilise triple the amount of CKTONs as
-                      penalty.
+                      During the locked period, users cannot unlock their CRABs. Unless they utilise triple the amount
+                      of CKTONs as penalty.
                     </p>
 
                     {/* Link  */}
@@ -242,36 +226,26 @@ function Home() {
                 <h1>Supply</h1>
 
                 {/* Text  */}
-                <p
-                  className="fs-lg text-muted mb-7 mb-md-9"
-                >
-                  The data here may lag behind the actual situation. If you need
-                  accurate data, please click here.
+                <p className="fs-lg text-muted mb-7 mb-md-9">
+                  The data here may lag behind the actual situation. If you need accurate data, please click here.
                 </p>
               </div>
             </div>
             {/* / .row  */}
             <div className="row">
               <div className="col-12 col-lg-6 mb-4">
-                <div
-                  className={`card ${styles.ringCard} d-flex flex-row text-white`}
-                >
+                <div className={`card ${styles.ringCard} d-flex flex-row text-white`}>
                   <div className="card-body d-flex align-items-stretch w-100">
                     <div className="row w-100" style={{ fontSize: 16 }}>
                       <div className="col-4 d-flex flex-column align-items-center justify-content-center">
-                        <img
-                          src={IMG_CRAB}
-                          width="56"
-                          className="rounded mx-auto d-block"
-                          alt="..."
-                        />
-                        <h3 className="mt-4 text-white" style={{fontWeight: 800}}>CRAB</h3>
+                        <img src={IMG_CRAB} width="56" className="rounded mx-auto d-block" alt="..." />
+                        <h3 className="mt-4 text-white" style={{ fontWeight: 800 }}>
+                          CRAB
+                        </h3>
                       </div>
                       <div className="col-8 d-flex ">
                         <div className="row flex-column justify-content-between">
-                          <div className="mb-4 text-white">
-                            CRAB is the native token of Crab Network
-                          </div>
+                          <div className="mb-4 text-white">CRAB is the native token of Crab Network</div>
 
                           <div className="d-flex flex-row justify-content-between ">
                             <p className="mb-0 text-white">Max Supply</p>
@@ -291,9 +265,7 @@ function Home() {
                             )}
                           </div>
                           <div className="d-flex flex-row justify-content-between">
-                            <p className="mb-0 text-white">
-                              Circulating Supply
-                            </p>
+                            <p className="mb-0 text-white">Circulating Supply</p>
                             {isLoaded ? (
                               <p
                                 className="mb-0 text-white fw-bold"
@@ -334,25 +306,19 @@ function Home() {
               </div>
 
               <div className="col-12 col-lg-6 mb-4">
-                <div
-                  className={`card ${styles.ktonCard} d-flex flex-row text-white`}
-                >
+                <div className={`card ${styles.ktonCard} d-flex flex-row text-white`}>
                   <div className="card-body d-flex align-items-stretch w-100">
                     <div className="row w-100" style={{ fontSize: 16 }}>
                       <div className="col-4 d-flex flex-column align-items-center justify-content-center">
-                        <img
-                          src={IMG_CKTON}
-                          width="56"
-                          className="rounded mx-auto d-block"
-                          alt="..."
-                        />
-                        <h3 className="mt-4 text-white" style={{fontWeight: 800}}>CKTON</h3>
+                        <img src={IMG_CKTON} width="56" className="rounded mx-auto d-block" alt="..." />
+                        <h3 className="mt-4 text-white" style={{ fontWeight: 800 }}>
+                          CKTON
+                        </h3>
                       </div>
                       <div className="col-8 d-flex ">
                         <div className="row flex-column justify-content-between">
                           <div className="mb-4 text-white">
-                            CKTON is a derivative commitment token of CRAB,
-                            which encourages long-term involvement.
+                            CKTON is a derivative commitment token of CRAB, which encourages long-term involvement.
                           </div>
 
                           <div className="d-flex flex-row justify-content-between">
@@ -366,18 +332,14 @@ function Home() {
                                   fontWeight: 700,
                                 }}
                               >
-                                {tokenInfo.CKTON.maxSupply
-                                  ? formatBalance(tokenInfo.CKTON.maxSupply)
-                                  : "--"}
+                                {tokenInfo.CKTON.maxSupply ? formatBalance(tokenInfo.CKTON.maxSupply) : "--"}
                               </p>
                             ) : (
                               <Loading />
                             )}
                           </div>
                           <div className="d-flex flex-row justify-content-between">
-                            <p className="mb-0 text-white">
-                              Circulating Supply
-                            </p>
+                            <p className="mb-0 text-white">Circulating Supply</p>
                             {isLoaded ? (
                               <p
                                 className="mb-0 text-white fw-bold"
@@ -387,9 +349,7 @@ function Home() {
                                   fontWeight: 700,
                                 }}
                               >
-                                {formatBalance(
-                                  tokenInfo.CKTON.availableBalance
-                                )}
+                                {formatBalance(tokenInfo.CKTON.availableBalance)}
                               </p>
                             ) : (
                               <Loading />
@@ -434,14 +394,10 @@ function Home() {
                 <h2 className="fw-bold">CRAB Inflation Model</h2>
 
                 {/* Text  */}
-                <p
-                  className="fs-lg text-muted mb-7 mb-md-9"
-                  style={{ lineHeight: "25px" }}
-                >
-                  CRAB has the same inflation model as RING, the total cap of
-                  the block reward is adjusted once a year. The total number of
-                  hard-cap for RING is 10 billion. The following figure shows
-                  the CRAB’s inflation model.
+                <p className="fs-lg text-muted mb-7 mb-md-9" style={{ lineHeight: "25px" }}>
+                  CRAB has the same inflation model as RING, the total cap of the block reward is adjusted once a year.
+                  The total number of hard-cap for RING is 10 billion. The following figure shows the CRAB’s inflation
+                  model.
                 </p>
               </div>
             </div>
@@ -464,8 +420,7 @@ function Home() {
             <div className="row">
               <div className="col-12">
                 <p className="text-center mt-4">
-                  Note: The block reward of year N is 1 - (99/100)^sqrt(N) of
-                  total remaining issuable
+                  Note: The block reward of year N is 1 - (99/100)^sqrt(N) of total remaining issuable
                 </p>
               </div>
             </div>
@@ -511,8 +466,7 @@ function Home() {
                         </p>
 
                         <p className="text-muted mb-0 text-start">
-                          Fishermen’s Incentive from Adversaries’ Slash
-                          (self-sustain).
+                          Fishermen’s Incentive from Adversaries’ Slash (self-sustain).
                         </p>
                       </div>
                     </div>
@@ -532,19 +486,14 @@ function Home() {
 
                         {/* Text  */}
                         <p className="text-muted mb-0 text-start">
-                          Cross-chain Asset Transfer Service Fee (per TX) as
-                          Revenue.
+                          Cross-chain Asset Transfer Service Fee (per TX) as Revenue.
                         </p>
 
                         {/* Text  */}
-                        <p className="text-muted mb-0 text-start">
-                          Verification Game Slash Tax as Revenue.
-                        </p>
+                        <p className="text-muted mb-0 text-start">Verification Game Slash Tax as Revenue.</p>
 
                         {/* Text  */}
-                        <p className="text-muted mb-0 text-start">
-                          Revenue Pool is used to buy back RING and burn.
-                        </p>
+                        <p className="text-muted mb-0 text-start">Revenue Pool is used to buy back RING and burn.</p>
                       </div>
                     </div>
                     <div className="col-md-5">

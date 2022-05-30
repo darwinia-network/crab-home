@@ -1,24 +1,18 @@
 import Fade from "react-reveal/Fade";
 import { Table } from "antd";
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames/bind";
 import styles from "../styles.module.scss";
-import {
-  formatBalanceFromOrigToDOT,
-  KTON_REWARD,
-  RING_REWARD,
-  shortAddress,
-} from "../utils";
+import { formatBalanceFromOrigToDOT, KTON_REWARD, RING_REWARD, shortAddress } from "../utils";
 import Big from "big.js";
-import { useQuery } from "@apollo/client";
-import { gqlWhocrowdloanByOffset } from "../gql";
-import btcTop5 from '../top5.json';
+import btcTop5 from "../top5.json";
+
+import crowdloanWhoStatistics from '../data/crowdloanWhoStatistics.json';
 
 const cx = classNames.bind(styles);
 
 const GlobalContributionActivity = ({ allReferContributeData, globalTotalPower, top5contribute }) => {
-  const [offset, setOffset] = useState(0);
-  const allWhoCrowdloan = useQuery(gqlWhocrowdloanByOffset(offset));
+  const allWhoCrowdloan = crowdloanWhoStatistics;
 
   const globalContributeColumns = [
     {
@@ -106,7 +100,7 @@ const GlobalContributionActivity = ({ allReferContributeData, globalTotalPower, 
     const nodeRefer = allReferContributeData.find((node) => node.user === nodeWho.user); // { user: address };
     const userPower = nodeRefer ? Big(nodeWho.totalPower).add(nodeRefer.totalPower) : Big(nodeWho.totalPower);
     const share = userPower.div(globalTotalPower.toString());
-    const target = btcTop5.find(item => item.address === nodeWho.user);
+    const target = btcTop5.find((item) => item.address === nodeWho.user);
 
     globalContributeDataSource.push({
       key: i,
@@ -114,9 +108,9 @@ const GlobalContributionActivity = ({ allReferContributeData, globalTotalPower, 
       myDot: formatBalanceFromOrigToDOT(nodeWho.totalBalance),
       referrals: nodeRefer ? nodeRefer.contributorsCount : 0,
       referralDot: nodeRefer ? formatBalanceFromOrigToDOT(nodeRefer.totalBalance) : 0,
-      curRingRewards: share.times(RING_REWARD).toFixed(8),
-      curKtonRewards: share.times(KTON_REWARD).toFixed(8),
-      curBtcRewards: target ? target.reward : '0',
+      curRingRewards: share.times(RING_REWARD).toFixed(3),
+      curKtonRewards: share.times(KTON_REWARD).toFixed(3),
+      curBtcRewards: target ? target.reward : "0",
       curNft: "No Status",
     });
   }
@@ -133,9 +127,6 @@ const GlobalContributionActivity = ({ allReferContributeData, globalTotalPower, 
           total: allWhoCrowdloan.data ? allWhoCrowdloan.data.crowdloanWhoStatistics.totalCount : 0,
           size: "small",
           showSizeChanger: false,
-          onChange: (page, pageSize) => {
-            setOffset((page - 1) * pageSize);
-          },
         }}
       />
     </Fade>
