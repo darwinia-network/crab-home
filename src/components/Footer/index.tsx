@@ -39,7 +39,7 @@ const Footer = ({ data }: Props) => {
       <div className={"container py-[1.25rem] lg:py-[3.125rem]"}>
         {/* Only visible on PC */}
         <div className={"hidden lg:block"}>
-          <div className={"title text-white capitalize"}>{t(localeKeys.subscribeToUpdates)}</div>
+          <div className={"title-lg text-white capitalize"}>{t(localeKeys.subscribeToUpdates)}</div>
           <div className={"text-white my-[1.25rem] capitalize"}>{t(localeKeys.trackLatestUpdates)}</div>
 
           {/* Custom Input Field */}

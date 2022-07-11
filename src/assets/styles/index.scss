@@ -59,17 +59,22 @@ html {
 
   .title {
     @extend .text;
-    @apply font-[JetBrainsMono-Bold] text-[1.25rem] leading-[1.625rem] font-[700] box-border;
+    @apply font-[JetBrainsMono-Bold] text-[1.125rem] leading-[1.5rem] font-[700] box-border;
   }
 
   .title-lg {
     @extend .title;
-    @apply text-[1.5rem] lg:text-[3.125rem] leading-[2rem] lg:leading-[3.75rem] font-[700] box-border;
+    @apply text-[1.5rem] lg:text-[2.5rem] leading-[2rem] lg:leading-[3.3125rem] box-border;
+  }
+
+  .title-home-hero {
+    @extend .title;
+    @apply text-[1.875rem] lg:text-[3.8rem] leading-[2.5rem] lg:leading-[5.25rem] box-border;
   }
 
   .title-hero {
     @extend .title;
-    @apply text-[1.5rem] lg:text-[3.125rem] leading-[2rem] lg:leading-[3.75rem] font-[700] box-border;
+    @apply text-[1.5rem] lg:text-[3.125rem] leading-[2rem] lg:leading-[3.75rem] box-border;
   }
 
   .btn {
@@ -189,30 +194,6 @@ html {
   position: relative;
 }*/
 
-/* Works on Firefox */
-.custom-scroll-bar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.2);
-}
-
-/* Works on Chrome, Edge, and Safari */
-.custom-scroll-bar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.custom-scroll-bar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.custom-scroll-bar::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-}
-
-.custom-scroll-bar::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.7);
-}
 
 @keyframes blinkingCursor {
   0% {

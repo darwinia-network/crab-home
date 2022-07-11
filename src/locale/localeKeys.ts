@@ -31,7 +31,21 @@ const localeKeys = {
   resources: "resources",
   substrateBuilderProgram: "substrateBuilderProgram",
   web3GrantProgram: "web3GrantProgram",
-  darwiniaBuildersProgram: "darwiniaBuildersProgram"
+  darwiniaBuildersProgram: "darwiniaBuildersProgram",
+  whatIsCrab: "whatIsCrab",
+  crabDescriptionsText: "crabDescriptionsText",
+  crabDescriptionsItemOne: "crabDescriptionsItemOne",
+  crabDescriptionsItemTwo: "crabDescriptionsItemTwo",
+  crabDescriptionsItemThree: "crabDescriptionsItemThree",
+  ethereumCompatibility: "ethereumCompatibility",
+  compatibilityText: "compatibilityText",
+  compatibilityTextOne: "compatibilityTextOne",
+  compatibilityTextTwo: "compatibilityTextTwo",
+  compatibilityTextThree: "compatibilityTextThree",
+  compatibilityTextFour: "compatibilityTextFour",
+  compatibilityTextFive: "compatibilityTextFive",
+  compatibilityTextSix: "compatibilityTextSix",
+  compatibilityTextSeven: "compatibilityTextSeven",
 };
 
 export default localeKeys;

@@ -32,6 +32,20 @@ const enUs = {
   [localeKeys.substrateBuilderProgram]: `substrate builders program`,
   [localeKeys.web3GrantProgram]: `web3 foundation grants program`,
   [localeKeys.darwiniaBuildersProgram]: `darwinia builders program`,
+  [localeKeys.whatIsCrab]: "what is crab",
+  [localeKeys.crabDescriptionsText]: `Crab Network (Crab) is a canary network with real economic value for Darwinia. There are three types of chains in the Crab network:`,
+  [localeKeys.crabDescriptionsItemOne]: `namely Crab Smart Chain(CSC) which is Ethereum-Compatible,`,
+  [localeKeys.crabDescriptionsItemTwo]: `Crab Parachain(CP) which won the 22nd Kusama parachain slot,`,
+  [localeKeys.crabDescriptionsItemThree]: `Crab Chain(CC) based on Substrate.`,
+  [localeKeys.ethereumCompatibility]: `Complete Ethereum Compatibility`,
+  [localeKeys.compatibilityText]: `Crab Smart Chain provides a development environment that is fully compatible with Ethereum. DApp developers can easily migrate and deploy existing contract projects to Crab Smart Chain with minimum modification. As a new EVM-Compatible chain, Crab brings DApp developers great chances to grab early users.`,
+  [localeKeys.compatibilityTextOne]: `Solidity Smart Contracts`,
+  [localeKeys.compatibilityTextTwo]: `Complete Set of Web3 RPC Endpoints`,
+  [localeKeys.compatibilityTextThree]: `Publish-Subscribe Capabilities`,
+  [localeKeys.compatibilityTextFour]: `H160 Accounts & ECDSA Signatures`,
+  [localeKeys.compatibilityTextFive]: `Low gas fee`,
+  [localeKeys.compatibilityTextSix]: `Lightning fast tx`,
+  [localeKeys.compatibilityTextSeven]: `On-chain governance`,
 };
 
 export default enUs;

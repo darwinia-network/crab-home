@@ -29,11 +29,22 @@ export interface FeatureWrapper {
   links?: Link[];
 }
 
-export interface LightClient {
-  title: JSX.Element;
-  subTitle: string;
+export interface CrabIntro {
+  title: string;
   image: string;
+  imageMobile: string;
+  content: {
+    text: string;
+    list: string[];
+  };
+}
+
+export interface CompatibilityPromo {
+  title: string;
   text: string;
+  image: string;
+  left: string[];
+  right: string[];
 }
 
 export interface DarwiniaPromo {
@@ -118,15 +129,4 @@ export interface Menu {
   children?: Menu[];
   isExternalLink?: boolean;
   isComingSoon?: boolean;
-}
-
-export interface Paper {
-  id: number;
-  title: string;
-  authors: string[];
-  tags: string[];
-  summary: string;
-  mobileSummary?: string;
-  titleUrl: string;
-  link: Link;
 }
