@@ -1,0 +1,399 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "JetBrainsMono-Light";
+  src: url("../fonts/JetBrainsMono-Light.woff2");
+}
+
+@font-face {
+  font-family: "JetBrainsMono-Bold";
+  src: url("../fonts/JetBrainsMono-Bold.woff2");
+}
+
+html {
+  @apply bg-black;
+}
+
+/*components styles*/
+/* BUG FIX ALERT 🐛 :
+ If you use @apply, always make sure that your styles end up with the "none brackets" styles.
+ Reorder your styles in such a way that all your custom styles with brackets such as mt-[200px]
+ come up first and all the default styles without brackets stay at the end.
+ If you only have the styles with brackets only, make sure you add a CHEATING style at the end
+ such as box-border. Failure to do that will cause a failure in building the whole application
+*/
+@layer components {
+  a {
+    @apply inline-block;
+  }
+
+  .container {
+    @apply max-w-[1320px] px-[1.25rem] lg:px-[1.875rem] xl:px-[3.75rem] mx-auto;
+  }
+
+  .space-top-1 {
+    @apply pt-[5rem] lg:pt-[11.5625rem] box-border;
+  }
+
+  .space-top-2 {
+    @extend .space-top-1;
+    @apply pt-[7.5rem] lg:pt-[13.75rem] box-border;
+  }
+
+  .inter-block-space-1 {
+    @apply mt-[8.75rem] lg:mt-[15.625rem] box-border;
+  }
+
+  .inter-block-space-2 {
+    @apply mt-[3.125rem] lg:mt-[5.625rem] box-border;
+  }
+
+  .text {
+    @apply font-[JetBrainsMono-Light] text-[0.875rem] leading-[1.875rem] text-gray;
+  }
+
+  body {
+    @extend .text;
+  }
+
+  .title {
+    @extend .text;
+    @apply font-[JetBrainsMono-Bold] text-[1.25rem] leading-[1.625rem] font-[700] box-border;
+  }
+
+  .title-lg {
+    @extend .title;
+    @apply text-[1.5rem] lg:text-[3.125rem] leading-[2rem] lg:leading-[3.75rem] font-[700] box-border;
+  }
+
+  .title-hero {
+    @extend .title;
+    @apply text-[1.5rem] lg:text-[3.125rem] leading-[2rem] lg:leading-[3.75rem] font-[700] box-border;
+  }
+
+  .btn {
+    @apply py-[0.5rem] px-[0.9375rem] border-[1px] border-solid border-white bg-black lg:hover:bg-white lg:hover:text-black hover:cursor-pointer text text-white;
+  }
+
+  .btn-primary {
+    @extend .btn;
+    @apply bg-primary border-primary lg:hover:bg-black;
+  }
+
+  .mobile-navigation {
+    @apply z-[99] w-[16.25rem] fixed top-0 bottom-0 right-0 h-full bg-black transform-cpu;
+    &.mobile-nav-enter {
+      @apply translate-x-[101%] box-border;
+    }
+    &.mobile-nav-enter-active,
+    &.mobile-nav-enter-done {
+      @apply translate-x-0 ease-[cubic-bezier(.23,1,.32,1)] transition-transform duration-300;
+    }
+    &.mobile-nav-exit {
+      @apply translate-x-0 box-border;
+    }
+    &.mobile-nav-exit-active,
+    &.mobile-nav-exit-done {
+      @apply translate-x-[101%] ease-[cubic-bezier(.23,1,.32,1)] transition-transform duration-300;
+    }
+  }
+
+  .navigation-overlay {
+    @apply bg-[rgba(0,0,0,0.8)] z-[80] fixed top-0 bottom-0 right-0 left-0 h-full w-full transform-cpu;
+    &.nav-overlay-enter {
+      @apply opacity-0 box-border;
+    }
+    &.nav-overlay-enter-active,
+    &.nav-overlay-enter-done {
+      @apply opacity-100 transition-opacity duration-300 box-border;
+    }
+    &.nav-overlay-exit {
+      @apply opacity-100 box-border;
+    }
+    &.nav-overlay-exit-active,
+    &.nav-overlay-exit-done {
+      @apply opacity-0 transition-opacity duration-300 box-border;
+    }
+  }
+
+  .mobile-navigation {
+    .active {
+      &:after {
+        background: linear-gradient(270deg, #d9d9d9 4.55%, rgba(217, 217, 217, 0) 97.93%);
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        opacity: 0.2;
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        z-index: -1;
+        @apply bg-white;
+      }
+    }
+  }
+
+  .pc-navigation {
+    .active {
+      position: relative;
+
+      &:after {
+        background: white;
+        opacity: 0.3;
+        content: "";
+        display: block;
+        position: absolute;
+        left: 25%;
+        right: 25%;
+        bottom: 0;
+        height: 2px;
+        z-index: -1;
+      }
+    }
+  }
+
+  .divider {
+    @apply h-[1px] w-full bg-white opacity-30;
+  }
+
+  .divider-50 {
+    @apply h-[1px] w-full bg-halfWhite;
+  }
+
+  .hero-image-1 {
+    @apply lg:w-[53.75%] w-full shrink-0;
+  }
+
+  .hero-image-2 {
+    @apply lg:w-[47.083%] lg:pl-[4rem] w-full shrink-0;
+  }
+}
+/*.aos-animate {
+  z-index: -1;
+  position: relative;
+}*/
+
+/* Works on Firefox */
+.custom-scroll-bar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.2);
+}
+
+/* Works on Chrome, Edge, and Safari */
+.custom-scroll-bar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scroll-bar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+}
+
+.custom-scroll-bar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes blinkingCursor {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.typewriter-cursor {
+  // all: initial;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding-left: 2px;
+  animation-name: blinkingCursor;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+$pc-code-transition-duration: 500ms;
+.pc-code-enter {
+  opacity: 0;
+}
+
+.pc-code-enter-active {
+  transition: opacity $pc-code-transition-duration ease-in-out;
+  opacity: 1;
+}
+
+.pc-code-enter-done {
+  opacity: 1;
+  z-index: 10;
+}
+
+.pc-code-exit {
+  opacity: 1;
+}
+
+.pc-code-exit-active {
+  transition: opacity $pc-code-transition-duration ease-in-out;
+  opacity: 0;
+}
+
+.pc-code-exit-done {
+  opacity: 0;
+}
+
+$mobile-code-transition-duration: 300ms;
+$mobile-code-height-ease: cubic-bezier(0.645, 0.045, 0.355, 1);
+$mobile-code-opacity-ease: cubic-bezier(.645, .045, .355, 1);
+.mobile-code-enter {
+  height: 0;
+}
+
+.mobile-code-enter-active {
+  height: 370px;
+  transition: height $mobile-code-transition-duration $mobile-code-height-ease, opacity $mobile-code-transition-duration $mobile-code-opacity-ease;
+}
+
+.mobile-code-enter-done {
+  height: 370px;
+}
+
+.mobile-code-exit {
+  height: 370px;
+}
+
+.mobile-code-exit-active {
+  height: 0;
+  transition: height $mobile-code-transition-duration $mobile-code-height-ease, opacity $mobile-code-transition-duration $mobile-code-opacity-ease;
+}
+
+.mobile-code-exit-done {
+  height: 0;
+}
+
+$pc-sub-menu-transition-duration: 300ms;
+$pc-sub-menu-transition-ease: cubic-bezier(0.645, 0.045, 0.355, 1);
+$pc-sub-menu-y: -20%;
+.pc-sub-menu-enter {
+  opacity: 0;
+  transform: translate3d(-50%, $pc-sub-menu-y, 0);
+}
+
+.pc-sub-menu-enter-active {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+  transition: transform $pc-sub-menu-transition-duration $pc-sub-menu-transition-ease, opacity $pc-sub-menu-transition-duration $pc-sub-menu-transition-ease;
+}
+
+.pc-sub-menu-enter-done {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.pc-sub-menu-exit {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.pc-sub-menu-exit-active {
+  opacity: 0;
+  transform: translate3d(-50%, $pc-sub-menu-y, 0);
+  transition: transform $pc-sub-menu-transition-duration $pc-sub-menu-transition-ease, opacity $pc-sub-menu-transition-duration $pc-sub-menu-transition-ease;
+}
+
+.pc-sub-menu-exit-done {
+  opacity: 0;
+  transform: translate3d(-50%, $pc-sub-menu-y, 0);
+}
+
+.tokens-statistics-enter {
+  opacity: 0;
+}
+.tokens-statistics-enter-active {
+  opacity: 1;
+  transition: opacity 800ms ease-out;
+}
+.tokens-statistics-enter-done {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+/* if the future there needs to be a light mode for this project,
+  you can set all the light mode styles in here. Simply use
+ something like document.documentElement.classList.remove('light')
+  in your JS */
+.light {
+  [class*="-primary"] {
+    /*your CSS overrides*/
+  }
+}

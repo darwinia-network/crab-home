@@ -1,0 +1,37 @@
+/* all translation keys will be declared here */
+const localeKeys = {
+  welcomeToReact: "welcomeToReact",
+  home: "home",
+  docs: "docs",
+  economicModel: "economicModel",
+  grantsProgram: "grantsProgram",
+  apps: "apps",
+  crabIntro: "crabIntro",
+  buildOnCrab: "buildOnCrab",
+  goToDarwinia: "goToDarwinia",
+  canaryNetwork: "canaryNetwork",
+  pageNotFound: "pageNotFound",
+  goBackHome: "goBackHome",
+  subscribeToUpdates: "subscribeToUpdates",
+  trackLatestUpdates: "trackLatestUpdates",
+  yourEmailHere: "yourEmailHere",
+  subscribe: "subscribe",
+  wrongEmail: "wrongEmail",
+  subscriptionSuccessful: "subscriptionSuccessful",
+  crabNetworkCopyright: "crabNetworkCopyright",
+  developers: "developers",
+  darwiniaNetwork: "darwiniaNetwork",
+  darwiniaApps: "darwiniaApps",
+  subscanExplorer: "subscanExplorer",
+  helixBridge: "helixBridge",
+  evolutionLand: "evolutionLand",
+  useCases: "useCases",
+  gitHub: "gitHub",
+  buildersDocs: "buildersDocs",
+  resources: "resources",
+  substrateBuilderProgram: "substrateBuilderProgram",
+  web3GrantProgram: "web3GrantProgram",
+  darwiniaBuildersProgram: "darwiniaBuildersProgram"
+};
+
+export default localeKeys;
