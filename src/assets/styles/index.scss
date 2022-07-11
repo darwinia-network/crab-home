@@ -168,6 +168,9 @@ html {
   .divider {
     @apply h-[1px] w-full bg-white opacity-30;
   }
+  .divider-primary {
+    @apply h-[1px] w-full bg-primary;
+  }
 
   .divider-50 {
     @apply h-[1px] w-full bg-halfWhite;

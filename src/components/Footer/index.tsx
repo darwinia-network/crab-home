@@ -34,7 +34,7 @@ const Footer = ({ data }: Props) => {
   return (
     <div className={"inter-block-space-1"}>
       <div className={"hidden lg:block lg:px-0"}>
-        <div className={"divider-50"} />
+        <div className={"divider-primary"} />
       </div>
       <div className={"container py-[1.25rem] lg:py-[3.125rem]"}>
         {/* Only visible on PC */}
@@ -51,6 +51,7 @@ const Footer = ({ data }: Props) => {
                 method="post"
                 id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form"
+                className={"flex"}
               >
                 <input
                   onChange={(e) => {
@@ -59,7 +60,7 @@ const Footer = ({ data }: Props) => {
                   name={"EMAIL"}
                   id="mce-EMAIL"
                   className={
-                    "w-full placeholder:text-white placeholder:opacity-50 text-white border border-1 border-solid border-primary bg-black outline-0 p-[0.625rem] pr-[7.375rem]"
+                    "w-full placeholder:text-white placeholder:opacity-50 text-white border border-1 border-solid border-primary bg-black outline-0 px-[0.625rem] mr-[1.4375rem]"
                   }
                   type="email"
                   placeholder={t(localeKeys.yourEmailHere)}
@@ -67,7 +68,7 @@ const Footer = ({ data }: Props) => {
                 <button
                   type="submit"
                   className={
-                    "btn border-primary capitalize absolute right-0 top-0 bottom-0 flex items-center disabled:text-gray disabled:cursor-default"
+                    "btn border-primary capitalize flex items-center disabled:text-gray disabled:cursor-default py-[0.4375rem]"
                   }
                 >
                   {t(localeKeys.subscribe)}
@@ -84,15 +85,15 @@ const Footer = ({ data }: Props) => {
         </div>
       </div>
       <div className={"hidden lg:block lg:px-0"}>
-        <div className={"divider-50"} />
+        <div className={"divider-primary"} />
       </div>
       <div className={"container lg:hidden"}>
-        <div className={"divider-50"} />
+        <div className={"divider-primary"} />
       </div>
-      <div className={"container py-[1.25rem] lg:py-[3.125rem]"}>
+      <div className={"container py-[1.25rem] lg:py-[1.875rem]"}>
         <div className={"flex flex-col justify-between lg:flex-row"}>
           <div className={"order-3 lg:order-1"}>{copyRight}</div>
-          <div className={"divider-50 my-[1.25rem] order-2 lg:hidden"} />
+          <div className={"divider-primary my-[1.25rem] order-2 lg:hidden"} />
           <div className={"flex items-center order-1 lg:order-2"}>{socialNetworkLinks}</div>
         </div>
       </div>
@@ -102,9 +103,10 @@ const Footer = ({ data }: Props) => {
 
 const getSocialNetworkLinks = (socialNetworks: SocialNetwork[]) => {
   return socialNetworks.map((network, index) => {
+    const rightMargin = index === socialNetworks.length - 1 ? `` : `mr-[1.5rem]`;
     return (
       <a className={"shrink-0 hover:opacity-70"} key={index} href={network.url} target="_blank" rel="noreferrer">
-        <img className={"w-[1.5rem] h-[1.5rem] mr-[1.5rem]"} src={network.logo} alt="image" />
+        <img className={`w-[1.5rem] h-[1.5rem] ${rightMargin}`} src={network.logo} alt="image" />
       </a>
     );
   });
