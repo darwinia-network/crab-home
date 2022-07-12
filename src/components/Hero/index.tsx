@@ -21,7 +21,7 @@ const Hero = ({ data, page }: Props) => {
   const wrapperCustomClass = page === "HOME" ? `pb-[0.5625rem] lg:pb-[7.8125rem]` : ``;
   return (
     <div style={customStyle} className={`lg:bg-center bg-cover bg-no-repeat ${wrapperCustomClass}`}>
-      <div data-aos={"fade-up"} data-aos-duration={700} className={`container ${topSpace}`}>
+      <div data-aos={"fade-up"} className={`container ${topSpace}`}>
         <div className={"flex flex-col lg:flex-row justify-between relative"}>
           <div className={`order-2 flex flex-col relative z-20 lg:justify-center lg:order-1 ${textClass}`}>
             <Suspense>
