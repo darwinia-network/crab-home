@@ -1,7 +1,7 @@
-import { CompatibilityPromo as CompatibilityType } from "../../data/types";
+import { CompatibilityPromo as ICompatibility } from "../../data/types";
 
 interface Props {
-  data: CompatibilityType;
+  data: ICompatibility;
 }
 
 const CompatibilityPromo = ({ data }: Props) => {
@@ -23,7 +23,7 @@ const CompatibilityPromo = ({ data }: Props) => {
   });
   return (
     <div>
-      <div data-aos={"fade-up"} className={"flex flex-col lg:items-center"}>
+      <div data-aos={"fade-up"} className={"flex capitalize flex-col lg:items-center"}>
         <div className={"title-lg text-white lg:w-[68.33%]"}>{data.title}</div>
         <div className={"mt-0.625rem lg:w-[68.33%]"}>{data.text}</div>
       </div>

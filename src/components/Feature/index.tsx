@@ -1,73 +1,84 @@
-import { Feature as IFeature, Link } from "../../data/types";
+import { Feature as IFeature, FeatureType, Link } from "../../data/types";
 import { NavLink } from "react-router-dom";
 
 interface Props {
   data: IFeature;
-  pcGrid: number;
 }
 
-const Feature = ({ data, pcGrid }: Props) => {
-  const { type, text, icon, title, links: bottomLinks } = data;
-  const bottomDivider = type === 2 ? <div className={"divider mt-[1.25rem]"} /> : null;
-  const linksCustomClass = getLinkClassByType(type);
-  const links = getBottomLinks(bottomLinks);
-  const parentTypeClasses = getWrapperGrid(pcGrid);
-  const childTypeClasses = getChildWidthByGrid(pcGrid);
-  const titleJSX = title ? <div className={"title text-white capitalize mt-[1.25rem]"}>{title}</div> : null;
+const Feature = ({ data }: Props) => {
+  return getFeatureByType(data.type, data);
+};
+
+const getFeatureByType = (type: FeatureType, data: IFeature): JSX.Element => {
+  switch (type) {
+    case 1: {
+      return getTypeOneFeature(data);
+    }
+    case 2: {
+      return getTypeTwoFeature(data);
+    }
+    case 3:
+    default: {
+      return getTypeThreeFeature(data);
+    }
+  }
+};
+
+const getTypeOneFeature = (data: IFeature): JSX.Element => {
   return (
-    <div className={`flex shrink-0 ${parentTypeClasses} inter-block-space-2`}>
-      <div className={`${childTypeClasses}`}>
-        <img className={"w-[5rem] self-start"} src={icon} alt="icon" />
-        {titleJSX}
-        <div className={"divider mt-[1.25rem]"} />
-        <div className={"capitalize mt-[1.25rem]"}>{text}</div>
-        {bottomDivider}
-        <div className={`flex text-white ${linksCustomClass}`}>{links}</div>
+    <div className={"flex justify-center"}>
+      <div className={"flex max-w-[68.5rem] flex-col lg:flex-row lg:items-center lg:gap-[3.75rem]"}>
+        <div className={"lg:order-2"}>
+          <div data-aos={"fade-up"} className={"title-lg text-white capitalize"}>
+            {data.title}
+          </div>
+          <div data-aos={"fade-up"} className={"mt-[0.625rem] capitalize"}>
+            {data.text}
+          </div>
+        </div>
+        <div data-aos={"fade-up"} className={"w-[94.03%] lg:w-[41.97%] shrink-0 lg:order-1 mt-[2.5rem] lg:mt-0"}>
+          <img className={"w-full"} src={data.icon} alt="image" />
+        </div>
       </div>
     </div>
   );
 };
-const getLinkClassByType = (type: number) => {
-  switch (type) {
-    case 3: {
-      return `flex-col mt-[1.25rem] gap-[1.25rem]`;
-    }
-    case 4: {
-      return `flex-wrap gap-[1.25rem] mt-[1.25rem] text-white`;
-    }
-    default: {
-      return `flex-wrap gap-[1.25rem] mt-[1.25rem]`;
-    }
-  }
+
+const getTypeTwoFeature = (data: IFeature): JSX.Element => {
+  return (
+    <div className={"flex justify-center"}>
+      <div className={"flex max-w-[62rem] flex-col lg:flex-row lg:items-center lg:gap-[3.75rem]"}>
+        <div>
+          <div data-aos={"fade-up"} className={"title-lg text-white capitalize"}>
+            {data.title}
+          </div>
+          <div data-aos={"fade-up"} className={"mt-[0.625rem] capitalize"}>
+            {data.text}
+          </div>
+        </div>
+        <div data-aos={"fade-up"} className={"w-[76.119%] lg:w-[35.887%] shrink-0 mt-[2.5rem] lg:mt-0"}>
+          <img className={"w-full"} src={data.icon} alt="image" />
+        </div>
+      </div>
+    </div>
+  );
 };
 
-const getChildWidthByGrid = (pcGrid: number) => {
-  switch (pcGrid) {
-    case 3: {
-      return `w-full lg:w-[85%]`;
-    }
-    case 4: {
-      return `w-full lg:w-[86%]`;
-    }
-    default: {
-      return `w-full`;
-    }
-  }
-};
-
-const getWrapperGrid = (pcGrid: number) => {
-  switch (pcGrid) {
-    case 3: {
-      return `lg:w-[33.33%] lg:justify-center lg:3n-2:justify-start lg:3n:justify-end`;
-    }
-    case 4: {
-      return `lg:w-[25%] lg:justify-center lg:4n-3:justify-start lg:4n:justify-end`;
-    }
-    case 2:
-    default: {
-      return `lg:w-[50%] lg:odd:pr-[1.875rem] lg:even:pl-[1.875rem]`;
-    }
-  }
+const getTypeThreeFeature = (data: IFeature): JSX.Element => {
+  const bottomLinks = getBottomLinks(data.links);
+  return (
+    <div className={"flex lg:gap-[2.5rem]"}>
+      <div className={"w-[10rem] h-[10rem] shrink-0 hidden lg:block"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+      <div>
+        <div className={"title-2 text-white"}>{data.title}</div>
+        <div>{data.text}</div>
+        <div className={"divider hidden lg:block mt-[0.625rem]"} />
+        <div className={"hidden lg:block"}>{bottomLinks}</div>
+      </div>
+    </div>
+  );
 };
 
 const getBottomLinks = (bottomLinks: Link[] | undefined) => {
@@ -76,24 +87,29 @@ const getBottomLinks = (bottomLinks: Link[] | undefined) => {
         const key = `${index}-${link.url}`;
         if (link.url === "") {
           return (
-            <div key={key}>
-              <div className={`opacity-50 capitalize`}>{link.title}</div>
+            <div className={"mt-[0.625rem]"} key={key}>
+              <div className={`opacity-50 capitalize`}>{`${link.title} >`}</div>
             </div>
           );
         }
         if (link.isExternal) {
           return (
-            <div key={key}>
-              <a className={`hover:opacity-70 capitalize`} target="_blank" href={link.url} rel="noreferrer">
-                {link.title}
+            <div className={"mt-[0.625rem]"} key={key}>
+              <a
+                className={`overflow-hidden capitalize text-white relative after:absolute after:left-0 after:w-full after:h-[1px] after:bg-white after:bottom-0 after:translate-x-[-101%] hover:after:translate-x-0 after:transition`}
+                target="_blank"
+                href={link.url}
+                rel="noreferrer"
+              >
+                {`${link.title} >`}
               </a>
             </div>
           );
         }
         return (
           <div key={key}>
-            <NavLink className={`hover:opacity-70 capitalize`} to={link.url}>
-              {link.title}
+            <NavLink className={`capitalize text-white`} to={link.url}>
+              {`${link.title} >`}
             </NavLink>
           </div>
         );

@@ -1,7 +1,7 @@
-import { CrabIntro as CrabIntroType } from "../../data/types";
+import { CrabIntro as ICrabIntro } from "../../data/types";
 
 interface Props {
-  data: CrabIntroType;
+  data: ICrabIntro;
 }
 
 const CrabIntro = ({ data }: Props) => {
@@ -14,7 +14,9 @@ const CrabIntro = ({ data }: Props) => {
   });
   return (
     <div>
-      <div className={"title-lg text-white capitalize mb-[0.625rem]"}>{data.title}</div>
+      <div data-aos={"fade-up"} className={"title-lg text-white capitalize mb-[0.625rem]"}>
+        {data.title}
+      </div>
       <div className={"flex flex-col lg:flex-row lg:gap-[4rem]"}>
         <div data-aos={"fade-up"} className={"capitalize"}>
           <div>{data.content.text}</div>

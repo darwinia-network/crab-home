@@ -20,15 +20,16 @@ const getMenu = (t: TFunction<"translation">): Menu[] => {
     },
     {
       title: t(localeKeys.economicModel),
-      path: "/developers",
+      path: "/economic-model",
     },
     {
       title: t(localeKeys.docs),
-      path: "/tokens",
+      path: "https://docs.crab.network/",
+      isExternalLink: true,
     },
     {
       title: t(localeKeys.grantsProgram),
-      path: "/community",
+      path: "/grants-programs",
     },
   ];
 };

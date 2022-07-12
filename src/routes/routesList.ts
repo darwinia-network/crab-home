@@ -14,6 +14,14 @@ const routesList = [
     path: "/",
     component: lazy(() => import("../pages/Home")),
   },
+  {
+    path: "/economic-model",
+    component: lazy(() => import("../pages/EconomicModel")),
+  },
+  {
+    path: "/grants-programs",
+    component: lazy(() => import("../pages/GrantsPrograms")),
+  },
   /* {
     path: "/contact-us",
     component: lazy(() => import("../pages/Contact")),

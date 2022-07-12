@@ -3,7 +3,7 @@ export type SupportedLanguages = "enUS" | "zhCN";
 export type Page = "HOME" | "DEVELOPERS" | "TOKENS" | "COMMUNITY" | "PAPERS";
 export type HeroType = 1 | 2;
 export type FeatureType = 1 | 2 | 3 | 4;
-export type PCGrid = 2 | 3 | 4;
+export type PCGrid = 1 | 2 | 3 | 4;
 export type LinkType = "PRIMARY" | "PLAIN";
 
 export interface Link {
@@ -23,9 +23,9 @@ export interface Feature {
 }
 
 export interface FeatureWrapper {
-  title: JSX.Element;
+  title: string;
   data: Feature[];
-  pcGrid: PCGrid;
+  pcGrid?: PCGrid;
   links?: Link[];
 }
 
@@ -39,23 +39,33 @@ export interface CrabIntro {
   };
 }
 
+export interface BridgeMessaging {
+  title: string;
+  image: string;
+  text: string;
+}
+
+export interface EasyDeploy {
+  title: string;
+  subTitle: string;
+  image: string;
+  list: string[];
+}
+
+export interface CrabToken {
+  image: string;
+  title: string;
+  text: string;
+  link: Link;
+  features: Feature[];
+}
+
 export interface CompatibilityPromo {
   title: string;
   text: string;
   image: string;
   left: string[];
   right: string[];
-}
-
-export interface DarwiniaPromo {
-  title: JSX.Element;
-  subTitle: string;
-  image: string;
-  content: {
-    text: string;
-    list: string[];
-  };
-  links: Link[];
 }
 
 export interface SocialNetwork {

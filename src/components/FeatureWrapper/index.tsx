@@ -6,11 +6,16 @@ interface Props {
 }
 const FeatureWrapper = ({ data }: Props) => {
   const featuresList = data.data;
-  const pcGrid = data.pcGrid;
+  // const pcGrid = data.pcGrid;
   const linksList = data.links ?? [];
   const features = featuresList.map((item, index) => {
     const key = `${index}-${item.title}`;
-    return <Feature key={key} pcGrid={pcGrid} data={item} />;
+    const topMargin = index === 0 ? `` : `mt-[8.75rem] lg:mt-[3.125rem]`;
+    return (
+      <div key={key} className={`${topMargin} w-full`}>
+        <Feature data={item} />
+      </div>
+    );
   });
 
   const links = linksList.map((link, index) => {
