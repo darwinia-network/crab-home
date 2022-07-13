@@ -12,7 +12,10 @@ interface State {
   groupWidth: number;
 }
 
+type Device = "MOBILE" | "PC";
+
 export default class LogosSlider extends Component<Props, State> {
+  readonly laptopWidth = 1024;
   innerList: CompanyLogo[] = [];
   wrapper = createRef<HTMLDivElement>();
   slidesFilm = createRef<HTMLDivElement>();
@@ -30,6 +33,7 @@ export default class LogosSlider extends Component<Props, State> {
   mobileSpeed = 0.3;
   PCSpeed = 0.5;
   isFirstMount = true;
+  lastDevice: Device = "MOBILE";
   /* change this to adjust the amount that the slider will have to delay,
    * the value ranges from 0 to 1, if you set 0.5 that means that the slider
    *  will delay a half of a single slider width */
@@ -48,19 +52,26 @@ export default class LogosSlider extends Component<Props, State> {
       groupWidth: 0,
       itemWidth: 0,
     };
-    this.assignSliderSpeedAndSize();
+    this.evaluateSliderByDevice();
     for (let i = 0; i < this.duplicates; i++) {
       this.innerList.push(...this.props.data);
     }
   }
 
-  assignSliderSpeedAndSize() {
-    if (window.innerWidth > 900) {
+  evaluateSliderByDevice() {
+    let currentDevice: Device;
+    if (window.innerWidth >= this.laptopWidth) {
       this.speed = this.PCSpeed;
       this.percentageItemWidth = this.PCPercentageItemWidth;
+      currentDevice = "PC";
     } else {
       this.speed = this.mobileSpeed;
       this.percentageItemWidth = this.mobilePercentageItemWidth;
+      currentDevice = "MOBILE";
+    }
+    if (this.lastDevice !== currentDevice) {
+      this.revertSliderToZero();
+      this.lastDevice = currentDevice;
     }
   }
 
@@ -101,9 +112,21 @@ export default class LogosSlider extends Component<Props, State> {
     }
   }
 
+  revertSliderToZero() {
+    if (!this.slidesFilm.current) {
+      return;
+    }
+    this.translateXRatio = 0;
+    this.delayedDistance = 0;
+    this.translateXValue = 0;
+    this.isFirstMount = true;
+    this.slidesFilm.current.style.transform = `translate3d(0,0,0)`;
+    this.slidesFilm.current.style.transitionTimingFunction = ``;
+  }
+
   initSlide() {
     this.clearAnimation();
-    this.assignSliderSpeedAndSize();
+    this.evaluateSliderByDevice();
     if (this.wrapper.current) {
       const wrapperWidth = this.wrapper.current.clientWidth;
       const singleItemWidth = (this.percentageItemWidth / 100) * wrapperWidth;
@@ -151,7 +174,7 @@ export default class LogosSlider extends Component<Props, State> {
                   }}
                 >
                   <img src={company.logo} alt="image" />
-                  <div style={{ color: "black" }}>AAAAA</div>
+                  <div style={{ color: "black" }}>AAAAA{index + 1}</div>
                 </div>
               </div>
             );
