@@ -17,7 +17,7 @@ const EasyDeploy = ({ data }: Props) => {
           <div className={"lg:hidden"}>{mobileIntro}</div>
           <div className={"hidden lg:block"}>{pcIntro}</div>
         </div>
-        <div data-aos={"fade-up"} className={"w-full lg:order-1 shrink-0 mt-[2.5rem] lg:mt-0 lg:w-[71.25%]"}>
+        <div data-aos={"fade-up"} className={"w-full lg:order-1 shrink-0 mt-[2.5rem] lg:mt-0 lg:w-[55.208%]"}>
           <img src={data.image} alt="image" />
         </div>
       </div>
@@ -33,7 +33,7 @@ const getPCIntro = (data: IEasyDeploy) => {
         {data.list.map((item, index) => {
           const after =
             index === 0
-              ? `after:absolute after:left-0 after:-bottom-[10px] after:h-[3px] after:w-[55px] after:bg-gray`
+              ? `after:absolute after:left-0 after:-bottom-[10px] after:h-[3px] after:w-[155px] after:bg-gray`
               : ``;
           return (
             <div className={`relative mt-[1.5625rem] ${after}`} key={index}>

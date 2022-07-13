@@ -36,15 +36,15 @@ const Footer = ({ data }: Props) => {
       <div className={"hidden lg:block lg:px-0"}>
         <div className={"divider-primary"} />
       </div>
-      <div className={"container py-[1.25rem] lg:py-[3.125rem]"}>
-        {/* Only visible on PC */}
-        <div className={"hidden lg:block"}>
+      {/* Only visible on PC */}
+      <div className={"container hidden lg:block py-[1.25rem] lg:py-[1.6875rem]"}>
+        <div>
           <div className={"title-lg text-white capitalize"}>{t(localeKeys.subscribeToUpdates)}</div>
           <div className={"text-white my-[1.25rem] capitalize"}>{t(localeKeys.trackLatestUpdates)}</div>
 
           {/* Custom Input Field */}
           <div className={"relative"}>
-            <div className={"relative inline-block w-full max-w-[21rem]"}>
+            <div className={"relative inline-block w-full"}>
               <form
                 action="https://network.us6.list-manage.com/subscribe/post?u=eb1c779b75a344e2d52755879&amp;id=70a65557b6"
                 target="_blank"
@@ -60,7 +60,7 @@ const Footer = ({ data }: Props) => {
                   name={"EMAIL"}
                   id="mce-EMAIL"
                   className={
-                    "w-full placeholder:text-white placeholder:opacity-50 text-white border border-1 border-solid border-primary bg-black outline-0 px-[0.625rem] mr-[1.4375rem]"
+                    "w-full max-w-[15.125rem] placeholder:text-white placeholder:opacity-50 text-white border border-1 border-solid border-primary bg-black outline-0 px-[0.625rem] mr-[1.4375rem]"
                   }
                   type="email"
                   placeholder={t(localeKeys.yourEmailHere)}

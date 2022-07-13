@@ -3,6 +3,7 @@ import {
   CompatibilityPromo,
   CrabIntro,
   CrabToken,
+  DeveloperTools,
   EasyDeploy,
   FeatureWrapper,
   Hero,
@@ -40,6 +41,17 @@ import metarockLogo from "../assets/images/company-logos/metarock.png";
 import myweb3Logo from "../assets/images/company-logos/myweb3.png";
 import entity54Logo from "../assets/images/company-logos/entity-54.png";
 import metamaskLogo from "../assets/images/company-logos/metamask.png";
+import openzeppelinLogo from "../assets/images/company-logos/openzeppelin.png";
+import theGraphLogo from "../assets/images/company-logos/the-graph.png";
+import hardhatLogo from "../assets/images/company-logos/hardhat.png";
+import waffleLogo from "../assets/images/company-logos/waffle.png";
+import remixLogo from "../assets/images/company-logos/remix.png";
+import web3PYLogo from "../assets/images/company-logos/web3-py.png";
+import web3JSLogo from "../assets/images/company-logos/web3-js.png";
+import etherJSLogo from "../assets/images/company-logos/ethers-js.png";
+import bwarelabsLogo from "../assets/images/company-logos/bwarelabs.png";
+import ethsignLogo from "../assets/images/company-logos/ethsign.png";
+import marsLogo from "../assets/images/company-logos/mars.png";
 
 /* make sure you use a custom hook here since we have to use the useTranslation hook
  * from react-i18next */
@@ -52,7 +64,8 @@ export const useHomeData = () => {
   const easyDeploy = getEasyDeploy(t);
   const crabPromoFeature = getCrabPromoFeature(t);
   const crabToken = getCrabToken(t);
-  const companySlider = getCompanySlider(t);
+  const companySlider = getCompanySlider();
+  const developerTools = getDeveloperTools(t);
   return {
     heroData,
     crabIntroData,
@@ -62,6 +75,7 @@ export const useHomeData = () => {
     crabPromoFeature,
     crabToken,
     companySlider,
+    developerTools,
   };
 };
 
@@ -161,7 +175,7 @@ const getCompatibilityPromo = (t: TFunction<"translation">): CompatibilityPromo 
   };
 };
 
-const getCompanySlider = (t: TFunction<"translation">): Slider => {
+const getCompanySlider = (): Slider => {
   return {
     top: [
       {
@@ -236,6 +250,78 @@ const getCompanySlider = (t: TFunction<"translation">): Slider => {
       },
       {
         logo: metamaskLogo,
+        link: "https://google.com",
+      },
+    ],
+  };
+};
+
+const getDeveloperTools = (t: TFunction<"translation">): DeveloperTools => {
+  return {
+    title: t(localeKeys.developerTools),
+    logos: [
+      {
+        logo: metamaskLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: openzeppelinLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: theGraphLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: hardhatLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: waffleLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: remixLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: subscanLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: polkadotJSLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: web3PYLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: web3JSLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: etherJSLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: onfinalityLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: bwarelabsLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: ethsignLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: marsLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: subviewLogo,
         link: "https://google.com",
       },
     ],

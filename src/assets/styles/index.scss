@@ -29,11 +29,16 @@ html {
   }
 
   .container {
+    /* 1320 = 1200 + paddingLeft (60) + paddingRight(60)*/
     @apply max-w-[1320px] px-[1.25rem] lg:px-[1.875rem] xl:px-[3.75rem] mx-auto;
   }
 
   .container-2 {
     @apply max-w-[1440px] px-[1.25rem] lg:px-[1.875rem] xl:px-[4.375rem] mx-auto;
+  }
+
+  .container-3 {
+    @apply max-w-[1440px] px-[1.25rem] lg:px-[1.875rem] xl:px-[5rem] mx-auto;
   }
 
   .space-top-1 {

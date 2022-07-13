@@ -146,6 +146,11 @@ export interface CompanyLogo {
   link: string;
 }
 
+export interface DeveloperTools {
+  title: string;
+  logos: CompanyLogo[];
+}
+
 export interface Slider {
   top: CompanyLogo[];
   bottom: CompanyLogo[];

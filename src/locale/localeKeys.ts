@@ -65,6 +65,7 @@ const localeKeys = {
   governanceText: "governanceText",
   staking: "staking",
   stakingText: "stakingText",
+  developerTools: "developerTools",
 };
 
 export default localeKeys;

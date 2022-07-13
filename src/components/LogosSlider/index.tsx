@@ -16,6 +16,7 @@ type Device = "MOBILE" | "PC";
 
 export default class LogosSlider extends Component<Props, State> {
   readonly laptopWidth = 1024;
+  readonly logoMaxWidth = 268;
   innerList: CompanyLogo[] = [];
   wrapper = createRef<HTMLDivElement>();
   slidesFilm = createRef<HTMLDivElement>();
@@ -23,8 +24,8 @@ export default class LogosSlider extends Component<Props, State> {
   translateXValue = 0;
   translateXRatio = 0;
   /* width in percentage for a single slider image */
-  mobilePercentageItemWidth = 25;
-  PCPercentageItemWidth = 35;
+  mobilePercentageItemWidth = 27.56;
+  PCPercentageItemWidth = 18.61;
   percentageItemWidth = 0;
   /* how many times the slider group should be duplicated to show the smooth transition */
   duplicates = 3;
@@ -129,7 +130,8 @@ export default class LogosSlider extends Component<Props, State> {
     this.evaluateSliderByDevice();
     if (this.wrapper.current) {
       const wrapperWidth = this.wrapper.current.clientWidth;
-      const singleItemWidth = (this.percentageItemWidth / 100) * wrapperWidth;
+      let singleItemWidth = (this.percentageItemWidth / 100) * wrapperWidth;
+      singleItemWidth = singleItemWidth > this.logoMaxWidth ? this.logoMaxWidth : singleItemWidth;
       if (this.props.delay) {
         this.requiredDelayDistance = this.delayWidthRatio * singleItemWidth;
       }
@@ -165,7 +167,10 @@ export default class LogosSlider extends Component<Props, State> {
           {this.innerList.map((company, index) => {
             const random = Math.random();
             return (
-              <div style={{ width: `${this.state.itemWidth}px`, background: "tomato" }} key={`${index}-${random}`}>
+              <div
+                style={{ width: `${this.state.itemWidth}px`, maxWidth: `${this.logoMaxWidth}px` }}
+                key={`${index}-${random}`}
+              >
                 <div
                   style={{
                     display: "flex",
@@ -173,8 +178,7 @@ export default class LogosSlider extends Component<Props, State> {
                     textAlign: "center",
                   }}
                 >
-                  <img src={company.logo} alt="image" />
-                  <div style={{ color: "black" }}>AAAAA{index + 1}</div>
+                  <img className={"w-full"} src={company.logo} alt="image" />
                 </div>
               </div>
             );

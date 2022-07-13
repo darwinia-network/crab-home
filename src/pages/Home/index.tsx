@@ -10,6 +10,7 @@ import EasyDeploy from "../../components/EasyDeploy";
 import FeatureWrapper from "../../components/FeatureWrapper";
 import CrabTokens from "../../components/CrabTokens";
 import LogosSlider from "../../components/LogosSlider";
+import DeveloperTools from "../../components/DeveloperTools";
 
 const Home = () => {
   const {
@@ -21,6 +22,7 @@ const Home = () => {
     crabPromoFeature,
     crabToken,
     companySlider,
+    developerTools,
   } = useHomeData();
 
   const { footerData } = useFooterData();
@@ -46,14 +48,14 @@ const Home = () => {
       <div className={"container-2 inter-block-space-1"}>
         <CrabTokens data={crabToken} />
       </div>
+      {/* this will expand full width with no limit */}
       <div className={"bg-primary bg-opacity-20 py-[1.0625rem] inter-block-space-1"}>
         <LogosSlider data={companySlider.top} />
         <LogosSlider data={companySlider.bottom} delay={true} />
       </div>
-      {/* <div className={"container inter-block-space-1"}>
-        <LogosSlider />
-        <LogosSlider delay={true} />
-      </div> */}
+      <div className={"container-3 inter-block-space-1"}>
+        <DeveloperTools data={developerTools} />
+      </div>
       <Footer data={footerData} />
     </div>
   );

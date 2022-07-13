@@ -65,6 +65,7 @@ const enUs = {
   [localeKeys.governanceText]: `CRAB token is used for facilitating the governance activities such as voting and referenda.`,
   [localeKeys.staking]: `Staking`,
   [localeKeys.stakingText]: `CRAB / CKTON token holders can  stake their tokens and participate as nominators to earn a share of the validators’ rewards.`,
+  [localeKeys.developerTools]: `Developer Tools`,
 };
 
 export default enUs;
