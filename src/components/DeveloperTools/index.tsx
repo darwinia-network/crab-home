@@ -1,4 +1,8 @@
 import { DeveloperTools as IDeveloperTools } from "../../data/types";
+import LeaveWebsiteConfirmDialog from "../LeaveWebsiteConfirmDialog";
+import { useRef } from "react";
+import { useTranslation } from "react-i18next";
+import localeKeys from "../../locale/localeKeys";
 
 interface Props {
   delay?: boolean;
@@ -6,17 +10,31 @@ interface Props {
 }
 
 const DeveloperTools = ({ data }: Props) => {
+  const dialogRef = useRef<LeaveWebsiteConfirmDialog>(null);
+  const { t } = useTranslation();
+
+  const openThirdPartyURL = async (url: string) => {
+    if (!dialogRef.current) {
+      return;
+    }
+    const hasAgreed = await dialogRef.current.showDialog();
+    if (hasAgreed) {
+      window.open(url, "_blank");
+    }
+  };
+
   const logos = data.logos.map((company, index) => {
     return (
       <div
+        onClick={() => {
+          openThirdPartyURL(company.link);
+        }}
         className={
           "lg:max-w-[268px] relative after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:border after:border-[3px] after:border-primary after:-z-10 lg:hover:bg-primary hover:cursor-pointer transition"
         }
         key={index}
       >
-        <a className={"block"} href={company.link} target="_blank" rel="noreferrer">
-          <img className={""} src={company.logo} alt="image" />
-        </a>
+        <img className={""} src={company.logo} alt="image" />
       </div>
     );
   });
@@ -38,6 +56,14 @@ const DeveloperTools = ({ data }: Props) => {
       >
         {logos}
       </div>
+      {/* Confirm leaving website dialog */}
+      <LeaveWebsiteConfirmDialog
+        title={t([localeKeys.youAreLavingCrab])}
+        message={t([localeKeys.leavingCrabMessage])}
+        ok={t([localeKeys.continue])}
+        cancel={t([localeKeys.cancel])}
+        ref={dialogRef}
+      />
     </div>
   );
 };

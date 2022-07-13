@@ -66,6 +66,10 @@ const localeKeys = {
   staking: "staking",
   stakingText: "stakingText",
   developerTools: "developerTools",
+  youAreLavingCrab: "youAreLavingCrab",
+  leavingCrabMessage: "leavingCrabMessage",
+  continue: "continue",
+  cancel: "cancel",
 };
 
 export default localeKeys;

@@ -15,36 +15,36 @@ interface State {
 type Device = "MOBILE" | "PC";
 
 export default class LogosSlider extends Component<Props, State> {
-  readonly laptopWidth = 1024;
-  readonly logoMaxWidth = 268;
-  innerList: CompanyLogo[] = [];
-  wrapper = createRef<HTMLDivElement>();
-  slidesFilm = createRef<HTMLDivElement>();
-  animationFrame = 0;
-  translateXValue = 0;
-  translateXRatio = 0;
+  private readonly laptopWidth = 1024;
+  private readonly logoMaxWidth = 268;
+  private innerList: CompanyLogo[] = [];
+  private wrapper = createRef<HTMLDivElement>();
+  private slidesFilm = createRef<HTMLDivElement>();
+  private animationFrame = 0;
+  private translateXValue = 0;
+  private translateXRatio = 0;
   /* width in percentage for a single slider image */
-  mobilePercentageItemWidth = 27.56;
-  PCPercentageItemWidth = 18.61;
-  percentageItemWidth = 0;
+  private mobilePercentageItemWidth = 27.56;
+  private PCPercentageItemWidth = 18.61;
+  private percentageItemWidth = 0;
   /* how many times the slider group should be duplicated to show the smooth transition */
-  duplicates = 3;
+  private duplicates = 3;
   /* these are the speeds for particular devices */
-  speed = 0.5;
-  mobileSpeed = 0.3;
-  PCSpeed = 0.5;
-  isFirstMount = true;
-  lastDevice: Device = "MOBILE";
+  private speed = 0.5;
+  private mobileSpeed = 0.3;
+  private PCSpeed = 0.5;
+  private isFirstMount = true;
+  private lastDevice: Device = "MOBILE";
   /* change this to adjust the amount that the slider will have to delay,
    * the value ranges from 0 to 1, if you set 0.5 that means that the slider
    *  will delay a half of a single slider width */
-  delayWidthRatio = 0.5;
+  private delayWidthRatio = 0.5;
   /* don't change this, this is simply the distance that is required to be delayed
   by the slider, it will be calculated automatically using delayWidthRatio */
-  requiredDelayDistance = 0;
+  private requiredDelayDistance = 0;
   /* don't change this, this variable simply tracks the distance that has been delayed
   so far by the slider */
-  delayedDistance = 0;
+  private delayedDistance = 0;
 
   constructor(props: Props) {
     super(props);
@@ -59,7 +59,7 @@ export default class LogosSlider extends Component<Props, State> {
     }
   }
 
-  evaluateSliderByDevice() {
+  private evaluateSliderByDevice() {
     let currentDevice: Device;
     if (window.innerWidth >= this.laptopWidth) {
       this.speed = this.PCSpeed;
@@ -76,7 +76,7 @@ export default class LogosSlider extends Component<Props, State> {
     }
   }
 
-  animate() {
+  private animate() {
     if (this.slidesFilm.current) {
       /* move the slider back to zero (translateX = 0) when it reaches the end */
       if (this.translateXValue >= this.state.groupWidth) {
@@ -107,13 +107,13 @@ export default class LogosSlider extends Component<Props, State> {
     window.addEventListener("resize", this.initSlide.bind(this));
   }
 
-  clearAnimation() {
+  private clearAnimation() {
     if (this.animationFrame) {
       cancelAnimationFrame(this.animationFrame);
     }
   }
 
-  revertSliderToZero() {
+  private revertSliderToZero() {
     if (!this.slidesFilm.current) {
       return;
     }
@@ -125,7 +125,7 @@ export default class LogosSlider extends Component<Props, State> {
     this.slidesFilm.current.style.transitionTimingFunction = ``;
   }
 
-  initSlide() {
+  private initSlide() {
     this.clearAnimation();
     this.evaluateSliderByDevice();
     if (this.wrapper.current) {

@@ -66,6 +66,10 @@ const enUs = {
   [localeKeys.staking]: `Staking`,
   [localeKeys.stakingText]: `CRAB / CKTON token holders can  stake their tokens and participate as nominators to earn a share of the validators’ rewards.`,
   [localeKeys.developerTools]: `Developer Tools`,
+  [localeKeys.youAreLavingCrab]: `You're Leaving the Crab Network Website`,
+  [localeKeys.leavingCrabMessage]: `You are now leaving for an independent, third-party website that is not affiliated with the Crab Network. Pay attention to the safety of funds.`,
+  [localeKeys.continue]: `continue`,
+  [localeKeys.cancel]: `cancel`,
 };
 
 export default enUs;

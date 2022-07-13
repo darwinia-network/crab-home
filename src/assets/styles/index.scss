@@ -92,7 +92,7 @@ html {
   }
 
   .btn {
-    @apply py-[0.5rem] px-[0.9375rem] border-[1px] border-solid border-white bg-black lg:hover:bg-white lg:hover:text-black hover:cursor-pointer text text-white;
+    @apply py-[0.5rem] px-[0.9375rem] border-[2px] border-solid border-white bg-black lg:hover:bg-primary lg:hover:text-white transition hover:cursor-pointer text text-white;
   }
 
   .btn-primary {
@@ -337,51 +337,49 @@ $pc-sub-menu-y: -20%;
   opacity: 1;
 }
 
-
-
-
-
-
-
-
-
-
-
-.swiper {
-  width: 100%;
-  height: 100%;
+$dialog-duration: 300ms;
+$dialog-scale-in-ease: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+.dialog-enter {
+  opacity: 0;
+  .dialog-wrapper {
+    transform: scale3d(0.5,0.5,0.5);
+  }
+}
+.dialog-enter-active {
+  opacity: 1;
+  transition: opacity $dialog-duration cubic-bezier(.645, .045, .355, 1);
+  .dialog-wrapper {
+    transform: scale3d(1,1,1);
+    transition: transform $dialog-duration $dialog-scale-in-ease;
+  }
+}
+.dialog-enter-done {
+  opacity: 1;
+  .dialog-wrapper {
+    transform: scale3d(1,1,1);
+  }
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+.dialog-exit {
+  opacity: 1;
+  .dialog-wrapper {
+    transform: scale3d(1,1,1);
+  }
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.dialog-exit-active {
+  opacity: 0;
+  transition: opacity $dialog-duration cubic-bezier(.645, .045, .355, 1);
+  .dialog-wrapper {
+    transform: scale3d(0.5,0.5,0.5);
+    transition: transform $dialog-duration $dialog-scale-in-ease;
+  }
 }
-
-.swiper {
-  margin-left: auto;
-  margin-right: auto;
+.dialog-exit-done {
+  opacity: 0;
+  .dialog-wrapper {
+    transform: scale3d(0.5,0.5,0.5);
+  }
 }
 
 
