@@ -1,4 +1,13 @@
-import { BridgeMessaging, CompatibilityPromo, CrabIntro, CrabToken, EasyDeploy, FeatureWrapper, Hero } from "./types";
+import {
+  BridgeMessaging,
+  CompatibilityPromo,
+  CrabIntro,
+  CrabToken,
+  EasyDeploy,
+  FeatureWrapper,
+  Hero,
+  Slider,
+} from "./types";
 import { TFunction, useTranslation } from "react-i18next";
 import localeKeys from "../locale/localeKeys";
 import heroImage from "../assets/images/crab-hero.gif";
@@ -13,6 +22,24 @@ import crabToken from "../assets/images/crab-token.png";
 import transactionImg from "../assets/images/transaction-icon.png";
 import governanceImg from "../assets/images/governance-icon.png";
 import stakingImg from "../assets/images/staking-icon.png";
+import subscanLogo from "../assets/images/company-logos/subscan.png";
+import subviewLogo from "../assets/images/company-logos/subview.png";
+import onfinalityLogo from "../assets/images/company-logos/onfinality.png";
+import dwellirLogo from "../assets/images/company-logos/dwellir.png";
+import evolutionLandLogo from "../assets/images/company-logos/evolution-land.png";
+import snowswapLogo from "../assets/images/company-logos/snowswap.png";
+import subswapLogo from "../assets/images/company-logos/subswap.png";
+import snapshotLogo from "../assets/images/company-logos/snapshot.png";
+import polkadotJSLogo from "../assets/images/company-logos/polkadot-js.png";
+import mathWalletLogo from "../assets/images/company-logos/math.png";
+import crustLogo from "../assets/images/company-logos/crust.png";
+import cBridgeLogo from "../assets/images/company-logos/c-bridge.png";
+import helixLogo from "../assets/images/company-logos/helix.png";
+import crabMetaverseLogo from "../assets/images/company-logos/crab-metaverse.png";
+import metarockLogo from "../assets/images/company-logos/metarock.png";
+import myweb3Logo from "../assets/images/company-logos/myweb3.png";
+import entity54Logo from "../assets/images/company-logos/entity-54.png";
+import metamaskLogo from "../assets/images/company-logos/metamask.png";
 
 /* make sure you use a custom hook here since we have to use the useTranslation hook
  * from react-i18next */
@@ -25,6 +52,7 @@ export const useHomeData = () => {
   const easyDeploy = getEasyDeploy(t);
   const crabPromoFeature = getCrabPromoFeature(t);
   const crabToken = getCrabToken(t);
+  const companySlider = getCompanySlider(t);
   return {
     heroData,
     crabIntroData,
@@ -33,6 +61,7 @@ export const useHomeData = () => {
     easyDeploy,
     crabPromoFeature,
     crabToken,
+    companySlider,
   };
 };
 
@@ -94,7 +123,6 @@ const getCrabPromoFeature = (t: TFunction<"translation">): FeatureWrapper => {
   return {
     title: "",
     links: [],
-    pcGrid: 1,
     data: [
       {
         title: t(localeKeys.oasisForMetaverse),
@@ -129,6 +157,87 @@ const getCompatibilityPromo = (t: TFunction<"translation">): CompatibilityPromo 
       t(localeKeys.compatibilityTextFive),
       t(localeKeys.compatibilityTextSix),
       t(localeKeys.compatibilityTextSeven),
+    ],
+  };
+};
+
+const getCompanySlider = (t: TFunction<"translation">): Slider => {
+  return {
+    top: [
+      {
+        logo: subscanLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: subviewLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: onfinalityLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: dwellirLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: evolutionLandLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: snowswapLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: subswapLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: snapshotLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: polkadotJSLogo,
+        link: "https://google.com",
+      },
+    ],
+    bottom: [
+      {
+        logo: mathWalletLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: crustLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: cBridgeLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: helixLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: crabMetaverseLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: metarockLogo,
+        link: "https://google.com",
+      },
+      {
+        logo: myweb3Logo,
+        link: "https://google.com",
+      },
+      {
+        logo: entity54Logo,
+        link: "https://google.com",
+      },
+      {
+        logo: metamaskLogo,
+        link: "https://google.com",
+      },
     ],
   };
 };

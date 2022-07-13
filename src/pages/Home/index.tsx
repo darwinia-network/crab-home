@@ -9,11 +9,19 @@ import BridgeMessaging from "../../components/BridgeMessaging";
 import EasyDeploy from "../../components/EasyDeploy";
 import FeatureWrapper from "../../components/FeatureWrapper";
 import CrabTokens from "../../components/CrabTokens";
-// import LogosSlider from "../../components/LogosSlider";
+import LogosSlider from "../../components/LogosSlider";
 
 const Home = () => {
-  const { heroData, crabIntroData, compatibilityPromo, bridgeMessaging, easyDeploy, crabPromoFeature, crabToken } =
-    useHomeData();
+  const {
+    heroData,
+    crabIntroData,
+    compatibilityPromo,
+    bridgeMessaging,
+    easyDeploy,
+    crabPromoFeature,
+    crabToken,
+    companySlider,
+  } = useHomeData();
 
   const { footerData } = useFooterData();
 
@@ -37,6 +45,10 @@ const Home = () => {
       </div>
       <div className={"container-2 inter-block-space-1"}>
         <CrabTokens data={crabToken} />
+      </div>
+      <div className={"bg-primary bg-opacity-20 py-[1.0625rem] inter-block-space-1"}>
+        <LogosSlider data={companySlider.top} />
+        <LogosSlider data={companySlider.bottom} delay={true} />
       </div>
       {/* <div className={"container inter-block-space-1"}>
         <LogosSlider />

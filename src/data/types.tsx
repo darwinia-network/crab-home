@@ -140,3 +140,13 @@ export interface Menu {
   isExternalLink?: boolean;
   isComingSoon?: boolean;
 }
+
+export interface CompanyLogo {
+  logo: string;
+  link: string;
+}
+
+export interface Slider {
+  top: CompanyLogo[];
+  bottom: CompanyLogo[];
+}

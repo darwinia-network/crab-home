@@ -1,7 +1,9 @@
 import { Component, createRef } from "react";
+import { CompanyLogo } from "../../data/types";
 
 interface Props {
   delay?: boolean;
+  data: CompanyLogo[];
 }
 
 interface State {
@@ -11,31 +13,32 @@ interface State {
 }
 
 export default class LogosSlider extends Component<Props, State> {
-  list = [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-  ];
-
-  innerList: string[] = [];
+  innerList: CompanyLogo[] = [];
   wrapper = createRef<HTMLDivElement>();
   slidesFilm = createRef<HTMLDivElement>();
   animationFrame = 0;
   translateXValue = 0;
   translateXRatio = 0;
-  percentageItemWidth = 25;
+  /* width in percentage for a single slider image */
+  mobilePercentageItemWidth = 25;
+  PCPercentageItemWidth = 35;
+  percentageItemWidth = 0;
+  /* how many times the slider group should be duplicated to show the smooth transition */
   duplicates = 3;
+  /* these are the speeds for particular devices */
   speed = 0.5;
   mobileSpeed = 0.3;
   PCSpeed = 0.5;
   isFirstMount = true;
+  /* change this to adjust the amount that the slider will have to delay,
+   * the value ranges from 0 to 1, if you set 0.5 that means that the slider
+   *  will delay a half of a single slider width */
   delayWidthRatio = 0.5;
+  /* don't change this, this is simply the distance that is required to be delayed
+  by the slider, it will be calculated automatically using delayWidthRatio */
   requiredDelayDistance = 0;
+  /* don't change this, this variable simply tracks the distance that has been delayed
+  so far by the slider */
   delayedDistance = 0;
 
   constructor(props: Props) {
@@ -45,22 +48,25 @@ export default class LogosSlider extends Component<Props, State> {
       groupWidth: 0,
       itemWidth: 0,
     };
-    this.assignSliderSpeed();
+    this.assignSliderSpeedAndSize();
     for (let i = 0; i < this.duplicates; i++) {
-      this.innerList.push(...this.list);
+      this.innerList.push(...this.props.data);
     }
   }
 
-  assignSliderSpeed() {
+  assignSliderSpeedAndSize() {
     if (window.innerWidth > 900) {
       this.speed = this.PCSpeed;
+      this.percentageItemWidth = this.PCPercentageItemWidth;
     } else {
       this.speed = this.mobileSpeed;
+      this.percentageItemWidth = this.mobilePercentageItemWidth;
     }
   }
 
   animate() {
     if (this.slidesFilm.current) {
+      /* move the slider back to zero (translateX = 0) when it reaches the end */
       if (this.translateXValue >= this.state.groupWidth) {
         this.translateXValue = 0;
       }
@@ -97,17 +103,18 @@ export default class LogosSlider extends Component<Props, State> {
 
   initSlide() {
     this.clearAnimation();
-    this.assignSliderSpeed();
+    this.assignSliderSpeedAndSize();
     if (this.wrapper.current) {
       const wrapperWidth = this.wrapper.current.clientWidth;
       const singleItemWidth = (this.percentageItemWidth / 100) * wrapperWidth;
       if (this.props.delay) {
         this.requiredDelayDistance = this.delayWidthRatio * singleItemWidth;
       }
-      const groupWidth = singleItemWidth * this.list.length;
+      const groupWidth = singleItemWidth * this.props.data.length;
       const totalWidth = groupWidth * this.duplicates;
       // get new translateXValue for the new dimensions
       this.translateXValue = this.translateXRatio * groupWidth;
+      /* update the slider state values including width etc */
       this.setState((oldState) => {
         return {
           ...oldState,
@@ -132,14 +139,10 @@ export default class LogosSlider extends Component<Props, State> {
           ref={this.slidesFilm}
           style={{ width: `${this.state.totalWidth}px`, flexShrink: 0, display: "flex", flexDirection: "row" }}
         >
-          {this.innerList.map((image, index) => {
+          {this.innerList.map((company, index) => {
             const random = Math.random();
             return (
-              <div
-                style={{ width: `${this.state.itemWidth}px`, background: "white" }}
-                key={`${index}-${random}`}
-                className={"border border-primary"}
-              >
+              <div style={{ width: `${this.state.itemWidth}px`, background: "tomato" }} key={`${index}-${random}`}>
                 <div
                   style={{
                     display: "flex",
@@ -147,7 +150,7 @@ export default class LogosSlider extends Component<Props, State> {
                     textAlign: "center",
                   }}
                 >
-                  <img src={image} alt="image" />
+                  <img src={company.logo} alt="image" />
                   <div style={{ color: "black" }}>AAAAA</div>
                 </div>
               </div>
