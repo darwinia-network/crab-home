@@ -17,6 +17,12 @@ const getFeatureByType = (type: FeatureType, data: IFeature): JSX.Element => {
     case 2: {
       return getTypeTwoFeature(data);
     }
+    case 4: {
+      return getTypeFourFeature(data);
+    }
+    case 5: {
+      return getTypeFiveFeature(data);
+    }
     case 3:
     default: {
       return getTypeThreeFeature(data);
@@ -72,8 +78,8 @@ const getTypeThreeFeature = (data: IFeature): JSX.Element => {
         <img className={"w-full"} src={data.icon} alt="image" />
       </div>
       <div>
-        <div className={"title-2 text-white"}>{data.title}</div>
-        <div>{data.text}</div>
+        <div className={"title-2 text-white capitalize"}>{data.title}</div>
+        <div className={"capitalize"}>{data.text}</div>
         <div className={"divider hidden lg:block mt-[0.625rem]"} />
         <div className={"hidden lg:block"}>{bottomLinks}</div>
       </div>
@@ -81,14 +87,53 @@ const getTypeThreeFeature = (data: IFeature): JSX.Element => {
   );
 };
 
-const getBottomLinks = (bottomLinks: Link[] | undefined) => {
+const getTypeFourFeature = (data: IFeature): JSX.Element => {
+  const bottomLinks = getBottomLinks(data.links, true);
+  return (
+    <div>
+      <div className={"w-[6.25rem] shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+      <div className={"title-lg text-white mt-[2.5rem] lg:mt-[1.875rem] capitalize"}>{data.title}</div>
+      {data.text ? <div className={"mt-[0.625rem] capitalize"}>{data.text}</div> : null}
+      {bottomLinks ? (
+        <div className={"flex flex-wrap hidden lg:block mt-[1.875rem] capitalize"}>{bottomLinks}</div>
+      ) : null}
+    </div>
+  );
+};
+
+const getTypeFiveFeature = (data: IFeature): JSX.Element => {
+  const list = data.list?.map((item, index) => {
+    const topMargin = index === 0 ? `` : `mt-[1.875rem]`;
+    return (
+      <div key={index} className={`${topMargin} capitalize`}>
+        {item}
+      </div>
+    );
+  });
+  return (
+    <div>
+      <div className={"w-[12.5rem] lg:w-[18.75rem] shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+      <div className={"title-2 text-white mt-[2.5rem] lg:mt-[1.875rem] capitalize"}>{data.title}</div>
+      <div className={"mt-[1.25rem]"}>{list}</div>
+    </div>
+  );
+};
+
+const getBottomLinks = (bottomLinks: Link[] | undefined, isButton = false) => {
+  const linkClass = isButton
+    ? `btn border-primary`
+    : `relative after:absolute after:left-0 after:w-full after:h-[1px] after:bg-white after:bottom-0 after:translate-x-[-101%] hover:after:translate-x-0 after:transition`;
   return bottomLinks
     ? bottomLinks.map((link, index) => {
         const key = `${index}-${link.url}`;
         if (link.url === "") {
           return (
             <div className={"mt-[0.625rem]"} key={key}>
-              <div className={`opacity-50 capitalize`}>{`${link.title} >`}</div>
+              <div className={`opacity-50 capitalize ${linkClass}`}>{`${link.title} >`}</div>
             </div>
           );
         }
@@ -96,7 +141,7 @@ const getBottomLinks = (bottomLinks: Link[] | undefined) => {
           return (
             <div className={"mt-[0.625rem]"} key={key}>
               <a
-                className={`overflow-hidden capitalize text-white relative after:absolute after:left-0 after:w-full after:h-[1px] after:bg-white after:bottom-0 after:translate-x-[-101%] hover:after:translate-x-0 after:transition`}
+                className={`overflow-hidden capitalize text-white ${linkClass}`}
                 target="_blank"
                 href={link.url}
                 rel="noreferrer"
@@ -108,7 +153,7 @@ const getBottomLinks = (bottomLinks: Link[] | undefined) => {
         }
         return (
           <div key={key}>
-            <NavLink className={`capitalize text-white`} to={link.url}>
+            <NavLink className={`capitalize text-white ${linkClass}`} to={link.url}>
               {`${link.title} >`}
             </NavLink>
           </div>

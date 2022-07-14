@@ -2,7 +2,7 @@ export type SupportedLanguages = "enUS" | "zhCN";
 
 export type Page = "HOME" | "ECONOMIC_MODEL" | "TOKENS" | "COMMUNITY" | "PAPERS";
 export type HeroType = 1 | 2;
-export type FeatureType = 1 | 2 | 3 | 4;
+export type FeatureType = 1 | 2 | 3 | 4 | 5;
 export type PCGrid = 1 | 2 | 3 | 4;
 export type LinkType = "PRIMARY" | "PLAIN";
 
@@ -20,6 +20,7 @@ export interface Feature {
   text?: string;
   type: FeatureType;
   links?: Link[];
+  list?: string[];
 }
 
 export interface FeatureWrapper {
@@ -120,6 +121,7 @@ export interface StatisticsInfo {
 export interface StatisticsData {
   image: string;
   title?: string;
+  text?: string;
   data?: StatisticsInfo[];
 }
 
@@ -154,4 +156,34 @@ export interface DeveloperTools {
 export interface Slider {
   top: CompanyLogo[];
   bottom: CompanyLogo[];
+}
+
+export interface StakingDiagram {
+  title: string;
+  text: string;
+  image: string;
+}
+
+export interface StakingModel {
+  feature: Feature;
+  basicModel: StakingDiagram;
+  advancedModel: StakingDiagram;
+}
+
+export interface TokenSupply {
+  feature: Feature;
+  statisticsData: StatisticsData[];
+}
+
+export interface TokenInflation {
+  feature: Feature;
+  totalSupplyImage: string;
+  annualInflationImage: string;
+  text: string;
+}
+
+export interface RevenueModel {
+  feature: Feature;
+  networkExpense: Feature;
+  networkRevenue: Feature;
 }
