@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import localeKeys from "../../locale/localeKeys";
 import { SupportedLanguages } from "../../data/types";
 
-const HomeTypewriter = () => {
+const EconomicModelTypewriter = () => {
   const { t, i18n } = useTranslation();
-  const initialText = "Canary ";
+  const initialText = "Crab ";
 
   useEffect(() => {
     const typewriterElement: HTMLElement | null = document.querySelector(".typewriter-content");
@@ -20,19 +20,18 @@ const HomeTypewriter = () => {
     };
   }, []);
   /* change this for every page */
-  const fakeTitle = getFakeTitle(t(localeKeys.canaryNetwork));
+  const fakeTitle = getFakeTitle(t(localeKeys.crabEconomicModel));
   return (
     <div className={"relative"}>
       {/* this first title is rendered just to expand the parent so that the typewriter text
        can be positioned absolute and still be seen */}
-      <div className={"opacity-0"}>{fakeTitle}</div>
+      <div className={"opacity-0 capitalize"}>{fakeTitle}</div>
       <div className={"absolute flex left-0 right-0 top-0 bottom-0 z-10"}>
-        <div className={"title-home-hero text-white pb-[1.25rem] pt-[2rem] lg:pt-0"}>
+        <div className={"title-home-hero text-white lg:pt-0"}>
           <span>{initialText}</span>
           <span className={"typewriter-content"} />
         </div>
       </div>
-      <div className={"hidden lg:block divider mb-[2.1875rem] mt-[9.6875rem]"} />
     </div>
   );
 };
@@ -41,7 +40,7 @@ const getFakeTitle = (title: JSX.Element | undefined) => {
   if (!title) {
     return null;
   }
-  return <div className={"title-home-hero capitalize text-white pb-[1.25rem] pt-[2rem] lg:pt-0"}>{title}</div>;
+  return <div className={"title-home-hero text-white"}>{title}</div>;
 };
 
 const initTypewriter = (typewriterElement: HTMLElement, language: SupportedLanguages) => {
@@ -61,7 +60,7 @@ const getEnglishTypewriter = (typewriterElement: HTMLElement): Typewriter => {
   typewriter
     .typeString(
       {
-        text: "Network of {Darwinia}",
+        text: "Economic Model",
       },
       100
     )
@@ -72,4 +71,4 @@ const getEnglishTypewriter = (typewriterElement: HTMLElement): Typewriter => {
   return typewriter;
 };
 
-export default HomeTypewriter;
+export default EconomicModelTypewriter;

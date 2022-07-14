@@ -1,4 +1,4 @@
-import { Hero as IHero, Link, Page, SocialNetwork } from "../../data/types";
+import { Hero as IHero, HeroType, Link, Page, SocialNetwork } from "../../data/types";
 import { NavLink } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import homeHeroBg from "../../assets/images/home-hero-bg.png";
@@ -10,10 +10,10 @@ interface Props {
 
 const Hero = ({ data, page }: Props) => {
   const links = getLinks(data.links);
-  const text = getText(data.text);
+  const text = getText(data.text, data.type);
   const image = getImage(data.image);
   const socialNetworkLinks = getSocialNetworkLinks(data.socialNetworks);
-  const imageClass = data.type === 1 ? `hero-image-1` : `hero-image-2`;
+  const imageClass = data.type === 1 ? `hero-image-1` : `hidden`;
   const textClass = data.type === 1 ? `lg:w-[43.083%]` : `flex-1`;
   const topSpace = page === "HOME" ? `space-top-1` : `space-top-2`;
   const Typewriter = getTypewriterByPage(page);
@@ -40,6 +40,9 @@ const Hero = ({ data, page }: Props) => {
 
 const getTypewriterByPage = (page: Page) => {
   switch (page) {
+    case "ECONOMIC_MODEL": {
+      return lazy(() => import("../EconomicModelTypewriter"));
+    }
     case "HOME":
     default: {
       return lazy(() => import("../HomeTypewriter"));
@@ -47,19 +50,15 @@ const getTypewriterByPage = (page: Page) => {
   }
 };
 
-const getText = (text: string | undefined) => {
+const getText = (text: string | undefined, type: HeroType) => {
   if (!text) {
     return null;
   }
-  return (
-    <div
-      className={
-        "text pb-[1.25rem] lg:pb-[1.875rem] relative capitalize before:hidden lg:before:block before:content-['>'] before:absolute before:-left-[18px]"
-      }
-    >
-      {text}
-    </div>
-  );
+  const typeClass =
+    type === 1
+      ? `before:hidden lg:before:block before:content-['>'] before:absolute before:-left-[18px] pb-[1.25rem] lg:pb-[1.875rem]`
+      : `pt-[0.625rem]`;
+  return <div className={`text relative capitalize ${typeClass}`}>{text}</div>;
 };
 
 const getLinks = (links: Link[] | undefined) => {
@@ -109,7 +108,10 @@ const getSocialNetworkLinks = (socialNetworkLinks: SocialNetwork[] | undefined) 
   return <div className={"flex flex-wrap"}>{socialLinks}</div>;
 };
 
-const getImage = (image: JSX.Element) => {
+const getImage = (image: JSX.Element | undefined) => {
+  if (!image) {
+    return null;
+  }
   return image;
 };
 

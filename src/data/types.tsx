@@ -1,6 +1,6 @@
 export type SupportedLanguages = "enUS" | "zhCN";
 
-export type Page = "HOME" | "DEVELOPERS" | "TOKENS" | "COMMUNITY" | "PAPERS";
+export type Page = "HOME" | "ECONOMIC_MODEL" | "TOKENS" | "COMMUNITY" | "PAPERS";
 export type HeroType = 1 | 2;
 export type FeatureType = 1 | 2 | 3 | 4;
 export type PCGrid = 1 | 2 | 3 | 4;
@@ -98,7 +98,7 @@ export interface CodeSample {
 }
 
 export interface Hero {
-  image: JSX.Element;
+  image?: JSX.Element;
   // title?: JSX.Element;
   text?: string;
   links?: Link[];

@@ -70,6 +70,8 @@ const localeKeys = {
   leavingCrabMessage: "leavingCrabMessage",
   continue: "continue",
   cancel: "cancel",
+  crabEconomicModel: "crabEconomicModel",
+  internetOfTokens: "internetOfTokens",
 };
 
 export default localeKeys;
