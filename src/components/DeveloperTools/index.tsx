@@ -1,4 +1,4 @@
-import { DeveloperTools as IDeveloperTools } from "../../data/types";
+import { DeveloperTools as IDeveloperTools, Link } from "../../data/types";
 import LeaveWebsiteConfirmDialog from "../LeaveWebsiteConfirmDialog";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -13,13 +13,17 @@ const DeveloperTools = ({ data }: Props) => {
   const dialogRef = useRef<LeaveWebsiteConfirmDialog>(null);
   const { t } = useTranslation();
 
-  const openThirdPartyURL = async (url: string) => {
+  const openURL = async (link: Link) => {
     if (!dialogRef.current) {
+      return;
+    }
+    if (!link.isThirdParty) {
+      window.open(link.url, "_blank");
       return;
     }
     const hasAgreed = await dialogRef.current.showDialog();
     if (hasAgreed) {
-      window.open(url, "_blank");
+      window.open(link.url, "_blank");
     }
   };
 
@@ -27,7 +31,7 @@ const DeveloperTools = ({ data }: Props) => {
     return (
       <div
         onClick={() => {
-          openThirdPartyURL(company.link);
+          openURL(company.link);
         }}
         className={
           "lg:max-w-[268px] relative after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0 after:border after:border-[3px] after:border-primary after:-z-10 lg:hover:bg-primary hover:cursor-pointer transition"

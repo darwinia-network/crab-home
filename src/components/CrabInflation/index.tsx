@@ -18,7 +18,9 @@ const CrabInflation = ({ data }: Props) => {
         <div data-aos={"fade-up"} className={"w-full mt-[2.5rem] lg:mt-[3.125rem]"}>
           <img className={"w-full"} src={data.annualInflationImage} alt="image" />
         </div>
-        <div data-aos={"fade-up"}>{data.text}</div>
+        <div data-aos={"fade-up"} className={"capitalize"}>
+          {data.text}
+        </div>
       </div>
     </div>
   );

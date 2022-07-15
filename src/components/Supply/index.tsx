@@ -197,7 +197,7 @@ const getCoinStatistics = (statisticsData: StatisticsData | undefined) => {
         >
           {statisticsData.title}
         </div>
-        <div className={"mt-[1.25rem]"}>{statisticsData.text}</div>
+        <div className={"mt-[1.25rem] capitalize"}>{statisticsData.text}</div>
         <div>{statisticsInfo}</div>
       </div>
     </div>

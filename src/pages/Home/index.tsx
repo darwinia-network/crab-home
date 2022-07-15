@@ -11,6 +11,7 @@ import FeatureWrapper from "../../components/FeatureWrapper";
 import CrabTokens from "../../components/CrabTokens";
 import LogosSlider from "../../components/LogosSlider";
 import DeveloperTools from "../../components/DeveloperTools";
+import { useRef } from "react";
 
 const Home = () => {
   const {
@@ -26,6 +27,24 @@ const Home = () => {
   } = useHomeData();
 
   const { footerData } = useFooterData();
+  const topSlider = useRef<LogosSlider>(null);
+  const bottomSlider = useRef<LogosSlider>(null);
+
+  const pauseSlider = () => {
+    if (!topSlider.current || !bottomSlider.current) {
+      return;
+    }
+    topSlider.current.pauseSlider();
+    bottomSlider.current.pauseSlider();
+  };
+
+  const playSlider = () => {
+    if (!topSlider.current || !bottomSlider.current) {
+      return;
+    }
+    topSlider.current.playSlider();
+    bottomSlider.current.playSlider();
+  };
 
   return (
     <div>
@@ -49,9 +68,17 @@ const Home = () => {
         <CrabTokens data={crabToken} />
       </div>
       {/* this will expand full width with no limit */}
-      <div className={"bg-primary bg-opacity-20 py-[1.0625rem] inter-block-space-1"}>
-        <LogosSlider data={companySlider.top} />
-        <LogosSlider data={companySlider.bottom} delay={true} />
+      <div
+        onMouseEnter={() => {
+          pauseSlider();
+        }}
+        onMouseLeave={() => {
+          playSlider();
+        }}
+        className={"bg-primary bg-opacity-20 py-[1.0625rem] inter-block-space-1"}
+      >
+        <LogosSlider ref={topSlider} data={companySlider.top} />
+        <LogosSlider ref={bottomSlider} data={companySlider.bottom} delay={true} />
       </div>
       <div className={"container-3 inter-block-space-1"}>
         <DeveloperTools data={developerTools} />

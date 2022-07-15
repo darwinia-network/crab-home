@@ -125,6 +125,11 @@ const getGrantsProgramResource = (t: TFunction<"translation">): GrantsProgramRes
 const getReasonsToApply = (t: TFunction<"translation">): WhyApplying => {
   return {
     title: t(localeKeys.whyYouShouldApply),
+    link: {
+      title: t(localeKeys.startApplication),
+      url: "",
+      isExternal: true,
+    },
     reasons: [
       {
         icon: multiChainIcon,

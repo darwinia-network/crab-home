@@ -180,77 +180,167 @@ const getCompanySlider = (): Slider => {
     top: [
       {
         logo: subscanLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: subviewLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: onfinalityLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: dwellirLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: evolutionLandLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: snowswapLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: subswapLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: snapshotLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: polkadotJSLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
     ],
     bottom: [
       {
         logo: mathWalletLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: crustLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: cBridgeLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: helixLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: crabMetaverseLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: metarockLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: myweb3Logo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: entity54Logo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: metamaskLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
     ],
   };
@@ -262,67 +352,147 @@ const getDeveloperTools = (t: TFunction<"translation">): DeveloperTools => {
     logos: [
       {
         logo: metamaskLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: openzeppelinLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: theGraphLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: hardhatLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: waffleLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: remixLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: subscanLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: polkadotJSLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: web3PYLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: web3JSLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: etherJSLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: onfinalityLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: bwarelabsLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: ethsignLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: marsLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
       },
       {
         logo: subviewLogo,
-        link: "https://google.com",
+        link: {
+          url: "https://google.com",
+          title: "",
+          isExternal: true,
+          isThirdParty: false,
+        },
       },
     ],
   };

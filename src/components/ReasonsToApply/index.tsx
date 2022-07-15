@@ -19,6 +19,11 @@ const ReasonsToApply = ({ data }: Props) => {
         {data.title}
       </div>
       <div className={"flex flex-col lg:flex-row gap-[2.5rem] lg:gap-[1.25rem]"}>{features}</div>
+      <div data-aos={"fade-up"} className={"mt-[1.875rem]"}>
+        <a href={data.link.title} className={"btn capitalize"}>
+          {data.link.title}
+        </a>
+      </div>
     </div>
   );
 };

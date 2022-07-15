@@ -30,8 +30,8 @@ const getStakingDiagram = (stakingDiagram: StakingDiagram): JSX.Element => {
   return (
     <div>
       <img className={"w-full"} src={stakingDiagram.image} alt="image" />
-      <div className={"title-2 text-white mt-[2.5rem] lg:mt-[3.125rem]"}>{stakingDiagram.title}</div>
-      <div className={"mt-[0.625rem] lg:mt-[1.25rem]"}>{stakingDiagram.text}</div>
+      <div className={"title-2 text-white mt-[2.5rem] lg:mt-[3.125rem] capitalize"}>{stakingDiagram.title}</div>
+      <div className={"mt-[0.625rem] lg:mt-[1.25rem] capitalize"}>{stakingDiagram.text}</div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { Component, createRef } from "react";
-import { CompanyLogo } from "../../data/types";
+import { CompanyLogo, Link } from "../../data/types";
 
 interface Props {
   delay?: boolean;
@@ -17,6 +17,7 @@ type Device = "MOBILE" | "PC";
 export default class LogosSlider extends Component<Props, State> {
   private readonly laptopWidth = 1024;
   private readonly logoMaxWidth = 268;
+  private isPaused: boolean = false;
   private innerList: CompanyLogo[] = [];
   private wrapper = createRef<HTMLDivElement>();
   private slidesFilm = createRef<HTMLDivElement>();
@@ -77,6 +78,10 @@ export default class LogosSlider extends Component<Props, State> {
   }
 
   private animate() {
+    if (this.isPaused) {
+      this.animationFrame = requestAnimationFrame(this.animate.bind(this));
+      return;
+    }
     if (this.slidesFilm.current) {
       /* move the slider back to zero (translateX = 0) when it reaches the end */
       if (this.translateXValue >= this.state.groupWidth) {
@@ -152,6 +157,28 @@ export default class LogosSlider extends Component<Props, State> {
     }
   }
 
+  async openURL(link: Link) {
+    /* if (!dialogRef.current) {
+      return;
+    } */
+    if (!link.isThirdParty) {
+      window.open(link.url, "_blank");
+    }
+    console.log(link);
+    /* const hasAgreed = await dialogRef.current.showDialog();
+    if (hasAgreed) {
+      window.open(link.url, "_blank");
+    } */
+  }
+
+  pauseSlider() {
+    this.isPaused = true;
+  }
+
+  playSlider() {
+    this.isPaused = false;
+  }
+
   componentWillUnmount() {
     this.clearAnimation();
     window.removeEventListener("resize", this.initSlide);
@@ -168,8 +195,11 @@ export default class LogosSlider extends Component<Props, State> {
             const random = Math.random();
             return (
               <div
-                style={{ width: `${this.state.itemWidth}px`, maxWidth: `${this.logoMaxWidth}px` }}
+                style={{ width: `${this.state.itemWidth}px`, maxWidth: `${this.logoMaxWidth}px`, cursor: "pointer" }}
                 key={`${index}-${random}`}
+                onClick={() => {
+                  this.openURL(company.link);
+                }}
               >
                 <div
                   style={{

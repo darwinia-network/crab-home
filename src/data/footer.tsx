@@ -67,22 +67,25 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
         ],
       },
       {
-        title: t(localeKeys.resources),
+        title: t(localeKeys.collaboration),
         links: [
           {
             isExternal: false,
             url: "/papers",
             title: t(localeKeys.substrateBuilderProgram),
+            isFake: true,
           },
           {
             isExternal: true,
             url: "https://docs.darwinia.network/",
             title: t(localeKeys.web3GrantProgram),
+            isFake: true,
           },
           {
             isExternal: true,
             url: "https://www.notion.so/itering/9617e154ec884b07a7cee9a056374e42?v=0c3e4d9f257646c486a32a0425ee3a93",
             title: t(localeKeys.darwiniaBuildersProgram),
+            isFake: true,
           },
         ],
       },

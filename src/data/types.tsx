@@ -11,6 +11,7 @@ export interface Link {
   url: string;
   isExternal: boolean;
   isFake?: boolean;
+  isThirdParty?: boolean;
   type?: LinkType;
 }
 
@@ -145,7 +146,7 @@ export interface Menu {
 
 export interface CompanyLogo {
   logo: string;
-  link: string;
+  link: Link;
 }
 
 export interface DeveloperTools {
@@ -203,4 +204,5 @@ export interface GrantsProgramResource {
 export interface WhyApplying {
   title: string;
   reasons: Feature[];
+  link: Link;
 }

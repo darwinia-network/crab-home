@@ -3,13 +3,12 @@ import { useEconomicModelData } from "../../data/economicModel";
 import StakingModel from "../../components/StakingModel";
 import Supply from "../../components/Supply";
 import CrabInflation from "../../components/CrabInflation";
-import RevenueModel from "../../components/RevenueModel";
 import { useFooterData } from "../../data/footer";
 import Footer from "../../components/Footer";
 
 const EconomicModel = () => {
   const { footerData } = useFooterData();
-  const { heroData, stakingModel, supplyStatistics, tokenInflation, revenueModel } = useEconomicModelData();
+  const { heroData, stakingModel, supplyStatistics, tokenInflation } = useEconomicModelData();
   return (
     <div>
       <Hero page={"ECONOMIC_MODEL"} data={heroData} />
@@ -22,9 +21,9 @@ const EconomicModel = () => {
       <div className={"container inter-block-space-1"}>
         <CrabInflation data={tokenInflation} />
       </div>
-      <div className={"container inter-block-space-1"}>
+      {/* <div className={"container inter-block-space-1"}>
         <RevenueModel data={revenueModel} />
-      </div>
+      </div> */}
       <Footer data={footerData} />
     </div>
   );

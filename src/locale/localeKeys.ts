@@ -29,6 +29,7 @@ const localeKeys = {
   gitHub: "gitHub",
   buildersDocs: "buildersDocs",
   resources: "resources",
+  collaboration: "collaboration",
   substrateBuilderProgram: "substrateBuilderProgram",
   web3GrantProgram: "web3GrantProgram",
   darwiniaBuildersProgram: "darwiniaBuildersProgram",
