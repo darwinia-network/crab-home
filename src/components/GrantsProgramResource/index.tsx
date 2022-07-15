@@ -8,14 +8,16 @@ interface Props {
 const GrantsProgramResource = ({ data }: Props) => {
   const features = data.resources.map((item, index) => {
     return (
-      <div className={"flex-1 shrink-0"} key={index}>
+      <div data-aos={"fade-up"} className={"flex-1 shrink-0"} key={index}>
         <Feature data={item} />
       </div>
     );
   });
   return (
     <div>
-      <div className={"title-lg text-white capitalize mb-[2.5rem] lg:mb-[1.875rem]"}>{data.title}</div>
+      <div data-aos={"fade-up"} className={"title-lg text-white capitalize mb-[2.5rem] lg:mb-[1.875rem]"}>
+        {data.title}
+      </div>
       <div className={"flex flex-col lg:flex-row gap-[2.5rem] lg:gap-[5rem]"}>{features}</div>
     </div>
   );
