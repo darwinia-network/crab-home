@@ -99,6 +99,22 @@ const localeKeys = {
   networkRevenueTextOne: "networkRevenueTextOne",
   networkRevenueTextTwo: "networkRevenueTextTwo",
   networkRevenueTextThree: "networkRevenueTextThree",
+  grantsProgramText: "grantsProgramText",
+  startApplication: "startApplication",
+  purposeAndMission: "purposeAndMission",
+  grantsAmount: "grantsAmount",
+  grantsAmountTextOne: "grantsAmountTextOne",
+  grantsAmountTextTwo: "grantsAmountTextTwo",
+  grantsAmountTextThree: "grantsAmountTextThree",
+  grantsAmountTextFour: "grantsAmountTextFour",
+  purpose: "purpose",
+  purposeText: "purposeText",
+  mission: "mission",
+  missionText: "missionText",
+  toolingAndInfrastructure: "toolingAndInfrastructure",
+  toolingAndInfrastructureText: "toolingAndInfrastructureText",
+  ecosystemProject: "ecosystemProject",
+  ecosystemProjectText: "ecosystemProjectText",
 };
 
 export default localeKeys;

@@ -99,6 +99,22 @@ const enUs = {
   [localeKeys.networkRevenueTextOne]: `Cross-chain Asset Transfer Service Fee (per TX) as Revenue.`,
   [localeKeys.networkRevenueTextTwo]: `Verification Game Slash Tax as Revenue.`,
   [localeKeys.networkRevenueTextThree]: `Revenue Pool is used to buy back RING and burn.`,
+  [localeKeys.grantsProgramText]: `Projects that add value to the Crab ecosystem are eligible for funding opportunities.`,
+  [localeKeys.startApplication]: `Start your Application`,
+  [localeKeys.purposeAndMission]: `Purpose and Mission`,
+  [localeKeys.grantsAmount]: `Grants Amount`,
+  [localeKeys.grantsAmountTextOne]: `Grant’s maximum amount of incentives is USD 6,000 (USDT/DAI/RING/CRAB) per project.`,
+  [localeKeys.grantsAmountTextTwo]: `USD 2,000 (USDT/DAI/RING/CRAB) or less will be approved the fastest.`,
+  [localeKeys.grantsAmountTextThree]: `Applications from USD 2,000 to USD 6,000 (USDT/DAI/RING/CRAB) will take longer to review.`,
+  [localeKeys.grantsAmountTextFour]: `Crab Grants Program is funded by Darwinia.`,
+  [localeKeys.purpose]: `purpose`,
+  [localeKeys.purposeText]: `To fund the development of projects and applications that contribute to the Crab ecosystem and promote overall network growth.`,
+  [localeKeys.mission]: `mission`,
+  [localeKeys.missionText]: `We encourage passionate teams to build innovative, interconnected projects on Crab and reward use cases with application scenarios.`,
+  [localeKeys.toolingAndInfrastructure]: `Tooling and Infrastructure`,
+  [localeKeys.toolingAndInfrastructureText]: `Projects that support the development tools and infrastructure needed by other teams. These projects must fill existing tooling gaps from the developer tools portfolio in Crab. Such as wallets, oracles, and API services.`,
+  [localeKeys.ecosystemProject]: `Ecosystem Projects`,
+  [localeKeys.ecosystemProjectText]: `Projects that support the ecosystem through a wide range of use cases, such as Defi, NFT, Dao, identity, Metaverse games, insurance, and more. This category aims to promote the Crab ecosystem development by providing useful services and utility on the network.`,
 };
 
 export default enUs;

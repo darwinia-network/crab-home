@@ -1,8 +1,8 @@
 export type SupportedLanguages = "enUS" | "zhCN";
 
-export type Page = "HOME" | "ECONOMIC_MODEL" | "TOKENS" | "COMMUNITY" | "PAPERS";
+export type Page = "HOME" | "ECONOMIC_MODEL" | "GRANTS_PROGRAM";
 export type HeroType = 1 | 2;
-export type FeatureType = 1 | 2 | 3 | 4 | 5;
+export type FeatureType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 export type PCGrid = 1 | 2 | 3 | 4;
 export type LinkType = "PRIMARY" | "PLAIN";
 
@@ -186,4 +186,11 @@ export interface RevenueModel {
   feature: Feature;
   networkExpense: Feature;
   networkRevenue: Feature;
+}
+
+export interface PurposeAndMission {
+  title: string;
+  grantsAmount: Feature;
+  purpose: Feature;
+  mission: Feature;
 }

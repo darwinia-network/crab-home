@@ -43,6 +43,9 @@ const getTypewriterByPage = (page: Page) => {
     case "ECONOMIC_MODEL": {
       return lazy(() => import("../EconomicModelTypewriter"));
     }
+    case "GRANTS_PROGRAM": {
+      return lazy(() => import("../GrantsProgramTypewriter"));
+    }
     case "HOME":
     default: {
       return lazy(() => import("../HomeTypewriter"));
@@ -81,7 +84,7 @@ const getLinks = (links: Link[] | undefined) => {
       </NavLink>
     );
   });
-  return <div className={"flex-wrap flex gap-[1.25rem]"}>{linksJSX}</div>;
+  return <div className={"flex-wrap mt-[1.875rem] flex gap-[1.25rem]"}>{linksJSX}</div>;
 };
 
 const getSocialNetworkLinks = (socialNetworkLinks: SocialNetwork[] | undefined) => {

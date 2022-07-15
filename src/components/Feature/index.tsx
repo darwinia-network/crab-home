@@ -23,6 +23,18 @@ const getFeatureByType = (type: FeatureType, data: IFeature): JSX.Element => {
     case 5: {
       return getTypeFiveFeature(data);
     }
+    case 6: {
+      return getTypeSixFeature(data);
+    }
+    case 7: {
+      return getTypeSevenFeature(data);
+    }
+    case 8: {
+      return getTypeEightFeature(data);
+    }
+    case 9: {
+      return getTypeNineFeature(data);
+    }
     case 3:
     default: {
       return getTypeThreeFeature(data);
@@ -74,12 +86,12 @@ const getTypeThreeFeature = (data: IFeature): JSX.Element => {
   const bottomLinks = getBottomLinks(data.links);
   return (
     <div className={"flex lg:gap-[2.5rem]"}>
-      <div className={"w-[10rem] h-[10rem] shrink-0 hidden lg:block"}>
+      <div className={"w-[10rem] shrink-0 hidden lg:block"}>
         <img className={"w-full"} src={data.icon} alt="image" />
       </div>
       <div>
         <div className={"title-2 text-white capitalize"}>{data.title}</div>
-        <div className={"capitalize"}>{data.text}</div>
+        <div className={"capitalize mt-[0.625rem]"}>{data.text}</div>
         <div className={"divider hidden lg:block mt-[0.625rem]"} />
         <div className={"hidden lg:block"}>{bottomLinks}</div>
       </div>
@@ -119,6 +131,68 @@ const getTypeFiveFeature = (data: IFeature): JSX.Element => {
       </div>
       <div className={"title-2 text-white mt-[2.5rem] lg:mt-[1.875rem] capitalize"}>{data.title}</div>
       <div className={"mt-[1.25rem]"}>{list}</div>
+    </div>
+  );
+};
+
+const getTypeSixFeature = (data: IFeature): JSX.Element => {
+  const list = data.list?.map((item, index) => {
+    const topMargin = index === 0 ? `` : `mt-[1.875rem]`;
+    return (
+      <div key={index} className={`${topMargin} capitalize`}>
+        {index + 1}. {item}
+      </div>
+    );
+  });
+  return (
+    <div>
+      <div className={"w-full lg:max-w-[31.25rem] shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+      <div className={"title-2 text-white mt-[2.5rem] lg:mt-[3.125rem] capitalize"}>{data.title}</div>
+      <div className={"mt-[1.25rem]"}>{list}</div>
+    </div>
+  );
+};
+
+const getTypeSevenFeature = (data: IFeature): JSX.Element => {
+  return (
+    <div className={"flex flex-col lg:flex-row lg:gap-[1.875rem]"}>
+      <div className={"w-[10rem] hidden lg:block shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+      <div>
+        <div className={"title-2 text-white capitalize"}>{data.title}</div>
+        <div className={"capitalize mt-[0.625rem] lg:mt-[1.25rem]"}>{data.text}</div>
+      </div>
+    </div>
+  );
+};
+
+const getTypeEightFeature = (data: IFeature): JSX.Element => {
+  return (
+    <div className={"flex flex-col items-center gap-[2.5rem] lg:flex-row lg:gap-[5rem]"}>
+      <div className={"lg:order-2"}>
+        <div className={"title-lg text-white capitalize"}>{data.title}</div>
+        <div className={"capitalize mt-[0.625rem]"}>{data.text}</div>
+      </div>
+      <div className={"lg:max-w-[24.625rem] lg:order-1 shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+    </div>
+  );
+};
+
+const getTypeNineFeature = (data: IFeature): JSX.Element => {
+  return (
+    <div className={"flex flex-col items-center gap-[2.5rem] lg:flex-row lg:gap-[3.75rem]"}>
+      <div>
+        <div className={"title-lg text-white capitalize"}>{data.title}</div>
+        <div className={"capitalize mt-[0.625rem]"}>{data.text}</div>
+      </div>
+      <div className={"lg:max-w-[30.125rem] shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
     </div>
   );
 };
