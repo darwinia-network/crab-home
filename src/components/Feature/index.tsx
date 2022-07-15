@@ -35,6 +35,12 @@ const getFeatureByType = (type: FeatureType, data: IFeature): JSX.Element => {
     case 9: {
       return getTypeNineFeature(data);
     }
+    case 10: {
+      return getTypeTenFeature(data);
+    }
+    case 11: {
+      return getTypeElevenFeature(data);
+    }
     case 3:
     default: {
       return getTypeThreeFeature(data);
@@ -192,6 +198,34 @@ const getTypeNineFeature = (data: IFeature): JSX.Element => {
       </div>
       <div className={"lg:max-w-[30.125rem] shrink-0"}>
         <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+    </div>
+  );
+};
+
+const getTypeTenFeature = (data: IFeature): JSX.Element => {
+  return (
+    <div>
+      <div className={"w-[11.875rem] shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+      <div className={"mt-[2.5rem] lg:mt-[1.25rem]"}>
+        <div className={"title-2 text-white capitalize"}>{data.title}</div>
+        <div className={"capitalize mt-[0.625rem] lg:mt-[1.25rem]"}>{data.text}</div>
+      </div>
+    </div>
+  );
+};
+
+const getTypeElevenFeature = (data: IFeature): JSX.Element => {
+  return (
+    <div>
+      <div className={"w-[5rem] shrink-0"}>
+        <img className={"w-full"} src={data.icon} alt="image" />
+      </div>
+      <div className={"mt-[2.5rem] lg:mt-[1.25rem]"}>
+        <div className={"title-2 text-white capitalize"}>{data.title}</div>
+        <div className={"capitalize mt-[0.625rem] lg:mt-[1.25rem]"}>{data.text}</div>
       </div>
     </div>
   );

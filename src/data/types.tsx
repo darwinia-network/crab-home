@@ -2,7 +2,7 @@ export type SupportedLanguages = "enUS" | "zhCN";
 
 export type Page = "HOME" | "ECONOMIC_MODEL" | "GRANTS_PROGRAM";
 export type HeroType = 1 | 2;
-export type FeatureType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+export type FeatureType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 export type PCGrid = 1 | 2 | 3 | 4;
 export type LinkType = "PRIMARY" | "PLAIN";
 
@@ -193,4 +193,14 @@ export interface PurposeAndMission {
   grantsAmount: Feature;
   purpose: Feature;
   mission: Feature;
+}
+
+export interface GrantsProgramResource {
+  title: string;
+  resources: Feature[];
+}
+
+export interface WhyApplying {
+  title: string;
+  reasons: Feature[];
 }

@@ -8,7 +8,7 @@ interface Props {
 const PurposeAndMission = ({ data }: Props) => {
   return (
     <div>
-      <div data-aos={"fade-up"} className={"title-lg text-white"}>
+      <div data-aos={"fade-up"} className={"title-lg text-white capitalize"}>
         {data.title}
       </div>
       <div className={"flex flex-col lg:gap-[10.9375rem] lg:flex-row lg:items-end mt-[2.5rem] lg:mt-[3.125rem]"}>
