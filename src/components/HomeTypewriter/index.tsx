@@ -22,7 +22,7 @@ const HomeTypewriter = () => {
   /* change this for every page */
   const fakeTitle = getFakeTitle(t(localeKeys.canaryNetwork));
   return (
-    <div className={"relative"}>
+    <div className={"relative capitalize"}>
       {/* this first title is rendered just to expand the parent so that the typewriter text
        can be positioned absolute and still be seen */}
       <div className={"opacity-0"}>{fakeTitle}</div>

@@ -42,7 +42,7 @@ html {
   }
 
   .space-top-1 {
-    @apply pt-[5rem] lg:pt-[11.5625rem] box-border;
+    @apply pt-[5rem] lg:pt-[10.25rem] box-border;
   }
 
   .space-top-2 {
@@ -232,6 +232,21 @@ html {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+.new-ticker {
+  //animation : tickerAnimation 10s linear infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes tickerAnimation {
+  0% {
+    transform: translate3d(100%,0,0)
+  }
+
+  100% {
+    transform: translate3d(-100%,0,0)
+  }
 }
 
 $pc-code-transition-duration: 500ms;

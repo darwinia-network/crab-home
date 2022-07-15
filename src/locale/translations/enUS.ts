@@ -133,6 +133,7 @@ const enUs = {
   [localeKeys.enthusiasmText]: `You’re excited about the potential of Crab and Kusama, and want to help build the ecosystem.`,
   [localeKeys.winWin]: `Win-Win`,
   [localeKeys.winWinText]: `By joining the Crab Grants Program, you will have a greater ability to contribute to Crab’s growth and will boost your project's growth and development.`,
+  [localeKeys.news]: `News`,
 };
 
 export default enUs;

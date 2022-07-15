@@ -133,6 +133,7 @@ const localeKeys = {
   enthusiasmText: "enthusiasmText",
   winWin: "winWin",
   winWinText: "winWinText",
+  news: "news",
 };
 
 export default localeKeys;
