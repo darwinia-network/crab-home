@@ -11,7 +11,8 @@ import FeatureWrapper from "../../components/FeatureWrapper";
 import CrabTokens from "../../components/CrabTokens";
 import LogosSlider from "../../components/LogosSlider";
 import DeveloperTools from "../../components/DeveloperTools";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import CustomMarquee from "../../components/CustomMarquee";
 
 const Home = () => {
   const {
@@ -30,6 +31,9 @@ const Home = () => {
   const topSlider = useRef<LogosSlider>(null);
   const bottomSlider = useRef<LogosSlider>(null);
 
+  const [greetings, updateGreetings] = useState("Hello there");
+  const [index, setIndex] = useState(0);
+
   const pauseSlider = () => {
     if (!topSlider.current || !bottomSlider.current) {
       return;
@@ -46,8 +50,41 @@ const Home = () => {
     bottomSlider.current.playSlider();
   };
 
+  const changeGreetings = () => {
+    const newIndex = index + 1;
+    setIndex(() => {
+      return newIndex;
+    });
+    updateGreetings(`Hello there ${newIndex}`);
+  };
+
   return (
     <div>
+      <div className={"container inter-block-space-1"}>
+        <button
+          className={"btn"}
+          onClick={() => {
+            changeGreetings();
+          }}
+        >
+          Update
+        </button>
+        <CustomMarquee
+          initialTranslateRatio={1}
+          shouldDuplicate={false}
+          style={{ width: "200px" }}
+          className={"hello-world"}
+        >
+          <div
+            onClick={() => {
+              console.log("you clicked up====");
+            }}
+            style={{ fontSize: "20px" }}
+          >
+            {greetings}
+          </div>
+        </CustomMarquee>
+      </div>
       <Hero page={"HOME"} data={heroData} />
       <div className={"container inter-block-space-1"}>
         <CrabIntro data={crabIntroData} />

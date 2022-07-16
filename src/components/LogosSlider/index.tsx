@@ -31,7 +31,7 @@ export default class LogosSlider extends Component<Props, State> {
   /* how many times the slider group should be duplicated to show the smooth transition */
   private duplicates = 3;
   /* these are the speeds for particular devices */
-  private speed = 0.5;
+  private speed = 0.5; // 30px in 1 second
   private mobileSpeed = 0.3;
   private PCSpeed = 0.5;
   private isFirstMount = true;
