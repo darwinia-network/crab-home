@@ -9,10 +9,9 @@ import BridgeMessaging from "../../components/BridgeMessaging";
 import EasyDeploy from "../../components/EasyDeploy";
 import FeatureWrapper from "../../components/FeatureWrapper";
 import CrabTokens from "../../components/CrabTokens";
-import LogosSlider from "../../components/LogosSlider";
 import DeveloperTools from "../../components/DeveloperTools";
 import { useRef } from "react";
-import LogosSlider2 from "../../components/LogosSlider2";
+import LogosSlider, { LogosSliderRefs } from "../../components/LogosSlider";
 
 const Home = () => {
   const {
@@ -28,8 +27,8 @@ const Home = () => {
   } = useHomeData();
 
   const { footerData } = useFooterData();
-  const topSlider = useRef<LogosSlider>(null);
-  const bottomSlider = useRef<LogosSlider>(null);
+  const topSlider = useRef<LogosSliderRefs>(null);
+  const bottomSlider = useRef<LogosSliderRefs>(null);
 
   const pauseSlider = () => {
     if (!topSlider.current || !bottomSlider.current) {
@@ -49,10 +48,6 @@ const Home = () => {
 
   return (
     <div>
-      <div className={"container inter-block-space-1"}>
-        <LogosSlider2 data={companySlider.top} />
-        <LogosSlider2 data={companySlider.bottom} />
-      </div>
       <Hero page={"HOME"} data={heroData} />
       <div className={"container inter-block-space-1"}>
         <CrabIntro data={crabIntroData} />
@@ -78,6 +73,9 @@ const Home = () => {
           pauseSlider();
         }}
         onMouseLeave={() => {
+          playSlider();
+        }}
+        onClick={() => {
           playSlider();
         }}
         className={"bg-primary bg-opacity-20 py-[1.0625rem] inter-block-space-1"}

@@ -1,220 +1,121 @@
-import { Component, createRef } from "react";
+import CustomMarquee, { PixelsPerSecond, ScreenSizeDelay } from "../CustomMarquee";
 import { CompanyLogo, Link } from "../../data/types";
+import { forwardRef, useImperativeHandle, useRef } from "react";
+import LeaveWebsiteConfirmDialog from "../LeaveWebsiteConfirmDialog";
+import localeKeys from "../../locale/localeKeys";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   delay?: boolean;
   data: CompanyLogo[];
 }
 
-interface State {
-  totalWidth: number;
-  itemWidth: number;
-  groupWidth: number;
+export interface LogosSliderRefs {
+  pauseSlider: () => void;
+  playSlider: () => void;
 }
 
-type Device = "MOBILE" | "PC";
+const LogosSlider = forwardRef<LogosSliderRefs, Props>(({ data, delay }: Props, ref) => {
+  const { t } = useTranslation();
+  const dialogRef = useRef<LeaveWebsiteConfirmDialog>(null);
+  const marqueeRef = useRef<CustomMarquee>(null);
 
-export default class LogosSlider extends Component<Props, State> {
-  private readonly laptopWidth = 1024;
-  private readonly logoMaxWidth = 268;
-  private isPaused: boolean = false;
-  private innerList: CompanyLogo[] = [];
-  private wrapper = createRef<HTMLDivElement>();
-  private slidesFilm = createRef<HTMLDivElement>();
-  private animationFrame = 0;
-  private translateXValue = 0;
-  private translateXRatio = 0;
-  /* width in percentage for a single slider image */
-  private mobilePercentageItemWidth = 27.56;
-  private PCPercentageItemWidth = 18.61;
-  private percentageItemWidth = 0;
-  /* how many times the slider group should be duplicated to show the smooth transition */
-  private duplicates = 3;
-  /* these are the speeds for particular devices */
-  private speed = 0.5; // 30px in 1 second
-  private mobileSpeed = 0.3;
-  private PCSpeed = 0.5;
-  private isFirstMount = true;
-  private lastDevice: Device = "MOBILE";
-  /* change this to adjust the amount that the slider will have to delay,
-   * the value ranges from 0 to 1, if you set 0.5 that means that the slider
-   *  will delay a half of a single slider width */
-  private delayWidthRatio = 0.5;
-  /* don't change this, this is simply the distance that is required to be delayed
-  by the slider, it will be calculated automatically using delayWidthRatio */
-  private requiredDelayDistance = 0;
-  /* don't change this, this variable simply tracks the distance that has been delayed
-  so far by the slider */
-  private delayedDistance = 0;
+  const speed: PixelsPerSecond = { "320": 18, "768": 24, "1024": 30 };
+  /* to delay a half of the slider item width: sliderItemWidth/2 then divide
+  by the speed for a particular screen size eg: 103.32 / 2 = 51.66px then
+   51.66px divide by speed per second of 320px screen 51.66/18 = 2.87 seconds */
+  const screenSizeDelay: ScreenSizeDelay = delay ? { "320": 2.87, "768": 2.1525, "1024": 4.4667 } : {};
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      totalWidth: 0,
-      groupWidth: 0,
-      itemWidth: 0,
+  useImperativeHandle(ref, () => {
+    return {
+      pauseSlider: () => {
+        pauseSlider();
+      },
+      playSlider: () => {
+        playSlider();
+      },
     };
-    this.evaluateSliderByDevice();
-    for (let i = 0; i < this.duplicates; i++) {
-      this.innerList.push(...this.props.data);
-    }
-  }
+  });
 
-  private evaluateSliderByDevice() {
-    let currentDevice: Device;
-    if (window.innerWidth >= this.laptopWidth) {
-      this.speed = this.PCSpeed;
-      this.percentageItemWidth = this.PCPercentageItemWidth;
-      currentDevice = "PC";
-    } else {
-      this.speed = this.mobileSpeed;
-      this.percentageItemWidth = this.mobilePercentageItemWidth;
-      currentDevice = "MOBILE";
-    }
-    if (this.lastDevice !== currentDevice) {
-      this.revertSliderToZero();
-      this.lastDevice = currentDevice;
-    }
-  }
-
-  private animate() {
-    if (this.isPaused) {
-      this.animationFrame = requestAnimationFrame(this.animate.bind(this));
+  const pauseSlider = () => {
+    if (!marqueeRef.current) {
       return;
     }
-    if (this.slidesFilm.current) {
-      /* move the slider back to zero (translateX = 0) when it reaches the end */
-      if (this.translateXValue >= this.state.groupWidth) {
-        this.translateXValue = 0;
-      }
+    marqueeRef.current.pauseSlider();
+  };
 
-      /* delay for a certain distance */
-      if (this.isFirstMount && this.props.delay && this.delayedDistance < this.requiredDelayDistance) {
-        this.delayedDistance += this.speed;
-        this.animationFrame = requestAnimationFrame(this.animate.bind(this));
-        return;
-      }
-
-      this.isFirstMount = false;
-      this.delayedDistance = 0;
-
-      this.translateXRatio = this.translateXValue / this.state.groupWidth;
-      this.translateXValue += this.speed;
-      this.slidesFilm.current.style.transform = `translate3d(${-this.translateXValue}px,0,0)`;
-      this.slidesFilm.current.style.transitionTimingFunction = `linear`;
-    }
-
-    this.animationFrame = requestAnimationFrame(this.animate.bind(this));
-  }
-
-  componentDidMount() {
-    this.initSlide();
-    window.addEventListener("resize", this.initSlide.bind(this));
-  }
-
-  private clearAnimation() {
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame);
-    }
-  }
-
-  private revertSliderToZero() {
-    if (!this.slidesFilm.current) {
+  const playSlider = () => {
+    if (!marqueeRef.current) {
       return;
     }
-    this.translateXRatio = 0;
-    this.delayedDistance = 0;
-    this.translateXValue = 0;
-    this.isFirstMount = true;
-    this.slidesFilm.current.style.transform = `translate3d(0,0,0)`;
-    this.slidesFilm.current.style.transitionTimingFunction = ``;
-  }
+    marqueeRef.current.playSlider();
+  };
 
-  private initSlide() {
-    this.clearAnimation();
-    this.evaluateSliderByDevice();
-    if (this.wrapper.current) {
-      const wrapperWidth = this.wrapper.current.clientWidth;
-      let singleItemWidth = (this.percentageItemWidth / 100) * wrapperWidth;
-      singleItemWidth = singleItemWidth > this.logoMaxWidth ? this.logoMaxWidth : singleItemWidth;
-      if (this.props.delay) {
-        this.requiredDelayDistance = this.delayWidthRatio * singleItemWidth;
-      }
-      const groupWidth = singleItemWidth * this.props.data.length;
-      const totalWidth = groupWidth * this.duplicates;
-      // get new translateXValue for the new dimensions
-      this.translateXValue = this.translateXRatio * groupWidth;
-      /* update the slider state values including width etc */
-      this.setState((oldState) => {
-        return {
-          ...oldState,
-          itemWidth: singleItemWidth,
-          totalWidth,
-          groupWidth,
-        };
-      });
-      this.animate();
-    }
-  }
-
-  async openURL(link: Link) {
-    /* if (!dialogRef.current) {
+  const openURL = async (link: Link) => {
+    if (!dialogRef.current) {
       return;
-    } */
+    }
     if (!link.isThirdParty) {
       window.open(link.url, "_blank");
     }
-    console.log(link);
-    /* const hasAgreed = await dialogRef.current.showDialog();
+    const hasAgreed = await dialogRef.current.showDialog();
     if (hasAgreed) {
       window.open(link.url, "_blank");
-    } */
-  }
+    }
+  };
 
-  pauseSlider() {
-    this.isPaused = true;
-  }
-
-  playSlider() {
-    this.isPaused = false;
-  }
-
-  componentWillUnmount() {
-    this.clearAnimation();
-    window.removeEventListener("resize", this.initSlide);
-  }
-
-  render() {
-    return (
-      <div ref={this.wrapper} style={{ display: "flex", overflow: "hidden" }}>
-        <div
-          ref={this.slidesFilm}
-          style={{ width: `${this.state.totalWidth}px`, flexShrink: 0, display: "flex", flexDirection: "row" }}
-        >
-          {this.innerList.map((company, index) => {
-            const random = Math.random();
-            return (
-              <div
-                style={{ width: `${this.state.itemWidth}px`, maxWidth: `${this.logoMaxWidth}px`, cursor: "pointer" }}
-                key={`${index}-${random}`}
-                onClick={() => {
-                  this.openURL(company.link);
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    textAlign: "center",
-                  }}
-                >
-                  <img className={"w-full"} src={company.logo} alt="image" />
-                </div>
-              </div>
-            );
+  return (
+    <div>
+      <CustomMarquee
+        initialTranslateRatio={0}
+        shouldDuplicate={true}
+        style={{ width: "100%" }}
+        speed={speed}
+        delay={screenSizeDelay}
+        ref={marqueeRef}
+      >
+        <div className={"flex"}>
+          {data.map((item, index) => {
+            return createASlider(item, index, openURL);
           })}
         </div>
+      </CustomMarquee>
+
+      {/* Confirm leaving website dialog */}
+      <LeaveWebsiteConfirmDialog
+        title={t([localeKeys.youAreLavingCrab])}
+        message={t([localeKeys.leavingCrabMessage])}
+        ok={t([localeKeys.continue])}
+        cancel={t([localeKeys.cancel])}
+        ref={dialogRef}
+      />
+    </div>
+  );
+});
+
+LogosSlider.displayName = "LogosSlider";
+
+const createASlider = (company: CompanyLogo, index: number, clickHandler: (link: Link) => void): JSX.Element => {
+  const random = Math.random();
+  return (
+    <div
+      className={"cursor-pointer w-[6.4575rem] lg:w-[16.75rem] border-2 border-primary"}
+      key={`${index}-${random}`}
+      onClick={() => {
+        clickHandler(company.link);
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+        }}
+      >
+        <img className={"w-full"} src={company.logo} alt="image" />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default LogosSlider;

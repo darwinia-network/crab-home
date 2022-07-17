@@ -1,4 +1,4 @@
-import { Component, createRef, CSSProperties, DetailedHTMLProps, HTMLAttributes } from "react";
+import { Component, createRef, CSSProperties } from "react";
 
 // type Device = "PC" | "MOBILE" | "TABLET";
 
@@ -12,8 +12,24 @@ export type Direction = "HORIZONTAL" | "VERTICAL";
  *   "320": 18,
  *   "768": 24
  * }
+ * Mobile First based comparison will be used, but if the device isn't defined then
+ * the smallest device speed will be force-set to make the slider slide as usual
  */
 export interface PixelsPerSecond {
+  [dimension: string]: number;
+}
+/**
+ * Mobile First based comparison will be used
+ Example data
+ {
+  "1024": 300,
+  "320": 180,
+  "768": 240
+}
+ If you set the data as above and the screen size is 310px, the slider will not delay,
+ the screens above 768px will delay for 240 seconds and the screens above 1024px will delay for 300
+ */
+export interface ScreenSizeDelay {
   [dimension: string]: number;
 }
 
@@ -27,12 +43,15 @@ interface Translate {
   z: number;
 }
 
-interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface Props {
   children: JSX.Element;
   speed?: PixelsPerSecond;
   direction?: Direction;
   initialTranslateRatio?: number;
   shouldDuplicate?: boolean;
+  delay?: ScreenSizeDelay;
+  style?: CSSProperties;
+  className?: string;
 }
 
 interface State {}
@@ -52,6 +71,8 @@ class CustomMarquee extends Component<Props, State> {
   private readonly defaultVerticalSliderHeight: number = 300;
   private readonly direction: Direction = "HORIZONTAL";
   private animationFrame = 0;
+  private pixelsToDelay = 0;
+  private pixelsDelayedSoFar = 0;
   /* this is the initial translate value for the slider */
   private initialTranslatePixels: Translate = {
     x: 0,
@@ -97,6 +118,7 @@ class CustomMarquee extends Component<Props, State> {
     }
 
     this.updateSlider();
+    this.evaluateDelay();
   }
 
   private updateSlider() {
@@ -116,6 +138,11 @@ class CustomMarquee extends Component<Props, State> {
     this.animationFrame = requestAnimationFrame(this.animate.bind(this));
 
     if (this.isPaused) {
+      return;
+    }
+
+    if (this.pixelsDelayedSoFar < this.pixelsToDelay) {
+      this.pixelsDelayedSoFar = this.pixelsDelayedSoFar + this.currentSpeed;
       return;
     }
 
@@ -235,6 +262,39 @@ class CustomMarquee extends Component<Props, State> {
     this.updateSpeedByScreenDimension();
   }
 
+  private getDelayPixelsByScreenDimension(screensArray: number[], delayArray: ScreenSizeDelay): number {
+    let screenDimension: number;
+    if (this.direction === "HORIZONTAL") {
+      screenDimension = window.innerWidth;
+    } else {
+      screenDimension = window.innerHeight;
+    }
+
+    /* dimensions will be compared using mobile first mode for example if in our
+     * screensArray we have [320,450,768,920,1024] and our window dimension is
+     * 800px, 320 will be matched first then will be replaced by 450 and at last
+     * 768 will win the race  */
+    let dimensionKey: string = "";
+    screensArray.forEach((dimension) => {
+      if (screenDimension >= dimension) {
+        dimensionKey = `${dimension}`;
+      }
+    });
+    if (dimensionKey === "") {
+      return 0;
+    }
+    if (!delayArray[dimensionKey]) {
+      return 0;
+    }
+
+    const delayTime = delayArray[dimensionKey];
+
+    const framesPerSecond = 60;
+    const speedPerSecond = this.currentSpeed * framesPerSecond;
+
+    return speedPerSecond * delayTime;
+  }
+
   private updateSpeedByScreenDimension() {
     let screenDimension: number;
     if (this.direction === "HORIZONTAL") {
@@ -243,7 +303,7 @@ class CustomMarquee extends Component<Props, State> {
       screenDimension = window.innerHeight;
     }
     /* dimensions will be compared using mobile first mode for example if in our
-     * dimensionSpeedArray we have [320,450,768,920,1024] and our window width is
+     * dimensionSpeedArray we have [320,450,768,920,1024] and our window dimension is
      * 800px, 320 will be matched first then will be replaced by 450 and at last
      * 768 will win the race  */
     let dimensionKey: string = "";
@@ -272,6 +332,35 @@ class CustomMarquee extends Component<Props, State> {
       speed[key] = value / framesPerSecond;
     }
     return speed;
+  }
+
+  private evaluateDelay() {
+    let screenSizeDelay: ScreenSizeDelay | undefined;
+    if (this.props.delay) {
+      screenSizeDelay = { ...this.props.delay };
+    }
+
+    if (!screenSizeDelay) {
+      return;
+    }
+
+    let screensArray = [];
+
+    for (const key in screenSizeDelay) {
+      if (Number(key)) {
+        screensArray.push(Number(key));
+      }
+    }
+
+    if (screensArray.length === 0) {
+      /* something is wrong with the user delay data, don't delay the slider */
+      return;
+    }
+
+    /* All dimensions will be arranged in ascending order for later use */
+    screensArray = screensArray.sort((a, b) => a - b);
+
+    this.pixelsToDelay = this.getDelayPixelsByScreenDimension(screensArray, screenSizeDelay);
   }
 
   private evaluateDOM() {
@@ -313,13 +402,6 @@ class CustomMarquee extends Component<Props, State> {
   }
 
   render() {
-    const props = { ...this.props };
-    /* remove custom attributes */
-    delete props.speed;
-    delete props.direction;
-    delete props.shouldDuplicate;
-    delete props.initialTranslateRatio;
-
     const outsideStyles = this.props.style ? this.props.style : {};
     const superContainerStyle: CSSProperties =
       this.direction === "HORIZONTAL"
@@ -330,7 +412,6 @@ class CustomMarquee extends Component<Props, State> {
       this.direction === "HORIZONTAL" ? { width: "100%" } : { height: `${this.defaultVerticalSliderHeight}px` };
     return (
       <div
-        {...props}
         style={{ ...wrapperDefaultStyle, ...outsideStyles, overflow: "hidden" }}
         className={`inner-class ${this.props.className}`}
         ref={this.wrapperRef}
