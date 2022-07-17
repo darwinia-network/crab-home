@@ -13,6 +13,7 @@ import LogosSlider from "../../components/LogosSlider";
 import DeveloperTools from "../../components/DeveloperTools";
 import { useRef, useState } from "react";
 import CustomMarquee from "../../components/CustomMarquee";
+import { CompanyLogo, Link } from "../../data/types";
 
 const Home = () => {
   const {
@@ -31,7 +32,7 @@ const Home = () => {
   const topSlider = useRef<LogosSlider>(null);
   const bottomSlider = useRef<LogosSlider>(null);
 
-  const [greetings, updateGreetings] = useState("Hello there");
+  const [, updateGreetings] = useState("Hello there");
   const [index, setIndex] = useState(0);
 
   const pauseSlider = () => {
@@ -70,18 +71,41 @@ const Home = () => {
           Update
         </button>
         <CustomMarquee
-          initialTranslateRatio={1}
-          shouldDuplicate={false}
-          style={{ width: "200px" }}
+          initialTranslateRatio={0}
+          shouldDuplicate={true}
+          style={{ width: "100%" }}
           className={"hello-world"}
         >
           <div
+            className={"flex"}
             onClick={() => {
               console.log("you clicked up====");
             }}
-            style={{ fontSize: "20px" }}
           >
-            {greetings}
+            {companySlider.top.map((item, index) => {
+              return createASlider(item, index, (link) => {
+                console.log(link);
+              });
+            })}
+          </div>
+        </CustomMarquee>
+        <CustomMarquee
+          initialTranslateRatio={0}
+          shouldDuplicate={true}
+          style={{ width: "100%" }}
+          className={"hello-world"}
+        >
+          <div
+            className={"flex"}
+            onClick={() => {
+              console.log("you clicked up====");
+            }}
+          >
+            {companySlider.bottom.map((item, index) => {
+              return createASlider(item, index, (link) => {
+                console.log(link);
+              });
+            })}
           </div>
         </CustomMarquee>
       </div>
@@ -121,6 +145,29 @@ const Home = () => {
         <DeveloperTools data={developerTools} />
       </div>
       <Footer data={footerData} />
+    </div>
+  );
+};
+
+const createASlider = (company: CompanyLogo, index: number, clickHandler: (link: Link) => void): JSX.Element => {
+  const random = Math.random();
+  return (
+    <div
+      className={"cursor-pointer w-[27.56%] lg:w-[18.61%] max-w-[268px]"}
+      key={`${index}-${random}`}
+      onClick={() => {
+        clickHandler(company.link);
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+        }}
+      >
+        <img className={"w-full"} src={company.logo} alt="image" />
+      </div>
     </div>
   );
 };

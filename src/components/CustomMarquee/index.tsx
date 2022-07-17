@@ -159,13 +159,15 @@ class CustomMarquee extends Component<Props, State> {
 
   private onSliderResize() {
     this.evaluateDOM();
-    /* convert the previous translation ratio to the current translate pixels */
+    this.updateSpeedByScreenDimension();
+    /* this.evaluateDOM();
+    /!* convert the previous translation ratio to the current translate pixels *!/
     if (this.direction === "HORIZONTAL") {
       this.translatedPixels.x = this.translatedRatio.x * this.sliderScreenDimension;
     } else {
       this.translatedPixels.y = this.translatedRatio.y * this.sliderScreenDimension;
     }
-    this.updateSpeedByScreenDimension();
+    this.updateSpeedByScreenDimension(); */
   }
 
   componentWillUnmount() {
