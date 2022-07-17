@@ -159,15 +159,14 @@ class CustomMarquee extends Component<Props, State> {
 
   private onSliderResize() {
     this.evaluateDOM();
-    this.updateSpeedByScreenDimension();
-    /* this.evaluateDOM();
-    /!* convert the previous translation ratio to the current translate pixels *!/
+    /* convert the previous translation ratio to the current translate pixels */
     if (this.direction === "HORIZONTAL") {
-      this.translatedPixels.x = this.translatedRatio.x * this.sliderScreenDimension;
+      this.translatedPixels.x = this.translatedRatio.x * this.totalFilmDimension;
     } else {
-      this.translatedPixels.y = this.translatedRatio.y * this.sliderScreenDimension;
+      this.translatedPixels.y = this.translatedRatio.y * this.totalFilmDimension;
     }
-    this.updateSpeedByScreenDimension(); */
+
+    this.updateSpeedByScreenDimension();
   }
 
   componentWillUnmount() {
@@ -207,9 +206,9 @@ class CustomMarquee extends Component<Props, State> {
   private evaluateSpeed() {
     let pixelsPerSecond;
     if (this.props.speed) {
-      pixelsPerSecond = this.props.speed;
+      pixelsPerSecond = { ...this.props.speed };
     } else {
-      pixelsPerSecond = this.defaultPixelsPerSecond;
+      pixelsPerSecond = { ...this.defaultPixelsPerSecond };
     }
 
     for (const key in pixelsPerSecond) {
@@ -218,6 +217,18 @@ class CustomMarquee extends Component<Props, State> {
       }
     }
 
+    if (this.dimensionSpeedArray.length === 0) {
+      /* something is wrong with the user speeds push in some default speed so that
+      the slider slides as usual */
+      pixelsPerSecond = { ...this.defaultPixelsPerSecond };
+      for (const key in pixelsPerSecond) {
+        if (Number(key)) {
+          this.dimensionSpeedArray.push(Number(key));
+        }
+      }
+    }
+
+    /* All dimensions will be arranged in ascending order for later use */
     this.dimensionSpeedArray = this.dimensionSpeedArray.sort((a, b) => a - b);
 
     this.speed = CustomMarquee.convertPixelsPerSecondToSpeed(pixelsPerSecond);
@@ -231,12 +242,23 @@ class CustomMarquee extends Component<Props, State> {
     } else {
       screenDimension = window.innerHeight;
     }
+    /* dimensions will be compared using mobile first mode for example if in our
+     * dimensionSpeedArray we have [320,450,768,920,1024] and our window width is
+     * 800px, 320 will be matched first then will be replaced by 450 and at last
+     * 768 will win the race  */
     let dimensionKey: string = "";
     this.dimensionSpeedArray.forEach((dimension) => {
-      if (dimension <= screenDimension) {
+      if (screenDimension >= dimension) {
         dimensionKey = `${dimension}`;
       }
     });
+
+    if (dimensionKey === "") {
+      /* no speed was given for such a small screen, apply the first speed in the
+       * array by default */
+      /* this.dimensionSpeedArray's length MUST be greater than zero */
+      dimensionKey = `${this.dimensionSpeedArray[0]}`;
+    }
 
     this.currentSpeed = this.speed[dimensionKey];
   }

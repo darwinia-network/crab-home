@@ -36,7 +36,7 @@ const createASlider = (company: CompanyLogo, index: number, clickHandler: (link:
   const random = Math.random();
   return (
     <div
-      className={"cursor-pointer w-[27.56%] lg:w-[18.61%] max-w-[268px] border-2 border-primary"}
+      className={"cursor-pointer w-[27.56%] lg:w-[18.61%] lg:max-w-[268px] border-2 border-primary"}
       key={`${index}-${random}`}
       onClick={() => {
         clickHandler(company.link);
