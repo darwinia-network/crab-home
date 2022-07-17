@@ -148,25 +148,25 @@ class CustomMarquee extends Component<Props, State> {
 
     /* revert the translation value to zero */
     if (this.direction === "HORIZONTAL") {
-      if (this.translatedPixels.x >= this.groupDimension) {
-        this.translatedPixels.x = -this.initialTranslatePixels.x;
+      if (Math.abs(this.translatedPixels.x) >= this.groupDimension) {
+        this.translatedPixels.x = this.initialTranslatePixels.x;
       }
     } else {
-      if (this.translatedPixels.y >= this.groupDimension) {
-        this.translatedPixels.y = -this.initialTranslatePixels.y;
+      if (Math.abs(this.translatedPixels.y) >= this.groupDimension) {
+        this.translatedPixels.y = this.initialTranslatePixels.y;
       }
     }
 
+    /* negate the speed values to go to the required direction */
     const translateX =
-      this.direction === "HORIZONTAL" ? this.translatedPixels.x + this.currentSpeed : this.translatedPixels.x;
+      this.direction === "HORIZONTAL" ? this.translatedPixels.x - this.currentSpeed : this.translatedPixels.x;
     const translateY =
-      this.direction === "VERTICAL" ? this.translatedPixels.y + this.currentSpeed : this.translatedPixels.y;
+      this.direction === "VERTICAL" ? this.translatedPixels.y - this.currentSpeed : this.translatedPixels.y;
 
     this.updateTranslation(translateX, translateY);
 
     if (this.superFilmContainerRef.current) {
-      /* negate the translation values to go to the required direction */
-      this.superFilmContainerRef.current.style.transform = `translate3d(${-translateX}px,${-translateY}px,0)`;
+      this.superFilmContainerRef.current.style.transform = `translate3d(${translateX}px,${translateY}px,0)`;
     }
   }
 

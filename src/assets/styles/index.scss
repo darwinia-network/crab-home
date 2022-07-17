@@ -234,21 +234,6 @@ html {
   animation-fill-mode: forwards;
 }
 
-.new-ticker {
-  //animation : tickerAnimation 10s linear infinite;
-  animation-fill-mode: forwards;
-}
-
-@keyframes tickerAnimation {
-  0% {
-    transform: translate3d(100%,0,0)
-  }
-
-  100% {
-    transform: translate3d(-100%,0,0)
-  }
-}
-
 $pc-code-transition-duration: 500ms;
 .pc-code-enter {
   opacity: 0;

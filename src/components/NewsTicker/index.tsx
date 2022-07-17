@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import localeKeys from "../../locale/localeKeys";
+import CustomMarquee from "../CustomMarquee";
 
 const NewsTicker = () => {
   const { t } = useTranslation();
@@ -13,7 +14,10 @@ const NewsTicker = () => {
           "whitespace-nowrap capitalize absolute top-0 bottom-0 flex items-center left-[5rem] right-[2.5rem] overflow-hidden"
         }
       >
-        <div className={"new-ticker"}>New Ticker An this will be very long let us see now</div>
+        {/* the value 1.2 will offset the marquee to the more right every time it starts sliding to the left */}
+        <CustomMarquee shouldDuplicate={false} initialTranslateRatio={1.2}>
+          <div className={"capitalize select-none"} dangerouslySetInnerHTML={{ __html: t(localeKeys.newsPost) }} />
+        </CustomMarquee>
       </div>
     </div>
   );

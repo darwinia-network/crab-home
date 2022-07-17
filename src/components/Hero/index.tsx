@@ -19,19 +19,19 @@ const Hero = ({ data, page }: Props) => {
   const Typewriter = getTypewriterByPage(page);
   const customStyle = page === "HOME" ? { backgroundImage: `url(${homeHeroBg})` } : {};
   const wrapperCustomClass = page === "HOME" ? `pb-[0.5625rem] lg:pb-[7.8125rem]` : ``;
-  /* const News = page === "HOME" ? getHomepageNewsTicker() : null;
+  const News = page === "HOME" ? getHomepageNewsTicker() : null;
   const newsTicker =
     News !== null ? (
       <Suspense>
         <News />
       </Suspense>
-    ) : null; */
+    ) : null;
   return (
     <div style={customStyle} className={`lg:bg-center bg-cover bg-no-repeat ${wrapperCustomClass}`}>
       <div data-aos={"fade-up"} className={`container ${topSpace}`}>
         <div className={"flex flex-col lg:flex-row justify-between relative"}>
           <div className={`order-2 flex flex-col relative z-20 lg:justify-center lg:order-1 ${textClass}`}>
-            {/* {newsTicker} */}
+            {newsTicker}
             <Suspense>
               <Typewriter />
             </Suspense>
@@ -126,8 +126,8 @@ const getImage = (image: JSX.Element | undefined) => {
   return image;
 };
 
-/* const getHomepageNewsTicker = () => {
+const getHomepageNewsTicker = () => {
   return lazy(() => import("../NewsTicker"));
-}; */
+};
 
 export default Hero;

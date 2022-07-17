@@ -135,6 +135,7 @@ const localeKeys = {
   winWin: "winWin",
   winWinText: "winWinText",
   news: "news",
+  newsPost: "newsPost",
 };
 
 export default localeKeys;
