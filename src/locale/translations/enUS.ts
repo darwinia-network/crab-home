@@ -137,6 +137,13 @@ const enUs = {
   [localeKeys.news]: `News`,
   [localeKeys.newsPost]: `July’s 7.5% CRAB + CKTON rewards from Crab Kusama Parachain Slot Auction Have Been Delivered.`,
   [localeKeys.crowdLoanDetails]: `Crowdload Details`,
+  [localeKeys.subviewExplorer]: `subview explorer`,
+  [localeKeys.pangolinTestNet]: `Pangolin TestNet`,
+  [localeKeys.stakingApps]: `Staking Apps`,
+  [localeKeys.onChainGovernance]: `On-Chain Governance`,
+  [localeKeys.kusamaParachainAuction]: `Kusama Parachain Auction`,
+  [localeKeys.blog]: `blog`,
+  [localeKeys.brand]: `brand`,
 };
 
 export default enUs;

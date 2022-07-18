@@ -137,6 +137,13 @@ const localeKeys = {
   news: "news",
   newsPost: "newsPost",
   crowdLoanDetails: "crowdLoanDetails",
+  subviewExplorer: "subviewExplorer",
+  pangolinTestNet: "pangolinTestNet",
+  stakingApps: "stakingApps",
+  onChainGovernance: "onChainGovernance",
+  kusamaParachainAuction: "kusamaParachainAuction",
+  blog: "blog",
+  brand: "brand",
 };
 
 export default localeKeys;

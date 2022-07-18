@@ -26,13 +26,8 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
         links: [
           {
             isExternal: true,
-            url: "https://docs.darwinia.network/",
-            title: t(localeKeys.darwiniaNetwork),
-          },
-          {
-            isExternal: true,
-            url: "https://apps.darwinia.network/?network=darwinia",
-            title: t(localeKeys.darwiniaApps),
+            url: "https://docs.crab.network/",
+            title: t(localeKeys.buildersDocs),
           },
           {
             isExternal: true,
@@ -41,28 +36,43 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
           },
           {
             isExternal: true,
-            url: "https://apps.helixbridge.app/",
-            title: t(localeKeys.helixBridge),
+            url: "https://subview.xyz/",
+            title: t(localeKeys.subviewExplorer),
           },
           {
             isExternal: true,
-            url: "https://www.evolution.land/land/3",
-            title: t(localeKeys.evolutionLand),
+            url: "https://apps.darwinia.network/?network=pangolin",
+            title: t(localeKeys.pangolinTestNet),
           },
         ],
       },
       {
-        title: t(localeKeys.useCases),
+        title: t(localeKeys.resources),
         links: [
           {
             isExternal: true,
-            url: "https://github.com/darwinia-network/darwinia-messages-sol/tree/master/contracts/periphery/contracts/s2s/examples",
-            title: t(localeKeys.gitHub),
+            url: "https://apps.darwinia.network/?network=crab",
+            title: t(localeKeys.stakingApps),
           },
           {
             isExternal: true,
-            url: "https://docs.crab.network/",
-            title: t(localeKeys.buildersDocs),
+            url: "https://crab.subsquare.io/",
+            title: t(localeKeys.onChainGovernance),
+          },
+          {
+            isExternal: true,
+            url: "https://darwinia-network.github.io/crab-home-v1/plo_contribute",
+            title: t(localeKeys.kusamaParachainAuction),
+          },
+          {
+            isExternal: true,
+            url: "https://medium.com/darwinianetwork",
+            title: t(localeKeys.blog),
+          },
+          {
+            isExternal: true,
+            url: "/files/crab_brand.zip",
+            title: t(localeKeys.brand),
           },
         ],
       },
