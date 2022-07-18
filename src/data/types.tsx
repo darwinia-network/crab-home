@@ -155,8 +155,8 @@ export interface DeveloperTools {
 }
 
 export interface Slider {
-  top: CompanyLogo[];
-  bottom: CompanyLogo[];
+  levelOne: CompanyLogo[];
+  levelTwo: CompanyLogo[];
 }
 
 export interface StakingDiagram {

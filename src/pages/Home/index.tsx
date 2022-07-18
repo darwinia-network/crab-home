@@ -94,8 +94,8 @@ const Home = () => {
         }}
         className={"bg-primary bg-opacity-20 py-[1.0625rem] inter-block-space-1"}
       >
-        <LogosSlider ref={topSlider} data={companySlider.top} />
-        <LogosSlider ref={bottomSlider} data={companySlider.bottom} delay={true} />
+        <LogosSlider ref={topSlider} data={companySlider.levelOne} />
+        <LogosSlider ref={bottomSlider} data={companySlider.levelTwo} delay={true} />
       </div>
       <div className={"container-3 inter-block-space-1"}>
         <DeveloperTools data={developerTools} />

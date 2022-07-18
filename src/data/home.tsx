@@ -53,6 +53,14 @@ import etherJSLogo from "../assets/images/company-logos/ethers-js.png";
 import bwarelabsLogo from "../assets/images/company-logos/bwarelabs.png";
 import ethsignLogo from "../assets/images/company-logos/ethsign.png";
 import marsLogo from "../assets/images/company-logos/mars.png";
+import subWalletLogo from "../assets/images/company-logos/subwallet.png";
+import talismanLogo from "../assets/images/company-logos/talisman.png";
+import subSquareLogo from "../assets/images/company-logos/subsquare.png";
+import subqueryLogo from "../assets/images/company-logos/subquery.png";
+import moonriverLogo from "../assets/images/company-logos/moonriver.png";
+import karuraLogo from "../assets/images/company-logos/karura.png";
+import bifrostLogo from "../assets/images/company-logos/bifrost.png";
+import khalaLogo from "../assets/images/company-logos/khala.png";
 
 /* make sure you use a custom hook here since we have to use the useTranslation hook
  * from react-i18next */
@@ -203,7 +211,7 @@ const getCompanySlider = (): Slider => {
   };
 
   return {
-    top: doubleTheDataSize([
+    levelOne: doubleTheDataSize([
       {
         logo: subscanLogo,
         link: {
@@ -267,8 +275,35 @@ const getCompanySlider = (): Slider => {
           isThirdParty: true,
         },
       },
+      {
+        logo: subWalletLogo,
+        link: {
+          url: "https://subwallet.app/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: talismanLogo,
+        link: {
+          url: "https://talisman.xyz/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: subSquareLogo,
+        link: {
+          url: "https://crab.subsquare.io/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
     ]),
-    bottom: doubleTheDataSize([
+    levelTwo: doubleTheDataSize([
       {
         logo: cBridgeLogo,
         link: {
@@ -291,6 +326,51 @@ const getCompanySlider = (): Slider => {
         logo: crustLogo,
         link: {
           url: "https://crust.network/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: subqueryLogo,
+        link: {
+          url: "https://subquery.network/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: moonriverLogo,
+        link: {
+          url: "https://moonbeam.network/networks/moonriver/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: karuraLogo,
+        link: {
+          url: "https://acala.network/karura",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: bifrostLogo,
+        link: {
+          url: "https://bifrost.finance/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: khalaLogo,
+        link: {
+          url: "https://www.phala.network/en/khala/",
           title: "",
           isExternal: true,
           isThirdParty: true,

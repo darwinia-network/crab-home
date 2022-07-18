@@ -161,20 +161,19 @@ class ConfirmDialog extends Component<Props, State> {
         onClick={() => {
           this.openLink(this.props.innerLink);
         }}
-        className={"btn-primary capitalize"}
+        className={"btn-primary mt-[1.25rem] capitalize"}
       >
         {this.props.innerLink.title}
       </button>
     ) : null;
 
-    const title = this.props.title ? <div className={"title-2 text-white capitalize"}>{this.props.title}</div> : null;
-
     return (
       <div className={"dialog-wrapper bg-black w-[89.33%] max-w-[46.6875rem]"}>
         <div className={"border-2 border-primary p-[1.25rem] lg:px-[5.625rem] lg:py-[3.75rem]"}>
-          {title}
-          <div className={"my-[1.25rem] capitalize "}>{this.props.message}</div>
-          {crowdLoanButton}
+          <div className={"capitalize "}>
+            {this.props.message}
+            {crowdLoanButton}
+          </div>
         </div>
         <div className={"flex justify-center mt-[1.25rem]"}>{cancelButton}</div>
       </div>
