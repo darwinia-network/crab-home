@@ -1,7 +1,7 @@
 import CustomMarquee, { PixelsPerSecond, ScreenSizeDelay } from "../CustomMarquee";
 import { CompanyLogo, Link } from "../../data/types";
 import { forwardRef, useImperativeHandle, useRef } from "react";
-import LeaveWebsiteConfirmDialog from "../LeaveWebsiteConfirmDialog";
+import LeaveWebsiteConfirmDialog from "../ConfirmDialog";
 import localeKeys from "../../locale/localeKeys";
 import { useTranslation } from "react-i18next";
 
@@ -57,6 +57,7 @@ const LogosSlider = forwardRef<LogosSliderRefs, Props>(({ data, delay }: Props, 
     }
     if (!link.isThirdParty) {
       window.open(link.url, "_blank");
+      return;
     }
     const hasAgreed = await dialogRef.current.showDialog();
     if (hasAgreed) {
@@ -87,6 +88,7 @@ const LogosSlider = forwardRef<LogosSliderRefs, Props>(({ data, delay }: Props, 
         message={t([localeKeys.leavingCrabMessage])}
         ok={t([localeKeys.continue])}
         cancel={t([localeKeys.cancel])}
+        type={1}
         ref={dialogRef}
       />
     </div>
@@ -96,11 +98,10 @@ const LogosSlider = forwardRef<LogosSliderRefs, Props>(({ data, delay }: Props, 
 LogosSlider.displayName = "LogosSlider";
 
 const createASlider = (company: CompanyLogo, index: number, clickHandler: (link: Link) => void): JSX.Element => {
-  const random = Math.random();
   return (
     <div
-      className={"cursor-pointer w-[6.4575rem] lg:w-[16.75rem] border-2 border-primary"}
-      key={`${index}-${random}`}
+      className={"cursor-pointer w-[6.4575rem] lg:w-[16.75rem]"}
+      key={`${company.link}-${index}`}
       onClick={() => {
         clickHandler(company.link);
       }}

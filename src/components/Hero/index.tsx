@@ -31,7 +31,7 @@ const Hero = ({ data, page }: Props) => {
       <div data-aos={"fade-up"} className={`container ${topSpace}`}>
         <div className={"flex flex-col lg:flex-row justify-between relative"}>
           <div className={`order-2 flex flex-col relative z-20 lg:justify-center lg:order-1 ${textClass}`}>
-            {newsTicker}
+            <div className={"max-h-0 overflow-hidden lg:max-h-[none]"}>{newsTicker}</div>
             <Suspense>
               <Typewriter />
             </Suspense>

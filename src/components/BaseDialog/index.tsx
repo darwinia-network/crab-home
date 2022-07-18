@@ -5,7 +5,7 @@ interface Props {
   isVisible: boolean;
   onCloseDialog: () => void;
 }
-const Dialog = ({ children, isVisible, onCloseDialog }: Props) => {
+const BaseDialog = ({ children, isVisible, onCloseDialog }: Props) => {
   const closeDialog = () => {
     onCloseDialog();
   };
@@ -32,4 +32,4 @@ const Dialog = ({ children, isVisible, onCloseDialog }: Props) => {
   );
 };
 
-export default Dialog;
+export default BaseDialog;

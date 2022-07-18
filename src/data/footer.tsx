@@ -30,23 +30,23 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
             title: t(localeKeys.darwiniaNetwork),
           },
           {
-            isExternal: false,
-            url: "/developers",
+            isExternal: true,
+            url: "https://apps.darwinia.network/?network=darwinia",
             title: t(localeKeys.darwiniaApps),
           },
           {
-            isExternal: false,
-            url: "/developers",
+            isExternal: true,
+            url: "https://crab.subscan.io/",
             title: t(localeKeys.subscanExplorer),
           },
           {
-            isExternal: false,
-            url: "/developers",
+            isExternal: true,
+            url: "https://apps.helixbridge.app/",
             title: t(localeKeys.helixBridge),
           },
           {
-            isExternal: false,
-            url: "/developers",
+            isExternal: true,
+            url: "https://www.evolution.land/land/3",
             title: t(localeKeys.evolutionLand),
           },
         ],
@@ -56,12 +56,12 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
         links: [
           {
             isExternal: true,
-            url: "",
+            url: "https://github.com/darwinia-network/darwinia-messages-sol/tree/master/contracts/periphery/contracts/s2s/examples",
             title: t(localeKeys.gitHub),
           },
           {
             isExternal: true,
-            url: "",
+            url: "https://docs.crab.network/",
             title: t(localeKeys.buildersDocs),
           },
         ],
@@ -71,19 +71,19 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
         links: [
           {
             isExternal: false,
-            url: "/papers",
+            url: "",
             title: t(localeKeys.substrateBuilderProgram),
             isFake: true,
           },
           {
             isExternal: true,
-            url: "https://docs.darwinia.network/",
+            url: "",
             title: t(localeKeys.web3GrantProgram),
             isFake: true,
           },
           {
             isExternal: true,
-            url: "https://www.notion.so/itering/9617e154ec884b07a7cee9a056374e42?v=0c3e4d9f257646c486a32a0425ee3a93",
+            url: "",
             title: t(localeKeys.darwiniaBuildersProgram),
             isFake: true,
           },

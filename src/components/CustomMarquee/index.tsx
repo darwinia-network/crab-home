@@ -67,7 +67,7 @@ class CustomMarquee extends Component<Props, State> {
   private totalFilmDimension: number = 0;
   private sliderScreenDimension: number = 0;
   private shouldDuplicate: boolean = true;
-  private readonly duplicatesCounter = 3;
+  private readonly duplicatesCounter = 2;
   private readonly defaultVerticalSliderHeight: number = 300;
   private readonly direction: Direction = "HORIZONTAL";
   private animationFrame = 0;
@@ -186,6 +186,7 @@ class CustomMarquee extends Component<Props, State> {
 
   private onSliderResize() {
     this.evaluateDOM();
+    this.calculateTheInitialPoint(false);
     /* convert the previous translation ratio to the current translate pixels */
     if (this.direction === "HORIZONTAL") {
       this.translatedPixels.x = this.translatedRatio.x * this.totalFilmDimension;
@@ -205,6 +206,17 @@ class CustomMarquee extends Component<Props, State> {
 
   componentDidMount() {
     this.evaluateDOM();
+    this.calculateTheInitialPoint(true);
+    /* translate the slider to the initial location */
+    if (this.superFilmContainerRef.current) {
+      this.superFilmContainerRef.current.style.transform = `translate3d(${this.initialTranslatePixels.x}px,${this.initialTranslatePixels.y}px,0)`;
+    }
+
+    window.addEventListener("resize", this.onSliderResize.bind(this));
+    this.animate();
+  }
+
+  private calculateTheInitialPoint(updateTranslation = false) {
     if (this.props.initialTranslateRatio) {
       const initialTranslateDistance = this.sliderScreenDimension * this.props.initialTranslateRatio;
       if (this.direction === "HORIZONTAL") {
@@ -213,16 +225,10 @@ class CustomMarquee extends Component<Props, State> {
         this.initialTranslatePixels.y = initialTranslateDistance;
       }
 
-      this.updateTranslation(this.initialTranslatePixels.x, this.initialTranslatePixels.y);
+      if (updateTranslation) {
+        this.updateTranslation(this.initialTranslatePixels.x, this.initialTranslatePixels.y);
+      }
     }
-
-    /* translate the slider to the initial location */
-    if (this.superFilmContainerRef.current) {
-      this.superFilmContainerRef.current.style.transform = `translate3d(${this.initialTranslatePixels.x}px,${this.initialTranslatePixels.y}px,0)`;
-    }
-
-    window.addEventListener("resize", this.onSliderResize.bind(this));
-    this.animate();
   }
 
   componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any) {

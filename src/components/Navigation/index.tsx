@@ -25,7 +25,7 @@ const Navigation = () => {
   const [mobileMenuHeightByPathMap, setMenuHeight] = useState<SubMenuHeight>({});
   const [openedPCMenuPath, setOpenedPCMenuPath] = useState<string | undefined>(undefined);
   const [navBarBackground, setNavBarBackground] = useState("rgba(0,0,0,0)");
-  const appsURL = "https://docs.darwinia.network/";
+  const appsURL = "https://apps.darwinia.network/?network=crab";
   const navBarThreshold = 100;
   /* this is temporary code, will be deleted very soon */
   const [isTooltipVisible, setTooltipStatus] = useState(false);
@@ -114,12 +114,7 @@ const Navigation = () => {
   const PCMenu = createPCMenu(menu, openedPCMenuPath, onPCSubMenuToggle, isTooltipVisible, toggleTooltip);
 
   const appsButton = (
-    <a
-      href={appsURL}
-      target="_blank"
-      className={"btn-primary text-white ml-[0.9375rem] capitalize self-end hover:bg-white"}
-      rel="noreferrer"
-    >
+    <a href={appsURL} target="_blank" className={"btn-primary ml-[0.9375rem] capitalize self-end"} rel="noreferrer">
       {t(localeKeys.apps)}
     </a>
   );

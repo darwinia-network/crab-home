@@ -42,7 +42,7 @@ const getHero = (t: TFunction<"translation">): Hero => {
     links: [
       {
         title: t(localeKeys.startApplication),
-        url: "https://www.google.com",
+        url: "https://github.com/darwinia-network/collaboration/blob/master/grant/README.md",
         isExternal: true,
       },
     ],
@@ -127,7 +127,7 @@ const getReasonsToApply = (t: TFunction<"translation">): WhyApplying => {
     title: t(localeKeys.whyYouShouldApply),
     link: {
       title: t(localeKeys.startApplication),
-      url: "",
+      url: "https://github.com/darwinia-network/collaboration/blob/master/grant/README.md",
       isExternal: true,
     },
     reasons: [

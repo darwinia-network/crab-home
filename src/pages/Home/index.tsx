@@ -10,8 +10,11 @@ import EasyDeploy from "../../components/EasyDeploy";
 import FeatureWrapper from "../../components/FeatureWrapper";
 import CrabTokens from "../../components/CrabTokens";
 import DeveloperTools from "../../components/DeveloperTools";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import LogosSlider, { LogosSliderRefs } from "../../components/LogosSlider";
+import NewsDialog from "../../components/ConfirmDialog";
+import { useTranslation } from "react-i18next";
+import localeKeys from "../../locale/localeKeys";
 
 const Home = () => {
   const {
@@ -29,6 +32,16 @@ const Home = () => {
   const { footerData } = useFooterData();
   const topSlider = useRef<LogosSliderRefs>(null);
   const bottomSlider = useRef<LogosSliderRefs>(null);
+  const newsDialogRef = useRef<NewsDialog>(null);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) {
+      if (newsDialogRef.current) {
+        newsDialogRef.current.showDialog();
+      }
+    }
+  }, []);
 
   const pauseSlider = () => {
     if (!topSlider.current || !bottomSlider.current) {
@@ -86,6 +99,8 @@ const Home = () => {
       <div className={"container-3 inter-block-space-1"}>
         <DeveloperTools data={developerTools} />
       </div>
+      {/* This news dialog will only be visible on mobile phones */}
+      <NewsDialog type={2} ref={newsDialogRef} cancel={t(localeKeys.cancel)} message={t(localeKeys.newsPost)} />
       <Footer data={footerData} />
     </div>
   );

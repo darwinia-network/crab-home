@@ -1,5 +1,5 @@
 import { DeveloperTools as IDeveloperTools, Link } from "../../data/types";
-import LeaveWebsiteConfirmDialog from "../LeaveWebsiteConfirmDialog";
+import LeaveWebsiteConfirmDialog from "../ConfirmDialog";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import localeKeys from "../../locale/localeKeys";
@@ -66,6 +66,7 @@ const DeveloperTools = ({ data }: Props) => {
         message={t([localeKeys.leavingCrabMessage])}
         ok={t([localeKeys.continue])}
         cancel={t([localeKeys.cancel])}
+        type={1}
         ref={dialogRef}
       />
     </div>

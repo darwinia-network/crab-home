@@ -70,7 +70,7 @@ const getSupplyStatistics = (t: TFunction<"translation">): TokenSupply => {
       links: [
         {
           title: t(localeKeys.accurateData),
-          url: "https://www.google.com",
+          url: "https://crab.subscan.io/tools/charts?type=token_supply",
           isExternal: true,
         },
       ],

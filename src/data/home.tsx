@@ -1,5 +1,6 @@
 import {
   BridgeMessaging,
+  CompanyLogo,
   CompatibilityPromo,
   CrabIntro,
   CrabToken,
@@ -87,13 +88,13 @@ const getHero = (t: TFunction<"translation">): Hero => {
     links: [
       {
         title: t(localeKeys.buildOnCrab),
-        url: "/developers",
-        isExternal: false,
+        url: "https://docs.crab.network/",
+        isExternal: true,
         type: "PRIMARY",
       },
       {
         title: t(localeKeys.goToDarwinia),
-        url: "https://docs.darwinia.network/",
+        url: "https://darwinia.network/",
         isExternal: true,
       },
     ],
@@ -176,21 +177,32 @@ const getCompatibilityPromo = (t: TFunction<"translation">): CompatibilityPromo 
 };
 
 const getCompanySlider = (): Slider => {
+  /* we double the data here just to cheat on React to avoid logo lazy loading
+   * when we have translated the whole film and are about to show our own
+   * duplicate of the DOM */
+  const doubleTheDataSize = (data: CompanyLogo[]) => {
+    const output = [];
+    for (let i = 0; i < 2; i++) {
+      output.push(...data);
+    }
+    return output;
+  };
+
   return {
-    top: [
+    top: doubleTheDataSize([
       {
         logo: subscanLogo,
         link: {
-          url: "https://google.com",
+          url: "https://www.subscan.io/",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: subviewLogo,
         link: {
-          url: "https://google.com",
+          url: "https://subview.xyz/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -199,7 +211,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: onfinalityLogo,
         link: {
-          url: "https://google.com",
+          url: "https://onfinality.io/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -208,7 +220,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: dwellirLogo,
         link: {
-          url: "https://google.com",
+          url: "https://www.dwellir.com/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -217,16 +229,16 @@ const getCompanySlider = (): Slider => {
       {
         logo: evolutionLandLogo,
         link: {
-          url: "https://google.com",
+          url: "https://www.evolution.land/",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: snowswapLogo,
         link: {
-          url: "https://google.com",
+          url: "https://snowswap.xyz/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -235,7 +247,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: subswapLogo,
         link: {
-          url: "https://google.com",
+          url: "https://subswap.pro/#/swap",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -244,7 +256,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: snapshotLogo,
         link: {
-          url: "https://google.com",
+          url: "https://snapshot.org/#/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -253,18 +265,18 @@ const getCompanySlider = (): Slider => {
       {
         logo: polkadotJSLogo,
         link: {
-          url: "https://google.com",
+          url: "https://polkadot.js.org/extension/",
           title: "",
           isExternal: true,
           isThirdParty: true,
         },
       },
-    ],
-    bottom: [
+    ]),
+    bottom: doubleTheDataSize([
       {
         logo: mathWalletLogo,
         link: {
-          url: "https://google.com",
+          url: "https://www.mathwallet.org/en-us/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -273,7 +285,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: crustLogo,
         link: {
-          url: "https://google.com",
+          url: "https://crust.network/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -282,7 +294,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: cBridgeLogo,
         link: {
-          url: "https://google.com",
+          url: "https://cbridge.celer.network/#/transfer",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -291,16 +303,16 @@ const getCompanySlider = (): Slider => {
       {
         logo: helixLogo,
         link: {
-          url: "https://google.com",
+          url: "https://helixbridge.app/",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: crabMetaverseLogo,
         link: {
-          url: "https://google.com",
+          url: "https://bafybeibzvmelwjnsmnvobelxhnkm6zs3uqfs3vmk6kce72jwwghhtnr3ry.ipfs.infura-ipfs.io/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -309,7 +321,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: metarockLogo,
         link: {
-          url: "https://google.com",
+          url: "https://metarock.app/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -318,7 +330,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: myweb3Logo,
         link: {
-          url: "https://google.com",
+          url: "https://www.myweb3.club/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -327,7 +339,7 @@ const getCompanySlider = (): Slider => {
       {
         logo: entity54Logo,
         link: {
-          url: "https://google.com",
+          url: "https://darwinihackathon.vercel.app/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -336,13 +348,13 @@ const getCompanySlider = (): Slider => {
       {
         logo: metamaskLogo,
         link: {
-          url: "https://google.com",
+          url: "https://metamask.io/",
           title: "",
           isExternal: true,
           isThirdParty: true,
         },
       },
-    ],
+    ]),
   };
 };
 
@@ -353,115 +365,115 @@ const getDeveloperTools = (t: TFunction<"translation">): DeveloperTools => {
       {
         logo: metamaskLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/interact/metamask-dapp",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: openzeppelinLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/interact/oz-remix",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: theGraphLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/ecosystem/indexers/dvm-thegraph",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: hardhatLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/tools/hardhat",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: waffleLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/interact/waffle-mars",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: remixLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/interact/remix",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: subscanLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/tools/explorers",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: polkadotJSLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/tools/explorers",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: web3PYLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/tools/eth-libraries/web3py",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: web3JSLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/tools/eth-libraries/web3js",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: etherJSLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/tools/eth-libraries/etherjs",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: onfinalityLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/crab-faqs-network-rpc",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: bwarelabsLogo,
         link: {
-          url: "https://google.com",
+          url: "https://bwarelabs.com/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -470,7 +482,7 @@ const getDeveloperTools = (t: TFunction<"translation">): DeveloperTools => {
       {
         logo: ethsignLogo,
         link: {
-          url: "https://google.com",
+          url: "https://www.ethsign.xyz/",
           title: "",
           isExternal: true,
           isThirdParty: true,
@@ -479,19 +491,19 @@ const getDeveloperTools = (t: TFunction<"translation">): DeveloperTools => {
       {
         logo: marsLogo,
         link: {
-          url: "https://google.com",
+          url: "https://docs.crab.network/evm-compatible-crab-smart-chain/builders/interact/waffle-mars",
           title: "",
           isExternal: true,
-          isThirdParty: true,
+          isThirdParty: false,
         },
       },
       {
         logo: subviewLogo,
         link: {
-          url: "https://google.com",
+          url: "https://subview.xyz/",
           title: "",
           isExternal: true,
-          isThirdParty: false,
+          isThirdParty: true,
         },
       },
     ],
@@ -506,8 +518,8 @@ const getCrabToken = (t: TFunction<"translation">): CrabToken => {
     link: {
       type: "PLAIN",
       title: t(localeKeys.learnMore),
-      url: "",
-      isExternal: true,
+      url: "/economic-model",
+      isExternal: false,
     },
     features: [
       {
@@ -518,7 +530,7 @@ const getCrabToken = (t: TFunction<"translation">): CrabToken => {
         links: [
           {
             title: t(localeKeys.learnMore),
-            url: "https://google.com",
+            url: "https://apps.darwinia.network/?network=crab",
             isExternal: true,
           },
         ],
@@ -531,7 +543,7 @@ const getCrabToken = (t: TFunction<"translation">): CrabToken => {
         links: [
           {
             title: t(localeKeys.learnMore),
-            url: "https://google.com",
+            url: "https://crab.subsquare.io/",
             isExternal: true,
           },
         ],
@@ -544,7 +556,7 @@ const getCrabToken = (t: TFunction<"translation">): CrabToken => {
         links: [
           {
             title: t(localeKeys.learnMore),
-            url: "https://google.com",
+            url: "https://apps.darwinia.network/staking?active=power&network=crab",
             isExternal: true,
           },
         ],
