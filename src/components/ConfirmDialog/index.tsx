@@ -137,8 +137,8 @@ class ConfirmDialog extends Component<Props, State> {
           <div className={"my-[1.25rem] capitalize "}>{this.props.message}</div>
         </div>
         <div className={"flex gap-x-[1.25rem]"}>
-          {okButton}
           {cancelButton}
+          {okButton}
         </div>
       </div>
     );
