@@ -68,7 +68,7 @@ const enUs = {
   [localeKeys.stakingText]: `CRAB / CKTON token holders can  stake their tokens and participate as nominators to earn a share of the validators’ rewards.`,
   [localeKeys.developerTools]: `Developer Tools`,
   [localeKeys.youAreLavingCrab]: `You're Leaving the Crab Network Website`,
-  [localeKeys.leavingCrabMessage]: `You are now leaving for an independent, third-party website that is not affiliated with the Crab Network. Pay attention to the safety of funds.`,
+  [localeKeys.leavingCrabMessage]: `You are now leaving for an independent, third-party website that is not affiliated with the Crab Network. Pay attention to the safety of your funds.`,
   [localeKeys.continue]: `continue`,
   [localeKeys.cancel]: `cancel`,
   [localeKeys.crabEconomicModel]: `Crab economic model`,
@@ -136,6 +136,7 @@ const enUs = {
   [localeKeys.winWinText]: `By joining the Crab Grants Program, you will have a greater ability to contribute to Crab’s growth and will boost your project's growth and development.`,
   [localeKeys.news]: `News`,
   [localeKeys.newsPost]: `July’s 7.5% CRAB + CKTON rewards from Crab Kusama Parachain Slot Auction Have Been Delivered.`,
+  [localeKeys.crowdLoanDetails]: `Crowdload Details`,
 };
 
 export default enUs;

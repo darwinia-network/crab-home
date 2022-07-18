@@ -8,6 +8,7 @@ import {
   EasyDeploy,
   FeatureWrapper,
   Hero,
+  NewsPost,
   Slider,
 } from "./types";
 import { TFunction, useTranslation } from "react-i18next";
@@ -37,7 +38,6 @@ import mathWalletLogo from "../assets/images/company-logos/math.png";
 import crustLogo from "../assets/images/company-logos/crust.png";
 import cBridgeLogo from "../assets/images/company-logos/c-bridge.png";
 import helixLogo from "../assets/images/company-logos/helix.png";
-import crabMetaverseLogo from "../assets/images/company-logos/crab-metaverse.png";
 import metarockLogo from "../assets/images/company-logos/metarock.png";
 import myweb3Logo from "../assets/images/company-logos/myweb3.png";
 import entity54Logo from "../assets/images/company-logos/entity-54.png";
@@ -59,6 +59,7 @@ import marsLogo from "../assets/images/company-logos/mars.png";
 export const useHomeData = () => {
   const { t } = useTranslation();
   const heroData = getHero(t);
+  const newsPost = getNewsPost(t);
   const crabIntroData = getCrabIntro(t);
   const compatibilityPromo = getCompatibilityPromo(t);
   const bridgeMessaging = getBridgeMessaging(t);
@@ -69,6 +70,7 @@ export const useHomeData = () => {
   const developerTools = getDeveloperTools(t);
   return {
     heroData,
+    newsPost,
     crabIntroData,
     compatibilityPromo,
     bridgeMessaging,
@@ -98,6 +100,18 @@ const getHero = (t: TFunction<"translation">): Hero => {
         isExternal: true,
       },
     ],
+  };
+};
+
+const getNewsPost = (t: TFunction<"translation">): NewsPost => {
+  return {
+    text: t(localeKeys.newsPost),
+    label: t(localeKeys.news),
+    link: {
+      title: t(localeKeys.crowdLoanDetails),
+      url: "https://darwinia-network.github.io/crab-home-v1/plo_contribute",
+      isExternal: true,
+    },
   };
 };
 
@@ -196,7 +210,7 @@ const getCompanySlider = (): Slider => {
           url: "https://www.subscan.io/",
           title: "",
           isExternal: true,
-          isThirdParty: false,
+          isThirdParty: true,
         },
       },
       {
@@ -227,12 +241,68 @@ const getCompanySlider = (): Slider => {
         },
       },
       {
+        logo: polkadotJSLogo,
+        link: {
+          url: "https://polkadot.js.org/extension/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: metamaskLogo,
+        link: {
+          url: "https://metamask.io/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: mathWalletLogo,
+        link: {
+          url: "https://www.mathwallet.org/en-us/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+    ]),
+    bottom: doubleTheDataSize([
+      {
+        logo: cBridgeLogo,
+        link: {
+          url: "https://cbridge.celer.network/#/transfer",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: helixLogo,
+        link: {
+          url: "https://helixbridge.app/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
+        logo: crustLogo,
+        link: {
+          url: "https://crust.network/",
+          title: "",
+          isExternal: true,
+          isThirdParty: true,
+        },
+      },
+      {
         logo: evolutionLandLogo,
         link: {
           url: "https://www.evolution.land/",
           title: "",
           isExternal: true,
-          isThirdParty: false,
+          isThirdParty: true,
         },
       },
       {
@@ -263,62 +333,6 @@ const getCompanySlider = (): Slider => {
         },
       },
       {
-        logo: polkadotJSLogo,
-        link: {
-          url: "https://polkadot.js.org/extension/",
-          title: "",
-          isExternal: true,
-          isThirdParty: true,
-        },
-      },
-    ]),
-    bottom: doubleTheDataSize([
-      {
-        logo: mathWalletLogo,
-        link: {
-          url: "https://www.mathwallet.org/en-us/",
-          title: "",
-          isExternal: true,
-          isThirdParty: true,
-        },
-      },
-      {
-        logo: crustLogo,
-        link: {
-          url: "https://crust.network/",
-          title: "",
-          isExternal: true,
-          isThirdParty: true,
-        },
-      },
-      {
-        logo: cBridgeLogo,
-        link: {
-          url: "https://cbridge.celer.network/#/transfer",
-          title: "",
-          isExternal: true,
-          isThirdParty: true,
-        },
-      },
-      {
-        logo: helixLogo,
-        link: {
-          url: "https://helixbridge.app/",
-          title: "",
-          isExternal: true,
-          isThirdParty: false,
-        },
-      },
-      {
-        logo: crabMetaverseLogo,
-        link: {
-          url: "https://bafybeibzvmelwjnsmnvobelxhnkm6zs3uqfs3vmk6kce72jwwghhtnr3ry.ipfs.infura-ipfs.io/",
-          title: "",
-          isExternal: true,
-          isThirdParty: true,
-        },
-      },
-      {
         logo: metarockLogo,
         link: {
           url: "https://metarock.app/",
@@ -340,15 +354,6 @@ const getCompanySlider = (): Slider => {
         logo: entity54Logo,
         link: {
           url: "https://darwinihackathon.vercel.app/",
-          title: "",
-          isExternal: true,
-          isThirdParty: true,
-        },
-      },
-      {
-        logo: metamaskLogo,
-        link: {
-          url: "https://metamask.io/",
           title: "",
           isExternal: true,
           isThirdParty: true,

@@ -19,6 +19,7 @@ import localeKeys from "../../locale/localeKeys";
 const Home = () => {
   const {
     heroData,
+    newsPost,
     crabIntroData,
     compatibilityPromo,
     bridgeMessaging,
@@ -61,7 +62,7 @@ const Home = () => {
 
   return (
     <div>
-      <Hero page={"HOME"} data={heroData} />
+      <Hero page={"HOME"} newsPost={newsPost} data={heroData} />
       <div className={"container inter-block-space-1"}>
         <CrabIntro data={crabIntroData} />
       </div>
@@ -100,7 +101,13 @@ const Home = () => {
         <DeveloperTools data={developerTools} />
       </div>
       {/* This news dialog will only be visible on mobile phones */}
-      <NewsDialog type={2} ref={newsDialogRef} cancel={t(localeKeys.cancel)} message={t(localeKeys.newsPost)} />
+      <NewsDialog
+        type={2}
+        ref={newsDialogRef}
+        cancel={t(localeKeys.cancel)}
+        innerLink={newsPost.link}
+        message={newsPost.text}
+      />
       <Footer data={footerData} />
     </div>
   );

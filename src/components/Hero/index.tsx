@@ -1,4 +1,4 @@
-import { Hero as IHero, HeroType, Link, Page, SocialNetwork } from "../../data/types";
+import { Hero as IHero, HeroType, Link, NewsPost, Page, SocialNetwork } from "../../data/types";
 import { NavLink } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import homeHeroBg from "../../assets/images/home-hero-bg.png";
@@ -6,9 +6,10 @@ import homeHeroBg from "../../assets/images/home-hero-bg.png";
 interface Props {
   data: IHero;
   page: Page;
+  newsPost?: NewsPost;
 }
 
-const Hero = ({ data, page }: Props) => {
+const Hero = ({ data, page, newsPost }: Props) => {
   const links = getLinks(data.links);
   const text = getText(data.text, data.type);
   const image = getImage(data.image);
@@ -23,7 +24,7 @@ const Hero = ({ data, page }: Props) => {
   const newsTicker =
     News !== null ? (
       <Suspense>
-        <News />
+        <News newsPost={newsPost} />
       </Suspense>
     ) : null;
   return (

@@ -1,11 +1,13 @@
 import BaseDialog from "../BaseDialog";
 import { Component } from "react";
+import { Link } from "../../data/types";
 
 type DialogType = 1 | 2;
 
 interface Props {
   title?: string;
   message: string;
+  innerLink?: Link;
   ok?: string;
   cancel?: string;
   type: DialogType;
@@ -62,6 +64,14 @@ class ConfirmDialog extends Component<Props, State> {
     this.promiseResolve(false);
     this.promiseResolve = undefined;
     this.hideDialog();
+  };
+
+  private openLink = (link: Link | undefined) => {
+    if (!link) {
+      return;
+    }
+    this.hideDialog();
+    window.open(link.url, "_blank");
   };
 
   getDialogByType(type: DialogType) {
@@ -146,6 +156,17 @@ class ConfirmDialog extends Component<Props, State> {
       </button>
     ) : null;
 
+    const crowdLoanButton = this.props.innerLink ? (
+      <button
+        onClick={() => {
+          this.openLink(this.props.innerLink);
+        }}
+        className={"btn-primary capitalize"}
+      >
+        {this.props.innerLink.title}
+      </button>
+    ) : null;
+
     const title = this.props.title ? <div className={"title-2 text-white capitalize"}>{this.props.title}</div> : null;
 
     return (
@@ -153,6 +174,7 @@ class ConfirmDialog extends Component<Props, State> {
         <div className={"border-2 border-primary p-[1.25rem] lg:px-[5.625rem] lg:py-[3.75rem]"}>
           {title}
           <div className={"my-[1.25rem] capitalize "}>{this.props.message}</div>
+          {crowdLoanButton}
         </div>
         <div className={"flex justify-center mt-[1.25rem]"}>{cancelButton}</div>
       </div>

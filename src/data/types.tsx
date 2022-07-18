@@ -206,3 +206,9 @@ export interface WhyApplying {
   reasons: Feature[];
   link: Link;
 }
+
+export interface NewsPost {
+  label: string;
+  text: string;
+  link: Link;
+}
