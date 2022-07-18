@@ -157,14 +157,16 @@ class ConfirmDialog extends Component<Props, State> {
     ) : null;
 
     const crowdLoanButton = this.props.innerLink ? (
-      <button
-        onClick={() => {
-          this.openLink(this.props.innerLink);
-        }}
-        className={"btn-primary mt-[1.25rem] capitalize"}
-      >
-        {this.props.innerLink.title}
-      </button>
+      <div className={"mt-[1.25rem]"}>
+        <button
+          onClick={() => {
+            this.openLink(this.props.innerLink);
+          }}
+          className={"btn-primary capitalize"}
+        >
+          {this.props.innerLink.title}
+        </button>
+      </div>
     ) : null;
 
     return (
