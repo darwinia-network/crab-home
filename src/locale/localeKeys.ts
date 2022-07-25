@@ -144,6 +144,7 @@ const localeKeys = {
   kusamaParachainAuction: "kusamaParachainAuction",
   blog: "blog",
   brand: "brand",
+  subscribing: "subscribing",
 };
 
 export default localeKeys;

@@ -144,6 +144,7 @@ const enUs = {
   [localeKeys.kusamaParachainAuction]: `Kusama Parachain Auction`,
   [localeKeys.blog]: `blog`,
   [localeKeys.brand]: `brand`,
+  [localeKeys.subscribing]: `Subscribing...`,
 };
 
 export default enUs;
