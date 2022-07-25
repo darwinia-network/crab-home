@@ -112,6 +112,9 @@ const Footer = ({ data }: Props) => {
                   onFocus={() => {
                     onInputFocused();
                   }}
+                  onClick={() => {
+                    onInputFocused();
+                  }}
                   name={"EMAIL"}
                   id="mce-EMAIL"
                   className={
