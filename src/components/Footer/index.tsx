@@ -3,6 +3,7 @@ import localeKeys from "../../locale/localeKeys";
 import { Footer as IFooter, FooterSection, SocialNetwork } from "../../data/types";
 import { NavLink } from "react-router-dom";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { isValidEmail } from "../../utils";
 
 interface Props {
   data: IFooter;
@@ -10,7 +11,7 @@ interface Props {
 
 const Footer = ({ data }: Props) => {
   const { t } = useTranslation();
-  const [, setEmail] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const feedbackRef = useRef<HTMLDivElement>(null);
   const successFeedbackRef = useRef<HTMLDivElement>(null);
   const errorFeedbackRef = useRef<HTMLDivElement>(null);
@@ -69,6 +70,9 @@ const Footer = ({ data }: Props) => {
 
   const onFormSubmitted = () => {
     if (!submitButton.current) {
+      return;
+    }
+    if (!isValidEmail(email)) {
       return;
     }
     setLoading(true);
