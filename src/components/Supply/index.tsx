@@ -10,6 +10,7 @@ import { formatBalance } from "../../utils";
 import crabCoinImage from "../../assets/images/crab.png";
 import cKTONCoinImage from "../../assets/images/ckton.png";
 import LoadingSpinner from "../LoadingSpinner";
+import BigNumber from "bignumber.js";
 
 interface Props {
   data: ITokenSupply;
@@ -76,6 +77,10 @@ const Supply = ({ data }: Props) => {
     };
   };
 
+  const convertToNineDecimals = (amount: string) => {
+    return new BigNumber(amount).div(Math.pow(10, 9)).toString();
+  };
+
   const fetchData = async () => {
     try {
       setLoadingTokenData(true);
@@ -92,12 +97,16 @@ const Supply = ({ data }: Props) => {
         // the response was successful
 
         result.data.data.detail.CRAB.initialSupply = initialCrabAmount;
-        result.data.data.detail.CRAB.totalSupply = result.data.data.detail.CRAB.total_issuance;
-        result.data.data.detail.CRAB.circulatingSupply = result.data.data.detail.CRAB.available_balance;
+        result.data.data.detail.CRAB.totalSupply = convertToNineDecimals(result.data.data.detail.CRAB.total_issuance);
+        result.data.data.detail.CRAB.circulatingSupply = convertToNineDecimals(
+          result.data.data.detail.CRAB.available_balance
+        );
 
         result.data.data.detail.CKTON.initialSupply = "0";
-        result.data.data.detail.CKTON.totalSupply = result.data.data.detail.CKTON.total_issuance;
-        result.data.data.detail.CKTON.circulatingSupply = result.data.data.detail.CKTON.available_balance;
+        result.data.data.detail.CKTON.totalSupply = convertToNineDecimals(result.data.data.detail.CKTON.total_issuance);
+        result.data.data.detail.CKTON.circulatingSupply = convertToNineDecimals(
+          result.data.data.detail.CKTON.available_balance
+        );
       } else {
         /* add some dummy data just for the UI to show up */
         result.data = {
