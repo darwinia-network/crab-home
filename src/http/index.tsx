@@ -7,7 +7,7 @@ export interface NetworkRequest {
 }
 
 const baseUrl =
-  process.env.NODE_ENV === "development" ? "https://api.darwinia.network" : "https://api.darwinia.network";
+  process.env.NODE_ENV === "development" ? "https://crab.api.subscan.io/api" : "https://crab.api.subscan.io/api";
 
 const axiosInstance = axios.create();
 

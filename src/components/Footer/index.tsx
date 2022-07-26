@@ -2,7 +2,8 @@ import { useTranslation } from "react-i18next";
 import localeKeys from "../../locale/localeKeys";
 import { Footer as IFooter, FooterSection, SocialNetwork } from "../../data/types";
 import { NavLink } from "react-router-dom";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { isValidEmail } from "../../utils";
 
 interface Props {
   data: IFooter;
@@ -10,8 +11,12 @@ interface Props {
 
 const Footer = ({ data }: Props) => {
   const { t } = useTranslation();
-  const emailArray = useState<string>("");
-  const setEmail = emailArray[1];
+  const [email, setEmail] = useState<string>("");
+  const feedbackRef = useRef<HTMLDivElement>(null);
+  const successFeedbackRef = useRef<HTMLDivElement>(null);
+  const errorFeedbackRef = useRef<HTMLDivElement>(null);
+  const submitButton = useRef<HTMLButtonElement>(null);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const footerSections = createFooterSections(data.referenceLinks);
   const copyRight = data.copyright;
   const socialNetworkLinks = getSocialNetworkLinks(data.socialNetworks);
@@ -23,12 +28,55 @@ const Footer = ({ data }: Props) => {
     script.type = "text/javascript";
     script.async = true;
     document.body.appendChild(script);
+
+    /* watch the DOM changes to see when the email feedback is visible to the user or not.
+     * This API may not be supported by some old browsers */
+    const observer = new MutationObserver((mutationRecord) => {
+      /* if there are any changes in the DOM, enable the button  */
+      setLoading(false);
+    });
+
+    if (feedbackRef.current) {
+      observer.observe(feedbackRef.current, {
+        attributes: true,
+        subtree: true,
+      });
+    }
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const onInputChanged = (e: ChangeEvent<HTMLInputElement>) => {
+    hideFeedback();
     setEmail(() => {
       return e.target.value;
     });
+  };
+
+  const onInputFocused = () => {
+    hideFeedback();
+  };
+
+  const hideFeedback = () => {
+    if (successFeedbackRef.current) {
+      successFeedbackRef.current.style.display = "none";
+    }
+    if (errorFeedbackRef.current) {
+      errorFeedbackRef.current.style.display = "none";
+    }
+  };
+
+  const onFormSubmitted = () => {
+    if (!submitButton.current) {
+      return;
+    }
+    if (!isValidEmail(email)) {
+      return;
+    }
+    setLoading(true);
+    submitButton.current.click();
   };
 
   return (
@@ -45,6 +93,10 @@ const Footer = ({ data }: Props) => {
           {/* Custom Input Field */}
           <div className={"relative"}>
             <div className={"relative inline-block w-full"}>
+              {/* for some reasons when you press enter when the focus is on the
+                form, the form calls the onFormSubmitted method automatically
+                 and that's exactly what we need. SO we don't need to further do anything
+                  on the form submission when the user clicks enter button */}
               <form
                 action="https://network.us6.list-manage.com/subscribe/post?u=eb1c779b75a344e2d52755879&amp;id=70a65557b6"
                 target="_blank"
@@ -57,6 +109,12 @@ const Footer = ({ data }: Props) => {
                   onChange={(e) => {
                     onInputChanged(e);
                   }}
+                  onFocus={() => {
+                    onInputFocused();
+                  }}
+                  onClick={() => {
+                    onInputFocused();
+                  }}
                   name={"EMAIL"}
                   id="mce-EMAIL"
                   className={
@@ -66,18 +124,34 @@ const Footer = ({ data }: Props) => {
                   placeholder={t(localeKeys.yourEmailHere)}
                 />
                 <button
-                  type="submit"
                   className={
                     "btn border-primary capitalize flex items-center disabled:text-gray disabled:cursor-default py-[0.4375rem]"
                   }
+                  disabled={isLoading}
+                  onClick={() => {
+                    onFormSubmitted();
+                  }}
                 >
-                  {t(localeKeys.subscribe)}
+                  {isLoading ? t(localeKeys.subscribing) : t(localeKeys.subscribe)}
+                </button>
+                {/* the hidden button to trigger form submit action */}
+                <button ref={submitButton} type="submit" className={"btn w-[1px] h-[1px] opacity-0 overflow-hidden"}>
+                  hidden btn
                 </button>
               </form>
             </div>
-            <div id="mce-responses" className="clear absolute capitalize text-white left-0 -bottom-[1.875rem]">
-              <div className="response" id="mce-error-response" style={{ display: "none" }} />
-              <div className="response" id="mce-success-response" style={{ display: "none" }} />
+            <div
+              ref={feedbackRef}
+              id="mce-responses"
+              className="clear absolute capitalize text-white left-0 -bottom-[1.875rem]"
+            >
+              <div className="response" ref={errorFeedbackRef} id="mce-error-response" style={{ display: "none" }} />
+              <div
+                className="response"
+                ref={successFeedbackRef}
+                id="mce-success-response"
+                style={{ display: "none" }}
+              />
             </div>
           </div>
 
