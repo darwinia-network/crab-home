@@ -15,7 +15,7 @@ const enUs = {
   [localeKeys.wrongEmail]: `wrong email`,
   [localeKeys.subscriptionSuccessful]: `thank you for subscribing!`,
   [localeKeys.pageNotFound]: `Crab 404`,
-  [localeKeys.goBackHome]: `Back to home`,
+  [localeKeys.goBackHome]: `go home`,
   [localeKeys.subscribeToUpdates]: `Subscribe to Project Updates`,
   [localeKeys.trackLatestUpdates]: `Keep up with the latest project deployments and network updates!`,
   [localeKeys.crabNetworkCopyright]: `&copy; {{year}} Crab Network. All Rights Reserved.`,

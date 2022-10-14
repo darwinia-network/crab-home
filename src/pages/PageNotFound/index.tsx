@@ -11,7 +11,7 @@ const PageNotFound = () => {
   return (
     <div className={`bg-center bg-cover bg-no-repeat`}>
       <div data-aos={"fade-up"} className={`container space-top`}>
-        <div className={"flex flex-col lg:flex-row justify-center items-center pt-[5rem]"}>
+        <div className={"flex flex-col lg:flex-row justify-center items-center pt-[8.75rem] lg:pt-[18.75rem]"}>
           <img
             className={"order-2 lg:order-1 w-[58.9%] max-w-[400px] lg:max-w-none lg:w-[18.25%]"}
             src={notFound}
