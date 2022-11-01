@@ -135,7 +135,7 @@ const enUs = {
   [localeKeys.winWin]: `Win-Win`,
   [localeKeys.winWinText]: `By joining the Crab Grants Program, you will have a greater ability to contribute to Crab’s growth and will boost your project's growth and development.`,
   [localeKeys.news]: `News`,
-  [localeKeys.newsPost]: `July’s 7.5% CRAB + CKTON rewards from Crab Kusama Parachain Slot Auction Have Been Delivered.`,
+  [localeKeys.newsPost]: `October's 7.5% CRAB + CKTON rewards from Crab Kusama Parachain Slot Auction Have Been Delivered.`,
   [localeKeys.crowdLoanDetails]: `Crowdload Details`,
   [localeKeys.subviewExplorer]: `subview explorer`,
   [localeKeys.pangolinTestNet]: `Pangolin TestNet`,

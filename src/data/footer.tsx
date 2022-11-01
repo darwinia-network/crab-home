@@ -71,7 +71,7 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
           },
           {
             isExternal: true,
-            url: "/files/crab_brand.zip",
+            url: "https://itering.notion.site/About-Crab-Network-db5d28d1479540118c1f772ebac5783c",
             title: t(localeKeys.brand),
           },
         ],
