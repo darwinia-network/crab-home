@@ -5,6 +5,9 @@ import telegram from "../assets/images/telegram.png";
 import medium from "../assets/images/medium.png";
 import mail from "../assets/images/mail.png";
 import github from "../assets/images/github.png";
+import discord from "../assets/images/discord.png";
+import element from "../assets/images/element.png";
+import twitter from "../assets/images/twitter.png";
 
 /* make sure you use a custom hook here since we have to use the useTranslation hook
  * from react-i18next */
@@ -102,8 +105,20 @@ const getFooterData = (t: TFunction<"translation">): Footer => {
     ],
     socialNetworks: [
       {
+        logo: twitter,
+        url: "https://twitter.com/DarwiniaNetwork",
+      },
+      {
         logo: telegram,
         url: "https://t.me/DarwiniaNetwork",
+      },
+      {
+        logo: discord,
+        url: "https://discord.com/invite/aQdK9H4MZS",
+      },
+      {
+        logo: element,
+        url: "https://app.element.io/#/room/#darwinia:matrix.org",
       },
       {
         logo: github,
